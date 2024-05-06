@@ -4,7 +4,7 @@ $configData = Helper::appClasses();
 
 @extends('layouts/layoutMaster')
 
-@section('title', 'Dashboard - Analytics')
+@section('title', 'Latepoint')
 
 
 @section('vendor-style')
@@ -39,6 +39,11 @@ $configData = Helper::appClasses();
 @endsection
 @section('content')
 
+<style type="text/css">
+    .percent_val {
+        padding-left: 0 !important;
+    }
+</style>
 <div class="row">
     <div class="col-lg-12 col-xxl-7 mb-4 order-3 order-xxl-1">
         <div class="card h-80">
@@ -67,6 +72,44 @@ $configData = Helper::appClasses();
                         id="flatpickr-range" />
                 </div>
             </div>
+            <hr>
+
+            <div class="d-none d-lg-flex vehicles-progress-labels" style="padding: 0 2% 0 2%;">
+                <div class="col-lg-3 vehicles-progress-label on-the-way-text">
+                    <div class="d-flex">
+                        <h2 class="m-1">0</h2>
+                        <span class="p-3 percent_val">0%</span>
+                        <i class="fa fa-info" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Total number of appointments in selected period."></i>
+                    </div>
+                    <h6>Appointments</h6>
+                </div>
+                <div class="col-lg-3 vehicles-progress-label unloading-text">
+                    <div class="d-flex">
+                        <h2 class="m-1">$0</h2>
+                        <span class="p-3 percent_val">0%</span>
+                        <i class="fa fa-info" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Total sales in selected period."></i>
+                    </div>
+                    <h6>Sales Revenue</h6>
+                </div>
+                <div class="col-lg-3 vehicles-progress-label loading-text">
+                    <div class="d-flex">
+                        <h2 class="m-1">0</h2>
+                        <span class="p-3 percent_val">0%</span>
+                        <i class="fa fa-info" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Total hours worked across all selected agents in selected period."></i>
+                    </div>
+                    <h6>Hours Worked</h6>
+                </div>
+                <div class="col-lg-3 vehicles-progress-label waiting-text">
+                    <div class="d-flex">
+                        <h2 class="m-1">5</h2>
+                        <span class="p-3 percent_val">0%</span>
+                        <i class="fa fa-info" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Total number of new customers registered in selected period."></i>
+                    </div>
+                    <h6>New Customers</h6>
+                </div>
+            </div>
+            <hr>
+
             <div class="card-body">
                 <div id="shipmentStatisticsChart">
                 </div>

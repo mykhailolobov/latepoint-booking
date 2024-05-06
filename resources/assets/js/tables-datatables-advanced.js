@@ -7,6 +7,8 @@
 $(function () {
   var dt_ajax_table = $('.datatables-ajax'),
     dt_filter_table = $('.dt-column-search'),
+    dt_filter_table1 = $('.dt-column-search-1'),
+    dt_filter_table2 = $('.dt-column-search-2'),
     dt_adv_filter_table = $('.dt-advanced-search'),
     dt_responsive_table = $('.dt-responsive'),
     startDateEle = $('.start_date'),
@@ -130,12 +132,110 @@ $(function () {
     var dt_filter = dt_filter_table.DataTable({
       ajax: assetsPath + 'json/table-datatable.json',
       columns: [
-        { data: 'full_name' },
+        { data: 'id' },
+        { data: 'service' },
+        { data: 'date_time' },
+        { data: 'time_left' },
+        { data: 'aganet' },
+        { data: 'customer' },
+        { data: 'status' },
+        { data: 'payment_Status' },
+        { data: 'crated_On' },
         { data: 'email' },
-        { data: 'post' },
-        { data: 'city' },
-        { data: 'start_date' },
-        { data: 'salary' }
+        { data: 'phone' },
+        { data: 'code' },
+        { data: 'duration' },
+        { data: 'source_ID' },
+        { data: 'payment_Method' },
+        { data: 'payment_Portion' },
+        { data: 'price' },
+        { data: 'coupon_Code' },
+        { data: 'coupon_Discount' },
+        { data: 'total_Attendees' }
+      ],
+      orderCellsTop: true,
+      dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end"f>><"table-responsive"t><"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>'
+    });
+  }
+
+  // Payment table
+  if (dt_filter_table1.length) {
+    // Setup - add a text input to each footer cell
+    $('.dt-column-search-1 thead tr').clone(true).appendTo('.dt-column-search-1 thead');
+    $('.dt-column-search-1 thead tr:eq(1) th').each(function (i) {
+      var title = $(this).text();
+      var $input = $('<input type="text" class="form-control" placeholder="Search ' + title + '" />');
+
+      // Add left and right border styles to the parent element
+      $(this).css('border-left', 'none');
+      if (i === $('.dt-column-search-1 thead tr:eq(1) th').length - 1) {
+        $(this).css('border-right', 'none');
+      }
+
+      $(this).html($input);
+
+      $('input', this).on('keyup change', function () {
+        if (dt_filter.column(i).search() !== this.value) {
+          dt_filter.column(i).search(this.value).draw();
+        }
+      });
+    });
+
+    var dt_filter = dt_filter_table1.DataTable({
+      ajax: assetsPath + 'json/table-datatable1.json',
+      columns: [
+        { data: 'id' },
+        { data: 'token' },
+        { data: 'booking_id' },
+        { data: 'customer' },
+        { data: 'processor' },
+        { data: 'method' },
+        { data: 'amount' },
+        { data: 'status' },
+        { data: 'funds_status' },
+        { data: 'date' }
+      ],
+      orderCellsTop: true,
+      dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end"f>><"table-responsive"t><"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>'
+    });
+  }
+
+  // Customers table
+  if (dt_filter_table2.length) {
+    // Setup - add a text input to each footer cell
+    $('.dt-column-search-2 thead tr').clone(true).appendTo('.dt-column-search-2 thead');
+    $('.dt-column-search-2 thead tr:eq(1) th').each(function (i) {
+      var title = $(this).text();
+      var $input = $('<input type="text" class="form-control" placeholder="Search ' + title + '" />');
+
+      // Add left and right border styles to the parent element
+      $(this).css('border-left', 'none');
+      if (i === $('.dt-column-search-2 thead tr:eq(1) th').length - 1) {
+        $(this).css('border-right', 'none');
+      }
+
+      $(this).html($input);
+
+      $('input', this).on('keyup change', function () {
+        if (dt_filter.column(i).search() !== this.value) {
+          dt_filter.column(i).search(this.value).draw();
+        }
+      });
+    });
+
+    var dt_filter = dt_filter_table2.DataTable({
+      ajax: assetsPath + 'json/table-datatable2.json',
+      columns: [
+        { data: 'id' },
+        { data: 'full_name' },
+        { data: 'phone' },
+        { data: 'email' },
+        { data: 'total_apps' },
+        { data: 'next_app' },
+        { data: 'time_to_next' },
+        { data: 'laravel_user_id' },
+        { data: 'registered_on' },
+        { data: 'actions' }
       ],
       orderCellsTop: true,
       dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end"f>><"table-responsive"t><"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>'
