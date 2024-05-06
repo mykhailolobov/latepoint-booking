@@ -1,0 +1,188 @@
+@php
+$configData = Helper::appClasses();
+@endphp
+
+@extends('layouts/layoutMaster')
+
+@section('title', 'Dashboard - Analytics')
+
+
+@section('vendor-style')
+@vite([
+'resources/assets/vendor/libs/apex-charts/apex-charts.scss',
+'resources/assets/vendor/libs/flatpickr/flatpickr.scss',
+'resources/assets/vendor/libs/select2/select2.scss',
+
+
+])
+@endsection
+
+@section('vendor-script')
+@vite([
+'resources/assets/vendor/libs/apex-charts/apexcharts.js',
+'resources/assets/vendor/libs/chartjs/chartjs.js',
+'resources/assets/vendor/libs/flatpickr/flatpickr.js',
+'resources/assets/vendor/libs/select2/select2.js',
+
+
+
+])
+@endsection
+
+@section('page-script')
+@vite([
+'resources/assets/js/app-logistics-dashboard.js',
+'resources/assets/js/charts-chartjs.js',
+'resources/assets/js/forms-pickers.js',
+'resources/assets/js/forms-selects.js',
+])
+@endsection
+@section('content')
+
+<div class="row">
+    <div class="col-lg-12 col-xxl-7 mb-4 order-3 order-xxl-1">
+        <div class="card h-80">
+            <div class="card-header mb-0">
+                <h4 class="m-0 me-2">Performance</h4>
+            </div>
+            <div class="card-header d-flex">
+                <select id="select2Basic1" class="select2 form-select form-select-lg" data-allow-clear="true">
+                    <option>All Agents</option>
+                    <option>John Mayers</option>
+                    <option>Kim collins</option>
+                    <option>Ben Stones</option>
+                    <option>Clark Simeone</option>
+                </select>
+                <select id="select2Basic2" class="select2 form-select form-select-lg" data-allow-clear="true">
+                    <option>All Services</option>
+                    <option>Tooth Whitening</option>
+                    <option>Imvisilingn Braces</option>
+                    <option>Group Booking</option>
+                    <option>Pocelain Crown</option>
+                    <option>Root Canal Therapy</option>
+                    <option>Gum Decease</option>
+                </select>
+                <div class="">
+                    <input type="text" class="form-control" placeholder="YYYY-MM-DD to YYYY-MM-DD"
+                        id="flatpickr-range" />
+                </div>
+            </div>
+            <div class="card-body">
+                <div id="shipmentStatisticsChart">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-xxl-5 mb-4 order-3 order-xxl-1">
+        <div class="card h-100">
+            <div class="card-header mb-0">
+                <h4 class="m-0 me-2">Upcoming</h4>
+            </div>
+            <div class="card-header d-flex">
+                <select id="select2Basic3" class="select2 form-select form-select-lg" data-allow-clear="true">
+                    <option>All Locations</option>
+                    <option>Los Angeles</option>
+                </select>
+                <select id="select2Basic4" class="select2 form-select form-select-lg" data-allow-clear="true">
+                    <option>All Services</option>
+                    <option>Tooth Whitening</option>
+                    <option>Imvisilingn Braces</option>
+                    <option>Group Booking</option>
+                    <option>Pocelain Crown</option>
+                    <option>Root Canal Therapy</option>
+                    <option>Gum Decease</option>
+                </select>
+                <select id="select2Basic5" class="select2 form-select form-select-lg" data-allow-clear="true">
+                    <option>All Agents</option>
+                    <option>John Mayers</option>
+                    <option>Kim collins</option>
+                    <option>Ben Stones</option>
+                    <option>Clark Simeone</option>
+                </select>
+            </div>
+            <div class="d-fex align-items-center justify-content-center text-center">
+                <i class='bx bx-sm bxs-inbox'></i>
+                <p>No Upcoming Appointments</p>
+                <a href="#">
+                    <i class='bx bx-sm bx-plus'></i>
+                    <span>Add Appointment</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-12 col-12 mb-4">
+        <div class="card">
+            <div class="card-header d-flex flex-column">
+                <h4 class="card-title mb-0">Day Preview</h4>
+            </div>
+            <div class="card-header header-elements">
+                <div class="">
+                    <input type="text" class="form-control" placeholder="YYYY-MM-DD" id="flatpickr-date" />
+                </div>
+                <select id="select2Basic6" class="select2 form-select form-select-lg" data-allow-clear="true">
+                    <option>All Locations</option>
+                    <option>Los Angeles</option>
+                </select>
+                <select id="select2Basic7" class="select2 form-select form-select-lg" data-allow-clear="true">
+                    <option>All Services</option>
+                    <option>Tooth Whitening</option>
+                    <option>Imvisilingn Braces</option>
+                    <option>Group Booking</option>
+                    <option>Pocelain Crown</option>
+                    <option>Root Canal Therapy</option>
+                    <option>Gum Decease</option>
+                </select>
+                <div class="fom-check">
+                    <label class="px-4 py-2" for="customRadioTemp1">
+                        <input name="customRadioTemp" class="form-check-input" type="radio" value=""
+                            id="customRadioTemp1" checked />
+                        <span class="custom-option-header">
+                            <span class="h6 mb-0">Show Appointments</span>
+                        </span>
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="py-2" for="customRadioTemp2">
+                        <input name="customRadioTemp" class="form-check-input" type="radio" value=""
+                            id="customRadioTemp2" />
+                        <span class="custom-option-header">
+                            <span class="h6 mb-0">Show Availability</span>
+                        </span>
+                    </label>
+                </div>
+                <div class="card-action-element ms-auto py-0">
+                    <div class="dropdown">
+                        <button type="button" class="btn dropdown-toggle px-0" data-bs-toggle="dropdown"
+                            aria-expanded="false"><i class="bx bx-calendar"></i></button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Today</a>
+                            </li>
+                            <li><a href="javascript:void(0);"
+                                    class="dropdown-item d-flex align-items-center">Yesterday</a></li>
+                            <li><a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Last 7
+                                    Days</a></li>
+                            <li><a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Last
+                                    30
+                                    Days</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Current
+                                    Month</a></li>
+                            <li><a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Last
+                                    Month</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <canvas id="horizontalBarChart" class="chartjs" data-height="400"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+@endsection

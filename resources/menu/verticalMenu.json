@@ -1,0 +1,94 @@
+{
+  "menu": [
+    {
+      "url": "/",
+      "name": "Dashboard",
+      "icon": "menu-icon tf-icons bx bx-pie-chart-alt-2",
+      "slug": "pages-home"
+    },
+    {
+      "url": "app/calendar",
+      "name": "Calendar",
+      "icon": "menu-icon tf-icons bx bx-calendar",
+      "slug": "pages-calendar"
+    },
+    {
+      "url": "app/tables-appointments",
+      "name": "Appointment",
+      "icon": "menu-icon tf-icons bx bx-box",
+      "slug": "pages-appointment"
+    },
+    {
+      "url": "app/tables-payments",
+      "name": "Payments",
+      "icon": "menu-icon tf-icons bx bx-credit-card",
+      "slug": "pages-payments"
+    },
+    {
+      "url": "app/tables-customers",
+      "name": "Customers",
+      "icon": "menu-icon tf-icons bx bx-user",
+      "slug": "pages-customers"
+    },
+    {
+      "menuHeader": "Resources"
+    },
+    {
+      "url": "resource/services",
+      "name": "Services",
+      "icon": "menu-icon tf-icons bx bx-package",
+      "slug": "pages-services"
+    },
+    {
+      "url": "resource/agents",
+      "name": "Agents",
+      "icon": "menu-icon tf-icons bx bx-briefcase",
+      "slug": "pages-agents"
+    },
+    {
+      "url": "resource/coupons",
+      "name": "Coupons",
+      "icon": "menu-icon tf-icons bx bx-tag",
+      "slug": "pages-coupons"
+    },
+    {
+      "url": "resource/locations",
+      "name": "Locations",
+      "icon": "menu-icon tf-icons bx bx-map-pin",
+      "slug": "pages-locations"
+    },
+    {
+      "menuHeader": "Settings"
+    },
+    {
+      "url": "settings/add-ons",
+      "name": "Add-ons",
+      "icon": "menu-icon tf-icons bx bx-plus-circle",
+      "slug": "pages-addons"
+    },
+    {
+      "url": "settings/",
+      "name": "Settings",
+      "icon": "menu-icon tf-icons bx bx-cog",
+      "slug": "pages-settings"
+    },
+    {
+      "url": "settings/processes",
+      "name": "Processes",
+      "icon": "menu-icon tf-icons bx bx-server",
+      "slug": "pages-processes"
+    },
+    {
+      "url": "settings/integrations",
+      "name": "Integrations",
+      "icon": "menu-icon tf-icons bx bx-link",
+      "slug": "pages-integrations"
+    },
+    {
+      "url": "settings/form-fields",
+      "name": "Form-fields",
+      "icon": "menu-icon tf-icons bx bx-layer",
+      "slug": "pages-formfields"
+    }
+  ]
+}
