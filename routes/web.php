@@ -3,6 +3,7 @@
 use App\Http\Controllers\tables\Appointments;
 use App\Http\Controllers\tables\Payments;
 use App\Http\Controllers\tables\Customers;
+use App\Http\Controllers\resource\Agents;
 use Illuminate\Contracts\Database\Eloquent\DeviatesCastableAttributes;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\language\LanguageController;
@@ -50,3 +51,10 @@ Route::get('/app/calendar', [Calendar::class, 'index'])->name('app-calendar');
 Route::get('/app/tables-appointments', [Appointments::class, 'index'])->name('app-appointments');
 Route::get('/app/tables-payments', [Payments::class, 'index'])->name('app-payments');
 Route::get('/app/tables-customers', [Customers::class, 'index'])->name('app-customers');
+
+Route::get('/resource/services', [Services::class, 'index'])->name('resource-services');
+Route::get('/resource/categories', [Categories::class, 'index'])->name('resource-categories');
+
+Route::get('/resource/agents', [Agents::class, 'index'])->name('resource-agents');
+Route::get('/resource/coupons', [Coupons::class, 'index'])->name('resource-coupons');
+Route::get('/resource/locations', [Locations::class, 'index'])->name('resource-locations');

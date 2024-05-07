@@ -34,10 +34,29 @@
       "menuHeader": "Resources"
     },
     {
-      "url": "resource/services",
       "name": "Services",
       "icon": "menu-icon tf-icons bx bx-package",
-      "slug": "pages-services"
+      "slug": "pages-services",
+      "submenu": [
+        {
+          "url": "resource/services",
+          "name": "Services",
+          "icon": "menu-icon tf-icons bx bx-package",
+          "slug": "pages-services"
+        },
+        {
+          "url": "resource/categories",
+          "name": "CATIGORIES",
+          "icon": "menu-icon tf-icons bx bx-package",
+          "slug": "pages-categories"
+        },
+        {
+          "url": "resource/service_extras",
+          "name": "SERVICE EXTRAS",
+          "icon": "menu-icon tf-icons bx bx-package",
+          "slug": "pages-service_extras"
+        }
+      ]
     },
     {
       "url": "resource/agents",
@@ -52,10 +71,23 @@
       "slug": "pages-coupons"
     },
     {
-      "url": "resource/locations",
       "name": "Locations",
       "icon": "menu-icon tf-icons bx bx-map-pin",
-      "slug": "pages-locations"
+      "slug": "pages-locations",
+      "submenu": [
+        {
+          "url": "resource/locations",
+          "name": "All Locations",
+          "icon": "menu-icon tf-icons bx bx-map-pin",
+          "slug": "pages-locations"
+        },
+        {
+          "url": "resource/categories",
+          "name": "CATIGORIES",
+          "icon": "menu-icon tf-icons bx bx-package",
+          "slug": "pages-categories"
+        }
+      ]
     },
     {
       "menuHeader": "Settings"
