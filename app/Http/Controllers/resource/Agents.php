@@ -20,7 +20,7 @@ class Agents extends Controller
      */
     public function create()
     {
-        //
+        return view('content.resource.createagents');
     }
 
     /**
