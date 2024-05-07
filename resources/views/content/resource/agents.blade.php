@@ -10,7 +10,6 @@ $configData = Helper::appClasses();
 @vite([
 'resources/assets/vendor/scss/pages/card-analytics.scss'
 
-
 ])
 @endsection
 
@@ -25,8 +24,6 @@ $configData = Helper::appClasses();
 @vite([
 'resources/assets/vendor/libs/flatpickr/flatpickr.js',
 
-
-
 ])
 @endsection
 
@@ -37,74 +34,155 @@ $configData = Helper::appClasses();
 @endsection
 @section('content')
 
-<style type="text/css">
-    .percent_val {
-        padding-left: 0 !important;
-    }
-    .agent-schedule {
-        display: flex;
-        padding: 15px 0;
-    }
+<link href="http://localhost:8000/assets/custom.css" rel="stylesheet">
 
-    .agent-schedule .schedule-day {
-        position: relative;
-        flex: 1;
-        text-align: center;
-        padding-top: 15px;
-        font-size: 11px;
-        color: #d4d5e1;
-    }
-    .agent-schedule .schedule-day.is-on:before {
-        background-color: #59d193;
-    }
-    .agent-schedule .schedule-day:before {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        content: "";
-        width: 6px;
-        height: 6px;
-        border-radius: 10px;
-        background-color: #d4d5e1;
-        transform-origin: center center;
-        transition: transform .2s ease;
-    }
-</style>
 <div class="row">
-    <div class="col-lg-12 col-xxl-4 mb-4 order-3 order-xxl-1">
+    <div class="col-lg-12 col-xxl-12 mb-4 order-3 order-xxl-1">
         <div class="card-header mb-0">
             <h4 class="m-0 me-2">Agents</h4>
+            <hr>
         </div>
-        <hr>
-        <div class="card">
-            <div class="row row-bordered g-0">
-                <div class="d-flex">
-                    <img class="img-fluid rounded-circle my-4 px-3" src="http://localhost:8000/assets/img/avatars/1.png" height="110" width="110" alt="User avatar">
-                    <div class="user-info text-center my-4 px-3">
-                        <h4 class="mb-2">John Mayers</h4>
-                        <span class="badge bg-label-secondary">+18923749238</span>
+        <div class="index-agent-boxes">
+            <a href="#" class="agent-box-w agent-status-active">
+                <div class="agent-edit-icon"><i class="latepoint-icon latepoint-icon-edit-3"></i></div>
+                <div class="agent-info-w">
+                    <div class="agent-avatar" style="background-image: url(http://localhost:8000/assets/img/avatars/9.png)"></div>
+                    <div class="agent-info">
+                        <div class="agent-name">John Mayers</div>
+                        <div class="agent-phone">+18923749238</div>
+                        <span class="agent-connection-icon">
+                            <img title="Connected to WordPress User" src="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-content/plugins/latepoint/public/images/wordpress-logo.png">
+                        </span>                                                   
                     </div>
                 </div>
-
-                <div class="row mx-1">
-                    <hr>
-                    <div class="week_card">
-                        <div class="agent-schedule">
-                            <div class="schedule-day is-on">Mon</div>
-                            <div class="schedule-day is-on">Tue</div>
-                            <div class="schedule-day is-on">Wed</div>
-                            <div class="schedule-day is-on">Thu</div>
-                            <div class="schedule-day is-on">Fri</div>
-                            <div class="schedule-day is-on">Sat</div>
-                            <div class="schedule-day is-on">Sun</div>                 
+                <div class="agent-schedule">
+                    <div class="schedule-day is-on">Mon</div>
+                    <div class="schedule-day is-on">Tue</div>
+                    <div class="schedule-day is-on">Wed</div>
+                    <div class="schedule-day is-on">Thu</div>
+                    <div class="schedule-day is-on">Fri</div>
+                    <div class="schedule-day is-on">Sat</div>
+                    <div class="schedule-day is-on">Sun</div>                 
+                </div>
+                <div class="agent-schedule-info">
+                    <div class="agent-today-info">
+                        Today <span class="today-status is-on-duty">On Duty</span>
+                        <div class="today-schedule">
+                            <span>08:00am - 05:00pm</span>                  
                         </div>
                     </div>
-                    <hr>
+                    <div class="today-bookings">
+                        Bookings<div class="today-bookings-count">0</div>
+                    </div>
                 </div>
-                <a href=""><i class="fa fa-pencil"></i></a>
-            </div>
-            
+            </a>
+
+            <a href="#" class="agent-box-w agent-status-active">
+                <div class="agent-edit-icon"><i class="latepoint-icon latepoint-icon-edit-3"></i></div>
+                <div class="agent-info-w">
+                    <div class="agent-avatar" style="background-image: url(http://localhost:8000/assets/img/avatars/7.png)"></div>
+                    <div class="agent-info">
+                        <div class="agent-name">Kim Collins</div>
+                        <div class="agent-phone">+18972348393</div>
+                    </div>
+                </div>
+                <div class="agent-schedule">
+                    <div class="schedule-day is-on">Mon</div>
+                    <div class="schedule-day is-on">Tue</div>
+                    <div class="schedule-day is-on">Wed</div>
+                    <div class="schedule-day is-on">Thu</div>
+                    <div class="schedule-day is-on">Fri</div>
+                    <div class="schedule-day is-on">Sat</div>
+                    <div class="schedule-day is-on">Sun</div>                 
+                </div>
+                <div class="agent-schedule-info">
+                    <div class="agent-today-info">
+                        Today                
+                        <span class="today-status is-on-duty">On Duty</span>
+                        
+                        <div class="today-schedule">
+                            <span>08:00am - 05:00pm</span>                  
+                        </div>
+                    </div>
+                    <div class="today-bookings">
+                        Bookings <div class="today-bookings-count">0</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="agent-box-w agent-status-active">
+                <div class="agent-edit-icon"><i class="latepoint-icon latepoint-icon-edit-3"></i></div>
+                <div class="agent-info-w">
+                    <div class="agent-avatar" style="background-image: url(http://localhost:8000/assets/img/avatars/15.png)"></div>
+                    <div class="agent-info">
+                        <div class="agent-name">Ben Stones</div>
+                        <div class="agent-phone">+1826348272</div>
+                    </div>
+                </div>
+                <div class="agent-schedule">
+                    <div class="schedule-day is-on">Mon</div>
+                    <div class="schedule-day is-on">Tue</div>
+                    <div class="schedule-day is-on">Wed</div>
+                    <div class="schedule-day is-on">Thu</div>
+                    <div class="schedule-day is-on">Fri</div>
+                    <div class="schedule-day is-on">Sat</div>
+                    <div class="schedule-day is-on">Sun</div>                 
+                </div>
+                <div class="agent-schedule-info">
+                    <div class="agent-today-info">
+                        Today                
+                        <span class="today-status is-on-duty">On Duty</span>
+                        
+                        <div class="today-schedule">
+                            <span>08:00am - 05:00pm</span>                  
+                        </div>
+                    </div>
+                    <div class="today-bookings">
+                        Bookings <div class="today-bookings-count">0</div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="agent-box-w agent-status-active">
+                <div class="agent-edit-icon"><i class="latepoint-icon latepoint-icon-edit-3"></i></div>
+                <div class="agent-info-w">
+                    <div class="agent-avatar" style="background-image: url(http://localhost:8000/assets/img/avatars/15.png)"></div>
+                    <div class="agent-info">
+                        <div class="agent-name">Clark Simeon</div>
+                        <div class="agent-phone">+18457263473</div>
+                    </div>
+                </div>
+                <div class="agent-schedule">
+                    <div class="schedule-day is-on">Mon</div>
+                    <div class="schedule-day is-on">Tue</div>
+                    <div class="schedule-day is-on">Wed</div>
+                    <div class="schedule-day is-on">Thu</div>
+                    <div class="schedule-day is-on">Fri</div>
+                    <div class="schedule-day is-on">Sat</div>
+                    <div class="schedule-day is-on">Sun</div>                 
+                </div>
+                <div class="agent-schedule-info">
+                    <div class="agent-today-info">
+                        Today                
+                        <span class="today-status is-on-duty">On Duty</span>
+                        
+                        <div class="today-schedule">
+                            <span>08:00am - 05:00pm</span>                  
+                        </div>
+                    </div>
+                    <div class="today-bookings">
+                        Bookings <div class="today-bookings-count">0</div>
+                    </div>
+                </div>
+            </a>
+            <a href="{{url('/resource/createagents')}}" class="create-agent-link-w">
+                <div class="create-agent-link-i">
+                  <div class="add-agent-graphic-w">
+                    <div class="add-agent-plus"><i class="latepoint-icon latepoint-icon-plus4 fa fa-plus"></i></div>
+                  </div>
+                  <div class="add-agent-label">Add Agent</div>
+                </div>
+            </a>
         </div>
     </div>
 </div>

@@ -52,9 +52,13 @@ Route::get('/app/tables-appointments', [Appointments::class, 'index'])->name('ap
 Route::get('/app/tables-payments', [Payments::class, 'index'])->name('app-payments');
 Route::get('/app/tables-customers', [Customers::class, 'index'])->name('app-customers');
 
+// Resources Section
 Route::get('/resource/services', [Services::class, 'index'])->name('resource-services');
 Route::get('/resource/categories', [Categories::class, 'index'])->name('resource-categories');
 
+// Resources Section->Agents part
 Route::get('/resource/agents', [Agents::class, 'index'])->name('resource-agents');
+Route::get('/resource/createagents', [Agents::class, 'create'])->name('resource-createagents');
+
 Route::get('/resource/coupons', [Coupons::class, 'index'])->name('resource-coupons');
 Route::get('/resource/locations', [Locations::class, 'index'])->name('resource-locations');
