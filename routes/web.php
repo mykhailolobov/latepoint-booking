@@ -5,6 +5,7 @@ use App\Http\Controllers\tables\Payments;
 use App\Http\Controllers\tables\Customers;
 use App\Http\Controllers\resource\Agents;
 use App\Http\Controllers\resource\Coupons;
+use App\Http\Controllers\resource\LocationCategories;
 
 use Illuminate\Contracts\Database\Eloquent\DeviatesCastableAttributes;
 use Illuminate\Support\Facades\Route;
@@ -66,3 +67,7 @@ Route::get('/resource/editagents/{id}', [Agents::class, 'edit'])->name('resource
 // Resources Section->Coupons part
 Route::get('/resource/coupons', [Coupons::class, 'index'])->name('resource-coupons');
 Route::get('/resource/locations', [Locations::class, 'index'])->name('resource-locations');
+
+
+// Resources Section -> Locations->Categories part
+Route::get('/resource/locationcategories', [LocationCategories::class, 'index'])->name('resource-locationcategories');

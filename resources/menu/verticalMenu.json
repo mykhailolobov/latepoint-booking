@@ -82,7 +82,7 @@
           "slug": "pages-locations"
         },
         {
-          "url": "resource/categories",
+          "url": "resource/locationcategories",
           "name": "CATIGORIES",
           "icon": "menu-icon tf-icons bx bx-package",
           "slug": "pages-categories"
