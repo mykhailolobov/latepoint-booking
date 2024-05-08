@@ -9,6 +9,20 @@
   // --------------------------------------------------------------------
   const flatpickrDate = document.querySelector('#flatpickr-date'),
     flatpickrTime = document.querySelector('#flatpickr-time'),
+    flatpickrfinishTime = document.querySelector('#flatpickr-time-finish'),
+    flatpickrTime1 = document.querySelector('#flatpickr-time1'),
+    flatpickrfinishTime1 = document.querySelector('#flatpickr-time-finish1'),
+    flatpickrTime2 = document.querySelector('#flatpickr-time2'),
+    flatpickrfinishTime2 = document.querySelector('#flatpickr-time-finish2'),
+    flatpickrTime3 = document.querySelector('#flatpickr-time3'),
+    flatpickrfinishTime3 = document.querySelector('#flatpickr-time-finish3'),
+    flatpickrTime4 = document.querySelector('#flatpickr-time4'),
+    flatpickrfinishTime4 = document.querySelector('#flatpickr-time-finish4'),
+    flatpickrTime5 = document.querySelector('#flatpickr-time5'),
+    flatpickrfinishTime5 = document.querySelector('#flatpickr-time-finish5'),
+    flatpickrTime6 = document.querySelector('#flatpickr-time6'),
+    flatpickrfinishTime6 = document.querySelector('#flatpickr-time-finish6'),
+
     flatpickrDateTime = document.querySelector('#flatpickr-datetime'),
     flatpickrMulti = document.querySelector('#flatpickr-multi'),
     flatpickrRange = document.querySelector('#flatpickr-range'),
@@ -26,6 +40,104 @@
   // Time
   if (flatpickrTime) {
     flatpickrTime.flatpickr({
+      enableTime: true,
+      noCalendar: true
+    });
+  }
+
+  // Time
+  if (flatpickrfinishTime) {
+    flatpickrfinishTime.flatpickr({
+      enableTime: true,
+      noCalendar: true
+    });
+  }
+  // Time
+  if (flatpickrTime1) {
+    flatpickrTime1.flatpickr({
+      enableTime: true,
+      noCalendar: true
+    });
+  }
+
+  // Time
+  if (flatpickrfinishTime1) {
+    flatpickrfinishTime1.flatpickr({
+      enableTime: true,
+      noCalendar: true
+    });
+  }
+  // Time
+  if (flatpickrTime2) {
+    flatpickrTime2.flatpickr({
+      enableTime: true,
+      noCalendar: true
+    });
+  }
+
+  // Time
+  if (flatpickrfinishTime2) {
+    flatpickrfinishTime2.flatpickr({
+      enableTime: true,
+      noCalendar: true
+    });
+  }
+  // Time
+  if (flatpickrTime3) {
+    flatpickrTime3.flatpickr({
+      enableTime: true,
+      noCalendar: true
+    });
+  }
+
+  // Time
+  if (flatpickrfinishTime3) {
+    flatpickrfinishTime3.flatpickr({
+      enableTime: true,
+      noCalendar: true
+    });
+  }
+  // Time
+  if (flatpickrTime4) {
+    flatpickrTime4.flatpickr({
+      enableTime: true,
+      noCalendar: true
+    });
+  }
+
+  // Time
+  if (flatpickrfinishTime4) {
+    flatpickrfinishTime4.flatpickr({
+      enableTime: true,
+      noCalendar: true
+    });
+  }
+  // Time
+  if (flatpickrTime5) {
+    flatpickrTime5.flatpickr({
+      enableTime: true,
+      noCalendar: true
+    });
+  }
+
+  // Time
+  if (flatpickrfinishTime5) {
+    flatpickrfinishTime5.flatpickr({
+      enableTime: true,
+      noCalendar: true
+    });
+  }
+  // Time
+  if (flatpickrTime6) {
+    flatpickrTime6.flatpickr({
+      enableTime: true,
+      noCalendar: true
+    });
+  }
+
+  // Time
+  if (flatpickrfinishTime6) {
+    flatpickrfinishTime6.flatpickr({
       enableTime: true,
       noCalendar: true
     });
