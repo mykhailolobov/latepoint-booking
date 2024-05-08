@@ -34,7 +34,7 @@ $configData = Helper::appClasses();
 @endsection
 @section('content')
 
-<link href="http://localhost:8000/assets/custom.css" rel="stylesheet">
+<link href="{{asset('/assets/custom.css')}}" rel="stylesheet">
 
 <div class="row">
     <div class="col-lg-12 col-xxl-12 mb-4 order-3 order-xxl-1">
@@ -46,7 +46,7 @@ $configData = Helper::appClasses();
             <a href="#" class="agent-box-w agent-status-active">
                 <div class="agent-edit-icon"><i class="latepoint-icon latepoint-icon-edit-3"></i></div>
                 <div class="agent-info-w">
-                    <div class="agent-avatar" style="background-image: url(http://localhost:8000/assets/img/avatars/9.png)"></div>
+                    <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/9.png") ?>)"></div>
                     <div class="agent-info">
                         <div class="agent-name">John Mayers</div>
                         <div class="agent-phone">+18923749238</div>
@@ -80,7 +80,7 @@ $configData = Helper::appClasses();
             <a href="#" class="agent-box-w agent-status-active">
                 <div class="agent-edit-icon"><i class="latepoint-icon latepoint-icon-edit-3"></i></div>
                 <div class="agent-info-w">
-                    <div class="agent-avatar" style="background-image: url(http://localhost:8000/assets/img/avatars/7.png)"></div>
+                    <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/7.png") ?>)"></div>
                     <div class="agent-info">
                         <div class="agent-name">Kim Collins</div>
                         <div class="agent-phone">+18972348393</div>
@@ -113,7 +113,7 @@ $configData = Helper::appClasses();
             <a href="#" class="agent-box-w agent-status-active">
                 <div class="agent-edit-icon"><i class="latepoint-icon latepoint-icon-edit-3"></i></div>
                 <div class="agent-info-w">
-                    <div class="agent-avatar" style="background-image: url(http://localhost:8000/assets/img/avatars/15.png)"></div>
+                    <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/11.png") ?>)"></div>
                     <div class="agent-info">
                         <div class="agent-name">Ben Stones</div>
                         <div class="agent-phone">+1826348272</div>
@@ -146,7 +146,7 @@ $configData = Helper::appClasses();
             <a href="#" class="agent-box-w agent-status-active">
                 <div class="agent-edit-icon"><i class="latepoint-icon latepoint-icon-edit-3"></i></div>
                 <div class="agent-info-w">
-                    <div class="agent-avatar" style="background-image: url(http://localhost:8000/assets/img/avatars/15.png)"></div>
+                    <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/15.png") ?>)"></div>
                     <div class="agent-info">
                         <div class="agent-name">Clark Simeon</div>
                         <div class="agent-phone">+18457263473</div>
