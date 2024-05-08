@@ -43,7 +43,7 @@ $configData = Helper::appClasses();
             <hr>
         </div>
         <div class="index-agent-boxes">
-            <a href="#" class="agent-box-w agent-status-active">
+            <a href="{{ url('/resource/editagents/1') }}" class="agent-box-w agent-status-active">
                 <div class="agent-edit-icon"><i class="latepoint-icon latepoint-icon-edit-3"></i></div>
                 <div class="agent-info-w">
                     <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/9.png") ?>)"></div>
@@ -77,7 +77,7 @@ $configData = Helper::appClasses();
                 </div>
             </a>
 
-            <a href="#" class="agent-box-w agent-status-active">
+            <a href="{{ url('/resource/editagents/1') }}" class="agent-box-w agent-status-active">
                 <div class="agent-edit-icon"><i class="latepoint-icon latepoint-icon-edit-3"></i></div>
                 <div class="agent-info-w">
                     <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/7.png") ?>)"></div>
@@ -110,7 +110,7 @@ $configData = Helper::appClasses();
                 </div>
             </a>
 
-            <a href="#" class="agent-box-w agent-status-active">
+            <a href="{{ url('/resource/editagents/1') }}" class="agent-box-w agent-status-active">
                 <div class="agent-edit-icon"><i class="latepoint-icon latepoint-icon-edit-3"></i></div>
                 <div class="agent-info-w">
                     <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/11.png") ?>)"></div>
@@ -143,7 +143,7 @@ $configData = Helper::appClasses();
                 </div>
             </a>
 
-            <a href="#" class="agent-box-w agent-status-active">
+            <a href="{{ url('/resource/editagents/1') }}" class="agent-box-w agent-status-active">
                 <div class="agent-edit-icon"><i class="latepoint-icon latepoint-icon-edit-3"></i></div>
                 <div class="agent-info-w">
                     <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/15.png") ?>)"></div>

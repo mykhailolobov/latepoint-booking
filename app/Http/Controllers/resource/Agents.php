@@ -44,7 +44,7 @@ class Agents extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('content.resource.editagents');
     }
 
     /**

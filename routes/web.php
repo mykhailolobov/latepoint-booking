@@ -61,6 +61,7 @@ Route::get('/resource/categories', [Categories::class, 'index'])->name('resource
 // Resources Section->Agents part
 Route::get('/resource/agents', [Agents::class, 'index'])->name('resource-agents');
 Route::get('/resource/createagents', [Agents::class, 'create'])->name('resource-createagents');
+Route::get('/resource/editagents/{id}', [Agents::class, 'edit'])->name('resource-editagents');
 
 // Resources Section->Coupons part
 Route::get('/resource/coupons', [Coupons::class, 'index'])->name('resource-coupons');
