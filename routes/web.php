@@ -4,6 +4,8 @@ use App\Http\Controllers\tables\Appointments;
 use App\Http\Controllers\tables\Payments;
 use App\Http\Controllers\tables\Customers;
 use App\Http\Controllers\resource\Agents;
+use App\Http\Controllers\resource\Coupons;
+
 use Illuminate\Contracts\Database\Eloquent\DeviatesCastableAttributes;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\language\LanguageController;
@@ -60,5 +62,6 @@ Route::get('/resource/categories', [Categories::class, 'index'])->name('resource
 Route::get('/resource/agents', [Agents::class, 'index'])->name('resource-agents');
 Route::get('/resource/createagents', [Agents::class, 'create'])->name('resource-createagents');
 
+// Resources Section->Coupons part
 Route::get('/resource/coupons', [Coupons::class, 'index'])->name('resource-coupons');
 Route::get('/resource/locations', [Locations::class, 'index'])->name('resource-locations');
