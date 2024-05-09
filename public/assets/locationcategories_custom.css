@@ -1,4 +1,11 @@
-.coupon-use-restrictions {
+    .service_title {
+        border-bottom: 5px solid #696cff;
+    }   
+    .card-header {
+        border-bottom: 1px solid #c5c5c5;
+    }
+    
+    .coupon-use-restrictions {
         padding: 30px 30px 20px 30px;
         background-color: #fff7e9;
         border-radius: 6px;

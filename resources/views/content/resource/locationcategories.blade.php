@@ -46,8 +46,16 @@ $configData = Helper::appClasses();
 
 <div class="row">
     <div class="col-lg-12 col-xxl-12 mb-4 order-3 order-xxl-1">
-        <div class="card-header mb-0">
-            <h4 class="m-0 me-2">Categories</h4>
+        <div class="card-header mb-4 d-flex">
+            <a href="{{ url('/resource/locations') }}" class="agent-status-active text-center mx-2">
+                <h4 class="m-0 me-2">All Locations</h4>
+            </a>
+            <a href="{{ url('/resource/locationcategories') }}" class="agent-status-active text-center mx-2 service_title">
+                <h4 class="m-0 me-2">Categories</h4>
+            </a>
+            <hr>
+        </div>
+        <div>
             <hr>
             <div class="card-body">
                 <div class="row">
