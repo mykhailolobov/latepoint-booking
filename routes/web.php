@@ -60,6 +60,7 @@ Route::get('/app/tables-customers', [Customers::class, 'index'])->name('app-cust
 // Resources Section
 Route::get('/resource/services', [Services::class, 'index'])->name('resource-services');
 Route::get('/resource/createservices', [Services::class, 'create'])->name('resource-createservices');
+Route::get('/resource/editservices/{id}', [Services::class, 'edit'])->name('resource-editservices');
 
 
 Route::get('/resource/categories', [Categories::class, 'index'])->name('resource-categories');

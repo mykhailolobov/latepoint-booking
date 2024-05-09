@@ -44,7 +44,7 @@ class Services extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('content.resource.editservices');
     }
 
     /**
