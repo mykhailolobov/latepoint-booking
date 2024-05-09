@@ -1,0 +1,89 @@
+@php
+$configData = Helper::appClasses();
+@endphp
+
+@extends('layouts/layoutMaster')
+
+@section('title', 'Latepoint')
+
+@section('page-style')
+@vite([
+'resources/assets/vendor/scss/pages/card-analytics.scss'
+
+])
+@endsection
+
+@section('vendor-style')
+@vite([
+'resources/assets/vendor/libs/flatpickr/flatpickr.scss',
+
+])
+@endsection
+
+@section('vendor-script')
+@vite([
+'resources/assets/vendor/libs/flatpickr/flatpickr.js',
+
+])
+@endsection
+
+@section('page-script')
+@vite([
+'resources/assets/js/ui-cards-analytics.js',
+])
+@endsection
+@section('content')
+
+<link href="{{asset('/assets/locations_custom.css')}}" rel="stylesheet">
+
+<div class="row">
+    <div class="col-lg-12 col-xxl-12 mb-4 order-3 order-xxl-1">
+        <div class="card-header mb-0">
+            <h4 class="m-0 me-2">All Locations</h4>
+            <hr>
+        </div>
+        <div class="index-agent-boxes">
+            <a href="{{ url('/resource/editlocations/1') }}" class="agent-box-w agent-status-active">
+                <div id="googleMap" style="width:100%; height:400px;"></div>
+                <div class="agent-info-w">
+                    <div class="agent-info">
+                        <div class="agent-name">Los Angeles</div>
+                        <div class="agent-phone">3625 Vermont Ave, Los Angeles, CA 90007</div>
+                    </div>
+                </div>
+                <div class="os-location-agents">
+                    <div class="label">Agents:</div>
+                    <div class="agents-avatars">
+                        <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/9.png") ?>)"></div>
+                        <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/10.png") ?>)"></div>
+                        <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/11.png") ?>)"></div>
+                        <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/12.png") ?>)"></div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="{{url('/resource/createlocations')}}" class="create-agent-link-w">
+                <div class="create-agent-link-i">
+                  <div class="add-agent-graphic-w">
+                    <div class="add-agent-plus"><i class="latepoint-icon latepoint-icon-plus4 fa fa-plus"></i></div>
+                  </div>
+                  <div class="add-agent-label">Add Location</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function myMap() {
+    var mapProp= {
+      center:new google.maps.LatLng(51.508742,-0.120850),
+      zoom:5,
+    };
+    var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
+
+@endsection
