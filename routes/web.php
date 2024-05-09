@@ -8,6 +8,8 @@ use App\Http\Controllers\resource\Coupons;
 use App\Http\Controllers\resource\LocationCategories;
 use App\Http\Controllers\resource\Locations;
 use App\Http\Controllers\resource\Services;
+use App\Http\Controllers\resource\Categories;
+use App\Http\Controllers\resource\Serviceextras;
 
 use Illuminate\Contracts\Database\Eloquent\DeviatesCastableAttributes;
 use Illuminate\Support\Facades\Route;
@@ -62,8 +64,14 @@ Route::get('/resource/services', [Services::class, 'index'])->name('resource-ser
 Route::get('/resource/createservices', [Services::class, 'create'])->name('resource-createservices');
 Route::get('/resource/editservices/{id}', [Services::class, 'edit'])->name('resource-editservices');
 
-
+// Category Section
 Route::get('/resource/categories', [Categories::class, 'index'])->name('resource-categories');
+
+// Service Extra Section
+Route::get('/resource/serviceextras', [Serviceextras::class, 'index'])->name('resource-serviceextras');
+Route::get('/resource/createserviceextras', [Serviceextras::class, 'create'])->name('resource-createserviceextras');
+Route::get('/resource/editserviceextras/{id}', [Serviceextras::class, 'edit'])->name('resource-editserviceextras');
+
 
 // Resources Section->Agents part
 Route::get('/resource/agents', [Agents::class, 'index'])->name('resource-agents');

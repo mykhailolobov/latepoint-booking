@@ -51,7 +51,7 @@
           "slug": "pages-categories"
         },
         {
-          "url": "resource/service_extras",
+          "url": "resource/serviceextras",
           "name": "SERVICE EXTRAS",
           "icon": "menu-icon tf-icons bx bx-package",
           "slug": "pages-service_extras"

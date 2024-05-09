@@ -214,7 +214,7 @@ $navbarDetached = ($navbarDetached ?? '');
                     <!--/ Style Switcher -->
 
                     <!-- Notification -->
-                    <button class="btn btn-primary d-flex send-msg-btn">
+                    <button class="btn btn-primary d-flex send-msg-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd" aria-controls="offcanvasEnd">
                         <i class="bx bx-plus me-md-1 me-0"></i>
                         <span class="align-middle d-md-inline-block d-none">New Booking</span>
                     </button>
