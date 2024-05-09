@@ -48,7 +48,7 @@ $configData = Helper::appClasses();
             </div>
 
             <div class="index-agent-boxes">
-                <a href="{{ url('/resource/editlocations/1') }}" class="agent-box-w agent-status-active text-center os-service">
+                <a href="{{ url('/resource/editservices/1') }}" class="agent-box-w agent-status-active text-center os-service">
                     <div class="agent-info-w">
                         <div class="agent-info">
                             <div class="agent-name">Group Booking</div>
@@ -98,7 +98,7 @@ $configData = Helper::appClasses();
                     <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit Service</button>
                 </a>
 
-                <a href="{{ url('/resource/editlocations/1') }}" class="agent-box-w agent-status-active text-center os-service">
+                <a href="{{ url('/resource/editservices/1') }}" class="agent-box-w agent-status-active text-center os-service">
                     <div class="agent-info-w">
                         <div class="agent-info">
                             <div class="agent-name">Root Canal Therapy</div>
@@ -148,7 +148,7 @@ $configData = Helper::appClasses();
                     <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit Service</button>
                 </a>
 
-                <a href="{{ url('/resource/editlocations/1') }}" class="agent-box-w agent-status-active text-center os-service">
+                <a href="{{ url('/resource/editservices/1') }}" class="agent-box-w agent-status-active text-center os-service">
                     <div class="agent-info-w">
                         <div class="agent-info">
                             <div class="agent-name">Gum Decease</div>
@@ -215,7 +215,7 @@ $configData = Helper::appClasses();
             </div>
 
             <div class="index-agent-boxes">
-                <a href="{{ url('/resource/editlocations/1') }}" class="agent-box-w agent-status-active text-center os-service">
+                <a href="{{ url('/resource/editservices/1') }}" class="agent-box-w agent-status-active text-center os-service">
                     <div class="agent-info-w">
                         <div class="agent-info">
                             <div class="agent-name">Tooth Whitening</div>
@@ -265,7 +265,7 @@ $configData = Helper::appClasses();
                     <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit Service</button>
                 </a>
 
-                <a href="{{ url('/resource/editlocations/1') }}" class="agent-box-w agent-status-active text-center os-service">
+                <a href="{{ url('/resource/editservices/1') }}" class="agent-box-w agent-status-active text-center os-service">
                     <div class="agent-info-w">
                         <div class="agent-info">
                             <div class="agent-name">Invisilign Braces</div>
@@ -332,7 +332,7 @@ $configData = Helper::appClasses();
             </div>
 
             <div class="index-agent-boxes">
-                <a href="{{ url('/resource/editlocations/1') }}" class="agent-box-w agent-status-active text-center os-service">
+                <a href="{{ url('/resource/editservices/1') }}" class="agent-box-w agent-status-active text-center os-service">
                     <div class="agent-info-w">
                         <div class="agent-info">
                             <div class="agent-name">Porcelain Crown</div>
