@@ -20,7 +20,7 @@ class Services extends Controller
      */
     public function create()
     {
-        //
+        return view('content.resource.createservices');
     }
 
     /**
