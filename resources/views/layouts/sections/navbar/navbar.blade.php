@@ -370,6 +370,11 @@ $navbarDetached = ($navbarDetached ?? '');
     <!-- / Navbar -->
 
 <!-- Start the New Booking Modal -->
+<style type="text/css">
+    .offcanvas-title {
+        border-bottom: 2px solid blue;
+    }
+</style>
 <div class="col-lg-3 col-md-6">
     <div class="mt-3">
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEnd" aria-labelledby="offcanvasEndLabel">
@@ -381,6 +386,7 @@ $navbarDetached = ($navbarDetached ?? '');
             <div class="offcanvas-body mx-0 flex-grow-0">
                 <div class="col-lg-12 mb-3">
                     <select id="selectpickerGroups" class="selectpicker w-100" data-style="btn-default">
+                        <option>Select Service</option>
                         <optgroup label="General Dentistry">
                             <option>Tooth Whitening</option>
                             <option>Group Booking</option>
@@ -467,7 +473,7 @@ $navbarDetached = ($navbarDetached ?? '');
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-12 d-flex mb-3">
+                <div class="col-lg-12 d-flex mb-5">
                     <div class="col-lg-12">
                         <div class="doc_upload">
                             <label for="flatpickr-time" class="form-label">Doc</label>
@@ -476,8 +482,59 @@ $navbarDetached = ($navbarDetached ?? '');
                     </div>
                 </div>
 
+                <h5 id="offcanvasEndLabel" class="offcanvas-title mb-4">Customer</h5>
+            
+                <div class="col-lg-12 mb-3 d-flex">
+                    <div class="col-lg-6">
+                        <div class="start_time">
+                            <label for="flatpickr-time" class="form-label">First Name</label>
+                            <input type="text" class="form-control" placeholder="First Name" id="flatpickr-time" />
+                        </div>
+                        
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="finish_time">
+                            <label for="flatpickr-time" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" placeholder="Last Name" id="flatpickr-time-finish" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 d-flex mb-3">
+                    <div class="col-lg-12">
+                        <div class="customer_email">
+                            <label for="flatpickr-time" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" placeholder="Email Address" id="flatpickr-time" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 d-flex mb-3">
+                    <div class="col-lg-12">
+                        <div class="telephone_number">
+                            <label for="flatpickr-time" class="form-label">Telephone Number</label>
+                            <input type="text" class="form-control" placeholder="+1-205-555-0123" id="flatpickr-time" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 d-flex mb-3">
+                    <div class="col-lg-12">
+                        <div class="customer_notes">
+                            <label for="flatpickr-time" class="form-label">Customer Notes</label>
+                            <textarea placeholder="" class="form-control" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 d-flex mb-3">
+                    <div class="col-lg-12">
+                        <div class="customer_notes">
+                            <label for="flatpickr-time" class="form-label">Notes only visible to admins</label>
+                            <textarea placeholder="" class="form-control" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+
                 <button type="button" class="btn btn-primary mb-2 d-grid w-100">Continue</button>
                 <button type="button" class="btn btn-label-secondary d-grid w-100" data-bs-dismiss="offcanvas">Cancel</button>
+
             </div>
         </div>
     </div>
