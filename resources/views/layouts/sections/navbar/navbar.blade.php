@@ -368,3 +368,90 @@ $navbarDetached = ($navbarDetached ?? '');
         @endif
     </nav>
     <!-- / Navbar -->
+
+
+<!-- Start the New Booking Modal -->
+<div class="col-lg-3 col-md-6">
+    <div class="mt-3">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEnd" aria-labelledby="offcanvasEndLabel">
+            <div class="offcanvas-header">
+                <h5 id="offcanvasEndLabel" class="offcanvas-title">New Appointment</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            
+            <div class="offcanvas-body my-auto mx-0 flex-grow-0">
+                <!-- <div class="col-lg-12">
+                    <select id="selectpickerGroups" class="selectpicker w-100" data-style="btn-default">
+                        <optgroup label="General Dentistry">
+                            <option>Tooth Whitening</option>
+                            <option>Group Booking</option>
+                            <option>Gum Decease</option>
+                        </optgroup>
+                        <optgroup label="Cosmetic Dentistry">
+                            <option>Invisilign Braces</option>
+                            <option>Root Canal Therapy</option>
+                            <option>Money Heist</option>
+                        </optgroup>
+                        <optgroup label="Implants Dentistry">
+                            <option>Porcelain Crown</option>
+                        </optgroup>
+                    </select>
+                </div> -->
+                <!-- <div class="col-lg-12">
+                    <label for="selectpickerBasic" class="form-label">Service Extras</label>
+                    <div class="select2-primary">
+                        <select id="select2Primary" class="select2 form-select" multiple>
+                            <option value="1" selected>Teeth Whitening</option>
+                            <option value="2" selected>Hair Wash</option>
+                            <option value="3">Recovery Mask</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+
+                    <div class="col-lg-6 px-3">
+                        <label for="selectpickerBasic" class="form-label">Agent</label>
+                        <select id="selectpickerBasic" class="selectpicker w-100" data-style="btn-default">
+                            <option>John Mayers</option>
+                            <option>Kim Collins</option>
+                            <option>Ben Stones</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-6 px-3">
+                        <label for="selectpickerBasic" class="form-label">Status</label>
+                        <select id="selectpickerBasic" class="selectpicker w-100" data-style="btn-default">
+                            <option>Approved</option>
+                            <option>Pending Approval</option>
+                            <option>Cancelled</option>
+                            <option>Finished</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <label for="selectpickerBasic" class="form-label">Start Date</label>
+                    <input type="text" class="form-control" placeholder="mm/dd/YYYY" />
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-6 px-3">
+                        <div class="start_time">
+                            <label for="flatpickr-time" class="form-label">Start Time</label>
+                            <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time" />
+                        </div>
+                        
+                    </div>
+                    <div class="col-lg-6 px-3">
+                        <div class="finish_time">
+                            <label for="flatpickr-time" class="form-label">End Time</label>
+                            <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time-finish" />
+                        </div>
+                    </div>
+                </div> -->
+
+
+                <button type="button" class="btn btn-primary mb-2 d-grid w-100">Continue</button>
+                <button type="button" class="btn btn-label-secondary d-grid w-100" data-bs-dismiss="offcanvas">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End the New Booking Modal -->
