@@ -374,6 +374,67 @@ $navbarDetached = ($navbarDetached ?? '');
     .offcanvas-title {
         border-bottom: 2px solid blue;
     }
+    .sub_total {
+        border-bottom: 2px solid black;
+    }
+    .add-coupon-box:hover {
+        border-color: #2652E4;
+        border-style: solid;
+    }
+    .add-coupon-box {
+        border: 3px dotted rgba(0, 0, 0, 0.1);
+        padding: 13px;
+        border-radius: 6px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+    }
+    .add-coupon-box .add-coupon-graphic-w {
+        width: 40px;
+        height: 40px;
+        position: relative;
+    }
+    .add-coupon-box .add-coupon-graphic-w .add-coupon-plus {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-radius: 50%;
+        height: 18px;
+        width: 18px;
+        background-color: #2652E4;
+        box-shadow: 0px 0px 0px 10px rgba(189, 214, 252, 0.3);
+        color: #fff;
+        transform: translate(-50%, -50%);
+        transition: all 0.2s cubic-bezier(0.25, 1.4, 0.5, 1.35);
+    }
+    .add-coupon-box .add-coupon-graphic-w .add-coupon-plus i {
+        position: absolute;
+        display: block;
+        top: 50%;
+        left: 50%;
+        font-size: 10px;
+        transform: translate(-45%, -47%);
+        transition: all 0.2s ease;
+    }
+    .latepoint-icon {
+        font-family: "latepointadmin" !important;
+        speak: never;
+        font-style: normal;
+        font-weight: 400;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    .add-coupon-box .add-coupon-label {
+        color: #2652E4;
+        font-weight: 500;
+        font-size: 19.2px;
+        transition: all 0.2s cubic-bezier(0.25, 1.4, 0.5, 1.35);
+        margin-left: 15px;
+    }
 </style>
 <div class="col-lg-3 col-md-6">
     <div class="mt-3">
@@ -523,7 +584,7 @@ $navbarDetached = ($navbarDetached ?? '');
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-12 d-flex mb-3">
+                <div class="col-lg-12 d-flex mb-5">
                     <div class="col-lg-12">
                         <div class="customer_notes">
                             <label for="flatpickr-time" class="form-label">Notes only visible to admins</label>
@@ -532,8 +593,65 @@ $navbarDetached = ($navbarDetached ?? '');
                     </div>
                 </div>
 
-                <button type="button" class="btn btn-primary mb-2 d-grid w-100">Continue</button>
-                <button type="button" class="btn btn-label-secondary d-grid w-100" data-bs-dismiss="offcanvas">Cancel</button>
+                <h5 id="offcanvasEndLabel" class="offcanvas-title mb-4">Price Breakdown</h5>
+            
+                <div class="col-lg-12 mb-3 d-flex">
+                    <div class="col-lg-12 d-flex">
+                        <label class="switch">
+                            <input type="checkbox" class="switch-input" />
+                            <span class="switch-toggle-slider">
+                                <span class="switch-on"></span>
+                                <span class="switch-off"></span>
+                            </span>
+                            <span class="switch-label">Use Coupon</span>
+                        </label>
+                        <input type="text" class="form-control" placeholder="Coupon Code" id="flatpickr-coupon_code" />
+                        <button>apply</button>
+                    </div>
+                </div>
+                <div class="col-lg-12 d-flex mb-3">
+                    <div class="col-lg-12">
+                        <div class="sub_total justify-content-between">
+                            <label for="flatpickr-time" class="form-label">Sub Total $</label>
+                            <input type="text" class="form-control" placeholder="0.00" id="flatpickr-sub_total" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 d-flex mb-5">
+                    <div class="col-lg-12">
+                        <div class="total_price justify-content-between">
+                            <label for="flatpickr-time" class="form-label">Total Price $</label>
+                            <input type="text" class="form-control" placeholder="0.00" id="flatpickr-total_price" />
+                        </div>
+                    </div>
+                </div>
+
+
+                <h5 id="offcanvasEndLabel" class="offcanvas-title mb-4">Balance & Payments</h5>
+            
+                <div class="col-lg-12 d-flex mb-5">
+                    <div class="col-lg-12">
+                        <div class="sub_total d-flex justify-content-between" style="border-bottom: 1px solid black;">
+                            <label for="flatpickr-time" class="form-label">$0.00</label>
+                            <strong style="color: red;">$125.00</strong>
+                        </div>
+                        <div class="sub_total d-flex justify-content-between">
+                            <label for="flatpickr-time" class="form-label">Total Payments</label>
+                            <label for="flatpickr-time" class="form-label">Balance Due</label>
+                        </div>
+                    </div>
+                </div>
+
+                <h5 id="offcanvasEndLabel" class="offcanvas-title mb-4">Transactions</h5>
+
+                <div id="add-coupon-box" class="add-coupon-box mb-4" data-os-action="coupons__new_form" data-os-output-target-do="append" data-os-output-target=".os-coupons-w">
+                    <div class="add-coupon-graphic-w">
+                        <div class="add-coupon-plus"><i class="latepoint-icon latepoint-icon-plus4 fa fa-plus"></i></div>
+                    </div>
+                    <div class="add-coupon-label">Add Transaction</div>
+                </div>
+
+                <button type="button" class="btn btn-primary mb-2 d-grid w-100">Create Appointment</button>
 
             </div>
         </div>
