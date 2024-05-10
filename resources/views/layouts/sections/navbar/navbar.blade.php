@@ -379,7 +379,7 @@ $navbarDetached = ($navbarDetached ?? '');
             </div>
             
             <div class="offcanvas-body mx-0 flex-grow-0">
-                <div class="col-lg-12">
+                <div class="col-lg-12 mb-3">
                     <select id="selectpickerGroups" class="selectpicker w-100" data-style="btn-default">
                         <optgroup label="General Dentistry">
                             <option>Tooth Whitening</option>
@@ -396,7 +396,7 @@ $navbarDetached = ($navbarDetached ?? '');
                         </optgroup>
                     </select>
                 </div>
-                <div class="col-lg-12">
+                <div class="col-lg-12 mb-3">
                     <label for="selectpickerBasic" class="form-label">Service Extras</label>
                     <div class="select2-primary">
                         <select id="select2Primary" class="select2 form-select" multiple>
@@ -406,9 +406,8 @@ $navbarDetached = ($navbarDetached ?? '');
                         </select>
                     </div>
                 </div>
-                <div class="col-lg-12">
-
-                    <div class="col-lg-6 px-3">
+                <div class="col-lg-12 d-flex mb-3">
+                    <div class="col-lg-6">
                         <label for="selectpickerBasic" class="form-label">Agent</label>
                         <select id="selectpickerBasic" class="selectpicker w-100" data-style="btn-default">
                             <option>John Mayers</option>
@@ -416,7 +415,7 @@ $navbarDetached = ($navbarDetached ?? '');
                             <option>Ben Stones</option>
                         </select>
                     </div>
-                    <div class="col-lg-6 px-3">
+                    <div class="col-lg-6">
                         <label for="selectpickerBasic" class="form-label">Status</label>
                         <select id="selectpickerBasic" class="selectpicker w-100" data-style="btn-default">
                             <option>Approved</option>
@@ -426,26 +425,56 @@ $navbarDetached = ($navbarDetached ?? '');
                         </select>
                     </div>
                 </div>
-                <div class="col-lg-12">
+                <div class="col-lg-12 mb-3">
                     <label for="selectpickerBasic" class="form-label">Start Date</label>
                     <input type="text" class="form-control" placeholder="mm/dd/YYYY" />
                 </div>
-                <div class="col-lg-12">
-                    <div class="col-lg-6 px-3">
+                <div class="col-lg-12 d-flex mb-3">
+                    <div class="col-lg-6">
                         <div class="start_time">
                             <label for="flatpickr-time" class="form-label">Start Time</label>
                             <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time" />
                         </div>
                         
                     </div>
-                    <div class="col-lg-6 px-3">
+                    <div class="col-lg-6">
                         <div class="finish_time">
                             <label for="flatpickr-time" class="form-label">End Time</label>
                             <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time-finish" />
                         </div>
                     </div>
                 </div>
-
+                <div class="col-lg-12 d-flex mb-3">
+                    <div class="col-lg-6">
+                        <div class="buffer_before">
+                            <label for="flatpickr-time" class="form-label">Buffer Before</label>
+                            <input type="text" class="form-control" placeholder="0 minutes" id="flatpickr-time" />
+                        </div>
+                        
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="buffer_after">
+                            <label for="flatpickr-time" class="form-label">Buffer After</label>
+                            <input type="text" class="form-control" placeholder="0 minutes" id="flatpickr-time-finish" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 d-flex mb-3">
+                    <div class="col-lg-12">
+                        <div class="comment_left_by_customer">
+                            <label for="flatpickr-time" class="form-label">Comment left by customer</label>
+                            <textarea placeholder="" class="form-control" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 d-flex mb-3">
+                    <div class="col-lg-12">
+                        <div class="doc_upload">
+                            <label for="flatpickr-time" class="form-label">Doc</label>
+                            <input type="file" class="form-control" id="flatpickr-time-finish" />
+                        </div>
+                    </div>
+                </div>
 
                 <button type="button" class="btn btn-primary mb-2 d-grid w-100">Continue</button>
                 <button type="button" class="btn btn-label-secondary d-grid w-100" data-bs-dismiss="offcanvas">Cancel</button>
