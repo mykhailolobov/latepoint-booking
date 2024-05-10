@@ -18,6 +18,7 @@
 
 @vite([
   'resources/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.scss',
+  'resources/assets/vendor/libs/bootstrap-select/bootstrap-select.scss',
   'resources/assets/vendor/libs/typeahead-js/typeahead.scss'
 ])
 

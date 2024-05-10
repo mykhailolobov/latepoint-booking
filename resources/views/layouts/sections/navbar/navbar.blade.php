@@ -243,9 +243,9 @@ $navbarDetached = ($navbarDetached ?? '');
                                         <div class="flex-grow-1">
                                             <span class="fw-medium d-block">
                                                 @if (Auth::check())
-                                                {{ Auth::user()->name }}
+                                                    {{ Auth::user()->name }}
                                                 @else
-                                                John Doe
+                                                    John Doe
                                                 @endif
                                             </span>
                                             <small class="text-muted">Admin</small>
@@ -369,7 +369,6 @@ $navbarDetached = ($navbarDetached ?? '');
     </nav>
     <!-- / Navbar -->
 
-
 <!-- Start the New Booking Modal -->
 <div class="col-lg-3 col-md-6">
     <div class="mt-3">
@@ -379,8 +378,8 @@ $navbarDetached = ($navbarDetached ?? '');
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             
-            <div class="offcanvas-body my-auto mx-0 flex-grow-0">
-                <!-- <div class="col-lg-12">
+            <div class="offcanvas-body mx-0 flex-grow-0">
+                <div class="col-lg-12">
                     <select id="selectpickerGroups" class="selectpicker w-100" data-style="btn-default">
                         <optgroup label="General Dentistry">
                             <option>Tooth Whitening</option>
@@ -396,8 +395,8 @@ $navbarDetached = ($navbarDetached ?? '');
                             <option>Porcelain Crown</option>
                         </optgroup>
                     </select>
-                </div> -->
-                <!-- <div class="col-lg-12">
+                </div>
+                <div class="col-lg-12">
                     <label for="selectpickerBasic" class="form-label">Service Extras</label>
                     <div class="select2-primary">
                         <select id="select2Primary" class="select2 form-select" multiple>
@@ -445,7 +444,7 @@ $navbarDetached = ($navbarDetached ?? '');
                             <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time-finish" />
                         </div>
                     </div>
-                </div> -->
+                </div>
 
 
                 <button type="button" class="btn btn-primary mb-2 d-grid w-100">Continue</button>

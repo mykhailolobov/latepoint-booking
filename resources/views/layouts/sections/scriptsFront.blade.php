@@ -4,6 +4,7 @@
 'resources/assets/vendor/js/dropdown-hover.js',
 'resources/assets/vendor/js/mega-dropdown.js',
 'resources/assets/vendor/libs/popper/popper.js',
+'resources/assets/vendor/libs/bootstrap-select/bootstrap-select.js',
 'resources/assets/vendor/js/bootstrap.js'])
 
 @yield('vendor-script')

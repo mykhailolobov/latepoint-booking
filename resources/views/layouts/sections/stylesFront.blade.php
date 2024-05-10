@@ -10,7 +10,8 @@
   'resources/assets/vendor/scss' . $configData['rtlSupport'] . '/core' . ($configData['style'] !== 'light' ? '-' . $configData['style'] : '') . '.scss',
   'resources/assets/vendor/scss' . $configData['rtlSupport'] . '/' . $configData['theme'] . ($configData['style'] !== 'light' ? '-' . $configData['style'] : '') . '.scss',
   'resources/assets/css/demo.css',
-  'resources/assets/vendor/scss/pages/front-page.scss'
+  'resources/assets/vendor/scss/pages/front-page.scss',
+  'resources/assets/vendor/libs/bootstrap-select/bootstrap-select.scss',
 ])
 
 <!-- Vendor Styles -->
