@@ -4,16 +4,13 @@ $configData = Helper::appClasses();
 
 @extends('layouts/layoutMaster')
 
-@section('title', 'Latepoint')
-
+@section('title', 'Appointment Studio')
 
 @section('vendor-style')
 @vite([
 'resources/assets/vendor/libs/apex-charts/apex-charts.scss',
 'resources/assets/vendor/libs/flatpickr/flatpickr.scss',
 'resources/assets/vendor/libs/select2/select2.scss',
-
-
 ])
 @endsection
 
@@ -23,9 +20,6 @@ $configData = Helper::appClasses();
 'resources/assets/vendor/libs/chartjs/chartjs.js',
 'resources/assets/vendor/libs/flatpickr/flatpickr.js',
 'resources/assets/vendor/libs/select2/select2.js',
-
-
-
 ])
 @endsection
 

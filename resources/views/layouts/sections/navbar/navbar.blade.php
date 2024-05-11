@@ -494,7 +494,7 @@ $navbarDetached = ($navbarDetached ?? '');
                 </div>
                 <div class="col-lg-12 mb-3">
                     <label for="selectpickerBasic" class="form-label">Start Date</label>
-                    <input type="text" class="form-control" placeholder="mm/dd/YYYY" />
+                    <input type="text" class="form-control" placeholder="mm/dd/YYYY" id="flatpickr-datetime"/>
                 </div>
                 <div class="col-lg-12 d-flex mb-3">
                     <div class="col-lg-6">
