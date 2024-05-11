@@ -142,7 +142,7 @@ $configData = Helper::appClasses();
                 <p>No Upcoming Appointments</p>
                 <a href="#">
                     <i class='bx bx-sm bx-plus'></i>
-                    <span>Add Appointment</span>
+                    <span data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd" aria-controls="offcanvasEnd">Add Appointment</span>
                 </a>
             </div>
 
