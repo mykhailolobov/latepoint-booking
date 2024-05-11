@@ -46,13 +46,13 @@
         },
         {
           "url": "resource/categories",
-          "name": "CATIGORIES",
+          "name": "Categories",
           "icon": "menu-icon tf-icons bx bx-package",
           "slug": "pages-categories"
         },
         {
           "url": "resource/serviceextras",
-          "name": "SERVICE EXTRAS",
+          "name": "Servieces extras",
           "icon": "menu-icon tf-icons bx bx-package",
           "slug": "pages-service_extras"
         }
@@ -83,7 +83,7 @@
         },
         {
           "url": "resource/locationcategories",
-          "name": "CATIGORIES",
+          "name": "Categories",
           "icon": "menu-icon tf-icons bx bx-package",
           "slug": "pages-categories"
         }
