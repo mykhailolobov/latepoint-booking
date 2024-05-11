@@ -3,7 +3,7 @@
   return [
     "creatorName" => "ThemeSelection",
     "creatorUrl" => "https://themeselection.com",
-    "templateName" => "Latepoint",
+    "templateName" => "Appointment Studio.",
     "templateSuffix" => "",
     "templateVersion" => "2.2.0",
     "templateFree" => false,
