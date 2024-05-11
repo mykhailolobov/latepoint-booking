@@ -138,7 +138,7 @@ $configData = Helper::appClasses();
             <div class="card">
                 <div class="d-flex justify-content-between card-header-11">
                     <h5 class="card-header">Connected Services</h5>
-                    <div class="py-4">
+                    <div class="py-4 px-5">
                         <label class="form-check-label custom-option-content selectAll" for="selectAll">
                             <input class="form-check-input" type="checkbox" value="" id="selectAll" />
                             <span class="custom-option-header">

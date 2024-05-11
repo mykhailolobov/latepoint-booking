@@ -237,7 +237,7 @@ $configData = Helper::appClasses();
             <div class="card">
                 <div class="d-flex justify-content-between card-header-11">
                     <h5 class="card-header">Agents Who Offer This Service</h5>
-                    <div class="py-4">
+                    <div class="py-4 px-5">
                         <label class="form-check-label custom-option-content selectAllforagents" for="selectAllforagents">
                             <input class="form-check-input" type="checkbox" value="" id="selectAllforagents" />
                             <span class="custom-option-header">
@@ -323,7 +323,7 @@ $configData = Helper::appClasses();
             <div class="card mb-4">
                 <div class="d-flex justify-content-between card-header-11">
                     <h5 class="card-header">Service Schedule</h5>
-                    <div class="py-4">
+                    <div class="py-4 px-5">
                         <label class="form-check-label custom-option-content customCheckTemp1" for="customCheckTemp1">
                             <input class="form-check-input" type="checkbox" value="" id="customCheckTemp1" />
                             <span class="custom-option-header">
@@ -665,7 +665,7 @@ $configData = Helper::appClasses();
             <div class="card">
                 <div class="d-flex justify-content-between card-header-11">
                     <h5 class="card-header">Service Extras</h5>
-                    <div class="py-4">
+                    <div class="py-4 px-5">
                         <label class="form-check-label custom-option-content selectAll" for="selectAll">
                             <input class="form-check-input" type="checkbox" value="" id="selectAll" />
                             <span class="custom-option-header">

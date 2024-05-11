@@ -265,7 +265,7 @@ $configData = Helper::appClasses();
             <div class="card mb-4">
                 <div class="d-flex justify-content-between card-header-11">
                     <h5 class="card-header">Agent Schedule</h5>
-                    <div class="py-4">
+                    <div class="py-4 px-5">
                         <label class="form-check-label custom-option-content customCheckTemp1" for="customCheckTemp1">
                             <input class="form-check-input" type="checkbox" value="" id="customCheckTemp1" />
                             <span class="custom-option-header">
@@ -273,6 +273,7 @@ $configData = Helper::appClasses();
                             </span>
                         </label>
                     </div>
+                    
                 </div>
                     
                 <div class="card-body demo-vertical-spacing demo-only-element">
