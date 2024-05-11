@@ -84,7 +84,7 @@ $configData = Helper::appClasses();
                                 <select id="selectpickerBasic" class="selectpicker w-100" data-style="btn-default">
                                     <option>Not Categorized</option>
                                 </select>
-                                <button class="btn btn-primary" type="button"><i class="fa fa-plus"></i>Add Category</button>
+                                <button class="btn btn-primary" type="button" style="width:200px;"><i class="fa fa-plus"></i>Add Category</button>
                             </div>
                         </div>
                     </div>

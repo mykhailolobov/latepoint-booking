@@ -79,7 +79,7 @@ $configData = Helper::appClasses();
                                     <option>Cosmetic Dentistry</option>
                                     <option>Implants Dentistry</option>
                                 </select>
-                                <button class="btn btn-primary h-px-40" type="button"><i class="fa fa-plus"></i>Add Category</button>
+                                <button class="btn btn-primary h-px-40" type="button" style="width:200px;"><i class="fa fa-plus"></i>Add Category</button>
                             </div>
                         </div>
                         <div class="col-lg-6 px-3">
