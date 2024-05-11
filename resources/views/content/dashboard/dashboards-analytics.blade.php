@@ -50,7 +50,7 @@ $configData = Helper::appClasses();
             <div class="card-header mb-0">
                 <h4 class="m-0 me-2">Performance</h4>
             </div>
-            <div class="card-header d-flex">
+            <div class="card-header d-flex gap-3">
                 <select id="select2Basic1" class="select2 form-select form-select-lg" data-allow-clear="true">
                     <option>All Agents</option>
                     <option>John Mayers</option>
@@ -121,7 +121,7 @@ $configData = Helper::appClasses();
             <div class="card-header mb-0">
                 <h4 class="m-0 me-2">Upcoming</h4>
             </div>
-            <div class="card-header d-flex">
+            <div class="card-header d-flex gap-3">
                 <select id="select2Basic3" class="select2 form-select form-select-lg" data-allow-clear="true">
                     <option>All Locations</option>
                     <option>Los Angeles</option>
@@ -161,7 +161,7 @@ $configData = Helper::appClasses();
             <div class="card-header d-flex flex-column">
                 <h4 class="card-title mb-0">Day Preview</h4>
             </div>
-            <div class="card-header header-elements">
+            <div class="card-header header-elements d-flex gap-3">
                 <div class="">
                     <input type="text" class="form-control" placeholder="YYYY-MM-DD" id="flatpickr-date" />
                 </div>
