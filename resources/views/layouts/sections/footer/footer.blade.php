@@ -8,9 +8,10 @@ $containerFooter = (isset($configData['contentLayout']) && $configData['contentL
     <!-- <div class="mb-2 mb-md-0">
       © <script>document.write(new Date().getFullYear())</script>, Powered ❤️ by <a href="{{ (!empty(config('variables.creatorUrl')) ? config('variables.creatorUrl') : '') }}" target="_blank" class="footer-link fw-medium">{{ (!empty(config('variables.creatorName')) ? config('variables.creatorName') : '') }}</a>
     </div> -->
-    <div class="mb-2 mb-md-0">
-    COPYRIGHT © <script>document.write(new Date().getFullYear())</script> APPOINTMENT STUDIO, LLC - ALL RIGHTS RESERVED, Powered ❤️ by <a target="_blank" class="footer-link fw-medium">Appointment Studio</a>
+    <div class="mb-2 mb-md-0 d-flex">
+    COPYRIGHT © <script>document.write(new Date().getFullYear())</script> APPOINTMENT STUDIO, LLC - ALL RIGHTS RESERVED 
     </div>
+    <img src="{{asset('assets/img/favicon/logo.png')}}" alt="footer-logo" class="float-right" style="width: 200px; height: 20px;">
     <!-- <div  class="d-none d-lg-inline-block">
       <a href="{{ config('variables.licenseUrl') ? config('variables.licenseUrl') : '#' }}" class="footer-link me-4" target="_blank">License</a>
       <a href="{{ config('variables.moreThemes') ? config('variables.moreThemes') : '#' }}" target="_blank" class="footer-link me-4">More Themes</a>
