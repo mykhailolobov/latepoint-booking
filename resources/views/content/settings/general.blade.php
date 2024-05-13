@@ -42,7 +42,7 @@ $configData = Helper::appClasses();
             <a href="{{ url('/settings/general') }}" class="agent-status-active text-center service_title mx-2">
                 <h4 class="m-0 me-2">General</h4>
             </a>
-            <a href="{{ url('/settings/work_periods') }}" class="agent-status-active text-center mx-2">
+            <a href="{{ url('/settings/schedule') }}" class="agent-status-active text-center mx-2">
                 <h4 class="m-0 me-2">Schedule</h4>
             </a>
             <a href="{{ url('/settings/tax') }}" class="agent-status-active text-center mx-2">

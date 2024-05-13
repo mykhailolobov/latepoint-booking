@@ -7,25 +7,25 @@
       "slug": "dashboard"
     },
     {
-      "url": "app/calendar",
+      "url": "calendar",
       "name": "Calendar",
       "icon": "menu-icon tf-icons bx bx-calendar",
       "slug": "pages-calendar"
     },
     {
-      "url": "app/tables-appointments",
+      "url": "appointments",
       "name": "Appointment",
       "icon": "menu-icon tf-icons bx bx-box",
       "slug": "pages-appointment"
     },
     {
-      "url": "app/tables-payments",
+      "url": "payments",
       "name": "Payments",
       "icon": "menu-icon tf-icons bx bx-credit-card",
       "slug": "pages-payments"
     },
     {
-      "url": "app/tables-customers",
+      "url": "customers",
       "name": "Customers",
       "icon": "menu-icon tf-icons bx bx-user",
       "slug": "pages-customers"
@@ -111,7 +111,7 @@
           "slug": "pages-general"
         },
         {
-          "url": "settings/work_periods",
+          "url": "settings/schedule",
           "name": "Schedule",
           "icon": "menu-icon tf-icons bx bx-cog",
           "slug": "pages-locations"
@@ -181,7 +181,7 @@
       ]
     },
     {
-      "url": "settings/integrations",
+      "url": "settings/integrations-calendars",
       "name": "Integrations",
       "icon": "menu-icon tf-icons bx bx-link",
       "slug": "pages-integrations",
@@ -190,19 +190,19 @@
           "url": "settings/integrations-calendars",
           "name": "Calendars",
           "icon": "menu-icon tf-icons bx bx-link",
-          "slug": "pages-integrations"
+          "slug": "pages-calendars"
         },
         {
           "url": "settings/integrations-meeting",
           "name": "Meetings",
           "icon": "menu-icon tf-icons bx bx-link",
-          "slug": "pages-integrations"
+          "slug": "pages-meeting"
         },
         {
           "url": "settings/integrations-marketing",
           "name": "Marketing",
           "icon": "menu-icon tf-icons bx bx-link",
-          "slug": "pages-integrations"
+          "slug": "pages-marketing"
         }
       ]
     },

@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Resource;
+namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class Coupons extends Controller
+class Schedule extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('content.resource.coupons');
+        return view('content.settings.page-blank');
     }
 
     /**

@@ -1,27 +1,42 @@
 <?php
 
-use App\Http\Controllers\tables\Appointments;
-use App\Http\Controllers\tables\Payments;
-use App\Http\Controllers\tables\Customers;
-use App\Http\Controllers\resource\Agents;
-use App\Http\Controllers\resource\Coupons;
-use App\Http\Controllers\resource\LocationCategories;
-use App\Http\Controllers\resource\Locations;
-use App\Http\Controllers\resource\Services;
-use App\Http\Controllers\resource\Categories;
-use App\Http\Controllers\resource\Serviceextras;
-
-use Illuminate\Contracts\Database\Eloquent\DeviatesCastableAttributes;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\language\LanguageController;
 
-use App\Http\Controllers\HomePage;
-use App\Http\Controllers\apps\Chat;
-use App\Http\Controllers\apps\Email;
-use App\Http\Controllers\apps\Calendar;
+use App\Http\Controllers\Language\LanguageController;
+use App\Http\Controllers\Apps\Chat;
+use App\Http\Controllers\Apps\Email;
 
+use App\Http\Controllers\Pages\Dashboard;
+use App\Http\Controllers\Pages\Calendar;
+use App\Http\Controllers\Pages\Appointments;
+use App\Http\Controllers\Pages\Payments;
+use App\Http\Controllers\Pages\Customers;
+
+use App\Http\Controllers\Resource\Agents;
+use App\Http\Controllers\Resource\Coupons;
+use App\Http\Controllers\Resource\LocationCategories;
+use App\Http\Controllers\Resource\Locations;
+use App\Http\Controllers\Resource\Services;
+use App\Http\Controllers\Resource\Categories;
+use App\Http\Controllers\Resource\Serviceextras;
+
+use App\Http\Controllers\Settings\AddOns;
 use App\Http\Controllers\Settings\General;
+use App\Http\Controllers\Settings\Notifications;
+use App\Http\Controllers\Settings\Payments as PaymentSetting;
+use App\Http\Controllers\Settings\Roles;
+use App\Http\Controllers\Settings\Schedule;
+use App\Http\Controllers\Settings\Steps;
+use App\Http\Controllers\Settings\System;
+use App\Http\Controllers\Settings\Tax;
+use App\Http\Controllers\Settings\Integrations\Calendars as CalendarsIntegration;
+use App\Http\Controllers\Settings\Integrations\Marketing;
+use App\Http\Controllers\Settings\Integrations\Meetings;
+use App\Http\Controllers\Settings\Processes\ActivityLog;
+use App\Http\Controllers\Settings\Processes\Processes;
+use App\Http\Controllers\Settings\Processes\ScheduledJobs;
 
+use App\Http\Controllers\Settings\FormFields;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,15 +58,16 @@ Route::get('/', function () {
 Route::get('lang/{locale}', [LanguageController::class, 'swap']);
 
 Route::middleware('auth')->group(function () {
-    // Main Page Route
-    Route::get('/dashboard', [HomePage::class, 'index'])->name('dashboard');
-
+    
     Route::get('/app/chat', [Chat::class, 'index'])->name('app-chat');
     Route::get('/app/email', [Email::class, 'index'])->name('app-email');
-    Route::get('/app/calendar', [Calendar::class, 'index'])->name('app-calendar');
-    Route::get('/app/tables-appointments', [Appointments::class, 'index'])->name('app-appointments');
-    Route::get('/app/tables-payments', [Payments::class, 'index'])->name('app-payments');
-    Route::get('/app/tables-customers', [Customers::class, 'index'])->name('app-customers');
+
+    // Main Page Route
+    Route::get('/dashboard', [Dashboard::class, 'index'])->name('dashboard');
+    Route::get('/calendar', [Calendar::class, 'index'])->name('app-calendar');
+    Route::get('/appointments', [Appointments::class, 'index'])->name('app-appointments');
+    Route::get('/payments', [Payments::class, 'index'])->name('app-payments');
+    Route::get('/customers', [Customers::class, 'index'])->name('app-customers');
 
     // Resources Section
     Route::get('/resource/services', [Services::class, 'index'])->name('resource-services');
@@ -87,7 +103,23 @@ Route::middleware('auth')->group(function () {
 
   
     // Settings Section -> Settings
+    Route::get('/settings/add-ons', [AddOns::class, 'index'])->name('settings-add-ons');
+
     Route::get('/settings/general', [General::class, 'index'])->name('settings-general');
+    Route::get('/settings/schedule', [Schedule::class, 'index'])->name('settings-schedule');
+    Route::get('/settings/tax', [Tax::class, 'index'])->name('settings-tax');
+    Route::get('/settings/steps', [Steps::class, 'index'])->name('settings-steps');
+    Route::get('/settings/payments', [PaymentSetting::class, 'index'])->name('settings-payments');
+    Route::get('/settings/notifications', [Notifications::class, 'index'])->name('settings-notifications');
+    Route::get('/settings/roles', [Roles::class, 'index'])->name('settings-roles');
+    Route::get('/settings/system', [System::class, 'index'])->name('settings-system');
+    Route::get('/settings/processes', [Processes::class, 'index'])->name('settings-processes');
+    Route::get('/settings/process_jobs', [ScheduledJobs::class, 'index'])->name('settings-process_jobs');
+    Route::get('/settings/activities', [ActivityLog::class, 'index'])->name('settings-activities');
+    Route::get('/settings/integrations-calendars', [CalendarsIntegration::class, 'index'])->name('settings-integrations-calendars');
+    Route::get('/settings/integrations-meeting', [Marketing::class, 'index'])->name('settings-integrations-meeting');
+    Route::get('/settings/integrations-marketing', [Meetings::class, 'index'])->name('settings-integrations-marketing');
+    Route::get('/settings/form-fields', [FormFields::class, 'index'])->name('settings-form-fields');
 });
 
 require __DIR__ . '/auth.php';
