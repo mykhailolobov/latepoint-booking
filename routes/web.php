@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\language\LanguageController;
 use App\Http\Controllers\pages\HomePage;
 use App\Http\Controllers\pages\Page2;
-use App\Http\Controllers\pages\MiscError;
 use App\Http\Controllers\authentications\LoginBasic;
 use App\Http\Controllers\authentications\RegisterBasic;
 use App\Http\Controllers\apps\Chat;
@@ -38,55 +37,56 @@ use App\Http\Controllers\apps\Calendar;
 |
 */
 
-// Main Page Route
-Route::get('/', [HomePage::class, 'index'])->name('pages-home');
-Route::get('/page-2', [Page2::class, 'index'])->name('pages-page-2');
+
+Route::get('/', function () {
+    return redirect()->route('login');
+});
 
 // locale
-Route::get('lang/{locale}', [LanguageController::class, 'swap']);
+// Route::get('lang/{locale}', [LanguageController::class, 'swap']);
 
-// pages
-Route::get('/pages/misc-error', [MiscError::class, 'index'])->name('pages-misc-error');
+Route::middleware('auth')->group(function () {
+    // Main Page Route
+    Route::get('/dashboard', [HomePage::class, 'index'])->name('dashboard');
 
-// authentication
-Route::get('/auth/login-basic', [LoginBasic::class, 'index'])->name('auth-login-basic');
-Route::get('/auth/register-basic', [RegisterBasic::class, 'index'])->name('auth-register-basic');
+    Route::get('/app/chat', [Chat::class, 'index'])->name('app-chat');
+    Route::get('/app/email', [Email::class, 'index'])->name('app-email');
+    Route::get('/app/calendar', [Calendar::class, 'index'])->name('app-calendar');
+    Route::get('/app/tables-appointments', [Appointments::class, 'index'])->name('app-appointments');
+    Route::get('/app/tables-payments', [Payments::class, 'index'])->name('app-payments');
+    Route::get('/app/tables-customers', [Customers::class, 'index'])->name('app-customers');
 
-Route::get('/app/chat', [Chat::class, 'index'])->name('app-chat');
-Route::get('/app/email', [Email::class, 'index'])->name('app-email');
-Route::get('/app/calendar', [Calendar::class, 'index'])->name('app-calendar');
-Route::get('/app/tables-appointments', [Appointments::class, 'index'])->name('app-appointments');
-Route::get('/app/tables-payments', [Payments::class, 'index'])->name('app-payments');
-Route::get('/app/tables-customers', [Customers::class, 'index'])->name('app-customers');
+    // Resources Section
+    Route::get('/resource/services', [Services::class, 'index'])->name('resource-services');
+    Route::get('/resource/createservices', [Services::class, 'create'])->name('resource-createservices');
+    Route::get('/resource/editservices/{id}', [Services::class, 'edit'])->name('resource-editservices');
 
-// Resources Section
-Route::get('/resource/services', [Services::class, 'index'])->name('resource-services');
-Route::get('/resource/createservices', [Services::class, 'create'])->name('resource-createservices');
-Route::get('/resource/editservices/{id}', [Services::class, 'edit'])->name('resource-editservices');
+    // Category Section
+    Route::get('/resource/categories', [Categories::class, 'index'])->name('resource-categories');
 
-// Category Section
-Route::get('/resource/categories', [Categories::class, 'index'])->name('resource-categories');
-
-// Service Extra Section
-Route::get('/resource/serviceextras', [Serviceextras::class, 'index'])->name('resource-serviceextras');
-Route::get('/resource/createserviceextras', [Serviceextras::class, 'create'])->name('resource-createserviceextras');
-Route::get('/resource/editserviceextras/{id}', [Serviceextras::class, 'edit'])->name('resource-editserviceextras');
+    // Service Extra Section
+    Route::get('/resource/serviceextras', [Serviceextras::class, 'index'])->name('resource-serviceextras');
+    Route::get('/resource/createserviceextras', [Serviceextras::class, 'create'])->name('resource-createserviceextras');
+    Route::get('/resource/editserviceextras/{id}', [Serviceextras::class, 'edit'])->name('resource-editserviceextras');
 
 
-// Resources Section->Agents part
-Route::get('/resource/agents', [Agents::class, 'index'])->name('resource-agents');
-Route::get('/resource/createagents', [Agents::class, 'create'])->name('resource-createagents');
-Route::get('/resource/editagents/{id}', [Agents::class, 'edit'])->name('resource-editagents');
+    // Resources Section->Agents part
+    Route::get('/resource/agents', [Agents::class, 'index'])->name('resource-agents');
+    Route::get('/resource/createagents', [Agents::class, 'create'])->name('resource-createagents');
+    Route::get('/resource/editagents/{id}', [Agents::class, 'edit'])->name('resource-editagents');
 
-// Resources Section->Coupons part
-Route::get('/resource/coupons', [Coupons::class, 'index'])->name('resource-coupons');
-
-
-// Resources Section->Locations part
-Route::get('/resource/locations', [Locations::class, 'index'])->name('resource-locations');
-Route::get('/resource/createlocations', [Locations::class, 'create'])->name('resource-createlocations');
-Route::get('/resource/editlocations/{id}', [Locations::class, 'edit'])->name('resource-editlocations');
+    // Resources Section->Coupons part
+    Route::get('/resource/coupons', [Coupons::class, 'index'])->name('resource-coupons');
 
 
-// Resources Section -> Locations/Categories part
-Route::get('/resource/locationcategories', [LocationCategories::class, 'index'])->name('resource-locationcategories');
+    // Resources Section->Locations part
+    Route::get('/resource/locations', [Locations::class, 'index'])->name('resource-locations');
+    Route::get('/resource/createlocations', [Locations::class, 'create'])->name('resource-createlocations');
+    Route::get('/resource/editlocations/{id}', [Locations::class, 'edit'])->name('resource-editlocations');
+
+
+    // Resources Section -> Locations/Categories part
+    Route::get('/resource/locationcategories', [LocationCategories::class, 'index'])->name('resource-locationcategories');
+});
+
+require __DIR__ . '/auth.php';

@@ -4,7 +4,7 @@
       "url": "/",
       "name": "Dashboard",
       "icon": "menu-icon tf-icons bx bx-pie-chart-alt-2",
-      "slug": "pages-home"
+      "slug": "dashboard"
     },
     {
       "url": "app/calendar",
