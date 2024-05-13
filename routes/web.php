@@ -20,8 +20,7 @@ use App\Http\Controllers\apps\Chat;
 use App\Http\Controllers\apps\Email;
 use App\Http\Controllers\apps\Calendar;
 
-// use App\Http\Controllers\tables\DatatableBasic;
-
+use App\Http\Controllers\Settings\General;
 
 
 /*
@@ -85,6 +84,10 @@ Route::middleware('auth')->group(function () {
 
     // Resources Section -> Locations/Categories part
     Route::get('/resource/locationcategories', [LocationCategories::class, 'index'])->name('resource-locationcategories');
+
+  
+    // Settings Section -> Settings
+    Route::get('/settings/general', [General::class, 'index'])->name('settings-general');
 });
 
 require __DIR__ . '/auth.php';

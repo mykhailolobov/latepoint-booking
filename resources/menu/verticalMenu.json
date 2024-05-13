@@ -99,7 +99,7 @@
       "slug": "pages-addons"
     },
     {
-      "url": "settings/",
+      "url": "settings/general",
       "name": "Settings",
       "icon": "menu-icon tf-icons bx bx-cog",
       "slug": "pages-settings"
