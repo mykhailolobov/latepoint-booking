@@ -20,7 +20,6 @@ class General extends Controller
      */
     public function create()
     {
-        return view('content.resource.createservices');
     }
 
     /**
@@ -44,7 +43,6 @@ class General extends Controller
      */
     public function edit(string $id)
     {
-        return view('content.resource.editservices');
     }
 
     /**
