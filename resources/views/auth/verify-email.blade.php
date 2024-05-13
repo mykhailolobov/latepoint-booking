@@ -30,8 +30,9 @@ $customizerHidden = 'customizer-hide';
       <div class="w-px-400 mx-auto">
         <div class="app-brand mb-5">
           <a href="{{url('/')}}" class="app-brand-link gap-2">
-            <span class="app-brand-logo demo">@include('_partials.macros',["width"=>25,"withbg"=>'var(--bs-primary)'])</span>
-            <span class="app-brand-text demo text-body fw-bold">{{ config('variables.templateName') }}</span>
+            <!-- <span class="app-brand-logo demo">@include('_partials.macros',["width"=>25,"withbg"=>'var(--bs-primary)'])</span>
+            <span class="app-brand-text demo text-body fw-bold">{{ config('variables.templateName') }}</span> -->
+            <img src="{{asset('assets/img/favicon/logo.png')}}" alt="footer-logo" class="float-right" style="width: 100%; ">
           </a>
         </div>
         <h3 class="mb-2">Verify your email ✉️</h3>
