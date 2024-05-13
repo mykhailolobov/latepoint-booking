@@ -14,10 +14,8 @@ use App\Http\Controllers\resource\Serviceextras;
 use Illuminate\Contracts\Database\Eloquent\DeviatesCastableAttributes;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\language\LanguageController;
-use App\Http\Controllers\pages\HomePage;
-use App\Http\Controllers\pages\Page2;
-use App\Http\Controllers\authentications\LoginBasic;
-use App\Http\Controllers\authentications\RegisterBasic;
+
+use App\Http\Controllers\HomePage;
 use App\Http\Controllers\apps\Chat;
 use App\Http\Controllers\apps\Email;
 use App\Http\Controllers\apps\Calendar;
@@ -43,7 +41,7 @@ Route::get('/', function () {
 });
 
 // locale
-// Route::get('lang/{locale}', [LanguageController::class, 'swap']);
+Route::get('lang/{locale}', [LanguageController::class, 'swap']);
 
 Route::middleware('auth')->group(function () {
     // Main Page Route
