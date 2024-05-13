@@ -47,7 +47,7 @@ $configData = Helper::appClasses();
 @endsection
 @section('content')
 
-<link href="{{asset('/assets/createservices_custom.css')}}" rel="stylesheet">
+<link href="{{asset('/assets/css/createservices_custom.css')}}" rel="stylesheet">
 
 <div class="row">
     <div class="col-lg-12 col-xxl-12 mb-4 order-3 order-xxl-1">

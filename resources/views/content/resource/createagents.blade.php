@@ -47,7 +47,7 @@ $configData = Helper::appClasses();
 @endsection
 @section('content')
 
-<link href="{{asset('/assets/createagent_custom.css')}}" rel="stylesheet">
+<link href="{{asset('/assets/css/createagent_custom.css')}}" rel="stylesheet">
 
 <style type="text/css">
     
