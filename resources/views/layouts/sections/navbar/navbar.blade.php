@@ -232,7 +232,7 @@ $navbarDetached = ($navbarDetached ?? '');
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
                                 <a class="dropdown-item"
-                                    href="{{ Route::has('profile.show') ? route('profile.show') : url('pages/profile-user') }}">
+                                    href="{{ route('user-profile')}}">
                                     <div class="d-flex">
                                         <div class="flex-shrink-0 me-3">
                                             <div class="avatar avatar-online">
@@ -272,7 +272,7 @@ $navbarDetached = ($navbarDetached ?? '');
                             </li>
                             @endif
                             <li>
-                                <a class="dropdown-item" href="{{url('pages/account-settings-billing')}}">
+                                <a class="dropdown-item" href="{{url('settings/general')}}">
                                     <span class="d-flex align-items-center align-middle">
                                         <i class="flex-shrink-0 bx bx-cog me-2"></i>
                                         <span class="flex-grow-1 align-middle">Settings</span>

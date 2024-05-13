@@ -53,7 +53,7 @@ $customizerHidden = 'customizer-hide';
           <a href="{{url('/')}}" class="app-brand-link gap-2">
             <!-- <span class="app-brand-logo demo">@include('_partials.macros',["width"=>25,"withbg"=>'var(--bs-primary)'])</span>
             <span class="app-brand-text demo demo text-body fw-bold">{{config('variables.templateName')}}</span> -->
-            <img src="{{asset('assets/img/favicon/logo.png')}}" alt="footer-logo" class="float-right" style="width: 100%; ">
+            <img src="{{asset('assets/img/logo.png')}}" alt="footer-logo" class="float-right" style="width: 100%; ">
           </a>
         </div>
         <!-- /Logo -->

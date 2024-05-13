@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Language\LanguageController;
 use App\Http\Controllers\Apps\Chat;
 use App\Http\Controllers\Apps\Email;
+use App\Http\Controllers\Settings\Profile;
 
 use App\Http\Controllers\Pages\Dashboard;
 use App\Http\Controllers\Pages\Calendar;
@@ -61,6 +62,7 @@ Route::middleware('auth')->group(function () {
     
     Route::get('/app/chat', [Chat::class, 'index'])->name('app-chat');
     Route::get('/app/email', [Email::class, 'index'])->name('app-email');
+    Route::get('/user/profile', [Profile::class, 'index'])->name('user-profile');
 
     // Main Page Route
     Route::get('/dashboard', [Dashboard::class, 'index'])->name('dashboard');

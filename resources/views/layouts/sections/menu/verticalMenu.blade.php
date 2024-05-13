@@ -9,7 +9,8 @@ $configData = Helper::appClasses();
   <div class="app-brand demo">
     <a href="{{url('/')}}" class="app-brand-link">
       <span class="app-brand-logo demo">
-        @include('_partials.macros',["width"=>25,"withbg"=>'var(--bs-primary)'])
+        <img src="{{asset('assets/img/short-logo.png')}}" alt="footer-logo" class="float-right" style="width: 25px; ">
+        <!-- @include('_partials.macros',["width"=>25,"withbg"=>'var(--bs-primary)']) -->
       </span>
       <span class="app-brand-text demo menu-text fw-bold ms-2">Appointment</span>
     </a>
