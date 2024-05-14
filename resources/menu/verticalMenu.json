@@ -4,28 +4,28 @@
       "url": "/",
       "name": "Dashboard",
       "icon": "menu-icon tf-icons bx bx-pie-chart-alt-2",
-      "slug": "pages-home"
+      "slug": "dashboard"
     },
     {
-      "url": "app/calendar",
+      "url": "calendar",
       "name": "Calendar",
       "icon": "menu-icon tf-icons bx bx-calendar",
       "slug": "pages-calendar"
     },
     {
-      "url": "app/tables-appointments",
+      "url": "appointments",
       "name": "Appointment",
       "icon": "menu-icon tf-icons bx bx-box",
       "slug": "pages-appointment"
     },
     {
-      "url": "app/tables-payments",
+      "url": "payments",
       "name": "Payments",
       "icon": "menu-icon tf-icons bx bx-credit-card",
       "slug": "pages-payments"
     },
     {
-      "url": "app/tables-customers",
+      "url": "customers",
       "name": "Customers",
       "icon": "menu-icon tf-icons bx bx-user",
       "slug": "pages-customers"
@@ -99,22 +99,112 @@
       "slug": "pages-addons"
     },
     {
-      "url": "settings/",
+      "url": "settings/general",
       "name": "Settings",
       "icon": "menu-icon tf-icons bx bx-cog",
-      "slug": "pages-settings"
+      "slug": "pages-settings",
+      "submenu": [
+        {
+          "url": "settings/general",
+          "name": "General",
+          "icon": "menu-icon tf-icons bx bx-cog",
+          "slug": "pages-general"
+        },
+        {
+          "url": "settings/schedule",
+          "name": "Schedule",
+          "icon": "menu-icon tf-icons bx bx-cog",
+          "slug": "pages-locations"
+        },
+        {
+          "url": "settings/tax",
+          "name": "Tax",
+          "icon": "menu-icon tf-icons bx bx-cog",
+          "slug": "pages-locations"
+        },
+        {
+          "url": "settings/steps",
+          "name": "Steps",
+          "icon": "menu-icon tf-icons bx bx-cog",
+          "slug": "pages-locations"
+        },
+        {
+          "url": "settings/payments",
+          "name": "Payments",
+          "icon": "menu-icon tf-icons bx bx-cog",
+          "slug": "pages-locations"
+        },
+        {
+          "url": "settings/notifications",
+          "name": "Notifications",
+          "icon": "menu-icon tf-icons bx bx-cog",
+          "slug": "pages-locations"
+        },
+        {
+          "url": "settings/roles",
+          "name": "Roles",
+          "icon": "menu-icon tf-icons bx bx-cog",
+          "slug": "pages-locations"
+        },
+        {
+          "url": "settings/system",
+          "name": "System",
+          "icon": "menu-icon tf-icons bx bx-cog",
+          "slug": "pages-locations"
+        }
+      ]
     },
     {
       "url": "settings/processes",
       "name": "Processes",
       "icon": "menu-icon tf-icons bx bx-server",
-      "slug": "pages-processes"
+      "slug": "pages-processes",
+      "submenu": [
+        {
+          "url": "settings/processes",
+          "name": "Processes",
+          "icon": "menu-icon tf-icons bx bx-server",
+          "slug": "pages-locations"
+        },
+        {
+          "url": "settings/process_jobs",
+          "name": "Scheduled Jobs",
+          "icon": "menu-icon tf-icons bx bx-server",
+          "slug": "pages-categories"
+        },
+        {
+          "url": "settings/activities",
+          "name": "Activity Log",
+          "icon": "menu-icon tf-icons bx bx-server",
+          "slug": "pages-categories"
+        }
+      ]
     },
     {
-      "url": "settings/integrations",
+      "url": "settings/integrations-calendars",
       "name": "Integrations",
       "icon": "menu-icon tf-icons bx bx-link",
-      "slug": "pages-integrations"
+      "slug": "pages-integrations",
+      "submenu": [
+        {
+          "url": "settings/integrations-calendars",
+          "name": "Calendars",
+          "icon": "menu-icon tf-icons bx bx-link",
+          "slug": "pages-calendars"
+        },
+        {
+          "url": "settings/integrations-meeting",
+          "name": "Meetings",
+          "icon": "menu-icon tf-icons bx bx-link",
+          "slug": "pages-meeting"
+        },
+        {
+          "url": "settings/integrations-marketing",
+          "name": "Marketing",
+          "icon": "menu-icon tf-icons bx bx-link",
+          "slug": "pages-marketing"
+        }
+      ]
     },
     {
       "url": "settings/form-fields",

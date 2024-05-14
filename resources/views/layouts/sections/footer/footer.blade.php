@@ -11,7 +11,7 @@ $containerFooter = (isset($configData['contentLayout']) && $configData['contentL
     <div class="mb-2 mb-md-0 d-flex">
     COPYRIGHT © <script>document.write(new Date().getFullYear())</script> APPOINTMENT STUDIO, LLC - ALL RIGHTS RESERVED 
     </div>
-    <img src="{{asset('assets/img/favicon/logo.png')}}" alt="footer-logo" class="float-right" style="width: 200px; height: 20px;">
+    <img src="{{asset('assets/img/favicon/logo.png')}}" alt="footer-logo" class="float-right" style="width: 200px; height: 30px;">
     <!-- <div  class="d-none d-lg-inline-block">
       <a href="{{ config('variables.licenseUrl') ? config('variables.licenseUrl') : '#' }}" class="footer-link me-4" target="_blank">License</a>
       <a href="{{ config('variables.moreThemes') ? config('variables.moreThemes') : '#' }}" target="_blank" class="footer-link me-4">More Themes</a>

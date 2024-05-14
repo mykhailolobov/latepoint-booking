@@ -225,27 +225,27 @@ $navbarDetached = ($navbarDetached ?? '');
                         <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
                             data-bs-toggle="dropdown">
                             <div class="avatar avatar-online">
-                                <img src="{{ Auth::user() ? Auth::user()->profile_photo_url : asset('assets/img/avatars/1.png') }}"
+                                <img src="{{ Auth::user()->profile_photo_url? Auth::user()->profile_photo_url : asset('assets/img/avatar.png') }}"
                                     alt class="w-px-40 h-auto rounded-circle">
                             </div>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
                                 <a class="dropdown-item"
-                                    href="{{ Route::has('profile.show') ? route('profile.show') : url('pages/profile-user') }}">
+                                    href="{{ route('user-profile')}}">
                                     <div class="d-flex">
                                         <div class="flex-shrink-0 me-3">
                                             <div class="avatar avatar-online">
-                                                <img src="{{ Auth::user() ? Auth::user()->profile_photo_url : asset('assets/img/avatars/1.png') }}"
+                                            <img src="{{ Auth::user()->profile_photo_url? Auth::user()->profile_photo_url : asset('assets/img/avatar.png') }}"
                                                     alt class="w-px-40 h-auto rounded-circle">
                                             </div>
                                         </div>
                                         <div class="flex-grow-1">
                                             <span class="fw-medium d-block">
                                                 @if (Auth::check())
-                                                    {{ Auth::user()->name }}
+                                                    {{ Auth::user()->first_name }}
                                                 @else
-                                                    John Doe
+                                                    UserName
                                                 @endif
                                             </span>
                                             <small class="text-muted">Admin</small>
@@ -272,7 +272,7 @@ $navbarDetached = ($navbarDetached ?? '');
                             </li>
                             @endif
                             <li>
-                                <a class="dropdown-item" href="{{url('pages/account-settings-billing')}}">
+                                <a class="dropdown-item" href="{{url('settings/general')}}">
                                     <span class="d-flex align-items-center align-middle">
                                         <i class="flex-shrink-0 bx bx-cog me-2"></i>
                                         <span class="flex-grow-1 align-middle">Settings</span>
