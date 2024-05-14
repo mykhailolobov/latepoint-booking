@@ -12,7 +12,7 @@ class FormFields extends Controller
      */
     public function index()
     {
-        return view('content.settings.page-blank');
+        return view('content.settings.form-fields');
     }
 
     /**
