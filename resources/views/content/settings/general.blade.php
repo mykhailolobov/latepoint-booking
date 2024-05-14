@@ -39,7 +39,7 @@ $configData = Helper::appClasses();
 <div class="row">
     <div class="col-lg-12 col-xxl-12 mb-4 order-3 order-xxl-1">
         <div class="card-header mb-4 d-flex">
-            <a href="{{ url('/settings/general') }}" class="agent-status-active text-center service_title mx-2">
+            <a href="{{ url('/settings/general') }}" class="agent-status-active text-center mx-2 acitive-tab">
                 <h4 class="m-0 me-2">General</h4>
             </a>
             <a href="{{ url('/settings/schedule') }}" class="agent-status-active text-center mx-2">
