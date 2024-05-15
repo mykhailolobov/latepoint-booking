@@ -75,28 +75,28 @@ $configData = Helper::appClasses();
                 
                 <div class="d-flex mb-3">
                     <div class="col-lg-6 px-3">
-                        <input type="text" class="form-control" id="defaultFormControlInput" placeholder="First Name" aria-describedby="defaultFormControlHelp" />
+                        <input type="text" class="form-control" name="first_name" placeholder="First Name" aria-describedby="defaultFormControlHelp" />
                     </div>
                     <div class="col-lg-6 px-3">
-                        <input type="text" class="form-control" id="defaultFormControlInput" placeholder="Last Name" aria-describedby="defaultFormControlHelp" />
+                        <input type="text" class="form-control" name="last_name" placeholder="Last Name" aria-describedby="defaultFormControlHelp" />
                     </div>
                 </div>
                 <div class="d-flex mb-3">
                     <div class="col-lg-6 px-3">
-                        <input type="email" class="form-control" id="defaultFormControlInput" placeholder="Email Address" aria-describedby="defaultFormControlHelp" />
+                        <input type="email" class="form-control" name="email" placeholder="Email Address" aria-describedby="defaultFormControlHelp" />
                     </div>
                     <div class="col-lg-6 px-3">
-                        <input type="tel" class="form-control" id="phone"  placeholder="201-555-0123" aria-describedby="defaultFormControlHelp" />
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="201-555-0123" aria-describedby="defaultFormControlHelp" />
                     </div>
                 </div>    
                 <div class="d-flex mb-3">
                     <div class="col-lg-12 px-3">
-                        <textarea class="form-control" id="defaultFormControlInput" placeholder="Notes by Customer" aria-describedby="defaultFormControlHelp" ></textarea>
+                        <textarea class="form-control" name="notes" placeholder="Notes by Customer" aria-describedby="defaultFormControlHelp" ></textarea>
                     </div>
                 </div>
                 <div class="d-flex mb-3">
                     <div class="col-lg-12 px-3">
-                        <textarea class="form-control" id="defaultFormControlInput" placeholder="Notes by admins, only visible to admins" aria-describedby="defaultFormControlHelp" ></textarea>
+                        <textarea class="form-control" name="admin_notes" placeholder="Notes by admins, only visible to admins" aria-describedby="defaultFormControlHelp" ></textarea>
                     </div>
                 </div>
             </div>
