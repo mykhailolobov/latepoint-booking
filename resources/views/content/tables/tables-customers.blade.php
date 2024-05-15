@@ -49,7 +49,7 @@
         <h5 class="card-header">Customers</h5>
         <div class="text-end">
             <button type="button" class="btn btn-primary"><i class="fa fa-download"></i>&nbsp;Download CSV</button>
-            <button type="button" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;Add Customer</button>
+            <a class="btn btn-primary" href="{{url('/customers/new')}}"><i class="fa fa-plus"></i>&nbsp;Add Customer</a>
         </div>
     </div>
     <div class="card-datatable text-nowrap">

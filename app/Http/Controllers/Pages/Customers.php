@@ -11,4 +11,10 @@ class Customers extends Controller
   {
     return view('content.tables.tables-customers');
   }
+
+  // Add Customer
+  public function add()
+  {
+    return view('content.resource.addcustomer');
+  }
 }
