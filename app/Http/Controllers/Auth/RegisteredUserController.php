@@ -98,5 +98,30 @@ class RegisteredUserController extends Controller
     {
         return view('auth.verify-email');
     }
+    
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    public function verifyAccount($token)
+    {
+        $verifyUser = UserVerificationToken::where('token', $token)->first();
+
+        $message = 'Sorry your e-mail cannot be identified.';
+        if (!is_null($verifyUser)) {
+            $user = $verifyUser->user;
+            if (!$user->is_verified) {
+                $user->is_verified =  1;
+                $user->email_verified_at =  Carbon::now();
+                $user->save();
+                $message = "Your e-mail is verified. You can now login.";
+            } else {
+                $message = "Your e-mail is already verified. You can now login.";
+            }
+            Auth::login($user);
+        }
+        return redirect()->route('login')->with('error', $message);
+    }
 
 }

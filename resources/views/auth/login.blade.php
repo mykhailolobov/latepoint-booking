@@ -113,15 +113,15 @@ $customizerHidden = 'customizer-hide';
         </div>
 
         <div class="d-flex justify-content-center">
-          <a href="javascript:;" class="btn btn-icon btn-label-facebook me-3">
+          <a href="{{ route('social.oauth', 'facebook') }}" class="btn btn-icon btn-label-facebook me-3">
             <i class="tf-icons bx bxl-facebook"></i>
           </a>
 
-          <a href="javascript:;" class="btn btn-icon btn-label-google-plus me-3">
+          <a href="{{ route('social.oauth', 'google') }}" class="btn btn-icon btn-label-google-plus me-3">
             <i class="tf-icons bx bxl-google-plus"></i>
           </a>
 
-          <a href="javascript:;" class="btn btn-icon btn-label-linkedin">
+          <a href="{{ route('social.oauth', 'linkedin') }}" class="btn btn-icon btn-label-linkedin">
             <i class="tf-icons bx bxl-linkedin"></i>
           </a>
         </div>
