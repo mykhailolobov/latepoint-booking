@@ -2,6 +2,11 @@
     border-bottom: 5px solid #696cff;
 }   
 
+.card {
+    border: 1px solid #e1e3ea;
+    box-shadow: none;
+}
+
 .card-header {
     border-bottom: 1px solid #c5c5c5;
 }
@@ -21,6 +26,7 @@
     flex: 0 0 200px;
     border-right: 1px solid #e1e3ea;
     background-image: linear-gradient(45deg, #fff, rgba(0, 40, 132, 0.02));
+    border-bottom-left-radius: 0.5rem;
 }
 
 .sub-section-row .sub-section-content {
