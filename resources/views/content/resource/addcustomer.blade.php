@@ -58,65 +58,68 @@ $configData = Helper::appClasses();
         </div>
     </div>
     <div class="col-md-12">
-        <div class="card mb-4">
-            <h5 class="card-header">General Information</h5>
-            <div class="card-body demo-vertical-spacing demo-only-element">
-                <div class="d-flex px-3 mb-3">
-                    <form action="/upload" class="dropzone needsclick" id="dropzone-basic">
-                        <div class="dz-message needsclick">
-                            <i class='bx bxs-tennis-ball' ></i>
-                            Set Avatar
+        <form action="{{ route('add_customer') }}" method="POST">
+            @csrf
+            <div class="card mb-4">
+                <h5 class="card-header">General Information</h5>
+                <div class="card-body demo-vertical-spacing demo-only-element">
+                    <div class="d-flex px-3 mb-3">
+                        <div action="/upload" class="dropzone needsclick" id="dropzone-basic">
+                            <div class="dz-message needsclick">
+                                <i class='bx bxs-tennis-ball' ></i>
+                                Set Avatar
+                            </div>
+                            <div class="fallback">
+                                <input name="file" type="file" />
+                            </div>
                         </div>
-                        <div class="fallback">
-                            <input name="file" type="file" />
+                    </div>
+                    <div class="d-flex mb-3">
+                        <div class="col-lg-6 px-3">
+                            <input type="text" class="form-control" name="first_name" placeholder="First Name" required aria-describedby="defaultFormControlHelp" />
                         </div>
-                    </form>
-                </div>
-                
-                <div class="d-flex mb-3">
-                    <div class="col-lg-6 px-3">
-                        <input type="text" class="form-control" name="first_name" placeholder="First Name" aria-describedby="defaultFormControlHelp" />
+                        <div class="col-lg-6 px-3">
+                            <input type="text" class="form-control" name="last_name" placeholder="Last Name" required aria-describedby="defaultFormControlHelp" />
+                        </div>
                     </div>
-                    <div class="col-lg-6 px-3">
-                        <input type="text" class="form-control" name="last_name" placeholder="Last Name" aria-describedby="defaultFormControlHelp" />
+                    <div class="d-flex mb-3">
+                        <div class="col-lg-6 px-3">
+                            <input type="email" class="form-control" name="email" placeholder="Email Address" required aria-describedby="defaultFormControlHelp" />
+                        </div>
+                        <div class="col-lg-6 px-3">
+                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="201-555-0123" aria-describedby="defaultFormControlHelp" />
+                        </div>
+                    </div>    
+                    <div class="d-flex mb-3">
+                        <div class="col-lg-12 px-3">
+                            <textarea class="form-control" name="notes" placeholder="Notes by Customer" aria-describedby="defaultFormControlHelp" ></textarea>
+                        </div>
                     </div>
-                </div>
-                <div class="d-flex mb-3">
-                    <div class="col-lg-6 px-3">
-                        <input type="email" class="form-control" name="email" placeholder="Email Address" aria-describedby="defaultFormControlHelp" />
-                    </div>
-                    <div class="col-lg-6 px-3">
-                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="201-555-0123" aria-describedby="defaultFormControlHelp" />
-                    </div>
-                </div>    
-                <div class="d-flex mb-3">
-                    <div class="col-lg-12 px-3">
-                        <textarea class="form-control" name="notes" placeholder="Notes by Customer" aria-describedby="defaultFormControlHelp" ></textarea>
-                    </div>
-                </div>
-                <div class="d-flex mb-3">
-                    <div class="col-lg-12 px-3">
-                        <textarea class="form-control" name="admin_notes" placeholder="Notes by admins, only visible to admins" aria-describedby="defaultFormControlHelp" ></textarea>
+                    <div class="d-flex mb-3">
+                        <div class="col-lg-12 px-3">
+                            <textarea class="form-control" name="admin_notes" placeholder="Notes by admins, only visible to admins" aria-describedby="defaultFormControlHelp" ></textarea>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div>
-        <button class="btn btn-primary add-customer" type="button">Save Customer</button>
+            <div>
+                <button type="submit" class="btn btn-primary add-customer">Save Customer</button>
+            </div>
+        </form>
     </div>
 </div>
 
+<script type="text/javascript" src="{{asset('/assets/jquery.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/intlTelInput.min.js"></script>
 <script>
-  const input = document.querySelector("#phone");
-  window.intlTelInput(input, {
-    fixDropdownWidth: false,
-    initialCountry: "us",
-    separateDialCode: true,
-    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/utils.js",
-  });
+    // ITI
+    const input = document.querySelector("#phone");
+    window.intlTelInput(input, {
+        fixDropdownWidth: false,
+        initialCountry: "us",
+        separateDialCode: true,
+        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/utils.js",
+    });
 </script>
 
 @endsection

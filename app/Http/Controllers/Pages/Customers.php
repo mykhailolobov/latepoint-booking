@@ -17,4 +17,9 @@ class Customers extends Controller
   {
     return view('content.resource.addcustomer');
   }
+
+  public function add_customer(Request $request)
+  {
+    
+  }
 }
