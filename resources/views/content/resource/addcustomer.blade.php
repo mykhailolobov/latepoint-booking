@@ -61,6 +61,18 @@ $configData = Helper::appClasses();
         <div class="card mb-4">
             <h5 class="card-header">General Information</h5>
             <div class="card-body demo-vertical-spacing demo-only-element">
+                <div class="d-flex px-3 mb-3">
+                    <form action="/upload" class="dropzone needsclick" id="dropzone-basic">
+                        <div class="dz-message needsclick">
+                            <i class='bx bxs-tennis-ball' ></i>
+                            Set Avatar
+                        </div>
+                        <div class="fallback">
+                            <input name="file" type="file" />
+                        </div>
+                    </form>
+                </div>
+                
                 <div class="d-flex mb-3">
                     <div class="col-lg-6 px-3">
                         <input type="text" class="form-control" id="defaultFormControlInput" placeholder="First Name" aria-describedby="defaultFormControlHelp" />
@@ -89,6 +101,10 @@ $configData = Helper::appClasses();
                 </div>
             </div>
         </div>
+    </div>
+
+    <div>
+        <button class="btn btn-primary add-customer" type="button">Save Customer</button>
     </div>
 </div>
 
