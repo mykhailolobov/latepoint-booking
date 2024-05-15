@@ -1,0 +1,17 @@
+.card-header {
+    border-bottom: 1px solid #f0f1f5;
+}
+
+.card-body {
+    padding-top: 25px! important;
+}
+
+.form-control {
+    border: none;
+    border-bottom: var(--bs-border-width) solid #d9dee3;
+    border-radius: 0px;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}

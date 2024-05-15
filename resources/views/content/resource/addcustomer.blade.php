@@ -47,6 +47,8 @@ $configData = Helper::appClasses();
 @endsection
 @section('content')
 
+<link href="{{asset('/assets/css/addcustomer_custom.css')}}" rel="stylesheet">
+
 <div class="row">
     <div class="col-lg-12 col-xxl-12 mb-4">
     <div class="card-header mb-0">
