@@ -71,6 +71,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/payments', [Payments::class, 'index'])->name('app-payments');
     Route::get('/customers', [Customers::class, 'index'])->name('app-customers');
 
+    // Customer Section
+    Route::get('/customers/new', [Customers::class, 'add'])->name('add-customer');
+
     // Resources Section
     Route::get('/resource/services', [Services::class, 'index'])->name('resource-services');
     Route::get('/resource/createservices', [Services::class, 'create'])->name('resource-createservices');
