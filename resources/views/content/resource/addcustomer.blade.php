@@ -47,6 +47,7 @@ $configData = Helper::appClasses();
 @endsection
 @section('content')
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/css/intlTelInput.css">
 <link href="{{asset('/assets/css/addcustomer_custom.css')}}" rel="stylesheet">
 
 <div class="row">
@@ -73,8 +74,7 @@ $configData = Helper::appClasses();
                         <input type="email" class="form-control" id="defaultFormControlInput" placeholder="Email Address" aria-describedby="defaultFormControlHelp" />
                     </div>
                     <div class="col-lg-6 px-3">
-                        <!-- TODO -->
-                        <!-- Phone Number -->
+                        <input type="tel" class="form-control" id="phone"  placeholder="201-555-0123" aria-describedby="defaultFormControlHelp" />
                     </div>
                 </div>    
                 <div class="d-flex mb-3">
@@ -91,5 +91,16 @@ $configData = Helper::appClasses();
         </div>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/intlTelInput.min.js"></script>
+<script>
+  const input = document.querySelector("#phone");
+  window.intlTelInput(input, {
+    fixDropdownWidth: false,
+    initialCountry: "us",
+    separateDialCode: true,
+    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/utils.js",
+  });
+</script>
 
 @endsection
