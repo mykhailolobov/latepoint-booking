@@ -66,14 +66,23 @@ $customizerHidden = 'customizer-hide';
           <div class="mb-3 col-6">
             <label for="username" class="form-label">First Name</label>
             <input type="text" class="form-control " id="username" name="firstname" placeholder="First Name" autofocus>
+            @error('firstname')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
           </div>
           <div class="mb-3 col-6">
             <label for="username" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="username" name="lastname" placeholder="Last Name" autofocus>
+            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name" autofocus>
+            @error('lastname')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email">
+            @error('email')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
           </div>
           <div class="mb-3 form-password-toggle">
             <label class="form-label" for="password">Password</label>
@@ -81,6 +90,9 @@ $customizerHidden = 'customizer-hide';
               <input type="password" id="password" class="form-control" name="password" placeholder="" aria-describedby="password" />
               <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
             </div>
+            @error('password')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
           </div>
 
           <div class="mb-3">
@@ -92,6 +104,16 @@ $customizerHidden = 'customizer-hide';
               </label>
             </div>
           </div>
+          @if (session('success'))
+              <div class="link-wrap" style="color: green; font-size: 12px;">
+                  {{ session('success') }}
+              </div>
+          @endif
+          @if (session('error'))
+              <div class="link-wrap" style="color: red; font-size: 12px;">
+                  {{ session('error') }}
+              </div>
+          @endif
           <button class="btn btn-primary d-grid w-100">
             Sign up
           </button>

@@ -69,11 +69,17 @@ class RegisteredUserController extends Controller
             'token' => $token
         ]);
 
-        // dispatch(new \App\Jobs\VerifyEmailJob($details));
-        Auth::attempt([
-            'email' => $request->email,
-            'password' => $request->password
-        ]);
+        $details = [
+            'firstname' => $user->firstname,
+            'lastname' => $user->lastname,
+            'token' => $token,
+            'email' => $user->email
+        ];
+        dispatch(new \App\Jobs\VerifyEmailJob($details));
+        // Auth::attempt([
+        //     'email' => $request->email,
+        //     'password' => $request->password
+        // ]);
         return redirect()->route('verify.email');
     }
     /**
