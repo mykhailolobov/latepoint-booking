@@ -69,18 +69,21 @@
                 </tr>
             </thead>
             <thead>
-                <tr>
-                    <th><input type="text" class="os-table-filter os-form-control"></th>
-                    <th><input type="text" class="os-table-filter os-form-control"></th>
-                    <th><input type="text" class="os-table-filter os-form-control"></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th><input type="text" class="os-table-filter os-form-control"></th>
-                    <th></th>
-                </tr>
+                <form method="GET" action="{{route('search_customer')}}">
+                    <tr>
+                        <th><input type="text" class="id_search" name="id_search" id="id_search" ></th>
+                        <th><input type="text" class="" name="full_name_search" id="full_name_search"></th>
+                        <th><input type="text" class="" name="phone_search" id="phone_search"></th>
+                        <th><input type="text" class="" name="email_search" id="email_search"></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <button type="submit" hidden></button>
+                </form>
             </thead>
             <thead>
                 @foreach ($customers as $key => $customer)
@@ -102,5 +105,12 @@
         </table>
     </div>
 </div>
-
+<script>
+    const searchFields = document.querySelectorAll('#id_search, #full_name_search, #phone_search, #email_search');
+    searchFields.forEach(field => {
+        field.addEventListener('change', function() {
+            this.form.submit(); // Submit the form on change
+        });
+    });
+  </script>
 @endsection

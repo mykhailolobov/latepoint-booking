@@ -74,4 +74,39 @@ class Customers extends Controller
     return redirect()->route('app-customers')->with('success', 'Customer deleted successfully.');
 
   }
+
+  public function search_customer(Request $request) {
+    
+    $id_search = $request->id_search;
+    $full_name_search = $request-> full_name_search;
+    $phone_search = $request->phone_search;
+    $email_search = $request->email_search;
+
+    $query = Customer::query();
+    // dd($request->id_search);
+    if (!empty($id_search)) {
+      $query->where('id', 'LIKE', '%' . $id_search . '%');
+    }
+
+    if (!empty($full_name_search)) {
+      $query->where('first_name', 'LIKE', '%' . $full_name_search . '%');
+    }
+
+    if (!empty($full_name_search)) {
+      $query->where('last_name', 'LIKE', '%' . $full_name_search . '%');
+    }
+
+    if (!empty($phone_search)) {
+      $query->where('phone', 'LIKE', '%' . $phone_search . '%');
+    }
+
+    if (!empty($email_search)) {
+      $query->where('email', 'LIKE', '%' . $email_search . '%');
+    }
+
+    $customers = $query->paginate(20);
+
+    // dd($customers);
+    return view('content.tables.tables-customers', ['customers'=>$customers]);
+  }
 }

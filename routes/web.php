@@ -77,6 +77,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/edit_customer/{id}', [Customers::class, 'edit_customer'])->name('edit_customer');
     Route::post('/customers', [Customers::class, 'update_customer'])->name('update_customer');
     Route::get('/delete_customer/{id}', [Customers::class, 'delete_customer']);
+    Route::get('/customers/search', [Customers::class, 'search_customer'])->name('search_customer');
 
 
 

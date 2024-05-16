@@ -35,3 +35,7 @@
     display: flex;
     justify-content: space-between;
 }
+
+.id_search {
+    width: 40px;
+}
