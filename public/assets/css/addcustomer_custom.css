@@ -30,3 +30,8 @@
 .iti {
     width: 100%;
 }
+
+.edit_btns {
+    display: flex;
+    justify-content: space-between;
+}

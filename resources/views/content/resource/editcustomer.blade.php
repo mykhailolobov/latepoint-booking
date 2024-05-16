@@ -58,13 +58,13 @@ $configData = Helper::appClasses();
         </div>
     </div>
     <div class="col-md-12">
-        <form method="POST" class="add-customer" action="{{ route('add_customer') }}" enctype="multipart/form-data">
+        <form  method="POST" action="{{ route('update_customer', $customer)}}" enctype="multipart/form-data">
             @csrf
             <div class="card mb-4">
                 <h5 class="card-header">General Information</h5>
                 <div class="card-body demo-vertical-spacing demo-only-element">
                     <div class="d-flex px-3 mb-3">
-                        <div action="{{ route('add_customer') }}" class="dropzone needsclick" id="dropzone-basic">
+                        <div action="/upload" class="dropzone needsclick" id="dropzone-basic">
                             <div class="dz-message needsclick">
                                 <i class='bx bxs-tennis-ball' ></i>
                                 Set Avatar
@@ -76,36 +76,37 @@ $configData = Helper::appClasses();
                     </div>
                     <div class="d-flex mb-3">
                         <div class="col-lg-6 px-3">
-                            <input type="text" class="form-control" name="first_name" placeholder="First Name" required aria-describedby="defaultFormControlHelp" />
+                            <input type="text" class="form-control" name="first_name" placeholder="First Name" required aria-describedby="defaultFormControlHelp" value="{{$customer->first_name}}"/>
                         </div>
                         <div class="col-lg-6 px-3">
-                            <input type="text" class="form-control" name="last_name" placeholder="Last Name" required aria-describedby="defaultFormControlHelp" />
+                            <input type="text" class="form-control" name="last_name" placeholder="Last Name" required aria-describedby="defaultFormControlHelp" value="{{$customer->last_name}}"/>
                         </div>
                     </div>
                     <div class="d-flex mb-3">
                         <div class="col-lg-6 px-3">
-                            <input type="email" class="form-control" name="email" placeholder="Email Address" required aria-describedby="defaultFormControlHelp" />
+                            <input type="email" class="form-control" name="email" placeholder="Email Address" required aria-describedby="defaultFormControlHelp" value="{{$customer->email}}"/>
                         </div>
                         <div class="col-lg-6 px-3">
-                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="201-555-0123" aria-describedby="defaultFormControlHelp" />
+                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="201-555-0123" aria-describedby="defaultFormControlHelp" value="{{$customer->phone}}"/>
                         </div>
                     </div>    
                     <div class="d-flex mb-3">
                         <div class="col-lg-12 px-3">
-                            <textarea class="form-control" name="notes" placeholder="Notes by Customer" aria-describedby="defaultFormControlHelp" ></textarea>
+                            <textarea class="form-control" name="notes" placeholder="Notes by Customer" aria-describedby="defaultFormControlHelp" >{{$customer->notes}}</textarea>
                         </div>
                     </div>
                     <div class="d-flex mb-3">
                         <div class="col-lg-12 px-3">
-                            <textarea class="form-control" name="admin_notes" placeholder="Notes by admins, only visible to admins" aria-describedby="defaultFormControlHelp" ></textarea>
+                            <textarea class="form-control" name="admin_notes" placeholder="Notes by admins, only visible to admins" aria-describedby="defaultFormControlHelp" >{{$customer->admin_notes}}</textarea>
                         </div>
                     </div>
+                    <input type="text" name="id" hidden value="{{$customer->id}}">
                 </div>
             </div>
             <div>
                 <button type="submit" class="btn btn-primary add-customer">Save Customer</button>
-                <button type="submit" class="btn btn-primary add-customer">Delete Customer</button>
-                {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
+                <a href="/delete_customer/{{$customer->id}}" class="btn btn-danger add-customer">Delete Customer</a>
+                
             </div>
         </form>
     </div>
