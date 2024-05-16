@@ -58,8 +58,7 @@ $configData = Helper::appClasses();
         </div>
     </div>
     <div class="col-md-12">
-        <form action="{{ route('add_customer') }}" method="POST">
-            @csrf
+        <form method="POST" class="add-customer">
             <div class="card mb-4">
                 <h5 class="card-header">General Information</h5>
                 <div class="card-body demo-vertical-spacing demo-only-element">
@@ -104,6 +103,7 @@ $configData = Helper::appClasses();
             </div>
             <div>
                 <button type="submit" class="btn btn-primary add-customer">Save Customer</button>
+                <meta name="csrf-token" content="{{ csrf_token() }}">
             </div>
         </form>
     </div>
@@ -119,6 +119,39 @@ $configData = Helper::appClasses();
         initialCountry: "us",
         separateDialCode: true,
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/utils.js",
+    });
+
+    $('form.add-customer').on('submit', function(e) {
+        e.preventDefault();
+        const csrf_token = $('meta[name="csrf-token"]').attr('content');
+        const first_name = $('input[name="first_name"]').val();
+        const last_name = $('input[name="last_name"]').val();
+        const email = $('input[name="email"]').val();
+        const phone = $('input[name="phone"]').val();
+        const notes = $('textarea[name="notes"]').val();
+        const admin_notes = $('textarea[name="admin_notes"]').val();
+
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('add_customer') }}",
+            headers: {
+                'X-CSRF-TOKEN': csrf_token
+            },
+            data: {
+                first_name: first_name,
+                last_name: last_name,
+                email: email,
+                phone: phone,
+                notes: notes,
+                admin_notes: admin_notes,
+            },
+            success: function() {
+                console.log('success');
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
     });
 </script>
 
