@@ -6,8 +6,25 @@ $configData = Helper::appClasses();
 
 @section('title', 'Latepoint')
 
+@section('page-style')
+    @vite(['resources/assets/vendor/scss/pages/card-analytics.scss'])
+@endsection
+
+@section('vendor-style')
+    @vite(['resources/assets/vendor/libs/flatpickr/flatpickr.scss', 'resources/assets/vendor/libs/select2/select2.scss', 'resources/assets/vendor/libs/dropzone/dropzone.scss'])
+@endsection
+
+@section('vendor-script')
+    @vite(['resources/assets/vendor/libs/flatpickr/flatpickr.js', 'resources/assets/vendor/libs/select2/select2.js', 'resources/assets/vendor/libs/dropzone/dropzone.js'])
+@endsection
+
+@section('page-script')
+    @vite(['resources/assets/js/ui-cards-analytics.js', 'resources/assets/js/forms-selects.js', 'resources/assets/js/forms-file-upload.js'])
+@endsection
+
 @section('content')
 <link href="{{asset('/assets/css/settings.css')}}" rel="stylesheet">
+<link href="{{asset('/assets/css/admin.css')}}" rel="stylesheet">
 
 <div class="row">
     <div class="col-lg-12 col-xxl-12 mb-4 order-3 order-xxl-1">
@@ -39,6 +56,54 @@ $configData = Helper::appClasses();
             <hr>
         </div>
         <div class="col-md-12">
+            <div class="os-taxes-w os-form-blocks-w os-taxes-ordering-w" data-order-update-route="taxes__update_order">
+                <form data-os-form-block-id="tax_FfgQTHyJ" data-os-action="taxes__save" class="os-form-block os-form-block-type-percentage os-is-editing">
+                <div class="os-form-block-i">
+                    <div class="os-form-block-header">
+                        <div class="os-form-block-drag"></div>
+                        <div class="os-form-block-name">New Tax</div>
+                        <div class="os-form-block-type">percentage</div>
+                        <div class="os-form-block-edit-btn"><i class="latepoint-icon latepoint-icon-edit-3"></i></div>
+                    </div>
+                    <div class="os-form-block-params os-form-w">
+                  <div class="sub-section-row">
+                    <div class="sub-section-label">
+                      <h3>Tax Name</h3>
+                    </div>
+                    <div class="sub-section-content">
+                      <div class="os-form-group os-form-textfield-group os-form-group-bordered no-label"><input type="text" placeholder="Enter Tax Name" name="taxes[tax_FfgQTHyJ][name]" value="" theme="bordered" class="os-form-block-name-input os-form-control" id="taxes_tax_ffgqthyj_name"></div>        </div>
+                  </div>
+            
+                  <div class="sub-section-row">
+                    <div class="sub-section-label">
+                      <h3>Tax Type</h3>
+                    </div>
+                    <div class="sub-section-content">
+                        <div class="os-row">
+                            <div class="os-col-4">
+                                  <div class="os-form-group os-form-select-group os-form-group-transparent"><select name="taxes[tax_FfgQTHyJ][type]" class="os-form-block-type-select tax-type-selector os-form-control" id="taxes_tax_ffgqthyj_type"><option value="percentage" selected="">Percentage of the booking price</option><option value="fixed">Fixed amount</option></select></div>		        </div>
+                            <div class="os-col-8">
+                                <div class="os-form-group os-form-textfield-group os-form-group-bordered has-value no-label"><input type="text" placeholder="Enter Tax Value" name="taxes[tax_FfgQTHyJ][value]" value="0" theme="bordered" class="os-form-block-value-input os-form-control" id="taxes_tax_ffgqthyj_value"></div>		        </div>
+                        </div>
+                    </div>
+                    </div>
+            
+                    <div class="os-form-block-buttons">
+                        <a href="#" class="btn btn-danger pull-left" data-os-prompt="Are you sure you want to delete this tax?" data-os-after-call="latepointTaxesAddon.latepoint_tax_removed" data-os-pass-this="yes" data-os-action="taxes__destroy" data-os-params="id=tax_FfgQTHyJ">Delete</a>
+                        <button type="submit" class="os-form-block-save-btn btn btn-primary"><span>Save Tax</span></button>
+                    </div>
+                    </div>
+                </div>
+                <input type="hidden" name="taxes[tax_FfgQTHyJ][id]" value="tax_FfgQTHyJ" class="os-form-block-id" id="taxes_tax_ffgqthyj_id">	
+                <a href="#" data-os-prompt="Are you sure you want to delete this tax?" data-os-after-call="latepointTaxesAddon.latepoint_tax_removed" data-os-pass-this="yes" data-os-action="taxes__destroy" data-os-params="id=tax_FfgQTHyJ" class="os-remove-form-block"><i class="latepoint-icon latepoint-icon-cross"></i></a>
+                </form>
+            </div>
+            <div class="os-add-box" data-os-after-call="latepointTaxesAddon.init_new_tax_form" data-os-action="taxes__new_form" data-os-output-target-do="append" data-os-output-target=".os-taxes-w">
+                <div class="add-box-graphic-w">
+                    <div class="add-box-plus"><i class="latepoint-icon latepoint-icon-plus4"></i></div>
+                </div>
+                <div class="add-box-label">Add Tax</div>
+            </div>
         </div>
     </div>
 </div>

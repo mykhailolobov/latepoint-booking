@@ -67,7 +67,7 @@
                                     <div class="weekday-schedule-w">
                                         <div class="ws-head-w">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" />
+                                                <input type="checkbox" class="switch-input" onchange="changeCheck(this)" checked />
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -85,8 +85,67 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="weekday-schedul-form">
-                                            <div class="ws-period"></div>
+                                        <div class="weekday-schedule-form">
+                                            <div class="ws-period">
+                                                <div class="os-time-group os-time-input-w as-period">
+                                                    <label for="work_periods[1][start_time][formatted_value]">Start</label>
+                                                    <div class="os-time-input-fields">
+                                                        <input type="text" placeholder="HH:MM"
+                                                            name="work_periods[1][start_time][formatted_value]"
+                                                            value="01:05" class="os-form-control os-mask-time"
+                                                            inputmode="text">
+                                                        <input type="hidden" name="work_periods[1][start_time][ampm]"
+                                                            value="am" class="ampm-value-hidden-holder">
+                                                        <div class="time-ampm-w">
+                                                            <div class="time-ampm-select time-am active"
+                                                                data-ampm-value="am">
+                                                                am
+                                                            </div>
+                                                            <div class="time-ampm-select time-pm " data-ampm-value="pm">
+                                                                pm
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="os-time-group os-time-input-w as-period">
+                                                    <label for="work_periods[1][end_time][formatted_value]">Finish</label>
+                                                    <div class="os-time-input-fields">
+                                                        <input type="text" placeholder="HH:MM"
+                                                            name="work_periods[1][end_time][formatted_value]" value="05:00"
+                                                            class="os-form-control os-mask-time" inputmode="text">
+                                                        <input type="hidden" name="work_periods[1][end_time][ampm]"
+                                                            value="pm" class="ampm-value-hidden-holder">
+                                                        <div class="time-ampm-w">
+                                                            <div class="time-ampm-select time-am " data-ampm-value="am">
+                                                                am
+                                                            </div>
+                                                            <div class="time-ampm-select time-pm active"
+                                                                data-ampm-value="pm">
+                                                                pm
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><input type="hidden" name="work_periods[1][week_day]" value="1"
+                                                    id="work_periods_1_week_day">
+                                                <input type="hidden" name="work_periods[1][is_active]" value="1"
+                                                    class="is-active" id="work_periods_1_is_active">
+                                                <input type="hidden" name="work_periods[1][agent_id]" value="0"
+                                                    id="work_periods_1_agent_id">
+                                                <input type="hidden" name="work_periods[1][location_id]" value="0"
+                                                    id="work_periods_1_location_id">
+                                                <input type="hidden" name="work_periods[1][service_id]" value="0"
+                                                    id="work_periods_1_service_id">
+                                            </div>
+                                            <div class="ws-period-add" data-="" data-os-params="week_day=1"
+                                                data-os-before-after="before"
+                                                data-os-after-call="latepoint_init_work_period_form"
+                                                data-os-action="settings__load_work_period_form">
+                                                <div class="add-period-graphic-w">
+                                                    <div class="add-period-plus">
+                                                        <i class="bx bxs-plus-square"></i></div>
+                                                </div>
+                                                <div class="add-period-label">Add another work period for Monday</div>
+                                            </div>
                                         </div>
                                     </div>
                                 @endforeach
@@ -161,8 +220,8 @@
                                         data-os-lightbox-classes="width-700 " data-os-output-target="lightbox"
                                         data-os-action="settings__custom_day_schedule_form"
                                         data-os-params="target_date=2024-06-05&amp;agent_id=0&amp;service_id=0&amp;location_id=0"><i
-                                            class="bx bx-edit-alt"></i></a><a href="#"
-                                        data-os-pass-this="yes" data-os-after-call="latepoint_custom_day_removed"
+                                            class="bx bx-edit-alt"></i></a><a href="#" data-os-pass-this="yes"
+                                        data-os-after-call="latepoint_custom_day_removed"
                                         data-os-action="settings__remove_custom_day_schedule"
                                         data-os-params="agent_id=0&amp;service_id=0&amp;location_id=0&amp;date=2024-06-05"
                                         data-os-prompt="Are you sure you want to remove this day off?"
@@ -192,5 +251,14 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="{{asset('/assets/jquery.js')}}"></script>
+    <script>
+        $('.ws-head').click(function() {
+            $(this).parents('.weekday-schedule-w').toggleClass('is-editing');
+        });
 
+        function changeCheck(obj) {
+            $(obj).parents('.weekday-schedule-w').toggleClass('day-off');
+        }
+    </script>
 @endsection

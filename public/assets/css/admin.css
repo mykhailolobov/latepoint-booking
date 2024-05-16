@@ -5476,7 +5476,7 @@ form > .os-form-sub-header:first-child {
 }
 
 .os-section-header {
-  border-bottom: 5px solid #f1f4fb;
+  border-bottom: 5px solid #dce0eb;
   margin-bottom: 20px;
 }
 .os-section-header.connected {
@@ -5488,8 +5488,8 @@ form > .os-form-sub-header:first-child {
   font-size: 12px;
   letter-spacing: 2px;
   margin: 0px;
-  padding: 6px 8px 3px 8px;
-  background-color: #f1f4fb;
+  padding: 6px 8px 4px 8px;
+  background-color: #dce0eb;
   color: #525461;
   display: inline-block;
 }
@@ -25529,6 +25529,10 @@ body.latepoint .os-form-phonefield-group:not(.has-value) .iti {
 
 .latepoint-admin .iti__country-list {
   font-size: 14px;
+}
+
+.pull-left {
+  margin-right: auto;
 }
 
 /*# sourceMappingURL=admin.css.map */
