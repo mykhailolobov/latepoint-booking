@@ -26,15 +26,15 @@
 
 @section('page-script')
 @vite([
-'resources/assets/js/tables-datatables-advanced.js',
-'resources/assets/js/forms-pickers.js',
-'resources/assets/js/forms-selects.js',
-'resources/assets/js/form-basic-inputs.js',
+// 'resources/assets/js/tables-datatables-advanced.js',
+// 'resources/assets/js/forms-pickers.js',
+// 'resources/assets/js/forms-selects.js',
+// 'resources/assets/js/form-basic-inputs.js',
 ])
 @endsection
 
 @section('content')
-
+<link href="{{asset('/assets/css/addcustomer_custom.css')}}" rel="stylesheet">
 <style type="text/css">
     .card-header {
         display: flex;
@@ -68,6 +68,37 @@
                     <th>Actions</th>
                 </tr>
             </thead>
+            <thead>
+                <tr>
+                    <th><input type="text" class="os-table-filter os-form-control"></th>
+                    <th><input type="text" class="os-table-filter os-form-control"></th>
+                    <th><input type="text" class="os-table-filter os-form-control"></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th><input type="text" class="os-table-filter os-form-control"></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <thead>
+                @foreach ($customers as $key => $customer)
+                <tr>
+                    <th>{{$customer->id}}</th>
+                    <th>{{$customer->first_name}}." ".{{$customer->last_name}}</th>
+                    <th>{{$customer->phone}}</th>
+                    <th>{{$customer->email}}</th>
+                    <th>0</th>
+                    <th>n/a</th>
+                    <th>Past</th>
+                    <th>{{$customer->user_id}}</th>
+                    <th>{{$customer->created_at}}</th>
+                    <th><a href="{{ route('edit_customer', $customer->id) }}">edit</a></th>
+                </tr>
+                @endforeach
+            </thead>
+
         </table>
     </div>
 </div>
