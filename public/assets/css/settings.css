@@ -1,86 +1,417 @@
 .acitive-tab {
-    border-bottom: 5px solid #696cff;
-}   
+  border-bottom: 5px solid #696cff;
+}
+
+.card {
+  border: 1px solid #e1e3ea;
+  box-shadow: none;
+}
 
 .card-header {
-    border-bottom: 1px solid #c5c5c5;
+  border-bottom: 1px solid #c5c5c5;
 }
 
 .sub-section-row {
-    display: flex;
-    border-top: 1px solid #e1e3ea;
-    margin-top: 0 !important;
+  display: flex;
+  border-top: 1px solid #e1e3ea;
+  margin-top: 0 !important;
 }
 
 .sub-section-row:first-child {
-    border-top: none;
+  border-top: none;
 }
 
 .sub-section-row .sub-section-label {
-    padding: 20px 10px 20px 30px;
-    flex: 0 0 200px;
-    border-right: 1px solid #e1e3ea;
-    background-image: linear-gradient(45deg, #fff, rgba(0, 40, 132, 0.02));
+  padding: 20px 10px 20px 30px;
+  flex: 0 0 200px;
+  border-right: 1px solid #e1e3ea;
+  background-image: linear-gradient(45deg, #fff, rgba(0, 40, 132, 0.02));
+  border-bottom-left-radius: 0.5rem;
 }
 
 .sub-section-row .sub-section-content {
-    padding: 20px;
-    flex: 1;
+  padding: 20px;
+  flex: 1;
 }
 
 .sub-section-row .sub-section-label h3 {
-    font-size: 16px;
-    margin-bottom: 0px;
-    padding-top: 13px;
-    color: #5c5f83;
+  font-size: 16px;
+  margin-bottom: 0px;
+  padding-top: 13px;
+  color: #5c5f83;
 }
 
-.form-label, .col-form-label {
-    text-transform: none;
-    display: block;
-    margin-bottom: 1px;
-    cursor: default;
-    font-size: 14px;
-    font-weight: 500;
-    color: #8e99bd;
-    font-weight: 500;
+.form-label,
+.col-form-label {
+  text-transform: none;
+  display: block;
+  margin-bottom: 1px;
+  cursor: default;
+  font-size: 14px;
+  font-weight: 500;
+  color: #8e99bd;
+  font-weight: 500;
 }
 
 .switch-toggle-slider {
-    border: none !important;
+  border: none !important;
 }
 
 .switch-off {
-    background: rgba(48, 73, 144, 0.17);
+  background: rgba(48, 73, 144, 0.17);
 }
 
 .switch .switch-toggle-slider:after {
-    top: 0;
-    background: white;
+  top: 0;
+  background: white;
 }
 
 .switch-label {
-    cursor: pointer;
-    color: #2D303A;
-    font-size: 16px;
+  cursor: pointer;
+  color: #2d303a;
+  font-size: 16px;
 }
 
 .switch-label p {
-    margin-top: 4px;
-    color: #8e99bd;
-    display: inline-block;
-    font-size: 13px;
+  margin-top: 4px;
+  color: #8e99bd;
+  display: inline-block;
+  font-size: 13px;
 }
 
 .alert-secondary {
-    padding: 10px 15px;
-    font-weight: 500;
-    margin-bottom: 20px;
-    background: #f9f9f9;
-    color: #8e99bd;
-    border: 2px solid #e7e7ef;
+  padding: 10px 15px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  background: #f9f9f9;
+  color: #8e99bd;
+  border: 2px solid #e7e7ef;
 }
 
 .dropzone:hover {
-    border-color: #2652E4;
+  border-color: #2652e4;
+}
+
+/* Schedule */
+.white-box-content {
+  padding: 30px;
+}
+.weekday-schedules-w {
+  margin-bottom: 20px;
+}
+
+.weekday-schedule-w {
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 0px;
+}
+
+.weekday-schedule-w .ws-head-w {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.weekday-schedule-w .ws-head:hover .ws-day-name {
+  border-bottom: 1px solid #38406d;
+}
+
+.weekday-schedule-w .ws-day-hours span:hover {
+  color: #2652e4;
+}
+
+.ws-head-w .switch {
+  width: 30px;
+}
+
+.weekday-schedule-w .ws-head {
+  flex: 1;
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  padding: 15px 0px;
+}
+
+.weekday-schedule-w .ws-day-name {
+  color: #38406d;
+  font-size: 19px;
+  font-weight: 500;
+  position: relative;
+  margin-right: 20px;
+  border-bottom: 1px solid transparent;
+}
+
+.weekday-schedule-w .ws-day-name:after {
+  width: 0%;
+  background-color: #c45252;
+  opacity: 0.7;
+  height: 2px;
+  top: 55%;
+  left: 0px;
+  position: absolute;
+  transform: translateY(-50%);
+  content: '';
+  display: block;
+}
+
+.weekday-schedule-w .ws-day-hours {
+  text-align: right;
+  color: #8e99bd;
+  font-size: 12px;
+  font-weight: 500;
+  margin-left: auto;
+  cursor: pointer;
+  padding-right: 25px;
+}
+
+.weekday-schedule-w .ws-day-hours span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.weekday-schedule-w .ws-head .wp-edit-icon {
+  font-size: 14px;
+  color: #2652e4;
+  position: absolute;
+  top: 56%;
+  right: 0px;
+  transform: translate(0%, -50%);
+}
+
+.weekday-schedule-w:last-child {
+  border-bottom: none;
+}
+
+.os-form-buttons {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding-top: 20px;
+}
+
+.os-form-buttons .os-form-group {
+  display: inline-block;
+  margin-bottom: 0px;
+}
+
+.custom-day-work-periods {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.custom-day-work-periods + .sub-level {
+  margin-top: 40px;
+}
+
+.custom-day-work-period {
+  width: 140px;
+  flex: 0 0 140px;
+  text-align: center;
+  margin: 0px 15px 15px 0px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+.custom-day-work-period.is-range {
+  width: 250px;
+  flex: 0 0 250px;
+}
+.custom-day-work-period .custom-day-work-period-i {
+  position: relative;
+  padding: 24px 20px;
+  border: 1px solid #e1e3ea;
+  border-radius: 6px;
+  background-color: #fff;
+  transition: all 0.2s ease;
+}
+.custom-day-work-period .custom-day-work-period-i:before {
+  top: 50%;
+  left: 0px;
+  right: 0px;
+  background-color: rgba(0, 0, 0, 0.05);
+  height: 1px;
+  position: absolute;
+  content: '';
+}
+.custom-day-work-period .custom-day-number {
+  font-size: 46px;
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 5px;
+  color: #2652e4;
+}
+.custom-day-work-period .remove-custom-day,
+.custom-day-work-period .edit-custom-day {
+  position: absolute;
+  top: 0px;
+  font-size: 14px;
+  padding: 10px;
+  text-decoration: none;
+  line-height: 1;
+  transition: all 0.2s ease;
+  opacity: 0;
+  z-index: 9999;
+  outline: none;
+  box-shadow: none;
+}
+.custom-day-work-period .remove-custom-day.os-loading,
+.custom-day-work-period .edit-custom-day.os-loading {
+  opacity: 1;
+  color: transparent;
+}
+.custom-day-work-period .remove-custom-day.os-loading:after,
+.custom-day-work-period .edit-custom-day.os-loading:after {
+  display: block;
+  content: '';
+  width: 15px !important;
+  height: 15px !important;
+  border-bottom: 2px solid #2652e4;
+  border-left: 2px solid #2652e4;
+  border-top: 2px solid #2652e4;
+  border-right: 2px solid rgba(255, 255, 255, 0);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: os-loading 700ms infinite linear;
+  background-color: transparent !important;
+  z-index: 999;
+}
+.custom-day-work-period .remove-custom-day {
+  right: 0px;
+  color: #d24646;
+  transform: translateX(-10px);
+}
+.custom-day-work-period .edit-custom-day {
+  left: 0px;
+  transform: translateX(10px);
+}
+.custom-day-work-period:hover {
+  transform: translateY(-5px);
+}
+.custom-day-work-period:hover .custom-day-work-period-i {
+  border-color: #c3c7d5;
+}
+.custom-day-work-period:hover .remove-custom-day,
+.custom-day-work-period:hover .edit-custom-day {
+  transform: translateX(0px);
+  opacity: 1;
+}
+.custom-day-work-period .custom-day-periods {
+  padding-top: 10px;
+}
+.custom-day-work-period .custom-day-periods .custom-day-period {
+  background-color: #f1f4fb;
+  color: #2d303a;
+  color: #8e99bd;
+  padding: 4px;
+  border-radius: 3px;
+  font-weight: 500;
+  font-size: 14px;
+}
+.custom-day-work-period .custom-day-periods .custom-day-period + .custom-day-period {
+  margin-top: 10px;
+}
+.custom-day-work-period .custom-day-month {
+  font-size: 19.2px;
+  line-height: 1;
+  color: #9da8d5;
+}
+.custom-day-work-period.custom-day-off .custom-day-number {
+  color: #cd4949;
+}
+.custom-day-work-period.custom-day-off .custom-day-month {
+  color: #cf9797;
+}
+
+.add-custom-day-w {
+  border: 3px dotted rgba(0, 0, 0, 0.1);
+  margin-right: 15px;
+  width: 140px;
+  flex: 0 0 140px;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  display: block;
+  outline: none;
+  box-shadow: none;
+  min-height: 115px;
+  border-radius: 6px;
+}
+.add-custom-day-w .add-custom-day-i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.add-custom-day-w .add-day-graphic-w {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  margin: 0px auto;
+}
+.add-custom-day-w .add-day-plus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+  background-color: #2652e4;
+  box-shadow: 0px 0px 0px 10px rgba(208, 213, 220, 0.3);
+  color: #fff;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s cubic-bezier(0.25, 1.4, 0.5, 1.35);
+}
+.add-custom-day-w .add-day-plus i {
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  font-size: 10px;
+  transform: translate(-45%, -47%);
+  transition: all 0.2s ease;
+}
+.add-custom-day-w:hover {
+  border-color: #2652e4;
+  border-style: solid;
+}
+.add-custom-day-w:hover .add-day-plus {
+  box-shadow: 0px 0px 0px 15px rgba(208, 213, 220, 0.3);
+  transform: translate(-50%, -50%) scale(1.2);
+}
+.add-custom-day-w:hover .add-day-label {
+  transform: translateY(5px);
+}
+.add-custom-day-w .add-day-label {
+  color: #2652e4;
+  font-weight: 500;
+  font-size: 19.2px;
+  margin-top: 5px;
+  white-space: nowrap;
+  transition: all 0.2s cubic-bezier(0.25, 1.4, 0.5, 1.35);
+}
+.add-custom-day-w.os-loading {
+  animation: animate_appointment_small_box 0.8s ease infinite;
+}
+.add-custom-day-w.os-loading .add-day-plus {
+  color: rgba(255, 255, 255, 0.4);
+}
+.add-custom-day-w.os-loading .add-day-plus:after {
+  display: block;
+  content: '';
+  width: 52px !important;
+  height: 52px !important;
+  border-bottom: 2px solid #2652e4;
+  border-left: 2px solid #2652e4;
+  border-top: 2px solid #2652e4;
+  border-right: 2px solid rgba(255, 255, 255, 0);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: os-loading 700ms infinite linear;
+  background-color: transparent !important;
+  z-index: 999;
 }
