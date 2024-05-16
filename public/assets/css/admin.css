@@ -25531,4 +25531,8 @@ body.latepoint .os-form-phonefield-group:not(.has-value) .iti {
   font-size: 14px;
 }
 
+.pull-left {
+  margin-right: auto;
+}
+
 /*# sourceMappingURL=admin.css.map */
