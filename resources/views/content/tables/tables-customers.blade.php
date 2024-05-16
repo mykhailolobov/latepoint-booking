@@ -86,7 +86,7 @@
                 @foreach ($customers as $key => $customer)
                 <tr>
                     <th>{{$customer->id}}</th>
-                    <th>{{$customer->first_name}}." ".{{$customer->last_name}}</th>
+                    <th>{{$customer->first_name}} {{$customer->last_name}}</th>
                     <th>{{$customer->phone}}</th>
                     <th>{{$customer->email}}</th>
                     <th>0</th>

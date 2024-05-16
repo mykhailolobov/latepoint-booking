@@ -74,6 +74,12 @@ Route::middleware('auth')->group(function () {
     // Customer Section
     Route::get('/customers/new', [Customers::class, 'add']);
     Route::post('/add_customer', [Customers::class, 'add_customer'])->name('add_customer');
+    Route::get('/edit_customer/{id}', [Customers::class, 'edit_customer'])->name('edit_customer');
+    Route::post('/customers', [Customers::class, 'update_customer'])->name('update_customer');
+    Route::get('/delete_customer/{id}', [Customers::class, 'delete_customer']);
+
+
+
 
     // Resources Section
     Route::get('/resource/services', [Services::class, 'index'])->name('resource-services');

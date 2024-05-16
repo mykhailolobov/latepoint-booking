@@ -23,7 +23,6 @@ class Customers extends Controller
 
   public function add_customer(Request $request)
   {
-    dd($request);
     $customer = new Customer();
     $customer->user_id = $request->user()['id'];
     $customer->first_name = $request->first_name;
@@ -44,5 +43,35 @@ class Customers extends Controller
 
     $customer->save();
     return redirect()->route('app-customers')->with('success', 'Customer created successfully.');
+  }
+
+  public function edit_customer($id)
+  {
+    $customer = Customer::findOrFail($id);
+    return view('content.resource.editcustomer', compact('customer'));
+  }
+
+  public function update_customer(Request $request) {
+    // dd($request->id);
+    $customer = Customer::findOrFail($request->id);
+    $customer->first_name = $request->first_name;
+    $customer->last_name = $request->last_name;
+    $customer->email = $request->email;
+    $customer->phone = $request->phone;
+    $customer->status = 'Active'; // TODO
+    $customer->notes = $request->notes;
+    $customer->admin_notes = $request->admin_notes;
+
+    $customer->save();
+    return redirect()->route('app-customers')->with('success', 'Customer updated successfully.');
+  }
+
+  public function delete_customer($id)
+  {
+    // dd($id);
+    $customer = Customer::findOrFail($id);
+    $customer->delete();
+    return redirect()->route('app-customers')->with('success', 'Customer deleted successfully.');
+
   }
 }
