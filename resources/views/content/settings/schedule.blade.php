@@ -24,6 +24,7 @@
 
 @section('content')
     <link href="{{ asset('/assets/css/settings.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/css/admin.css') }}" rel="stylesheet">
     @php
         $week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
@@ -167,14 +168,14 @@
                         <div class="white-box-content">
                             <div class="custom-day-work-periods">
                                 <div class="custom-day-work-period">
-                                    <a href="#" title="Edit Day Schedule" class="edit-custom-day"
+                                    <a href="javascript:;" title="Edit Day Schedule" class="edit-custom-day"
                                         data-os-after-call="latepoint_init_custom_day_schedule"
                                         data-os-lightbox-classes="width-700 " data-os-output-target="lightbox"
                                         data-os-action="settings__custom_day_schedule_form"
                                         data-os-params="target_date=2024-06-06&amp;agent_id=0&amp;service_id=0&amp;location_id=0">
                                         <i class="bx bx-edit-alt"></i>
                                     </a>
-                                    <a href="#" data-os-pass-this="yes"
+                                    <a href="javascript:;" data-os-pass-this="yes"
                                         data-os-after-call="latepoint_custom_day_removed"
                                         data-os-action="settings__remove_custom_day_schedule"
                                         data-os-params="agent_id=0&amp;service_id=0&amp;location_id=0&amp;date=2024-06-06"
@@ -215,12 +216,12 @@
                         <div class="white-box-content">
                             <div class="custom-day-work-periods">
                                 <div class="custom-day-work-period custom-day-off">
-                                    <a href="#" title="Edit Day Schedule" class="edit-custom-day"
+                                    <a href="javascript:;" title="Edit Day Schedule" class="edit-custom-day"
                                         data-os-after-call="latepoint_init_custom_day_schedule"
                                         data-os-lightbox-classes="width-700 " data-os-output-target="lightbox"
                                         data-os-action="settings__custom_day_schedule_form"
                                         data-os-params="target_date=2024-06-05&amp;agent_id=0&amp;service_id=0&amp;location_id=0"><i
-                                            class="bx bx-edit-alt"></i></a><a href="#" data-os-pass-this="yes"
+                                            class="bx bx-edit-alt"></i></a><a href="javascript:;" data-os-pass-this="yes"
                                         data-os-after-call="latepoint_custom_day_removed"
                                         data-os-action="settings__remove_custom_day_schedule"
                                         data-os-params="agent_id=0&amp;service_id=0&amp;location_id=0&amp;date=2024-06-05"
@@ -260,5 +261,28 @@
         function changeCheck(obj) {
             $(obj).parents('.weekday-schedule-w').toggleClass('day-off');
         }
+
+        $('body').on('click', '.time-ampm-select', function() {
+            $(this).toggleClass('active');
+            $(this).siblings('.time-ampm-select').toggleClass('active');
+        });
+        
+        $('body').on('click', '.ws-period-remove', function() {
+            $(this).parents('.ws-period').remove(); 
+        });
+
+        $('body').on('click', '.remove-custom-day', function () {
+            if (confirm($(this).attr('data-os-prompt'))) {
+                $(this).parents('.custom-day-work-period').remove();
+            }
+        });
+
+        $('.ws-period-add').click(function() {
+            $(this).before($(`
+                <div class="ws-period"><div class="os-time-group os-time-input-w as-period"><label for="work_periods[new_1_973392][start_time][formatted_value]">Start</label><div class="os-time-input-fields"><input type="text" placeholder="HH:MM" name="work_periods[new_1_973392][start_time][formatted_value]" value="08:00" class="os-form-control os-mask-time" inputmode="text"><input type="hidden" name="work_periods[new_1_973392][start_time][ampm]" value="am" class="ampm-value-hidden-holder"><div class="time-ampm-w"><div class="time-ampm-select time-am active" data-ampm-value="am">am</div><div class="time-ampm-select time-pm " data-ampm-value="pm">pm</div></div></div></div><div class="os-time-group os-time-input-w as-period"><label for="work_periods[new_1_973392][end_time][formatted_value]">Finish</label><div class="os-time-input-fields"><input type="text" placeholder="HH:MM" name="work_periods[new_1_973392][end_time][formatted_value]" value="06:00" class="os-form-control os-mask-time" inputmode="text"><input type="hidden" name="work_periods[new_1_973392][end_time][ampm]" value="pm" class="ampm-value-hidden-holder"><div class="time-ampm-w"><div class="time-ampm-select time-am " data-ampm-value="am">am</div><div class="time-ampm-select time-pm active" data-ampm-value="pm">pm</div></div></div></div><input type="hidden" name="work_periods[new_1_973392][week_day]" value="1" id="work_periods_new_1_973392_week_day"><input type="hidden" name="work_periods[new_1_973392][is_active]" value="1" class="is-active" id="work_periods_new_1_973392_is_active"><input type="hidden" name="work_periods[new_1_973392][agent_id]" value="0" id="work_periods_new_1_973392_agent_id"><input type="hidden" name="work_periods[new_1_973392][location_id]" value="0" id="work_periods_new_1_973392_location_id"><input type="hidden" name="work_periods[new_1_973392][service_id]" value="0" id="work_periods_new_1_973392_service_id"><button class="ws-period-remove"><i class="latepoint-icon latepoint-icon-x"></i></button></div>
+            `))
+        });
+
+        
     </script>
 @endsection

@@ -46,7 +46,7 @@
                     </div>
                     <div class="os-default-roles-w mb-4 os-form-blocks-w">
                         <form action="" data-os-action="roles__save"
-                            class="os-form-block os-user-type-form os-is-editing">
+                            class="os-form-block os-user-type-form ">
                             <div class="os-form-block-i">
                                 <div class="os-form-block-header">
                                     <div class="os-form-block-drag"></div>
@@ -108,7 +108,7 @@
                             </div>
                         </form>
                         <form action="" data-os-action="roles__save"
-                            class="os-form-block os-user-type-form os-is-editing">
+                            class="os-form-block os-user-type-form ">
                             <div class="os-form-block-i">
                                 <div class="os-form-block-header">
                                     <div class="os-form-block-drag"></div>
@@ -770,7 +770,51 @@
                     <div class="os-section-header">
                         <h3>Custom Roles</h3>
                     </div>
-                    <div class="os-custom-roles-w os-form-blocks-w">
+                    
+                    <div class="os-add-box" data-os-after-call="latepointRoleManagerAddonAdmin.init_new_role_form"
+                        data-os-action="roles__new_form" data-os-output-target-do="append"
+                        data-os-output-target=".os-custom-roles-w">
+                        <div class="add-box-graphic-w">
+                            <div class="add-box-plus"><i class="latepoint-icon latepoint-icon-plus4"></i></div>
+                        </div>
+                        <div class="add-box-label">Create Custom Role</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="{{asset('/assets/jquery.js')}}"></script>
+    <script>
+        $('.os-form-toggler-group').click(function() {
+            var obj = $(this).children('.os-toggler');
+            if (obj.hasClass('on')) {
+                obj.removeClass('on');
+                obj.addClass('off');
+            } else {
+                obj.removeClass('off');
+                obj.addClass('on');
+            }
+        });
+
+        $('body').on('click', '.os-remove-role', function () {
+            if (confirm($(this).attr('data-os-prompt'))) {
+                $(this).parents('.os-custom-roles-w').remove();
+            }
+        });
+
+        $('body').on('click', '.os-remove-form-block', function () {
+            if (confirm($(this).attr('data-os-prompt'))) {
+                $(this).parents('.os-custom-roles-w').remove();
+            }
+        });
+
+        $('body').on('click', '.os-form-block-header', function() {
+            $(this).parents('.os-user-type-form').toggleClass('os-is-editing');
+        });
+
+        $('.os-add-box').click(function () {
+            $(this).before(`
+            <div class="os-custom-roles-w os-form-blocks-w">
                         <form action="" data-os-action="roles__save"
                             class="os-form-block os-user-type-form os-is-editing">
                             <div class="os-form-block-i">
@@ -1437,7 +1481,7 @@
                                         </div>
                                     </div>
                                     <div class="os-form-block-buttons">
-                                        <a href="#"
+                                        <a href="javascript:;"
                                             class="btn btn-danger pull-left os-remove-role"
                                             data-os-prompt="Are you sure you want to delete this role?"
                                             data-os-after-call="latepointRoleManagerAddonAdmin.role_deleted"
@@ -1449,35 +1493,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#" data-os-prompt="Are you sure you want to delete this role?"
+                            <a href="javascript:;" data-os-prompt="Are you sure you want to delete this role?"
                                 data-os-after-call="latepointRoleManagerAddonAdmin.role_deleted" data-os-pass-this="yes"
                                 data-os-action="roles__destroy" data-os-params="wp_role=role_AuuNwSTd"
                                 class="os-remove-form-block"><i class="latepoint-icon latepoint-icon-cross"></i></a>
                         </form>
                     </div>
-                    <div class="os-add-box" data-os-after-call="latepointRoleManagerAddonAdmin.init_new_role_form"
-                        data-os-action="roles__new_form" data-os-output-target-do="append"
-                        data-os-output-target=".os-custom-roles-w">
-                        <div class="add-box-graphic-w">
-                            <div class="add-box-plus"><i class="latepoint-icon latepoint-icon-plus4"></i></div>
-                        </div>
-                        <div class="add-box-label">Create Custom Role</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script type="text/javascript" src="{{asset('/assets/jquery.js')}}"></script>
-<script>
-    $('.os-form-toggler-group').click(function() {
-        var obj = $(this).children('.os-toggler');
-        if (obj.hasClass('on')) {
-            obj.removeClass('on');
-            obj.addClass('off');
-        } else {
-            obj.removeClass('off');
-            obj.addClass('on');
-        }
-    });
-</script>
+            `);
+        });
+    </script>
 @endsection
