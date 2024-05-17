@@ -103,7 +103,7 @@ $configData = Helper::appClasses();
                     <input type="text" name="id" hidden value="{{$customer->id}}">
                 </div>
             </div>
-            <div>
+            <div class="edit-btns">
                 <button type="submit" class="btn btn-primary add-customer">Save Customer</button>
                 <a href="/delete_customer/{{$customer->id}}" class="btn btn-danger add-customer">Delete Customer</a>
                 
