@@ -35,25 +35,26 @@ class Customers extends Controller
   {
     $customer = new Customer();
     $customer->user_id = $request->user()['id'];
-    $customer->first_name = $request->first_name;
-    $customer->last_name = $request->last_name;
-    $customer->email = $request->email;
-    $customer->phone = $request->phone;
+    $customer->first_name = $request->input('first_name');
+    $customer->last_name = $request->input('last_name');
+    $customer->email = $request->input('email');
+    $customer->phone = $request->input('phone');
     $customer->status = 'Active'; // TODO
-    $customer->notes = $request->notes;
-    $customer->admin_notes = $request->admin_notes;
+    $customer->notes = $request->input('notes');
+    $customer->admin_notes = $request->input('admin_notes');
+
+    $customers = Customer::all();
+    
 
     $photo = $request->customer_avatar;
     if( $photo ) {
       $image = new Image();
-      $filename = time() . '_' . $photo->getClientOriginalName();
-      $path = $photo->storeAs('public/customer_avatars', $filename);
-      $image->path = $path;
+      $image->path = $photo;
+      $image->save();
+      $customer->avatar_image_id = $image->id;
     } 
-
-    $customer->save();
-
-    $customers = Customer::all();
+    
+    $customer->save(); 
 
     $jsonData = json_encode(['data' => $customers]);
     $filePath = public_path('assets/json/table-datatable2.json');
