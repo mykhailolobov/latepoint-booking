@@ -81,8 +81,38 @@
     ['link', 'image', 'video', 'formula'],
     ['clean']
   ];
-  const fullEditor = new Quill('#full-editor', {
-    bounds: '#full-editor',
+  const fullEditor1 = new Quill('#full-editor1', {
+    bounds: '#full-editor1',
+    placeholder: 'Type Something...',
+    modules: {
+      formula: true,
+      toolbar: fullToolbar
+    },
+    theme: 'snow'
+  });
+
+  const fullEditor2 = new Quill('#full-editor2', {
+    bounds: '#full-editor2',
+    placeholder: 'Type Something...',
+    modules: {
+      formula: true,
+      toolbar: fullToolbar
+    },
+    theme: 'snow'
+  });
+
+  const fullEditor3 = new Quill('#full-editor3', {
+    bounds: '#full-editor3',
+    placeholder: 'Type Something...',
+    modules: {
+      formula: true,
+      toolbar: fullToolbar
+    },
+    theme: 'snow'
+  });
+
+  const fullEditor4 = new Quill('#full-editor4', {
+    bounds: '#full-editor4',
     placeholder: 'Type Something...',
     modules: {
       formula: true,

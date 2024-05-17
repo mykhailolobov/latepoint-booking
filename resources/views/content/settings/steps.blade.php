@@ -6,6 +6,28 @@
 
 @section('title', 'Latepoint')
 
+<!-- Vendor Styles -->
+@section('vendor-style')
+@vite([
+  'resources/assets/vendor/libs/quill/typography.scss',
+  'resources/assets/vendor/libs/quill/katex.scss',
+  'resources/assets/vendor/libs/quill/editor.scss'
+])
+@endsection
+
+<!-- Vendor Scripts -->
+@section('vendor-script')
+@vite([
+  'resources/assets/vendor/libs/quill/katex.js',
+  'resources/assets/vendor/libs/quill/quill.js'
+])
+@endsection
+
+<!-- Page Scripts -->
+@section('page-script')
+@vite(['resources/assets/js/forms-editors.js'])
+@endsection
+
 @section('content')
     <link href="{{ asset('/assets/css/settings.css') }}" rel="stylesheet">
     <link href="{{ asset('/assets/css/admin.css') }}" rel="stylesheet">
@@ -44,7 +66,7 @@
                     <h3>Step Editing</h3>
                 </div>
                 <div class="steps-ordering-w" data-step-order-update-route="settings__update_order_of_steps">
-                    <div class="step-w editing" data-step-name="locations" data-step-order-number="1">
+                    <div class="step-w" data-step-name="locations" data-step-order-number="1">
                         <div class="step-head">
                             <div class="step-drag "></div>
                             <div class="step-name">Select Location</div>
@@ -1214,447 +1236,12 @@
                                         <h3>Left Panel</h3>
                                     </div>
                                     <div class="sub-section-content">
-                                        <div class="os-form-group os-form-control-wp-editor-group"><label
-                                                for="settings[steps_support_text]">Content for a bottom part of a booking
-                                                side panel</label>
-                                            <div id="wp-settings_steps_support_text-wrap"
-                                                class="wp-core-ui wp-editor-wrap tmce-active">
-                                                <link rel="stylesheet" id="editor-buttons-css"
-                                                    href="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-includes/css/editor.min.css?ver=6.5.3"
-                                                    media="all">
-                                                <div id="wp-settings_steps_support_text-editor-tools"
-                                                    class="wp-editor-tools hide-if-no-js">
-                                                    <div class="wp-editor-tabs"><button type="button"
-                                                            id="settings_steps_support_text-tmce"
-                                                            class="wp-switch-editor switch-tmce"
-                                                            data-wp-editor-id="settings_steps_support_text">Visual</button>
-                                                        <button type="button" id="settings_steps_support_text-html"
-                                                            class="wp-switch-editor switch-html"
-                                                            data-wp-editor-id="settings_steps_support_text">Text</button>
-                                                    </div>
-                                                </div>
-                                                <div id="wp-settings_steps_support_text-editor-container"
-                                                    class="wp-editor-container">
-                                                    <div id="qt_settings_steps_support_text_toolbar"
-                                                        class="quicktags-toolbar hide-if-no-js"><input type="button"
-                                                            id="qt_settings_steps_support_text_strong"
-                                                            class="ed_button button button-small" aria-label="Bold"
-                                                            value="b"><input type="button"
-                                                            id="qt_settings_steps_support_text_em"
-                                                            class="ed_button button button-small" aria-label="Italic"
-                                                            value="i"><input type="button"
-                                                            id="qt_settings_steps_support_text_link"
-                                                            class="ed_button button button-small"
-                                                            aria-label="Insert link" value="link"><input
-                                                            type="button" id="qt_settings_steps_support_text_block"
-                                                            class="ed_button button button-small"
-                                                            aria-label="Blockquote" value="b-quote"><input
-                                                            type="button" id="qt_settings_steps_support_text_del"
-                                                            class="ed_button button button-small"
-                                                            aria-label="Deleted text (strikethrough)"
-                                                            value="del"><input type="button"
-                                                            id="qt_settings_steps_support_text_ins"
-                                                            class="ed_button button button-small"
-                                                            aria-label="Inserted text" value="ins"><input
-                                                            type="button" id="qt_settings_steps_support_text_img"
-                                                            class="ed_button button button-small"
-                                                            aria-label="Insert image" value="img"><input
-                                                            type="button" id="qt_settings_steps_support_text_ul"
-                                                            class="ed_button button button-small"
-                                                            aria-label="Bulleted list" value="ul"><input
-                                                            type="button" id="qt_settings_steps_support_text_ol"
-                                                            class="ed_button button button-small"
-                                                            aria-label="Numbered list" value="ol"><input
-                                                            type="button" id="qt_settings_steps_support_text_li"
-                                                            class="ed_button button button-small" aria-label="List item"
-                                                            value="li"><input type="button"
-                                                            id="qt_settings_steps_support_text_code"
-                                                            class="ed_button button button-small" aria-label="Code"
-                                                            value="code"><input type="button"
-                                                            id="qt_settings_steps_support_text_more"
-                                                            class="ed_button button button-small"
-                                                            aria-label="Insert Read More tag" value="more"><input
-                                                            type="button" id="qt_settings_steps_support_text_close"
-                                                            class="ed_button button button-small"
-                                                            title="Close all open tags" value="close tags"></div>
-                                                    <div id="mceu_24" class="mce-tinymce mce-container mce-panel"
-                                                        hidefocus="1" tabindex="-1" role="application"
-                                                        style="visibility: hidden; border-width: 1px; width: 100%;">
-                                                        <div id="mceu_24-body"
-                                                            class="mce-container-body mce-stack-layout">
-                                                            <div id="mceu_25"
-                                                                class="mce-top-part mce-container mce-stack-layout-item mce-first">
-                                                                <div id="mceu_25-body" class="mce-container-body">
-                                                                    <div id="mceu_26"
-                                                                        class="mce-toolbar-grp mce-container mce-panel mce-first mce-last"
-                                                                        hidefocus="1" tabindex="-1" role="group">
-                                                                        <div id="mceu_26-body"
-                                                                            class="mce-container-body mce-stack-layout">
-                                                                            <div id="mceu_27"
-                                                                                class="mce-container mce-toolbar mce-stack-layout-item mce-first"
-                                                                                role="toolbar">
-                                                                                <div id="mceu_27-body"
-                                                                                    class="mce-container-body mce-flow-layout">
-                                                                                    <div id="mceu_28"
-                                                                                        class="mce-container mce-flow-layout-item mce-first mce-last mce-btn-group"
-                                                                                        role="group">
-                                                                                        <div id="mceu_28-body">
-                                                                                            <div id="mceu_0"
-                                                                                                class="mce-widget mce-btn mce-menubtn mce-fixed-width mce-listbox mce-first mce-btn-has-text"
-                                                                                                tabindex="-1"
-                                                                                                aria-labelledby="mceu_0"
-                                                                                                role="button"
-                                                                                                aria-haspopup="true">
-                                                                                                <button id="mceu_0-open"
-                                                                                                    role="presentation"
-                                                                                                    type="button"
-                                                                                                    tabindex="-1"><span
-                                                                                                        class="mce-txt">Paragraph</span>
-                                                                                                    <i
-                                                                                                        class="mce-caret"></i></button>
-                                                                                            </div>
-                                                                                            <div id="mceu_1"
-                                                                                                class="mce-widget mce-btn"
-                                                                                                tabindex="-1"
-                                                                                                aria-pressed="false"
-                                                                                                role="button"
-                                                                                                aria-label="Bold (Ctrl+B)">
-                                                                                                <button id="mceu_1-button"
-                                                                                                    role="presentation"
-                                                                                                    type="button"
-                                                                                                    tabindex="-1"><i
-                                                                                                        class="mce-ico mce-i-bold"></i></button>
-                                                                                            </div>
-                                                                                            <div id="mceu_2"
-                                                                                                class="mce-widget mce-btn"
-                                                                                                tabindex="-1"
-                                                                                                aria-pressed="false"
-                                                                                                role="button"
-                                                                                                aria-label="Italic (Ctrl+I)">
-                                                                                                <button id="mceu_2-button"
-                                                                                                    role="presentation"
-                                                                                                    type="button"
-                                                                                                    tabindex="-1"><i
-                                                                                                        class="mce-ico mce-i-italic"></i></button>
-                                                                                            </div>
-                                                                                            <div id="mceu_3"
-                                                                                                class="mce-widget mce-btn"
-                                                                                                tabindex="-1"
-                                                                                                aria-pressed="false"
-                                                                                                role="button"
-                                                                                                aria-label="Bulleted list (Shift+Alt+U)">
-                                                                                                <button id="mceu_3-button"
-                                                                                                    role="presentation"
-                                                                                                    type="button"
-                                                                                                    tabindex="-1"><i
-                                                                                                        class="mce-ico mce-i-bullist"></i></button>
-                                                                                            </div>
-                                                                                            <div id="mceu_4"
-                                                                                                class="mce-widget mce-btn"
-                                                                                                tabindex="-1"
-                                                                                                aria-pressed="false"
-                                                                                                role="button"
-                                                                                                aria-label="Numbered list (Shift+Alt+O)">
-                                                                                                <button id="mceu_4-button"
-                                                                                                    role="presentation"
-                                                                                                    type="button"
-                                                                                                    tabindex="-1"><i
-                                                                                                        class="mce-ico mce-i-numlist"></i></button>
-                                                                                            </div>
-                                                                                            <div id="mceu_5"
-                                                                                                class="mce-widget mce-btn"
-                                                                                                tabindex="-1"
-                                                                                                aria-pressed="false"
-                                                                                                role="button"
-                                                                                                aria-label="Blockquote (Shift+Alt+Q)">
-                                                                                                <button id="mceu_5-button"
-                                                                                                    role="presentation"
-                                                                                                    type="button"
-                                                                                                    tabindex="-1"><i
-                                                                                                        class="mce-ico mce-i-blockquote"></i></button>
-                                                                                            </div>
-                                                                                            <div id="mceu_6"
-                                                                                                class="mce-widget mce-btn"
-                                                                                                tabindex="-1"
-                                                                                                aria-pressed="false"
-                                                                                                role="button"
-                                                                                                aria-label="Align left (Shift+Alt+L)">
-                                                                                                <button id="mceu_6-button"
-                                                                                                    role="presentation"
-                                                                                                    type="button"
-                                                                                                    tabindex="-1"><i
-                                                                                                        class="mce-ico mce-i-alignleft"></i></button>
-                                                                                            </div>
-                                                                                            <div id="mceu_7"
-                                                                                                class="mce-widget mce-btn"
-                                                                                                tabindex="-1"
-                                                                                                aria-pressed="false"
-                                                                                                role="button"
-                                                                                                aria-label="Align center (Shift+Alt+C)">
-                                                                                                <button id="mceu_7-button"
-                                                                                                    role="presentation"
-                                                                                                    type="button"
-                                                                                                    tabindex="-1"><i
-                                                                                                        class="mce-ico mce-i-aligncenter"></i></button>
-                                                                                            </div>
-                                                                                            <div id="mceu_8"
-                                                                                                class="mce-widget mce-btn"
-                                                                                                tabindex="-1"
-                                                                                                aria-pressed="false"
-                                                                                                role="button"
-                                                                                                aria-label="Align right (Shift+Alt+R)">
-                                                                                                <button id="mceu_8-button"
-                                                                                                    role="presentation"
-                                                                                                    type="button"
-                                                                                                    tabindex="-1"><i
-                                                                                                        class="mce-ico mce-i-alignright"></i></button>
-                                                                                            </div>
-                                                                                            <div id="mceu_9"
-                                                                                                class="mce-widget mce-btn"
-                                                                                                tabindex="-1"
-                                                                                                aria-pressed="false"
-                                                                                                role="button"
-                                                                                                aria-label="Insert/edit link (Ctrl+K)">
-                                                                                                <button id="mceu_9-button"
-                                                                                                    role="presentation"
-                                                                                                    type="button"
-                                                                                                    tabindex="-1"><i
-                                                                                                        class="mce-ico mce-i-link"></i></button>
-                                                                                            </div>
-                                                                                            <div id="mceu_10"
-                                                                                                class="mce-widget mce-btn"
-                                                                                                tabindex="-1"
-                                                                                                role="button"
-                                                                                                aria-label="Insert Read More tag (Shift+Alt+T)">
-                                                                                                <button
-                                                                                                    id="mceu_10-button"
-                                                                                                    role="presentation"
-                                                                                                    type="button"
-                                                                                                    tabindex="-1"><i
-                                                                                                        class="mce-ico mce-i-wp_more"></i></button>
-                                                                                            </div>
-                                                                                            <div id="mceu_11"
-                                                                                                class="mce-widget mce-btn"
-                                                                                                tabindex="-1"
-                                                                                                aria-pressed="false"
-                                                                                                role="button"
-                                                                                                aria-label="Fullscreen">
-                                                                                                <button
-                                                                                                    id="mceu_11-button"
-                                                                                                    role="presentation"
-                                                                                                    type="button"
-                                                                                                    tabindex="-1"><i
-                                                                                                        class="mce-ico mce-i-fullscreen"></i></button>
-                                                                                            </div>
-                                                                                            <div id="mceu_12"
-                                                                                                class="mce-widget mce-btn mce-last"
-                                                                                                tabindex="-1"
-                                                                                                role="button"
-                                                                                                aria-label="Toolbar Toggle (Shift+Alt+Z)">
-                                                                                                <button
-                                                                                                    id="mceu_12-button"
-                                                                                                    role="presentation"
-                                                                                                    type="button"
-                                                                                                    tabindex="-1"><i
-                                                                                                        class="mce-ico mce-i-wp_adv"></i></button>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div id="mceu_29"
-                                                                                class="mce-container mce-toolbar mce-stack-layout-item mce-last"
-                                                                                role="toolbar" style="display: none;">
-                                                                                <div id="mceu_29-body"
-                                                                                    class="mce-container-body mce-flow-layout">
-                                                                                    <div id="mceu_30"
-                                                                                        class="mce-container mce-flow-layout-item mce-first mce-last mce-btn-group"
-                                                                                        role="group">
-                                                                                        <div id="mceu_30-body">
-                                                                                            <div id="mceu_13"
-                                                                                                class="mce-widget mce-btn mce-first"
-                                                                                                tabindex="-1"
-                                                                                                aria-pressed="false"
-                                                                                                role="button"
-                                                                                                aria-label="Strikethrough (Shift+Alt+D)">
-                                                                                                <button
-                                                                                                    id="mceu_13-button"
-                                                                                                    role="presentation"
-                                                                                                    type="button"
-                                                                                                    tabindex="-1"><i
-                                                                                                        class="mce-ico mce-i-strikethrough"></i></button>
-                                                                                            </div>
-                                                                                            <div id="mceu_14"
-                                                                                                class="mce-widget mce-btn"
-                                                                                                tabindex="-1"
-                                                                                                role="button"
-                                                                                                aria-label="Horizontal line">
-                                                                                                <button
-                                                                                                    id="mceu_14-button"
-                                                                                                    role="presentation"
-                                                                                                    type="button"
-                                                                                                    tabindex="-1"><i
-                                                                                                        class="mce-ico mce-i-hr"></i></button>
-                                                                                            </div>
-                                                                                            <div id="mceu_15"
-                                                                                                class="mce-widget mce-btn mce-splitbtn mce-colorbutton"
-                                                                                                role="button"
-                                                                                                tabindex="-1"
-                                                                                                aria-haspopup="true"
-                                                                                                aria-label="Text color">
-                                                                                                <button
-                                                                                                    role="presentation"
-                                                                                                    hidefocus="1"
-                                                                                                    type="button"
-                                                                                                    tabindex="-1"><i
-                                                                                                        class="mce-ico mce-i-forecolor"></i><span
-                                                                                                        id="mceu_15-preview"
-                                                                                                        class="mce-preview"></span></button><button
-                                                                                                    type="button"
-                                                                                                    class="mce-open"
-                                                                                                    hidefocus="1"
-                                                                                                    tabindex="-1"> <i
-                                                                                                        class="mce-caret"></i></button>
-                                                                                            </div>
-                                                                                            <div id="mceu_16"
-                                                                                                class="mce-widget mce-btn"
-                                                                                                tabindex="-1"
-                                                                                                aria-pressed="false"
-                                                                                                role="button"
-                                                                                                aria-label="Paste as text">
-                                                                                                <button
-                                                                                                    id="mceu_16-button"
-                                                                                                    role="presentation"
-                                                                                                    type="button"
-                                                                                                    tabindex="-1"><i
-                                                                                                        class="mce-ico mce-i-pastetext"></i></button>
-                                                                                            </div>
-                                                                                            <div id="mceu_17"
-                                                                                                class="mce-widget mce-btn"
-                                                                                                tabindex="-1"
-                                                                                                role="button"
-                                                                                                aria-label="Clear formatting">
-                                                                                                <button
-                                                                                                    id="mceu_17-button"
-                                                                                                    role="presentation"
-                                                                                                    type="button"
-                                                                                                    tabindex="-1"><i
-                                                                                                        class="mce-ico mce-i-removeformat"></i></button>
-                                                                                            </div>
-                                                                                            <div id="mceu_18"
-                                                                                                class="mce-widget mce-btn"
-                                                                                                tabindex="-1"
-                                                                                                role="button"
-                                                                                                aria-label="Special character">
-                                                                                                <button
-                                                                                                    id="mceu_18-button"
-                                                                                                    role="presentation"
-                                                                                                    type="button"
-                                                                                                    tabindex="-1"><i
-                                                                                                        class="mce-ico mce-i-charmap"></i></button>
-                                                                                            </div>
-                                                                                            <div id="mceu_19"
-                                                                                                class="mce-widget mce-btn"
-                                                                                                tabindex="-1"
-                                                                                                role="button"
-                                                                                                aria-label="Decrease indent">
-                                                                                                <button
-                                                                                                    id="mceu_19-button"
-                                                                                                    role="presentation"
-                                                                                                    type="button"
-                                                                                                    tabindex="-1"><i
-                                                                                                        class="mce-ico mce-i-outdent"></i></button>
-                                                                                            </div>
-                                                                                            <div id="mceu_20"
-                                                                                                class="mce-widget mce-btn"
-                                                                                                tabindex="-1"
-                                                                                                role="button"
-                                                                                                aria-label="Increase indent">
-                                                                                                <button
-                                                                                                    id="mceu_20-button"
-                                                                                                    role="presentation"
-                                                                                                    type="button"
-                                                                                                    tabindex="-1"><i
-                                                                                                        class="mce-ico mce-i-indent"></i></button>
-                                                                                            </div>
-                                                                                            <div id="mceu_21"
-                                                                                                class="mce-widget mce-btn mce-disabled"
-                                                                                                tabindex="-1"
-                                                                                                role="button"
-                                                                                                aria-label="Undo (Ctrl+Z)"
-                                                                                                aria-disabled="true">
-                                                                                                <button
-                                                                                                    id="mceu_21-button"
-                                                                                                    role="presentation"
-                                                                                                    type="button"
-                                                                                                    tabindex="-1"><i
-                                                                                                        class="mce-ico mce-i-undo"></i></button>
-                                                                                            </div>
-                                                                                            <div id="mceu_22"
-                                                                                                class="mce-widget mce-btn mce-disabled"
-                                                                                                tabindex="-1"
-                                                                                                role="button"
-                                                                                                aria-label="Redo (Ctrl+Y)"
-                                                                                                aria-disabled="true">
-                                                                                                <button
-                                                                                                    id="mceu_22-button"
-                                                                                                    role="presentation"
-                                                                                                    type="button"
-                                                                                                    tabindex="-1"><i
-                                                                                                        class="mce-ico mce-i-redo"></i></button>
-                                                                                            </div>
-                                                                                            <div id="mceu_23"
-                                                                                                class="mce-widget mce-btn mce-last"
-                                                                                                tabindex="-1"
-                                                                                                role="button"
-                                                                                                aria-label="Keyboard Shortcuts (Shift+Alt+H)">
-                                                                                                <button
-                                                                                                    id="mceu_23-button"
-                                                                                                    role="presentation"
-                                                                                                    type="button"
-                                                                                                    tabindex="-1"><i
-                                                                                                        class="mce-ico mce-i-wp_help"></i></button>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div id="mceu_31"
-                                                                class="mce-edit-area mce-container mce-panel mce-stack-layout-item"
-                                                                hidefocus="1" tabindex="-1" role="group"
-                                                                style="border-width: 1px 0px 0px;"><iframe
-                                                                    id="settings_steps_support_text_ifr" frameborder="0"
-                                                                    allowtransparency="true"
-                                                                    title="Rich Text Area. Press Alt-Shift-H for help."
-                                                                    style="width: 100%; height: 184px; display: block;"></iframe>
-                                                            </div>
-                                                            <div id="mceu_32"
-                                                                class="mce-statusbar mce-container mce-panel mce-stack-layout-item mce-last"
-                                                                hidefocus="1" tabindex="-1" role="group"
-                                                                style="border-width: 1px 0px 0px;">
-                                                                <div id="mceu_32-body"
-                                                                    class="mce-container-body mce-flow-layout">
-                                                                    <div id="mceu_33"
-                                                                        class="mce-path mce-flow-layout-item mce-first">
-                                                                        <div class="mce-path-item">&nbsp;</div>
-                                                                    </div>
-                                                                    <div id="mceu_34"
-                                                                        class="mce-flow-layout-item mce-last mce-resizehandle">
-                                                                        <i class="mce-ico mce-i-resize"></i></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <textarea class="wp-editor-area" style="height: 150px; display: none;" autocomplete="off" cols="40"
-                                                        name="settings[steps_support_text]" id="settings_steps_support_text" aria-hidden="true">&lt;h5&gt;Questions?&lt;/h5&gt;
-                  Call (858) 939-3746 for help</textarea>
-                                                </div>
+                                        <div class="os-form-group os-form-control-wp-editor-group">
+                                            <label for="settings[steps_support_text]">Content for a bottom part of a booking side panel</label>
+                                            <div id="full-editor1">
+                                                <h5>Questions?</h5>
+                                                Call (858) 939-3746 for help
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
