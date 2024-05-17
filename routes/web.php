@@ -73,6 +73,7 @@ Route::middleware('auth')->group(function () {
 
     // Customer Section
     Route::get('/customers/new', [Customers::class, 'add']);
+    Route::get('/customers/list', [Customers::class, 'list']);
     Route::post('/add_customer', [Customers::class, 'add_customer'])->name('add_customer');
     Route::get('/edit_customer/{id}', [Customers::class, 'edit_customer'])->name('edit_customer');
     Route::post('/customers', [Customers::class, 'update_customer'])->name('update_customer');

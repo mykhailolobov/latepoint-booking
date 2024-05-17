@@ -11,8 +11,18 @@ class Customers extends Controller
 {
   public function index()
   {
-    $customers = Customer::paginate(20);
+    $customers = Customer::all();
     return view('content.tables.tables-customers', ['customers'=>$customers]);
+  }
+
+  public function list() {
+    $customers = Customer::all();
+
+    $jsonData = json_encode(['data' => $customers]);
+    $filePath = public_path('assets/json/table-datatable2.json');
+    file_put_contents($filePath, $jsonData);
+
+    return response()->json(['message' => 'Data written to file successfully']);
   }
 
   // Add Customer
@@ -42,6 +52,13 @@ class Customers extends Controller
     } 
 
     $customer->save();
+
+    $customers = Customer::all();
+
+    $jsonData = json_encode(['data' => $customers]);
+    $filePath = public_path('assets/json/table-datatable2.json');
+    file_put_contents($filePath, $jsonData);
+
     return redirect()->route('app-customers')->with('success', 'Customer created successfully.');
   }
 
@@ -63,6 +80,13 @@ class Customers extends Controller
     $customer->admin_notes = $request->admin_notes;
 
     $customer->save();
+
+    $customers = Customer::all();
+
+    $jsonData = json_encode(['data' => $customers]);
+    $filePath = public_path('assets/json/table-datatable2.json');
+    file_put_contents($filePath, $jsonData);
+
     return redirect()->route('app-customers')->with('success', 'Customer updated successfully.');
   }
 
@@ -71,42 +95,15 @@ class Customers extends Controller
     // dd($id);
     $customer = Customer::findOrFail($id);
     $customer->delete();
+
+    $customers = Customer::all();
+
+    $jsonData = json_encode(['data' => $customers]);
+    $filePath = public_path('assets/json/table-datatable2.json');
+    file_put_contents($filePath, $jsonData);
     return redirect()->route('app-customers')->with('success', 'Customer deleted successfully.');
 
   }
 
-  public function search_customer(Request $request) {
-    
-    $id_search = $request->id_search;
-    $full_name_search = $request-> full_name_search;
-    $phone_search = $request->phone_search;
-    $email_search = $request->email_search;
 
-    $query = Customer::query();
-    // dd($request->id_search);
-    if (!empty($id_search)) {
-      $query->where('id', 'LIKE', '%' . $id_search . '%');
-    }
-
-    if (!empty($full_name_search)) {
-      $query->where('first_name', 'LIKE', '%' . $full_name_search . '%');
-    }
-
-    if (!empty($full_name_search)) {
-      $query->where('last_name', 'LIKE', '%' . $full_name_search . '%');
-    }
-
-    if (!empty($phone_search)) {
-      $query->where('phone', 'LIKE', '%' . $phone_search . '%');
-    }
-
-    if (!empty($email_search)) {
-      $query->where('email', 'LIKE', '%' . $email_search . '%');
-    }
-
-    $customers = $query->paginate(20);
-
-    // dd($customers);
-    return view('content.tables.tables-customers', ['customers'=>$customers]);
-  }
 }

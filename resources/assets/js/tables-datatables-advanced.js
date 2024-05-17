@@ -227,15 +227,48 @@ $(function () {
       ajax: assetsPath + 'json/table-datatable2.json',
       columns: [
         { data: 'id' },
-        { data: 'full_name' },
+        {
+          data: null, // No data source needed
+          render: function (data, type, row) {
+            return row.first_name + " " + row.last_name;
+          }
+        },
         { data: 'phone' },
         { data: 'email' },
-        { data: 'total_apps' },
-        { data: 'next_app' },
-        { data: 'time_to_next' },
-        { data: 'laravel_user_id' },
-        { data: 'registered_on' },
-        { data: 'actions' }
+        {
+          data: null, // No data source needed for "0"
+          render: function (data, type, row) {
+            return "0"; // Replace "0" with your desired text ("n/a" or "Past")
+          }
+        }, //'total_apps'
+        {
+          data: null, // No data source needed for "0"
+          render: function (data, type, row) {
+            return "n/a"; 
+          }
+        }, //'next_app'
+        {
+          data: null, // No data source needed for "0"
+          render: function (data, type, row) {
+            return "Past"; // Replace "0" with your desired text ("n/a" or "Past")
+          }
+        }, //'time_to_next'
+        { data:  'user_id'}, //'laravel_user_id'
+        { data: 'created_at',
+          render: function (data, type, row) {
+            // Replace 'YYYY-MM-DD' with your desired format (e.g., 'MM-DD-YYYY' for '05-16-2024')
+            var formattedDate = new Date(data).toLocaleDateString('en-US'); // 'YYYY-MM-DD' format
+            return formattedDate;
+          }
+        }, //'registered_on'
+        {
+          data: null, // No data source needed for the action link
+          render: function (data, type, row) {
+            // Replace 'edit' with the actual property name or value for the action link
+            var editLink = '/edit_customer/' + row.id;// Assuming 'id' is used for the link
+            return '<a href="' + editLink + '">Edit</a>';
+          }
+        } //'actions'
       ],
       orderCellsTop: true,
       dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end"f>><"table-responsive"t><"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>'
