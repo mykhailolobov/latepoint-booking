@@ -57,7 +57,22 @@ $configData = Helper::appClasses();
         </div>
         <div class="col-md-12">
             <div class="os-taxes-w os-form-blocks-w os-taxes-ordering-w" data-order-update-route="taxes__update_order">
-                <form data-os-form-block-id="tax_FfgQTHyJ" data-os-action="taxes__save" class="os-form-block os-form-block-type-percentage os-is-editing">
+                
+            </div>
+            <div class="os-add-box" data-os-after-call="latepointTaxesAddon.init_new_tax_form" data-os-action="taxes__new_form" data-os-output-target-do="append" data-os-output-target=".os-taxes-w" onclick="addTax()">
+                <div class="add-box-graphic-w">
+                    <div class="add-box-plus"><i class="latepoint-icon latepoint-icon-plus4"></i></div>
+                </div>
+                <div class="add-box-label">Add Tax</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="{{asset('/assets/jquery.js')}}"></script>
+<script>
+    function addTax() {
+        $('.os-taxes-w').append(`
+            <form data-os-form-block-id="tax_FfgQTHyJ" data-os-action="taxes__save" class="os-form-block os-form-block-type-percentage os-is-editing">
                 <div class="os-form-block-i">
                     <div class="os-form-block-header">
                         <div class="os-form-block-drag"></div>
@@ -89,23 +104,21 @@ $configData = Helper::appClasses();
                     </div>
             
                     <div class="os-form-block-buttons">
-                        <a href="#" class="btn btn-danger pull-left" data-os-prompt="Are you sure you want to delete this tax?" data-os-after-call="latepointTaxesAddon.latepoint_tax_removed" data-os-pass-this="yes" data-os-action="taxes__destroy" data-os-params="id=tax_FfgQTHyJ">Delete</a>
+                        <a href="#" class="btn btn-danger pull-left" data-os-prompt="Are you sure you want to delete this tax?" data-os-after-call="latepointTaxesAddon.latepoint_tax_removed" data-os-pass-this="yes" data-os-action="taxes__destroy" data-os-params="id=tax_FfgQTHyJ" onclick="deleteTax(this)">Delete</a>
                         <button type="submit" class="os-form-block-save-btn btn btn-primary"><span>Save Tax</span></button>
                     </div>
                     </div>
                 </div>
                 <input type="hidden" name="taxes[tax_FfgQTHyJ][id]" value="tax_FfgQTHyJ" class="os-form-block-id" id="taxes_tax_ffgqthyj_id">	
                 <a href="#" data-os-prompt="Are you sure you want to delete this tax?" data-os-after-call="latepointTaxesAddon.latepoint_tax_removed" data-os-pass-this="yes" data-os-action="taxes__destroy" data-os-params="id=tax_FfgQTHyJ" class="os-remove-form-block"><i class="latepoint-icon latepoint-icon-cross"></i></a>
-                </form>
-            </div>
-            <div class="os-add-box" data-os-after-call="latepointTaxesAddon.init_new_tax_form" data-os-action="taxes__new_form" data-os-output-target-do="append" data-os-output-target=".os-taxes-w">
-                <div class="add-box-graphic-w">
-                    <div class="add-box-plus"><i class="latepoint-icon latepoint-icon-plus4"></i></div>
-                </div>
-                <div class="add-box-label">Add Tax</div>
-            </div>
-        </div>
-    </div>
-</div>
+            </form>
+        `);
+    }
 
+    function deleteTax(obj) {
+        if (confirm($(obj).attr('data-os-prompt'))) {
+            $(obj).parents('.os-form-block').remove();
+        }
+    }
+</script>
 @endsection
