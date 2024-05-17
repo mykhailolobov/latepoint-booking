@@ -64,15 +64,13 @@ $configData = Helper::appClasses();
                 <h5 class="card-header">General Information</h5>
                 <div class="card-body demo-vertical-spacing demo-only-element">
                     <div class="d-flex px-3 mb-3">
-                        <div action="{{ route('add_customer') }}" class="dropzone needsclick" id="dropzone-basic">
+                        <div action="/upload" class="dropzone" id="dropzone-basic">
                             <div class="dz-message needsclick">
                                 <i class='bx bxs-tennis-ball' ></i>
                                 Set Avatar
-                            </div>
-                            {{-- <div class="fallback">
-                                <input type="file" name="customer_avatar" id="customer_avatar"/>
-                            </div> --}}
+                            </div>                            
                         </div>
+                        <input type="file" hidden>
                     </div>
                     <div class="d-flex mb-3">
                         <div class="col-lg-6 px-3">
@@ -104,7 +102,7 @@ $configData = Helper::appClasses();
             </div>
             <div>
                 <button type="submit" class="btn btn-primary add-customer">Save Customer</button>
-                {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
+                <meta name="csrf-token" content="{{ csrf_token() }}">
             </div>
         </form>
     </div>
@@ -122,41 +120,42 @@ $configData = Helper::appClasses();
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/utils.js",
     });
 
-    // $('form.add-customer').on('submit', function(e) {
-    //     e.preventDefault();
-    //     const csrf_token = $('meta[name="csrf-token"]').attr('content');
-    //     const first_name = $('input[name="first_name"]').val();
-    //     const last_name = $('input[name="last_name"]').val();
-    //     const email = $('input[name="email"]').val();
-    //     const phone = $('input[name="phone"]').val();
-    //     const notes = $('textarea[name="notes"]').val();
-    //     const admin_notes = $('textarea[name="admin_notes"]').val();
-    //     const file = $('input[name = "file"]').val();
 
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: "{{ route('add_customer') }}",
-    //         headers: {
-    //             'X-CSRF-TOKEN': csrf_token
-    //         },
-    //         data: {
-    //             first_name: first_name,
-    //             last_name: last_name,
-    //             email: email,
-    //             phone: phone,
-    //             notes: notes,
-    //             admin_notes: admin_notes,
-    //             file: file,
-    //         },
-    //         success: function() {
-    //             console.log('success');
-    //             console.log(file);
-    //         },
-    //         error: function(err) {
-    //             console.log(err);
-    //         }
-    //     });
-    // });
+    $('form.add-customer').on('submit', function(e) {
+        e.preventDefault();
+        const csrf_token = $('meta[name="csrf-token"]').attr('content');
+        const first_name = $('input[name="first_name"]').val();
+        const last_name = $('input[name="last_name"]').val();
+        const email = $('input[name="email"]').val();
+        const phone = $('input[name="phone"]').val();
+        const notes = $('textarea[name="notes"]').val();
+        const admin_notes = $('textarea[name="admin_notes"]').val();
+        const file = $('.dz-thumbnail>img').attr('src');
+        console.log(file);
+
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('add_customer') }}",
+            headers: {
+                'X-CSRF-TOKEN': csrf_token
+            },
+            data: {
+                first_name: first_name,
+                last_name: last_name,
+                email: email,
+                phone: phone,
+                notes: notes,
+                admin_notes: admin_notes,
+                customer_avatar: file,
+            },
+            success: function() {
+                console.log('success');
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+    });
 </script>
 
 @endsection

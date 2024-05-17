@@ -67,52 +67,12 @@
                     <th>Registered On</th>
                     <th>Actions</th>
                 </tr>
-            </thead>
-            {{-- <thead class="top-column">
-                <form method="GET" action="{{route('search_customer')}}">
-                    <tr class="table_list">
-                        <th><input type="text" class="id_search" name="id_search" id="id_search" value="{{ old('id_search') }}" placeholder="ID"></th>
-                        <th><input type="text" class="" name="full_name_search" id="full_name_search" value="{{ old('full_name_search') }}" placeholder="Search by Name"></th>
-                        <th><input type="text" class="" name="phone_search" id="phone_search" value="{{ old('phone_search') }}" placeholder="Phone..."></th>
-                        <th><input type="text" class="" name="email_search" id="email_search" value="{{ old('email_search') }}" placeholder="Search by Email"></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    <button type="submit" hidden></button>
-                </form>
-            </thead>
-            <thead class="customer-list">
-                @foreach ($customers as $key => $customer)
-                <tr>
-                    <th>{{$customer->id}}</th>
-                    <th><a href="{{ route('edit_customer', $customer->id) }}">{{$customer->first_name}} {{$customer->last_name}}</a></th>
-                    <th>{{$customer->phone}}</th>
-                    <th style="max-width: 220px; overflow: scroll;">{{$customer->email}}</th>
-                    <th>0</th>
-                    <th>n/a</th>
-                    <th>Past</th>
-                    <th>{{$customer->user_id}}</th>
-                    <th>{{$customer->created_at}}</th>
-                    <th><a href="{{ route('edit_customer', $customer->id) }}">edit</a></th>
-                </tr>
-                @endforeach
-            </thead> --}}
-
+            </thead>            
         </table>
     </div>
 </div>
 <script type="text/javascript" src="{{asset('/assets/jquery.js')}}"></script>
-<script>
-    // const searchFields = document.querySelectorAll('#id_search, #full_name_search, #phone_search, #email_search');
-    // searchFields.forEach(field => {
-    //     field.addEventListener('change', function() {
-    //         this.form.submit(); // Submit the form on change
-    //     });
-    // });
+<script>    
     $.get("/customers/list", function(data) {
         console.log(data);
     });
