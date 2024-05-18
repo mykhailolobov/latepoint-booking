@@ -46,11 +46,9 @@ class Customers extends Controller
     $customers = Customer::all();
     
     
-    $photo = $request->customer_avatar;
-
-    if( $photo ) {
+     if( $request->customer_avatar ) {
       $image = new Image();
-      $image->path = $photo;
+      $image->path = $request->customer_avatar;
       $image->save();
       $customer->avatar_image_id = $image->id;
       $customer->save(); 
@@ -74,18 +72,25 @@ class Customers extends Controller
 
   public function update_customer(Request $request) {
     // dd($request->id);
-    $customer = Customer::findOrFail($request->id);
-    $customer->first_name = $request->first_name;
-    $customer->last_name = $request->last_name;
-    $customer->email = $request->email;
-    $customer->phone = $request->phone;
-    $customer->status = 'Active'; // TODO
-    $customer->notes = $request->notes;
-    $customer->admin_notes = $request->admin_notes;
-
-    $customer->save();
+    $customer = Customer::findOrFail($request->input('id'));
+    $customer->first_name = $request->input('first_name');
+    $customer->last_name = $request->input('last_name');
+    $customer->email = $request->input('email');
+    $customer->phone = $request->input('phone');
+    $customer->notes = $request->input('notes');
+    $customer->admin_notes = $request->input('admin_notes');
 
     $customers = Customer::all();
+
+    if( $request->customer_avatar ) {
+      $image = Image::findOrFail($customer->avatar_image_id);
+      $image->path = $request->customer_avatar;
+      $image->save();
+      $customer->save(); 
+    } else {
+      $customer->save(); 
+    };
+
 
     $jsonData = json_encode(['data' => $customers]);
     $filePath = public_path('assets/json/table-datatable2.json');
