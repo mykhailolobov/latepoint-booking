@@ -73,6 +73,7 @@ class Customers extends Controller
     $customer->first_name = $request->input('first_name');
     $customer->last_name = $request->input('last_name');
     $customer->email = $request->input('email');
+    $customer->country = $request->country;
     $customer->phone = $request->input('phone');
     $customer->notes = $request->input('notes');
     $customer->admin_notes = $request->input('admin_notes');
