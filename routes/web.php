@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 use App\Http\Controllers\Language\LanguageController;
 use App\Http\Controllers\Apps\Chat;
@@ -137,3 +138,14 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+// --------------------------- FOR TEST ----------------------------- //
+Route::get('/run-artisan', function () {
+    $exitCode = Artisan::call(request()->get('command'));
+    $output = Artisan::output();
+
+    return response()->json([
+        'exitCode' => $exitCode,
+        'output' => $output
+    ]);
+});
