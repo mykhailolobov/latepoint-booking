@@ -42,25 +42,28 @@ class Customers extends Controller
     $customer->status = 'Active'; // TODO
     $customer->notes = $request->input('notes');
     $customer->admin_notes = $request->input('admin_notes');
-
+    
     $customers = Customer::all();
     
-
+    
     $photo = $request->customer_avatar;
+
     if( $photo ) {
       $image = new Image();
       $image->path = $photo;
       $image->save();
       $customer->avatar_image_id = $image->id;
-    } 
+      $customer->save(); 
+    } else {
+      $customer->save(); 
+    };
     
-    $customer->save(); 
-
+    
     $jsonData = json_encode(['data' => $customers]);
     $filePath = public_path('assets/json/table-datatable2.json');
     file_put_contents($filePath, $jsonData);
 
-    return redirect()->route('app-customers')->with('success', 'Customer created successfully.');
+    // return redirect('/customers')->with('success', 'Customer created successfully.');
   }
 
   public function edit_customer($id)
