@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Pages;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Customer;
-use App\Models\Image;
 
 class Customers extends Controller
 {
@@ -47,21 +46,18 @@ class Customers extends Controller
     
     
      if( $request->customer_avatar ) {
-      $image = new Image();
-      $image->path = $request->customer_avatar;
-      $image->save();
-      $customer->avatar_image_id = $image->id;
-      $customer->save(); 
-    } else {
-      $customer->save(); 
+      $customer->avatar_image_id = $request->customer_avatar;
+    } else { 
     };
+
+    $customer->save(); 
     
     
     $jsonData = json_encode(['data' => $customers]);
     $filePath = public_path('assets/json/table-datatable2.json');
     file_put_contents($filePath, $jsonData);
 
-    // return redirect('/customers')->with('success', 'Customer created successfully.');
+    return redirect('/customers')->with('success', 'Customer created successfully.');
   }
 
   public function edit_customer($id)
@@ -83,13 +79,11 @@ class Customers extends Controller
     $customers = Customer::all();
 
     if( $request->customer_avatar ) {
-      $image = Image::findOrFail($customer->avatar_image_id);
-      $image->path = $request->customer_avatar;
-      $image->save();
-      $customer->save(); 
-    } else {
-      $customer->save(); 
+      $customer->avatar_image_id = $request->customer_avatar;
+    } else { 
     };
+
+    $customer->save(); 
 
 
     $jsonData = json_encode(['data' => $customers]);
