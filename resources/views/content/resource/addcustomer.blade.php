@@ -113,14 +113,15 @@ $configData = Helper::appClasses();
 <script>
     // ITI
     const input = document.querySelector("#phone");
-    window.intlTelInput(input, {
+    const intlTelInputInstance = window.intlTelInput(input, {
         fixDropdownWidth: false,
         initialCountry: "us",
         separateDialCode: true,
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/utils.js",
     });
 
-
+    
+ 
     $('form.add-customer').on('submit', function(e) {
         e.preventDefault();
         const csrf_token = $('meta[name="csrf-token"]').attr('content');
@@ -131,7 +132,12 @@ $configData = Helper::appClasses();
         const notes = $('textarea[name="notes"]').val();
         const admin_notes = $('textarea[name="admin_notes"]').val();
         const file = $('.dz-thumbnail>img').attr('src');
-        console.log(file);
+        const country = $('.iti__selected-country-primary').children().first().attr('class').slice(-2);
+
+
+        console.log(country);
+
+        
 
         $.ajax({
             type: 'POST',
@@ -146,7 +152,9 @@ $configData = Helper::appClasses();
                 phone: phone,
                 notes: notes,
                 admin_notes: admin_notes,
-                customer_avatar: file,
+                country: phone? country: null,
+                customer_avatar: file? file: null,
+
             },
             success: function() {
                 console.log('success');

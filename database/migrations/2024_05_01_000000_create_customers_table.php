@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('email')->unique();
+            $table->string('country')->nullable();
             $table->string('phone')->nullable();
-            $table->unsignedBigInteger('avatar_image_id')->nullable();
+            $table->longText('avatar_image_id')->nullable();
             $table->string('status');
             // $table->string('password')->nullable();
             $table->string('activation_key')->nullable();
