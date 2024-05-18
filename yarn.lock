@@ -4471,6 +4471,11 @@ internal-slot@^1.0.7:
     hasown "^2.0.0"
     side-channel "^1.0.4"
 
+intl-tel-input@^23.0.7:
+  version "23.0.7"
+  resolved "https://registry.npmjs.org/intl-tel-input/-/intl-tel-input-23.0.7.tgz"
+  integrity sha512-J0ES6cPFfkyzKtwOyoPQr4RKeOA07VJF9pdPHV6+/Lek2OpndUZMBBAIlUEAuZ0FoL88jPJJNzigx8aPMRgJmQ==
+
 invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.npmjs.org/invariant/-/invariant-2.2.4.tgz"
