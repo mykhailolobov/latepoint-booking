@@ -192,7 +192,7 @@
                                     </div>
                                 </div>
 
-                                <a class="add-custom-day-w" data-os-after-call="latepoint_init_custom_day_schedule"
+                                <a class="add-custom-day-w add-custom-day-schedule" data-os-after-call="latepoint_init_custom_day_schedule"
                                     data-os-lightbox-classes="width-700  hide-schedule" data-os-output-target="lightbox"
                                     data-os-action="settings__custom_day_schedule_form"
                                     data-os-params="agent_id=0&amp;service_id=0&amp;location_id=0">
@@ -232,7 +232,7 @@
                                         <div class="custom-day-month">June</div>
                                     </div>
                                 </div>
-                                <a class="add-custom-day-w" data-os-after-call="latepoint_init_custom_day_schedule"
+                                <a class="add-custom-day-w add-custom-day-off" data-os-after-call="latepoint_init_custom_day_schedule"
                                     data-os-lightbox-classes="width-700  hide-schedule" data-os-output-target="lightbox"
                                     data-os-action="settings__custom_day_schedule_form"
                                     data-os-params="agent_id=0&amp;service_id=0&amp;location_id=0">
@@ -277,10 +277,443 @@
             }
         });
 
+        function addCustomSchedule() {
+            $('body').removeClass('latepoint-lightbox-active');
+            
+            $('.add-custom-day-schedule').before(`
+            <div class="custom-day-work-period">
+                <a href="javascript:;" title="Edit Day Schedule" class="edit-custom-day" data-os-after-call="latepoint_init_custom_day_schedule" data-os-lightbox-classes="width-700 " data-os-output-target="lightbox" data-os-action="settings__custom_day_schedule_form" data-os-params="target_date=2024-06-06&amp;agent_id=0&amp;service_id=0&amp;location_id=0">
+                    <i class="bx bx-edit-alt"></i>
+                </a>
+                <a href="javascript:;" data-os-pass-this="yes" data-os-after-call="latepoint_custom_day_removed" data-os-action="settings__remove_custom_day_schedule" data-os-params="agent_id=0&amp;service_id=0&amp;location_id=0&amp;date=2024-06-06" data-os-prompt="Are you sure you want to remove custom schedule for this day?" title="Remove Day Schedule" class="remove-custom-day">
+                    <i class="bx bx-trash"></i>
+                </a>
+                <div class="custom-day-work-period-i">
+                    <div class="custom-day-number">${$('body .os-day-current.selected .os-day-number').text()}</div>
+                    <div class="custom-day-month">June</div>
+                </div>
+                <div class="custom-day-periods">
+                    <div class="custom-day-period">08:00am - 06:00pm</div>
+                </div>
+            </div>
+            `);
+            $('.latepoint-lightbox-w').remove();
+        }
+
+        function addCustomDayOff() {
+            $('body').removeClass('latepoint-lightbox-active');
+            
+            $('.add-custom-day-off').before(`
+                <div class="custom-day-work-period custom-day-off">
+                    <a href="javascript:;" title="Edit Day Schedule" class="edit-custom-day" data-os-after-call="latepoint_init_custom_day_schedule" data-os-lightbox-classes="width-700 " data-os-output-target="lightbox" data-os-action="settings__custom_day_schedule_form" data-os-params="target_date=2024-06-05&amp;agent_id=0&amp;service_id=0&amp;location_id=0"><i class="bx bx-edit-alt"></i></a><a href="javascript:;" data-os-pass-this="yes" data-os-after-call="latepoint_custom_day_removed" data-os-action="settings__remove_custom_day_schedule" data-os-params="agent_id=0&amp;service_id=0&amp;location_id=0&amp;date=2024-06-05" data-os-prompt="Are you sure you want to remove this day off?" title="Remove Day Off" class="remove-custom-day"><i class="bx bx-trash"></i></a>
+                    <div class="custom-day-work-period-i">
+                        <div class="custom-day-number">${$('body .os-day-current.selected .os-day-number').text()}</div>
+                        <div class="custom-day-month">June</div>
+                    </div>
+                </div>
+            `);
+            $('.latepoint-lightbox-w').remove();
+        }
+
+        $('body').on('click', '.latepoint-lightbox-close', function () {
+            $('body').removeClass('latepoint-lightbox-active');
+            $('.latepoint-lightbox-w').remove();
+        });
+
         $('.ws-period-add').click(function() {
-            $(this).before($(`
-                <div class="ws-period"><div class="os-time-group os-time-input-w as-period"><label for="work_periods[new_1_973392][start_time][formatted_value]">Start</label><div class="os-time-input-fields"><input type="text" placeholder="HH:MM" name="work_periods[new_1_973392][start_time][formatted_value]" value="08:00" class="os-form-control os-mask-time" inputmode="text"><input type="hidden" name="work_periods[new_1_973392][start_time][ampm]" value="am" class="ampm-value-hidden-holder"><div class="time-ampm-w"><div class="time-ampm-select time-am active" data-ampm-value="am">am</div><div class="time-ampm-select time-pm " data-ampm-value="pm">pm</div></div></div></div><div class="os-time-group os-time-input-w as-period"><label for="work_periods[new_1_973392][end_time][formatted_value]">Finish</label><div class="os-time-input-fields"><input type="text" placeholder="HH:MM" name="work_periods[new_1_973392][end_time][formatted_value]" value="06:00" class="os-form-control os-mask-time" inputmode="text"><input type="hidden" name="work_periods[new_1_973392][end_time][ampm]" value="pm" class="ampm-value-hidden-holder"><div class="time-ampm-w"><div class="time-ampm-select time-am " data-ampm-value="am">am</div><div class="time-ampm-select time-pm active" data-ampm-value="pm">pm</div></div></div></div><input type="hidden" name="work_periods[new_1_973392][week_day]" value="1" id="work_periods_new_1_973392_week_day"><input type="hidden" name="work_periods[new_1_973392][is_active]" value="1" class="is-active" id="work_periods_new_1_973392_is_active"><input type="hidden" name="work_periods[new_1_973392][agent_id]" value="0" id="work_periods_new_1_973392_agent_id"><input type="hidden" name="work_periods[new_1_973392][location_id]" value="0" id="work_periods_new_1_973392_location_id"><input type="hidden" name="work_periods[new_1_973392][service_id]" value="0" id="work_periods_new_1_973392_service_id"><button class="ws-period-remove"><i class="latepoint-icon latepoint-icon-x"></i></button></div>
-            `))
+            $(this).before(`
+                <div class="ws-period">
+                    <div class="os-time-group os-time-input-w as-period">
+                        <label for="work_periods[new_1_973392][start_time][formatted_value]">Start</label>
+                        <div class="os-time-input-fields">
+                            <input type="text" placeholder="HH:MM" name="work_periods[new_1_973392][start_time][formatted_value]" value="08:00" class="os-form-control os-mask-time" inputmode="text">
+                            <input type="hidden" name="work_periods[new_1_973392][start_time][ampm]" value="am" class="ampm-value-hidden-holder">
+                            <div class="time-ampm-w">
+                                <div class="time-ampm-select time-am active" data-ampm-value="am">am</div>
+                                <div class="time-ampm-select time-pm " data-ampm-value="pm">pm</div>
+                            </div></div></div><div class="os-time-group os-time-input-w as-period"><label for="work_periods[new_1_973392][end_time][formatted_value]">Finish</label><div class="os-time-input-fields"><input type="text" placeholder="HH:MM" name="work_periods[new_1_973392][end_time][formatted_value]" value="06:00" class="os-form-control os-mask-time" inputmode="text"><input type="hidden" name="work_periods[new_1_973392][end_time][ampm]" value="pm" class="ampm-value-hidden-holder"><div class="time-ampm-w"><div class="time-ampm-select time-am " data-ampm-value="am">am</div><div class="time-ampm-select time-pm active" data-ampm-value="pm">pm</div></div></div></div><input type="hidden" name="work_periods[new_1_973392][week_day]" value="1" id="work_periods_new_1_973392_week_day"><input type="hidden" name="work_periods[new_1_973392][is_active]" value="1" class="is-active" id="work_periods_new_1_973392_is_active"><input type="hidden" name="work_periods[new_1_973392][agent_id]" value="0" id="work_periods_new_1_973392_agent_id"><input type="hidden" name="work_periods[new_1_973392][location_id]" value="0" id="work_periods_new_1_973392_location_id"><input type="hidden" name="work_periods[new_1_973392][service_id]" value="0" id="work_periods_new_1_973392_service_id"><button class="ws-period-remove"><i class="latepoint-icon latepoint-icon-x"></i></button></div>
+            `)
+        });
+
+        $('.add-custom-day-schedule').click(function() {
+            $('body').append(`
+            <div class="latepoint-lightbox-w latepoint-w width-700"><div class="latepoint-lightbox-i"><form class="latepoint-lightbox-wrapper-form" action="" data-os-success-action="reload" data-os-action="settings__save_custom_day_schedule">
+                <input type="hidden" id="_wpnonce" name="_wpnonce" value="d3b5f65277"><input type="hidden" name="_wp_http_referer" value="/demo_4217c15f9eb342a2/wp-admin/admin-ajax.php">	<div class="latepoint-lightbox-heading">
+                    <h2>Custom schedule</h2>
+                </div>
+                <div class="latepoint-lightbox-content">
+                <div class="custom-day-schedule-w">
+                    <div class="custom-day-calendar" data-show-schedule="yes" data-period-type="single" data-picking="start">
+                            <div class="custom-day-settings-w">
+                                <div class="os-form-group os-form-select-group os-form-group-transparent"><select name="period_type" class="period-type-selector os-form-control" id="period_type"><option value="single" selected="">Single Day</option><option value="range">Date Range</option></select></div>					<input type="hidden" name="chain_id" value="" id="chain_id">					<div class="start-day-input-w">
+                                    <div class="os-form-group os-form-textfield-group os-form-group-simple no-label has-value"><input type="text" placeholder="Pick a Start" name="start_custom_date" value="" id="start_custom_date" class="os-form-control"></div>					</div>
+                                <div class="end-day-input-w">
+                                    <div class="os-form-group os-form-textfield-group os-form-group-simple no-label"><input type="text" placeholder="Pick an End" name="end_custom_date" value="" id="end_custom_date" class="os-form-control"></div>					</div>
+                            </div>
+                        <div class="custom-day-calendar-head">
+                                <h3 class="calendar-heading" data-label-single="Pick a Date" data-label-start="Pick a Start Date" data-label-end="Pick an End Date">Pick a Date</h3>
+                            <div class="os-form-group os-form-select-group os-form-group-transparent"><select name="custom_day_calendar_month" id="custom_day_calendar_month" class="os-form-control"><option value="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6" selected="">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option></select></div>	  			<div class="os-form-group os-form-select-group os-form-group-transparent"><select name="custom_day_calendar_year" id="custom_day_calendar_year" class="os-form-control"><option value="2024" selected="">2024</option><option value="2025">2025</option></select></div>	  		</div>
+                        <div class="custom-day-calendar-month" data-route="calendars__load_monthly_calendar_days_only">
+                            <div class="os-monthly-calendar-days-w" data-calendar-year="2024" data-calendar-month="6" data-calendar-month-label="June">
+                        <div class="os-monthly-calendar-days">		<div class="os-day os-day-current week-day-1 os-month-prev" data-date="2024-05-27">
+                        <div class="os-day-box">
+                            <div class="os-day-number">27</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-2 os-month-prev" data-date="2024-05-28">
+                        <div class="os-day-box">
+                            <div class="os-day-number">28</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-3 os-month-prev" data-date="2024-05-29">
+                        <div class="os-day-box">
+                            <div class="os-day-number">29</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-4 os-month-prev" data-date="2024-05-30">
+                        <div class="os-day-box">
+                            <div class="os-day-number">30</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-5 os-month-prev" data-date="2024-05-31">
+                        <div class="os-day-box">
+                            <div class="os-day-number">31</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-6" data-date="2024-06-01">
+                        <div class="os-day-box">
+                            <div class="os-day-number">1</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-7 selected" data-date="2024-06-02">
+                        <div class="os-day-box">
+                            <div class="os-day-number">2</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-1" data-date="2024-06-03">
+                        <div class="os-day-box">
+                            <div class="os-day-number">3</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-2" data-date="2024-06-04">
+                        <div class="os-day-box">
+                            <div class="os-day-number">4</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-3" data-date="2024-06-05">
+                        <div class="os-day-box">
+                            <div class="os-day-number">5</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-4" data-date="2024-06-06">
+                        <div class="os-day-box">
+                            <div class="os-day-number">6</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-5" data-date="2024-06-07">
+                        <div class="os-day-box">
+                            <div class="os-day-number">7</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-6" data-date="2024-06-08">
+                        <div class="os-day-box">
+                            <div class="os-day-number">8</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-7" data-date="2024-06-09">
+                        <div class="os-day-box">
+                            <div class="os-day-number">9</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-1" data-date="2024-06-10">
+                        <div class="os-day-box">
+                            <div class="os-day-number">10</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-2" data-date="2024-06-11">
+                        <div class="os-day-box">
+                            <div class="os-day-number">11</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-3" data-date="2024-06-12">
+                        <div class="os-day-box">
+                            <div class="os-day-number">12</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-4" data-date="2024-06-13">
+                        <div class="os-day-box">
+                            <div class="os-day-number">13</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-5" data-date="2024-06-14">
+                        <div class="os-day-box">
+                            <div class="os-day-number">14</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-6" data-date="2024-06-15">
+                        <div class="os-day-box">
+                            <div class="os-day-number">15</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-7" data-date="2024-06-16">
+                        <div class="os-day-box">
+                            <div class="os-day-number">16</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-1" data-date="2024-06-17">
+                        <div class="os-day-box">
+                            <div class="os-day-number">17</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-2" data-date="2024-06-18">
+                        <div class="os-day-box">
+                            <div class="os-day-number">18</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-3" data-date="2024-06-19">
+                        <div class="os-day-box">
+                            <div class="os-day-number">19</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-4" data-date="2024-06-20">
+                        <div class="os-day-box">
+                            <div class="os-day-number">20</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-5" data-date="2024-06-21">
+                        <div class="os-day-box">
+                            <div class="os-day-number">21</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-6" data-date="2024-06-22">
+                        <div class="os-day-box">
+                            <div class="os-day-number">22</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-7" data-date="2024-06-23">
+                        <div class="os-day-box">
+                            <div class="os-day-number">23</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-1" data-date="2024-06-24">
+                        <div class="os-day-box">
+                            <div class="os-day-number">24</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-2" data-date="2024-06-25">
+                        <div class="os-day-box">
+                            <div class="os-day-number">25</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-3" data-date="2024-06-26">
+                        <div class="os-day-box">
+                            <div class="os-day-number">26</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-4" data-date="2024-06-27">
+                        <div class="os-day-box">
+                            <div class="os-day-number">27</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-5" data-date="2024-06-28">
+                        <div class="os-day-box">
+                            <div class="os-day-number">28</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-6" data-date="2024-06-29">
+                        <div class="os-day-box">
+                            <div class="os-day-number">29</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-7" data-date="2024-06-30">
+                        <div class="os-day-box">
+                            <div class="os-day-number">30</div>
+                        </div>
+                        </div></div></div>	  		</div>
+                    </div>
+                    <div class="custom-day-schedule">
+                        <div class="custom-day-schedule-head">
+                                <h3>Set Schedule</h3>
+                            </div>
+                        <div class="weekday-schedule-form active">
+                        <div class="ws-period"><div class="os-time-group os-time-input-w as-period"><label for="work_periods[new_1_646262][start_time][formatted_value]">Start</label><div class="os-time-input-fields"><input type="text" placeholder="HH:MM" name="work_periods[new_1_646262][start_time][formatted_value]" value="08:00" class="os-form-control os-mask-time" inputmode="text"><input type="hidden" name="work_periods[new_1_646262][start_time][ampm]" value="am" class="ampm-value-hidden-holder"><div class="time-ampm-w"><div class="time-ampm-select time-am active" data-ampm-value="am">am</div><div class="time-ampm-select time-pm " data-ampm-value="pm">pm</div></div></div></div><div class="os-time-group os-time-input-w as-period"><label for="work_periods[new_1_646262][end_time][formatted_value]">Finish</label><div class="os-time-input-fields"><input type="text" placeholder="HH:MM" name="work_periods[new_1_646262][end_time][formatted_value]" value="06:00" class="os-form-control os-mask-time" inputmode="text"><input type="hidden" name="work_periods[new_1_646262][end_time][ampm]" value="pm" class="ampm-value-hidden-holder"><div class="time-ampm-w"><div class="time-ampm-select time-am " data-ampm-value="am">am</div><div class="time-ampm-select time-pm active" data-ampm-value="pm">pm</div></div></div></div><input type="hidden" name="work_periods[new_1_646262][week_day]" value="1" id="work_periods_new_1_646262_week_day"><input type="hidden" name="work_periods[new_1_646262][is_active]" value="1" class="is-active" id="work_periods_new_1_646262_is_active"><input type="hidden" name="work_periods[new_1_646262][agent_id]" value="0" id="work_periods_new_1_646262_agent_id"><input type="hidden" name="work_periods[new_1_646262][location_id]" value="0" id="work_periods_new_1_646262_location_id"><input type="hidden" name="work_periods[new_1_646262][service_id]" value="0" id="work_periods_new_1_646262_service_id"></div>          <div class="ws-period-add" data-="" data-os-params="custom_date=&amp;service_id=0&amp;agent_id=0&amp;location_id=0" data-os-before-after="before" data-os-after-call="latepoint_init_work_period_form" data-os-action="settings__load_work_period_form">
+                        <div class="add-period-graphic-w">
+                        <div class="add-period-plus"><i class="latepoint-icon latepoint-icon-plus-square"></i></div>
+                        </div>
+                        <div class="add-period-label">Add another work period</div>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div class="latepoint-lightbox-footer" style="">
+                <button type="button" onclick="addCustomSchedule()" class="latepoint-btn latepoint-btn-block latepoint-btn-lg latepoint-btn-outline latepoint-save-day-schedule-btn">Save Schedule</button>
+                </div>
+            </form><a href="javascript:;" class="latepoint-lightbox-close"><i class="latepoint-icon latepoint-icon-x"></i></a></div><div class="latepoint-lightbox-shadow"></div></div>
+            `)
+
+            $('body').addClass('latepoint-lightbox-active');
+        });
+
+        $('.add-custom-day-off').click(function() {
+            $('body').append(`
+            <div class="latepoint-lightbox-w latepoint-w width-700"><div class="latepoint-lightbox-i"><form class="latepoint-lightbox-wrapper-form" action="" data-os-success-action="reload" data-os-action="settings__save_custom_day_schedule">
+                <input type="hidden" id="_wpnonce" name="_wpnonce" value="d3b5f65277"><input type="hidden" name="_wp_http_referer" value="/demo_4217c15f9eb342a2/wp-admin/admin-ajax.php">	<div class="latepoint-lightbox-heading">
+                    <h2>Custom schedule</h2>
+                </div>
+                <div class="latepoint-lightbox-content">
+                <div class="custom-day-schedule-w">
+                    <div class="custom-day-calendar" data-show-schedule="yes" data-period-type="single" data-picking="start">
+                            <div class="custom-day-settings-w">
+                                <div class="os-form-group os-form-select-group os-form-group-transparent"><select name="period_type" class="period-type-selector os-form-control" id="period_type"><option value="single" selected="">Single Day</option><option value="range">Date Range</option></select></div>					<input type="hidden" name="chain_id" value="" id="chain_id">					<div class="start-day-input-w">
+                                    <div class="os-form-group os-form-textfield-group os-form-group-simple no-label has-value"><input type="text" placeholder="Pick a Start" name="start_custom_date" value="" id="start_custom_date" class="os-form-control"></div>					</div>
+                                <div class="end-day-input-w">
+                                    <div class="os-form-group os-form-textfield-group os-form-group-simple no-label"><input type="text" placeholder="Pick an End" name="end_custom_date" value="" id="end_custom_date" class="os-form-control"></div>					</div>
+                            </div>
+                        <div class="custom-day-calendar-head">
+                                <h3 class="calendar-heading" data-label-single="Pick a Date" data-label-start="Pick a Start Date" data-label-end="Pick an End Date">Pick a Date</h3>
+                            <div class="os-form-group os-form-select-group os-form-group-transparent"><select name="custom_day_calendar_month" id="custom_day_calendar_month" class="os-form-control"><option value="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6" selected="">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option></select></div>	  			<div class="os-form-group os-form-select-group os-form-group-transparent"><select name="custom_day_calendar_year" id="custom_day_calendar_year" class="os-form-control"><option value="2024" selected="">2024</option><option value="2025">2025</option></select></div>	  		</div>
+                        <div class="custom-day-calendar-month" data-route="calendars__load_monthly_calendar_days_only">
+                            <div class="os-monthly-calendar-days-w" data-calendar-year="2024" data-calendar-month="6" data-calendar-month-label="June">
+                        <div class="os-monthly-calendar-days">		<div class="os-day os-day-current week-day-1 os-month-prev" data-date="2024-05-27">
+                        <div class="os-day-box">
+                            <div class="os-day-number">27</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-2 os-month-prev" data-date="2024-05-28">
+                        <div class="os-day-box">
+                            <div class="os-day-number">28</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-3 os-month-prev" data-date="2024-05-29">
+                        <div class="os-day-box">
+                            <div class="os-day-number">29</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-4 os-month-prev" data-date="2024-05-30">
+                        <div class="os-day-box">
+                            <div class="os-day-number">30</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-5 os-month-prev" data-date="2024-05-31">
+                        <div class="os-day-box">
+                            <div class="os-day-number">31</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-6" data-date="2024-06-01">
+                        <div class="os-day-box">
+                            <div class="os-day-number">1</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-7 selected" data-date="2024-06-02">
+                        <div class="os-day-box">
+                            <div class="os-day-number">2</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-1" data-date="2024-06-03">
+                        <div class="os-day-box">
+                            <div class="os-day-number">3</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-2" data-date="2024-06-04">
+                        <div class="os-day-box">
+                            <div class="os-day-number">4</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-3" data-date="2024-06-05">
+                        <div class="os-day-box">
+                            <div class="os-day-number">5</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-4" data-date="2024-06-06">
+                        <div class="os-day-box">
+                            <div class="os-day-number">6</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-5" data-date="2024-06-07">
+                        <div class="os-day-box">
+                            <div class="os-day-number">7</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-6" data-date="2024-06-08">
+                        <div class="os-day-box">
+                            <div class="os-day-number">8</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-7" data-date="2024-06-09">
+                        <div class="os-day-box">
+                            <div class="os-day-number">9</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-1" data-date="2024-06-10">
+                        <div class="os-day-box">
+                            <div class="os-day-number">10</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-2" data-date="2024-06-11">
+                        <div class="os-day-box">
+                            <div class="os-day-number">11</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-3" data-date="2024-06-12">
+                        <div class="os-day-box">
+                            <div class="os-day-number">12</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-4" data-date="2024-06-13">
+                        <div class="os-day-box">
+                            <div class="os-day-number">13</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-5" data-date="2024-06-14">
+                        <div class="os-day-box">
+                            <div class="os-day-number">14</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-6" data-date="2024-06-15">
+                        <div class="os-day-box">
+                            <div class="os-day-number">15</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-7" data-date="2024-06-16">
+                        <div class="os-day-box">
+                            <div class="os-day-number">16</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-1" data-date="2024-06-17">
+                        <div class="os-day-box">
+                            <div class="os-day-number">17</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-2" data-date="2024-06-18">
+                        <div class="os-day-box">
+                            <div class="os-day-number">18</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-3" data-date="2024-06-19">
+                        <div class="os-day-box">
+                            <div class="os-day-number">19</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-4" data-date="2024-06-20">
+                        <div class="os-day-box">
+                            <div class="os-day-number">20</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-5" data-date="2024-06-21">
+                        <div class="os-day-box">
+                            <div class="os-day-number">21</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-6" data-date="2024-06-22">
+                        <div class="os-day-box">
+                            <div class="os-day-number">22</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-7" data-date="2024-06-23">
+                        <div class="os-day-box">
+                            <div class="os-day-number">23</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-1" data-date="2024-06-24">
+                        <div class="os-day-box">
+                            <div class="os-day-number">24</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-2" data-date="2024-06-25">
+                        <div class="os-day-box">
+                            <div class="os-day-number">25</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-3" data-date="2024-06-26">
+                        <div class="os-day-box">
+                            <div class="os-day-number">26</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-4" data-date="2024-06-27">
+                        <div class="os-day-box">
+                            <div class="os-day-number">27</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-5" data-date="2024-06-28">
+                        <div class="os-day-box">
+                            <div class="os-day-number">28</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-6" data-date="2024-06-29">
+                        <div class="os-day-box">
+                            <div class="os-day-number">29</div>
+                        </div>
+                        </div>		<div class="os-day os-day-current week-day-7" data-date="2024-06-30">
+                        <div class="os-day-box">
+                            <div class="os-day-number">30</div>
+                        </div>
+                        </div></div></div>	  		</div>
+                    </div>
+                    <div class="custom-day-schedule">
+                        <div class="custom-day-schedule-head">
+                                <h3>Set Schedule</h3>
+                            </div>
+                        <div class="weekday-schedule-form active">
+                        <div class="ws-period"><div class="os-time-group os-time-input-w as-period"><label for="work_periods[new_1_646262][start_time][formatted_value]">Start</label><div class="os-time-input-fields"><input type="text" placeholder="HH:MM" name="work_periods[new_1_646262][start_time][formatted_value]" value="08:00" class="os-form-control os-mask-time" inputmode="text"><input type="hidden" name="work_periods[new_1_646262][start_time][ampm]" value="am" class="ampm-value-hidden-holder"><div class="time-ampm-w"><div class="time-ampm-select time-am active" data-ampm-value="am">am</div><div class="time-ampm-select time-pm " data-ampm-value="pm">pm</div></div></div></div><div class="os-time-group os-time-input-w as-period"><label for="work_periods[new_1_646262][end_time][formatted_value]">Finish</label><div class="os-time-input-fields"><input type="text" placeholder="HH:MM" name="work_periods[new_1_646262][end_time][formatted_value]" value="06:00" class="os-form-control os-mask-time" inputmode="text"><input type="hidden" name="work_periods[new_1_646262][end_time][ampm]" value="pm" class="ampm-value-hidden-holder"><div class="time-ampm-w"><div class="time-ampm-select time-am " data-ampm-value="am">am</div><div class="time-ampm-select time-pm active" data-ampm-value="pm">pm</div></div></div></div><input type="hidden" name="work_periods[new_1_646262][week_day]" value="1" id="work_periods_new_1_646262_week_day"><input type="hidden" name="work_periods[new_1_646262][is_active]" value="1" class="is-active" id="work_periods_new_1_646262_is_active"><input type="hidden" name="work_periods[new_1_646262][agent_id]" value="0" id="work_periods_new_1_646262_agent_id"><input type="hidden" name="work_periods[new_1_646262][location_id]" value="0" id="work_periods_new_1_646262_location_id"><input type="hidden" name="work_periods[new_1_646262][service_id]" value="0" id="work_periods_new_1_646262_service_id"></div>          <div class="ws-period-add" data-="" data-os-params="custom_date=&amp;service_id=0&amp;agent_id=0&amp;location_id=0" data-os-before-after="before" data-os-after-call="latepoint_init_work_period_form" data-os-action="settings__load_work_period_form">
+                        <div class="add-period-graphic-w">
+                        <div class="add-period-plus"><i class="latepoint-icon latepoint-icon-plus-square"></i></div>
+                        </div>
+                        <div class="add-period-label">Add another work period</div>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div class="latepoint-lightbox-footer" style="">
+                <button type="button" onclick="addCustomDayOff()" class="latepoint-btn latepoint-btn-block latepoint-btn-lg latepoint-btn-outline latepoint-save-day-schedule-btn">Save Schedule</button>
+                </div>
+            </form><a href="javascript:;" class="latepoint-lightbox-close"><i class="latepoint-icon latepoint-icon-x"></i></a></div><div class="latepoint-lightbox-shadow"></div></div>
+            `)
+
+            $('body').addClass('latepoint-lightbox-active');
+        });
+
+        $('body').on('click', '.os-day.os-day-current', function () {
+            $(this).addClass('selected');
+            $(this).siblings('.os-day.os-day-current').removeClass('selected');
+        });
+
+        $('body').on('click', '.latepoint-lightbox-close', function () {
+            
         });
 
         
