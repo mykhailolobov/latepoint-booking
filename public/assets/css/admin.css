@@ -463,53 +463,53 @@ body.latepoint-admin .latepoint-btn.latepoint-btn-link {
   background-color: transparent;
   color: #2652e4;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-outline {
+.latepoint-btn.latepoint-btn-outline {
   background-color: transparent;
   color: #2652e4;
   border: 1px solid #2652e4;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-outline.latepoint-btn-outline-dotted {
+.latepoint-btn.latepoint-btn-outline.latepoint-btn-outline-dotted {
   border-style: dotted;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-outline:hover,
-body.latepoint-admin .latepoint-btn.latepoint-btn-outline:focus {
+.latepoint-btn.latepoint-btn-outline:hover,
+.latepoint-btn.latepoint-btn-outline:focus {
   border-color: #183fbf;
   color: #2652e4;
   background-color: transparent;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-outline.latepoint-btn-danger {
+.latepoint-btn.latepoint-btn-outline.latepoint-btn-danger {
   background-color: transparent;
   color: #de5959;
   border-color: #de5959;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-outline.latepoint-btn-danger:hover,
-body.latepoint-admin .latepoint-btn.latepoint-btn-outline.latepoint-btn-danger:focus {
+.latepoint-btn.latepoint-btn-outline.latepoint-btn-danger:hover,
+.latepoint-btn.latepoint-btn-outline.latepoint-btn-danger:focus {
   border-color: #d62e2e;
   color: #d62e2e;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-outline.latepoint-btn-secondary {
+.latepoint-btn.latepoint-btn-outline.latepoint-btn-secondary {
   border: 1px solid #ccc;
   background-color: transparent;
   color: #444;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-outline.latepoint-btn-secondary:hover,
-body.latepoint-admin .latepoint-btn.latepoint-btn-outline.latepoint-btn-secondary:focus {
+.latepoint-btn.latepoint-btn-outline.latepoint-btn-secondary:hover,
+.latepoint-btn.latepoint-btn-outline.latepoint-btn-secondary:focus {
   border-color: #b3b3b3;
   color: #2b2b2b;
   background-color: transparent;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-outline.latepoint-btn-grey {
+.latepoint-btn.latepoint-btn-outline.latepoint-btn-grey {
   border: 1px solid #ccc;
   background-color: transparent;
   color: #444;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-outline.latepoint-btn-grey:hover,
-body.latepoint-admin .latepoint-btn.latepoint-btn-outline.latepoint-btn-grey:focus {
+.latepoint-btn.latepoint-btn-outline.latepoint-btn-grey:hover,
+.latepoint-btn.latepoint-btn-outline.latepoint-btn-grey:focus {
   border-color: #b3b3b3;
   color: #2b2b2b;
   background-color: transparent;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-block {
+.latepoint-btn.latepoint-btn-block {
   display: block;
   width: 100%;
   text-align: center;
@@ -528,15 +528,15 @@ body.latepoint-admin .latepoint-btn.latepoint-btn-md i {
 body.latepoint-admin .latepoint-btn.latepoint-btn-md i + span {
   margin-left: 10px;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-lg {
+.latepoint-btn.latepoint-btn-lg {
   padding: 12px 20px;
   font-size: 20px;
   border-radius: 8px;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-lg i {
+.latepoint-btn.latepoint-btn-lg i {
   line-height: inherit;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-lg i + span {
+.latepoint-btn.latepoint-btn-lg i + span {
   margin-left: 4px;
 }
 body.latepoint-admin .latepoint-btn.latepoint-btn-sm {
@@ -5380,7 +5380,7 @@ select {
   border-radius: 0 6px 6px 0;
 }
 .os-form-group select.os-form-control {
-  height: 36px;
+  height: 36px !important;
   padding: 0px 20px 0px 7px !important;
 }
 .os-form-group select.os-form-control:hover {
