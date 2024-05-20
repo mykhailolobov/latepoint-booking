@@ -53,7 +53,7 @@ $configData = Helper::appClasses();
 <div class="row">
     <div class="col-lg-12 col-xxl-12 mb-4">
     <div class="card-header mb-0">
-            <h4 class="m-0 me-2">New Customer</h4>
+            <h4 class="m-0 me-2">Edit Customer</h4>
             <hr>
         </div>
     </div>

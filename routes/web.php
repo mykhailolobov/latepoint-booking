@@ -82,8 +82,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/customers/search', [Customers::class, 'search_customer'])->name('search_customer');
 
 
-
-
     // Resources Section
     Route::get('/resource/services', [Services::class, 'index'])->name('resource-services');
     Route::get('/resource/createservices', [Services::class, 'create'])->name('resource-createservices');
