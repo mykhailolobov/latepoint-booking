@@ -228,8 +228,7 @@
                                         <div class="mb-2">
                                             <a href="#"
                                                 class="latepoint-btn latepoint-btn-outline latepoint-btn-sm open-layout-template-variables-panel"><i
-                                                    class="latepoint-icon latepoint-icon-zap"></i><span>Show layout
-                                                    variables</span></a>
+                                                    class="latepoint-icon latepoint-icon-zap"></i><span>Show layout variables</span></a>
                                         </div>
                                         <div class="os-form-group os-form-control-wp-editor-group"><label
                                                 for="settings[email_layout_template]"></label>

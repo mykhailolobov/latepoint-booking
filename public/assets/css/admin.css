@@ -370,7 +370,7 @@
 /*!
  * Copyright (c) 2023 LatePoint LLC. All rights reserved.
  */
-body.latepoint-admin .latepoint-btn {
+.latepoint-btn {
   padding: 8px 12px;
   background-color: #2652e4;
   box-shadow: 0px 3px 0px 0px transparent;
@@ -385,77 +385,77 @@ body.latepoint-admin .latepoint-btn {
   line-height: 1.2;
   font-size: 16px;
 }
-body.latepoint-admin .latepoint-btn:hover,
-body.latepoint-admin .latepoint-btn:focus {
+.latepoint-btn:hover,
+.latepoint-btn:focus {
   outline: none;
   background-color: #456ef6;
   border-color: #456ef6;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-secondary {
+.latepoint-btn.latepoint-btn-secondary {
   background-color: #edeff6;
   color: #252c39;
   border-color: #edeff6;
   box-shadow: 0px 3px 0px 0px transparent;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-secondary.latepoint-btn-link {
+.latepoint-btn.latepoint-btn-secondary.latepoint-btn-link {
   border-color: #edeff6;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-secondary:hover {
+.latepoint-btn.latepoint-btn-secondary:hover {
   background-color: #f8f9ff;
   border-color: #f8f9ff;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-danger {
+.latepoint-btn.latepoint-btn-danger {
   background-color: #ef6b6b;
   color: #fff;
   box-shadow: 0px 3px 0px 0px transparent;
   border-color: #ef6b6b;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-danger.latepoint-btn-link {
+.latepoint-btn.latepoint-btn-danger.latepoint-btn-link {
   border-color: #ef6b6b;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-danger:focus,
-body.latepoint-admin .latepoint-btn.latepoint-btn-danger:active {
+.latepoint-btn.latepoint-btn-danger:focus,
+.latepoint-btn.latepoint-btn-danger:active {
   background-color: #ef6b6b;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-danger:hover {
+.latepoint-btn.latepoint-btn-danger:hover {
   background-color: #fb7f7f;
   border-color: #fb7f7f;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-success {
+.latepoint-btn.latepoint-btn-success {
   background-color: #2ebd6f;
   color: #fff;
   box-shadow: 0px 3px 0px 0px transparent;
   border-color: #2ebd6f;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-success.latepoint-btn-link {
+.latepoint-btn.latepoint-btn-success.latepoint-btn-link {
   border-color: #2ebd6f;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-success:focus,
-body.latepoint-admin .latepoint-btn.latepoint-btn-success:active {
+.latepoint-btn.latepoint-btn-success:focus,
+.latepoint-btn.latepoint-btn-success:active {
   background-color: #2ebd6f;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-success:hover {
+.latepoint-btn.latepoint-btn-success:hover {
   background-color: #42d083;
   border-color: #42d083;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-white {
+.latepoint-btn.latepoint-btn-white {
   background-color: #fff;
   color: #38406d;
   box-shadow: 0px 3px 0px 0px transparent;
   border-color: #fff;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-white.latepoint-btn-link {
+.latepoint-btn.latepoint-btn-white.latepoint-btn-link {
   border-color: #fff;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-white:focus,
-body.latepoint-admin .latepoint-btn.latepoint-btn-white:active {
+.latepoint-btn.latepoint-btn-white:focus,
+.latepoint-btn.latepoint-btn-white:active {
   background-color: #fff;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-white:hover {
+.latepoint-btn.latepoint-btn-white:hover {
   background-color: #f4f5f9;
   border-color: #f4f5f9;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-link {
+.latepoint-btn.latepoint-btn-link {
   border: none;
   border-radius: 0px;
   padding-left: 0px;
@@ -514,18 +514,18 @@ body.latepoint-admin .latepoint-btn.latepoint-btn-link {
   width: 100%;
   text-align: center;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-rounded {
+.latepoint-btn.latepoint-btn-rounded {
   border-radius: 30px;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-md {
+.latepoint-btn.latepoint-btn-md {
   padding: 9px 16px 11px;
   font-size: 18px;
   border-radius: 5px;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-md i {
+.latepoint-btn.latepoint-btn-md i {
   font-size: 13px;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-md i + span {
+.latepoint-btn.latepoint-btn-md i + span {
   margin-left: 10px;
 }
 .latepoint-btn.latepoint-btn-lg {
@@ -539,43 +539,43 @@ body.latepoint-admin .latepoint-btn.latepoint-btn-md i + span {
 .latepoint-btn.latepoint-btn-lg i + span {
   margin-left: 4px;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-sm {
+.latepoint-btn.latepoint-btn-sm {
   padding: 4px 6px 5px;
   font-size: 14px;
   border-radius: 5px;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-sm i,
-body.latepoint-admin .latepoint-btn.latepoint-btn-sm span {
+.latepoint-btn.latepoint-btn-sm i,
+.latepoint-btn.latepoint-btn-sm span {
   vertical-align: middle;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-sm i + span {
+.latepoint-btn.latepoint-btn-sm i + span {
   margin-left: 5px;
 }
-body.latepoint-admin .latepoint-btn span {
+.latepoint-btn span {
   display: inline-block;
 }
-body.latepoint-admin .latepoint-btn i {
+.latepoint-btn i {
   display: inline-block;
 }
-body.latepoint-admin .latepoint-btn.latepoint-btn-just-icon i {
+.latepoint-btn.latepoint-btn-just-icon i {
   display: block;
 }
-body.latepoint-admin .latepoint-btn i + span {
+.latepoint-btn i + span {
   margin-left: 6px;
 }
-body.latepoint-admin .latepoint-btn span + i {
+.latepoint-btn span + i {
   margin-left: 6px;
 }
-body.latepoint-admin .latepoint-btn.os-loading {
+.latepoint-btn.os-loading {
   color: transparent !important;
   position: relative;
 }
-body.latepoint-admin .latepoint-btn.os-loading span,
-body.latepoint-admin .latepoint-btn.os-loading i {
+.latepoint-btn.os-loading span,
+.latepoint-btn.os-loading i {
   color: transparent !important;
   border-color: transparent !important;
 }
-body.latepoint-admin .latepoint-btn.os-loading:after {
+.latepoint-btn.os-loading:after {
   display: block;
   content: '';
   width: 14px;
@@ -592,31 +592,31 @@ body.latepoint-admin .latepoint-btn.os-loading:after {
   animation: os-loading 700ms infinite linear;
   background-color: transparent !important;
 }
-body.latepoint-admin .latepoint-btn.os-loading.latepoint-btn-danger:after {
+.latepoint-btn.os-loading.latepoint-btn-danger:after {
   border-bottom-color: #fff;
   border-left-color: #fff;
   border-top-color: #fff;
   border-right-color: transparent;
 }
-body.latepoint-admin .latepoint-btn.os-loading.latepoint-btn-white:after {
+.latepoint-btn.os-loading.latepoint-btn-white:after {
   border-bottom-color: #38406d;
   border-left-color: #38406d;
   border-top-color: #38406d;
   border-right-color: transparent;
 }
-body.latepoint-admin .latepoint-btn.os-loading.latepoint-btn-secondary:after {
+.latepoint-btn.os-loading.latepoint-btn-secondary:after {
   border-bottom-color: #252c39;
   border-left-color: #252c39;
   border-top-color: #252c39;
   border-right-color: transparent;
 }
-body.latepoint-admin .latepoint-btn.os-loading.latepoint-btn-outline:after {
+.latepoint-btn.os-loading.latepoint-btn-outline:after {
   border-bottom-color: #2652e4;
   border-left-color: #2652e4;
   border-top-color: #2652e4;
   border-right-color: transparent;
 }
-body.latepoint-admin .latepoint-btn.os-loading.latepoint-btn-link:after {
+.latepoint-btn.os-loading.latepoint-btn-link:after {
   border-bottom-color: #fff;
   border-left-color: #fff;
   border-top-color: #fff;
