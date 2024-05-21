@@ -43,19 +43,20 @@ $configData = Helper::appClasses();
             <hr>
         </div>
         <div class="index-agent-boxes">
-            <a href="{{ url('/resource/editagents/1') }}" class="agent-box-w agent-status-active">
+            @foreach ($agents as $agent)
+            <a href="/resource/editagents/{{$agent->id}}" class="agent-box-w agent-status-active">
                 <div class="agent-edit-icon"><i class="latepoint-icon latepoint-icon-edit-3"></i></div>
                 <div class="agent-info-w">
-                    <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/9.png") ?>)"></div>
+                    <div class="agent-avatar" style="background-image: url({{$agent->avatar_image_id}})"></div>
                     <div class="agent-info">
-                        <div class="agent-name">John Mayers</div>
-                        <div class="agent-phone">+18923749238</div>
+                        <div class="agent-name">{{$agent->first_name}} {{$agent->last_name}}</div>
+                        <div class="agent-phone">{{$agent->phone}}</div>
                         <span class="agent-connection-icon">
                             <img title="Connected to WordPress User" src="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-content/plugins/latepoint/public/images/wordpress-logo.png">
                         </span>                                                   
                     </div>
                 </div>
-                <div class="agent-schedule">
+                <div class="agent-schedule"> 
                     <div class="schedule-day is-on">Mon</div>
                     <div class="schedule-day is-on">Tue</div>
                     <div class="schedule-day is-on">Wed</div>
@@ -63,7 +64,7 @@ $configData = Helper::appClasses();
                     <div class="schedule-day is-on">Fri</div>
                     <div class="schedule-day is-on">Sat</div>
                     <div class="schedule-day is-on">Sun</div>                 
-                </div>
+                </div> 
                 <div class="agent-schedule-info">
                     <div class="agent-today-info">
                         Today <span class="today-status is-on-duty">On Duty</span>
@@ -76,105 +77,10 @@ $configData = Helper::appClasses();
                     </div>
                 </div>
             </a>
+            @endforeach
+            
 
-            <a href="{{ url('/resource/editagents/1') }}" class="agent-box-w agent-status-active">
-                <div class="agent-edit-icon"><i class="latepoint-icon latepoint-icon-edit-3"></i></div>
-                <div class="agent-info-w">
-                    <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/7.png") ?>)"></div>
-                    <div class="agent-info">
-                        <div class="agent-name">Kim Collins</div>
-                        <div class="agent-phone">+18972348393</div>
-                    </div>
-                </div>
-                <div class="agent-schedule">
-                    <div class="schedule-day is-on">Mon</div>
-                    <div class="schedule-day is-on">Tue</div>
-                    <div class="schedule-day is-on">Wed</div>
-                    <div class="schedule-day is-on">Thu</div>
-                    <div class="schedule-day is-on">Fri</div>
-                    <div class="schedule-day is-on">Sat</div>
-                    <div class="schedule-day is-on">Sun</div>                 
-                </div>
-                <div class="agent-schedule-info">
-                    <div class="agent-today-info">
-                        Today                
-                        <span class="today-status is-on-duty">On Duty</span>
-                        
-                        <div class="today-schedule">
-                            <span>08:00am - 05:00pm</span>                  
-                        </div>
-                    </div>
-                    <div class="today-bookings">
-                        Bookings <div class="today-bookings-count">0</div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="{{ url('/resource/editagents/1') }}" class="agent-box-w agent-status-active">
-                <div class="agent-edit-icon"><i class="latepoint-icon latepoint-icon-edit-3"></i></div>
-                <div class="agent-info-w">
-                    <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/11.png") ?>)"></div>
-                    <div class="agent-info">
-                        <div class="agent-name">Ben Stones</div>
-                        <div class="agent-phone">+1826348272</div>
-                    </div>
-                </div>
-                <div class="agent-schedule">
-                    <div class="schedule-day is-on">Mon</div>
-                    <div class="schedule-day is-on">Tue</div>
-                    <div class="schedule-day is-on">Wed</div>
-                    <div class="schedule-day is-on">Thu</div>
-                    <div class="schedule-day is-on">Fri</div>
-                    <div class="schedule-day is-on">Sat</div>
-                    <div class="schedule-day is-on">Sun</div>                 
-                </div>
-                <div class="agent-schedule-info">
-                    <div class="agent-today-info">
-                        Today                
-                        <span class="today-status is-on-duty">On Duty</span>
-                        
-                        <div class="today-schedule">
-                            <span>08:00am - 05:00pm</span>                  
-                        </div>
-                    </div>
-                    <div class="today-bookings">
-                        Bookings <div class="today-bookings-count">0</div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="{{ url('/resource/editagents/1') }}" class="agent-box-w agent-status-active">
-                <div class="agent-edit-icon"><i class="latepoint-icon latepoint-icon-edit-3"></i></div>
-                <div class="agent-info-w">
-                    <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/15.png") ?>)"></div>
-                    <div class="agent-info">
-                        <div class="agent-name">Clark Simeon</div>
-                        <div class="agent-phone">+18457263473</div>
-                    </div>
-                </div>
-                <div class="agent-schedule">
-                    <div class="schedule-day is-on">Mon</div>
-                    <div class="schedule-day is-on">Tue</div>
-                    <div class="schedule-day is-on">Wed</div>
-                    <div class="schedule-day is-on">Thu</div>
-                    <div class="schedule-day is-on">Fri</div>
-                    <div class="schedule-day is-on">Sat</div>
-                    <div class="schedule-day is-on">Sun</div>                 
-                </div>
-                <div class="agent-schedule-info">
-                    <div class="agent-today-info">
-                        Today                
-                        <span class="today-status is-on-duty">On Duty</span>
-                        
-                        <div class="today-schedule">
-                            <span>08:00am - 05:00pm</span>                  
-                        </div>
-                    </div>
-                    <div class="today-bookings">
-                        Bookings <div class="today-bookings-count">0</div>
-                    </div>
-                </div>
-            </a>
+            
             <a href="{{url('/resource/createagents')}}" class="create-agent-link-w">
                 <div class="create-agent-link-i">
                   <div class="add-agent-graphic-w">

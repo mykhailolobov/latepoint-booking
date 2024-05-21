@@ -100,6 +100,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/resource/agents', [Agents::class, 'index'])->name('resource-agents');
     Route::get('/resource/createagents', [Agents::class, 'create'])->name('resource-createagents');
     Route::get('/resource/editagents/{id}', [Agents::class, 'edit'])->name('resource-editagents');
+    Route::post('/resource/storeagent', [Agents::class, 'store'])->name('resource-storeagent');
+    Route::post('/resource/updateagent', [Agents::class, 'update'])->name('resource-updateagent');
+    
 
     // Resources Section->Coupons part
     Route::get('/resource/coupons', [Coupons::class, 'index'])->name('resource-coupons');
