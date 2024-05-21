@@ -56,7 +56,7 @@ $configData = Helper::appClasses();
                         </span>                                                   
                     </div>
                 </div>
-                <div class="agent-schedule">
+                <div class="agent-schedule"> 
                     <div class="schedule-day is-on">Mon</div>
                     <div class="schedule-day is-on">Tue</div>
                     <div class="schedule-day is-on">Wed</div>
@@ -64,7 +64,7 @@ $configData = Helper::appClasses();
                     <div class="schedule-day is-on">Fri</div>
                     <div class="schedule-day is-on">Sat</div>
                     <div class="schedule-day is-on">Sun</div>                 
-                </div>
+                </div> 
                 <div class="agent-schedule-info">
                     <div class="agent-today-info">
                         Today <span class="today-status is-on-duty">On Duty</span>
