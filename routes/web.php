@@ -133,8 +133,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/settings/process_jobs', [ScheduledJobs::class, 'index'])->name('settings-process_jobs');
     Route::get('/settings/activities', [ActivityLog::class, 'index'])->name('settings-activities');
     Route::get('/settings/integrations-calendars', [CalendarsIntegration::class, 'index'])->name('settings-integrations-calendars');
-    Route::get('/settings/integrations-meeting', [Marketing::class, 'index'])->name('settings-integrations-meeting');
-    Route::get('/settings/integrations-marketing', [Meetings::class, 'index'])->name('settings-integrations-marketing');
+    Route::get('/settings/integrations-meeting', [Meetings::class, 'index'])->name('settings-integrations-meeting');
+    Route::get('/settings/integrations-marketing', [Marketing::class, 'index'])->name('settings-integrations-marketing');
     Route::get('/settings/form-fields', [FormFields::class, 'index'])->name('settings-form-fields');
 });
 
