@@ -6717,7 +6717,7 @@ form > .os-form-sub-header:first-child {
 }
 .os-table-w.os-table-compact .os-table tr th .os-form-group select.os-form-control {
   min-width: 100%;
-  height: 26px;
+  height: 26px !important;
   min-height: 26px;
   box-shadow: none;
   padding-right: 18px !important;
@@ -20257,8 +20257,8 @@ body.latepoint-admin .new-version-message .key-prompt:before {
   color: #2d303a;
 }
 
-body.latepoint-admin .new-version-message,
-body.latepoint-admin .active-license-info {
+.new-version-message,
+.active-license-info {
   background-color: #fff;
   border: 1px solid #e1e3ea;
   border-radius: 6px;
@@ -20271,10 +20271,10 @@ body.latepoint-admin .active-license-info {
   color: #8e99bd;
   margin-bottom: 40px;
 }
-body.latepoint-admin .new-version-message .version-warn-icon,
-body.latepoint-admin .new-version-message .version-check-icon,
-body.latepoint-admin .active-license-info .version-warn-icon,
-body.latepoint-admin .active-license-info .version-check-icon {
+.new-version-message .version-warn-icon,
+.new-version-message .version-check-icon,
+.active-license-info .version-warn-icon,
+.active-license-info .version-check-icon {
   color: #fff;
   position: absolute;
   top: 34px;
@@ -20285,8 +20285,8 @@ body.latepoint-admin .active-license-info .version-check-icon {
   border-radius: 50%;
   z-index: 3;
 }
-body.latepoint-admin .new-version-message .version-check-icon,
-body.latepoint-admin .active-license-info .version-check-icon {
+.new-version-message .version-check-icon,
+.active-license-info .version-check-icon {
   background-image: linear-gradient(180deg, #5aff77, #00f842);
   box-shadow:
     0px 1px 0px 0px rgba(138, 255, 154, 0.5),
@@ -20296,8 +20296,8 @@ body.latepoint-admin .active-license-info .version-check-icon {
   border: 1px solid #35d431;
   border-bottom-color: #33c82f;
 }
-body.latepoint-admin .new-version-message .version-warn-icon,
-body.latepoint-admin .active-license-info .version-warn-icon {
+.new-version-message .version-warn-icon,
+.active-license-info .version-warn-icon {
   background-image: linear-gradient(180deg, #ff5839, #f50e0e);
   box-shadow:
     0px 1px 0px 0px rgba(255, 138, 138, 0.5),
@@ -20307,48 +20307,48 @@ body.latepoint-admin .active-license-info .version-warn-icon {
   border: 1px solid #ee1b1b;
   border-bottom-color: #ce0a0a;
 }
-body.latepoint-admin .new-version-message .version-buttons-w,
-body.latepoint-admin .new-version-message .license-info-buttons-w,
-body.latepoint-admin .active-license-info .version-buttons-w,
-body.latepoint-admin .active-license-info .license-info-buttons-w {
+.new-version-message .version-buttons-w,
+.new-version-message .license-info-buttons-w,
+.active-license-info .version-buttons-w,
+.active-license-info .license-info-buttons-w {
   border-top: 1px solid #f4f4f4;
   padding-top: 15px;
   margin-top: 25px;
 }
-body.latepoint-admin .new-version-message .version-buttons-w .os-deactivate-license-btn,
-body.latepoint-admin .new-version-message .license-info-buttons-w .os-deactivate-license-btn,
-body.latepoint-admin .active-license-info .version-buttons-w .os-deactivate-license-btn,
-body.latepoint-admin .active-license-info .license-info-buttons-w .os-deactivate-license-btn {
+.new-version-message .version-buttons-w .os-deactivate-license-btn,
+.new-version-message .license-info-buttons-w .os-deactivate-license-btn,
+.active-license-info .version-buttons-w .os-deactivate-license-btn,
+.active-license-info .license-info-buttons-w .os-deactivate-license-btn {
   color: #eb3a3a;
 }
-body.latepoint-admin .new-version-message .version-buttons-w .os-deactivate-license-btn span,
-body.latepoint-admin .new-version-message .license-info-buttons-w .os-deactivate-license-btn span,
-body.latepoint-admin .active-license-info .version-buttons-w .os-deactivate-license-btn span,
-body.latepoint-admin .active-license-info .license-info-buttons-w .os-deactivate-license-btn span {
+.new-version-message .version-buttons-w .os-deactivate-license-btn span,
+.new-version-message .license-info-buttons-w .os-deactivate-license-btn span,
+.active-license-info .version-buttons-w .os-deactivate-license-btn span,
+.active-license-info .license-info-buttons-w .os-deactivate-license-btn span {
   border-bottom-color: #ffb6b6;
 }
-body.latepoint-admin .new-version-message .version-buttons-w .view-changelog-link,
-body.latepoint-admin .new-version-message .license-info-buttons-w .view-changelog-link,
-body.latepoint-admin .active-license-info .version-buttons-w .view-changelog-link,
-body.latepoint-admin .active-license-info .license-info-buttons-w .view-changelog-link {
+.new-version-message .version-buttons-w .view-changelog-link,
+.new-version-message .license-info-buttons-w .view-changelog-link,
+.active-license-info .version-buttons-w .view-changelog-link,
+.active-license-info .license-info-buttons-w .view-changelog-link {
   color: #2d303a;
 }
-body.latepoint-admin .new-version-message .version-buttons-w .view-changelog-link span,
-body.latepoint-admin .new-version-message .license-info-buttons-w .view-changelog-link span,
-body.latepoint-admin .active-license-info .version-buttons-w .view-changelog-link span,
-body.latepoint-admin .active-license-info .license-info-buttons-w .view-changelog-link span {
+.new-version-message .version-buttons-w .view-changelog-link span,
+.new-version-message .license-info-buttons-w .view-changelog-link span,
+.active-license-info .version-buttons-w .view-changelog-link span,
+.active-license-info .license-info-buttons-w .view-changelog-link span {
   border-bottom-color: #ddd;
 }
-body.latepoint-admin .new-version-message .update-latepoint-btn,
-body.latepoint-admin .active-license-info .update-latepoint-btn {
+.new-version-message .update-latepoint-btn,
+.active-license-info .update-latepoint-btn {
   position: relative;
 }
-body.latepoint-admin .new-version-message .update-latepoint-btn.os-loading .latepoint-icon,
-body.latepoint-admin .active-license-info .update-latepoint-btn.os-loading .latepoint-icon {
+.new-version-message .update-latepoint-btn.os-loading .latepoint-icon,
+.active-license-info .update-latepoint-btn.os-loading .latepoint-icon {
   color: transparent;
 }
-body.latepoint-admin .new-version-message .update-latepoint-btn.os-loading:before,
-body.latepoint-admin .active-license-info .update-latepoint-btn.os-loading:before {
+.new-version-message .update-latepoint-btn.os-loading:before,
+.active-license-info .update-latepoint-btn.os-loading:before {
   display: block;
   content: '';
   width: 12px !important;
@@ -20367,71 +20367,71 @@ body.latepoint-admin .active-license-info .update-latepoint-btn.os-loading:befor
   z-index: 999;
   left: 7px;
 }
-body.latepoint-admin .new-version-message h3,
-body.latepoint-admin .active-license-info h3 {
+.new-version-message h3,
+.active-license-info h3 {
   margin-top: 0px;
   font-size: 22px;
   margin-bottom: 5px;
   padding-left: 30px;
 }
-body.latepoint-admin .new-version-message h3 strong,
-body.latepoint-admin .active-license-info h3 strong {
+.new-version-message h3 strong,
+.active-license-info h3 strong {
   color: #2d303a;
 }
-body.latepoint-admin .new-version-message a,
-body.latepoint-admin .new-version-message span,
-body.latepoint-admin .active-license-info a,
-body.latepoint-admin .active-license-info span {
+.new-version-message a,
+.new-version-message span,
+.active-license-info a,
+.active-license-info span {
   display: inline-block;
   vertical-align: middle;
   line-height: 1.2;
 }
-body.latepoint-admin .new-version-message a,
-body.latepoint-admin .active-license-info a {
+.new-version-message a,
+.active-license-info a {
   text-decoration: none;
   color: #2652e4;
   display: inline-block;
   margin-right: 20px;
 }
-body.latepoint-admin .new-version-message a:focus,
-body.latepoint-admin .active-license-info a:focus {
+.new-version-message a:focus,
+.active-license-info a:focus {
   box-shadow: none;
 }
-body.latepoint-admin .new-version-message a:focus-visible,
-body.latepoint-admin .active-license-info a:focus-visible {
+.new-version-message a:focus-visible,
+.active-license-info a:focus-visible {
   box-shadow: 0px 0px 0px 1px #2652e4;
 }
-body.latepoint-admin .new-version-message a span,
-body.latepoint-admin .new-version-message a i,
-body.latepoint-admin .active-license-info a span,
-body.latepoint-admin .active-license-info a i {
+.new-version-message a span,
+.new-version-message a i,
+.active-license-info a span,
+.active-license-info a i {
   display: inline-block;
   vertical-align: middle;
 }
-body.latepoint-admin .new-version-message a i,
-body.latepoint-admin .active-license-info a i {
+.new-version-message a i,
+.active-license-info a i {
   font-size: 15px;
 }
-body.latepoint-admin .new-version-message a span + i,
-body.latepoint-admin .active-license-info a span + i {
+.new-version-message a span + i,
+.active-license-info a span + i {
   margin-left: 3px;
 }
-body.latepoint-admin .new-version-message a i + span,
-body.latepoint-admin .active-license-info a i + span {
+.new-version-message a i + span,
+.active-license-info a i + span {
   margin-left: 3px;
 }
-body.latepoint-admin .new-version-message a span,
-body.latepoint-admin .active-license-info a span {
+.new-version-message a span,
+.active-license-info a span {
   display: inline-block;
   border-bottom: 1px dotted #aebef5;
 }
-body.latepoint-admin .new-version-message a:hover span,
-body.latepoint-admin .active-license-info a:hover span {
+.new-version-message a:hover span,
+.active-license-info a:hover span {
   border-bottom-style: solid;
   border-bottom-color: #2652e4;
 }
-body.latepoint-admin .new-version-message strong,
-body.latepoint-admin .active-license-info strong {
+.new-version-message strong,
+.active-license-info strong {
   color: #38406d;
 }
 
