@@ -62,44 +62,44 @@ $configData = Helper::appClasses();
                     <div class="d-flex mb-3">
                         <div class="col-lg-6 px-3">
                             <label for="selectpickerBasic" class="form-label">Service Name</label>
-                            <input type="text" class="form-control" id="defaultFormControlInput" placeholder="Service Name" aria-describedby="defaultFormControlHelp" />
+                            <input type="text" class="form-control" name="name" id="defaultFormControlInput" placeholder="Service Name" aria-describedby="defaultFormControlHelp" />
                         </div>
                         <div class="col-lg-6 px-3">
                             <label for="selectpickerBasic" class="form-label">Short Description</label>
-                            <input type="text" class="form-control" id="defaultFormControlInput" placeholder="Short Description" aria-describedby="defaultFormControlHelp" />
+                            <input type="text" class="form-control" name="short_description" id="defaultFormControlInput" placeholder="Short Description" aria-describedby="defaultFormControlHelp" />
                         </div>
                     </div>
                     <div class="d-flex mb-3">
                         <div class="col-lg-6 px-3">
                             <label for="selectpickerBasic" class="form-label">Category</label>
                             <div class="d-flex">
-                                <select id="selectpickerBasic" class="selectpicker w-100" data-style="btn-default">
+                                <select id="selectpickerBasic" class="selectpicker w-100" name="" data-style="btn-default">
                                     <option>Uncategorized</option>
-                                    <option>General Dentistry</option>
-                                    <option>Cosmetic Dentistry</option>
-                                    <option>Implants Dentistry</option>
+                                    <option value="general">General Dentistry</option>
+                                    <option value="cosmetic">Cosmetic Dentistry</option>
+                                    <option value="implants">Implants Dentistry</option>
                                 </select>
                                 <button class="btn btn-primary h-px-40" type="button" style="width:200px;"><i class="fa fa-plus"></i>Add Category</button>
                             </div>
                         </div>
                         <div class="col-lg-6 px-3">
                             <label for="selectpickerBasic" class="form-label">Status</label>
-                            <select id="selectpickerBasic" class="selectpicker w-100" data-style="btn-default">
-                                <option>Active</option>
-                                <option>Disabled</option>
+                            <select id="selectpickerBasic" class="selectpicker w-100" name="status" data-style="btn-default">
+                                <option value="active">Active</option>
+                                <option value="disabled">Disabled</option>
                             </select>
                         </div>
                     </div>    
                     <div class="d-flex mb-3">
                         <div class="col-lg-6 px-3">
                             <label for="selectpickerBasic" class="form-label">Background Color</label>
-                            <input type="text" class="form-control" id="defaultFormControlInput" value="#252a3e" aria-describedby="defaultFormControlHelp" />
+                            <input type="text" class="form-control" name="bg_color" id="defaultFormControlInput" value="#252a3e" aria-describedby="defaultFormControlHelp" />
                         </div>
                         <div class="col-lg-6 px-3">
                             <label for="selectpickerBasic" class="form-label">Visibility</label>
-                            <select id="selectpickerBasic" class="selectpicker w-100" data-style="btn-default">
-                                <option>Visibe to everyone</option>
-                                <option>Visibe only to admins and agents</option>
+                            <select id="selectpickerBasic" class="selectpicker w-100" name="visbility" data-style="btn-default">
+                                <option value="everyone">Visibe to everyone</option>
+                                <option value="admins">Visibe only to admins and agents</option>
                             </select>
                         </div>
                     </div>
@@ -149,19 +149,19 @@ $configData = Helper::appClasses();
                     <div class="d-flex">
                         <div class="col-lg-3 px-3">
                             <label for="selectpickerBasic" class="form-label">Optional Duration Name</label>
-                            <input type="text" class="form-control" id="defaultFormControlInput" placeholder="Optional Duration Name" aria-describedby="defaultFormControlHelp" value="" />
+                            <input type="text" class="form-control" name="duration" id="defaultFormControlInput" placeholder="Optional Duration Name" aria-describedby="defaultFormControlHelp" value="" />
                         </div>
                         <div class="col-lg-3 px-3">
                             <label for="selectpickerBasic" class="form-label">Duration(minutes)</label>
-                            <input type="text" class="form-control" id="defaultFormControlInput" placeholder="" aria-describedby="defaultFormControlHelp" value="60 minutes" />
+                            <input type="text" class="form-control" name="duration" id="defaultFormControlInput" placeholder="" aria-describedby="defaultFormControlHelp" value="60 minutes" />
                         </div>
                         <div class="col-lg-3 px-3">
                             <label for="selectpickerBasic" class="form-label">Charge Amount</label>
-                            <input type="text" class="form-control" id="defaultFormControlInput" placeholder="" aria-describedby="defaultFormControlHelp" value="$0.00" />
+                            <input type="text" class="form-control" name="charge_amount" id="defaultFormControlInput" placeholder="" aria-describedby="defaultFormControlHelp" value="$0.00" />
                         </div>
                         <div class="col-lg-3 px-3">
                             <label for="selectpickerBasic" class="form-label">Deposit Amount</label>
-                            <input type="text" class="form-control" id="defaultFormControlInput" placeholder="" aria-describedby="defaultFormControlHelp" value="$0.00" />
+                            <input type="text" class="form-control" name="deposit_amount" id="defaultFormControlInput" placeholder="" aria-describedby="defaultFormControlHelp" value="$0.00" />
                         </div>
                     </div>    
 
@@ -189,11 +189,11 @@ $configData = Helper::appClasses();
                     <div class="d-flex">
                         <div class="col-lg-6 px-3">
                             <label for="selectpickerBasic" class="form-label">Minimum Price</label>
-                            <input type="text" class="form-control" id="defaultFormControlInput" placeholder="Minimum Price" aria-describedby="defaultFormControlHelp" value="$0.00" />
+                            <input type="text" class="form-control" name="price_min" id="defaultFormControlInput" placeholder="Minimum Price" aria-describedby="defaultFormControlHelp" value="$0.00" />
                         </div>
                         <div class="col-lg-6 px-3">
                             <label for="selectpickerBasic" class="form-label">Maximum Price</label>
-                            <input type="text" class="form-control" id="defaultFormControlInput" placeholder="Maximum Price" aria-describedby="defaultFormControlHelp" value="$0.00" />
+                            <input type="text" class="form-control" name="price_max" id="defaultFormControlInput" placeholder="Maximum Price" aria-describedby="defaultFormControlHelp" value="$0.00" />
                         </div>
                     </div>    
                 </div>
@@ -207,24 +207,24 @@ $configData = Helper::appClasses();
                     <div class="d-flex">
                         <div class="col-lg-3 px-3">
                             <label for="selectpickerBasic" class="form-label">Buffer Before</label>
-                            <input type="text" class="form-control" id="defaultFormControlInput" placeholder="Buffer Before" aria-describedby="defaultFormControlHelp" value="0 minutes" />
+                            <input type="text" class="form-control" name="buffer_before" id="defaultFormControlInput" placeholder="Buffer Before" aria-describedby="defaultFormControlHelp" value="0 minutes" />
                         </div>
                         <div class="col-lg-3 px-3">
                             <label for="selectpickerBasic" class="form-label">Buffer After</label>
-                            <input type="text" class="form-control" id="defaultFormControlInput" placeholder="Buffer After" aria-describedby="defaultFormControlHelp" value="0 minutes" />
+                            <input type="text" class="form-control" name="buffer_after" id="defaultFormControlInput" placeholder="Buffer After" aria-describedby="defaultFormControlHelp" value="0 minutes" />
                         </div>
                         <div class="col-lg-3 px-3">
                             <label for="selectpickerBasic" class="form-label">Override Time Intervals</label>
-                            <input type="text" class="form-control" id="defaultFormControlInput" placeholder="Override Time Intervals" aria-describedby="defaultFormControlHelp" value="0 minutes" />
+                            <input type="text" class="form-control" name="timeblock_interval" id="defaultFormControlInput" placeholder="Override Time Intervals" aria-describedby="defaultFormControlHelp" value="0 minutes" />
                         </div>
                         <div class="col-lg-3 px-3">
                             <label for="selectpickerBasic" class="form-label">Override status for bookings</label>
-                            <select id="selectpickerBasic" class="selectpicker w-100" data-style="btn-default">
-                                <option>Approved</option>
-                                <option>Pending Approval</option>
-                                <option>Cancelled</option>
-                                <option>No Show</option>
-                                <option>Completed</option>
+                            <select id="selectpickerBasic" class="selectpicker w-100" name="override_default_booking_status" data-style="btn-default">
+                                <option value="approved">Approved</option>
+                                <option value="pending_approval">Pending Approval</option>
+                                <option value="cancelled">Cancelled</option>
+                                <option value="no_show">No Show</option>
+                                <option value="completed">Completed</option>
                             </select>
                         </div>
                     </div>    
@@ -515,11 +515,11 @@ $configData = Helper::appClasses();
                         </div>
                         <div class="col-lg-3 px-3 mb-3">
                             <label for="selectpickerBasic" class="form-label">Minimum</label>
-                            <input type="text" class="form-control" id="defaultFormControlInput" placeholder="Minimum" aria-describedby="defaultFormControlHelp" value="1" />
+                            <input type="text" class="form-control" name="capacity_min" id="defaultFormControlInput" placeholder="Minimum" aria-describedby="defaultFormControlHelp" value="1" />
                         </div>
                         <div class="col-lg-3 px-3 mb-3">
                             <label for="selectpickerBasic" class="form-label">Maximum</label>
-                            <input type="text" class="form-control" id="defaultFormControlInput" placeholder="Maximum" aria-describedby="defaultFormControlHelp" value="1" />
+                            <input type="text" class="form-control" name="capacity_max" id="defaultFormControlInput" placeholder="Maximum" aria-describedby="defaultFormControlHelp" value="1" />
                         </div>
                     </div>    
 
@@ -772,6 +772,47 @@ $configData = Helper::appClasses();
                 $('#service_extra_1').attr('checked', false);
                 $('#service_extra_2').attr('checked', false);
                 $('#service_extra_3').attr('checked', false);
+            }
+        });
+    });
+
+    $('form.add-customer').on('submit', function(e) {
+        e.preventDefault();
+        const csrf_token = $('meta[name="csrf-token"]').attr('content');
+        const first_name = $('input[name="first_name"]').val();
+        const last_name = $('input[name="last_name"]').val();
+        const email = $('input[name="email"]').val();
+        const phone = $('input[name="phone"]').val();
+        const notes = $('textarea[name="notes"]').val();
+        const admin_notes = $('textarea[name="admin_notes"]').val();
+        const file = $('.dz-thumbnail>img').attr('src');
+        const country = $('.iti__selected-country-primary').children().first().attr('class').slice(-2);
+
+        
+
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('add_customer') }}",
+            headers: {
+                'X-CSRF-TOKEN': csrf_token
+            },
+            data: {
+                first_name: first_name,
+                last_name: last_name,
+                email: email,
+                phone: phone,
+                notes: notes,
+                admin_notes: admin_notes,
+                country: phone? country: null,
+                customer_avatar: file? file: null,
+
+            },
+            success: function() {
+                console.log('success');
+                window.location.href = "{{ route('app-customers') }}";
+            },
+            error: function(err) {
+                console.log(err);
             }
         });
     });
