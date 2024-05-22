@@ -86,7 +86,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/resource/createservices', [Services::class, 'create'])->name('resource-createservices');
     Route::get('/resource/editservices/{id}', [Services::class, 'edit'])->name('resource-editservices');
     Route::post('/resource/storeservice', [Services::class, 'store'])->name('resource-storeservices');
-    Route::post('/resource/updateservice', [Services::class, 'update'])->name('resource-updateservice');
+    Route::post('/resource/updateservices', [Services::class, 'update'])->name('resource-updateservices');
     Route::get('/resource/deleteservice/{id}', [Customers::class, 'destroy']);
 
 

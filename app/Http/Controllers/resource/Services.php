@@ -13,7 +13,13 @@ class Services extends Controller
      */
     public function index()
     {
-        return view('content.resource.services');
+        // $all = Service::all();
+        $services = Service::all();
+
+        $generalServices = $services->where('category_id', 'general');
+        $cosmeticServices = $services->where('category_id', 'cosmetic');
+        $implantsServices = $services->where('category_id', 'implants');
+        return view('content.resource.services',  compact('generalServices', 'cosmeticServices', 'implantsServices'));
     }
 
     /**

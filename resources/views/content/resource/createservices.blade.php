@@ -99,7 +99,7 @@ $configData = Helper::appClasses();
                             </div>
                             <div class="col-lg-6 px-3">
                                 <label for="selectpickerBasic" class="form-label">Visibility</label>
-                                <select id="selectpickerBasic" class="selectpicker w-100" name="visbility" data-style="btn-default">
+                                <select id="selectpickerBasic" class="selectpicker w-100" name="visibility" data-style="btn-default">
                                     <option value="everyone">Visibe to everyone</option>
                                     <option value="admins">Visibe only to admins and agents</option>
                                 </select>

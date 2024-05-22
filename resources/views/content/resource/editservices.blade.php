@@ -50,7 +50,7 @@ $configData = Helper::appClasses();
 <link href="{{asset('/assets/css/editservices_custom.css')}}" rel="stylesheet">
 
 <div class="row">
-    <form action="{{route('resource-storeservices')}}" method="post" class="add-service">
+    <form action="{{route('resource-updateservices')}}" method="post" class="add-service">
         @csrf
         <div class="col-lg-12 col-xxl-12 mb-4 order-3 order-xxl-1">
             <div class="card-header mb-0">
@@ -99,7 +99,7 @@ $configData = Helper::appClasses();
                             </div>
                             <div class="col-lg-6 px-3">
                                 <label for="selectpickerBasic" class="form-label">Visibility</label>
-                                <select id="selectpickerBasic" class="selectpicker w-100" name="visbility" data-style="btn-default">
+                                <select id="selectpickerBasic" class="selectpicker w-100" name="visibility" data-style="btn-default">
                                     <option value="everyone">Visibe to everyone</option>
                                     <option value="admins">Visibe only to admins and agents</option>
                                 </select>
@@ -145,19 +145,19 @@ $configData = Helper::appClasses();
                         <div class="d-flex">
                             <div class="col-lg-3 px-3">
                                 <label for="selectpickerBasic" class="form-label">Optional Duration Name</label>
-                                <input type="text" class="form-control" name="duration_name" id="defaultFormControlInput" placeholder="Optional Duration Name" aria-describedby="defaultFormControlHelp" value="" />
+                                <input type="text" class="form-control" name="duration_name" id="defaultFormControlInput" placeholder="Optional Duration Name" aria-describedby="defaultFormControlHelp" value="{{$service->duration_name}}" />
                             </div>
                             <div class="col-lg-3 px-3">
                                 <label for="selectpickerBasic" class="form-label">Duration(minutes)</label>
-                                <input type="text" class="form-control" name="duration" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp" placeholder="60 min" />
+                                <input type="text" class="form-control" name="duration" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp" placeholder="60 min" value="{{$service->duration}}"/>
                             </div>
                             <div class="col-lg-3 px-3">
                                 <label for="selectpickerBasic" class="form-label">Charge Amount</label>
-                                <input type="text" class="form-control" name="charge_amount" id="defaultFormControlInput" placeholder="0.00" aria-describedby="defaultFormControlHelp" value="" />
+                                <input type="text" class="form-control" name="charge_amount" id="defaultFormControlInput" placeholder="0.00" aria-describedby="defaultFormControlHelp" value="{{$service->charge_amount}}" />
                             </div>
                             <div class="col-lg-3 px-3">
                                 <label for="selectpickerBasic" class="form-label">Deposit Amount</label>
-                                <input type="text" class="form-control" name="deposit_amount" id="defaultFormControlInput" placeholder="0.00" aria-describedby="defaultFormControlHelp" value="" />
+                                <input type="text" class="form-control" name="deposit_amount" id="defaultFormControlInput" placeholder="0.00" aria-describedby="defaultFormControlHelp" value="{{$service->deposit_amount}}" />
                             </div>
                         </div>    
     

@@ -56,7 +56,8 @@ $configData = Helper::appClasses();
             </div>
 
             <div class="index-agent-boxes">
-                <a href="{{ url('/resource/editservices/1') }}" class="agent-box-w agent-status-active text-center os-service">
+                @foreach ($generalServices as $general)               
+                <a href="{{route('resource-editservices', $general->id) }}" class="agent-box-w agent-status-active text-center os-service">
                     <div class="agent-info-w">
                         <div class="agent-info">
                             <div class="agent-name">Group Booking</div>
@@ -67,10 +68,10 @@ $configData = Helper::appClasses();
                             <div class="label">Agents:</div>
                             <div class="agents-avatars">
                                 <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/7.png") ?>)">
-                                      
+                                    
                                 </div>
                                 <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/8.png") ?>)">
-                                      
+                                    
                                 </div>
                                 <div class="agents-more">+2 more</div>      
                             </div>
@@ -79,7 +80,7 @@ $configData = Helper::appClasses();
                             <div class="service-info-row">
                                 <div class="label">Duration:</div>
                                 <div class="value">
-                                    <strong>30</strong> min
+                                    <strong>{{$general->duration}}</strong> min
                                 </div>
                             </div>
                             <div class="service-info-row">
@@ -105,107 +106,7 @@ $configData = Helper::appClasses();
 
                     <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit Service</button>
                 </a>
-
-                <a href="{{ url('/resource/editservices/1') }}" class="agent-box-w agent-status-active text-center os-service">
-                    <div class="agent-info-w">
-                        <div class="agent-info">
-                            <div class="agent-name">Root Canal Therapy</div>
-                        </div>
-                    </div>
-                    <div class="os-service-body">
-                        <div class="os-service-agents">
-                            <div class="label">Agents:</div>
-                            <div class="agents-avatars">
-                                <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/7.png") ?>)">
-                                      
-                                </div>
-                                <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/8.png") ?>)">
-                                      
-                                </div>
-                                <div class="agents-more">+2 more</div>      
-                            </div>
-                        </div>
-                        <div class="os-service-info">
-                            <div class="service-info-row">
-                                <div class="label">Duration:</div>
-                                <div class="value">
-                                    <strong>20</strong> min
-                                </div>
-                            </div>
-                            <div class="service-info-row">
-                                <div class="label">Price:</div>
-                                <div class="value">
-                                    <strong>$30</strong>
-                                </div>
-                            </div>
-                            <div class="service-info-row">
-                                <div class="label">Buffer:</div>
-                                <div class="value">
-                                    <strong>0/0</strong> min
-                                </div>
-                            </div>
-                            <div class="service-info-row">
-                                <div class="label">Capacity:</div>
-                                <div class="value">
-                                    <strong>1 - 6</strong> person
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit Service</button>
-                </a>
-
-                <a href="{{ url('/resource/editservices/1') }}" class="agent-box-w agent-status-active text-center os-service">
-                    <div class="agent-info-w">
-                        <div class="agent-info">
-                            <div class="agent-name">Gum Decease</div>
-                        </div>
-                    </div>
-                    <div class="os-service-body">
-                        <div class="os-service-agents">
-                            <div class="label">Agents:</div>
-                            <div class="agents-avatars">
-                                <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/7.png") ?>)">
-                                      
-                                </div>
-                                <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/8.png") ?>)">
-                                      
-                                </div>
-                                <div class="agents-more">+5 more</div>      
-                            </div>
-                        </div>
-                        <div class="os-service-info">
-                            <div class="service-info-row">
-                                <div class="label">Duration:</div>
-                                <div class="value">
-                                    <strong>55</strong> min
-                                </div>
-                            </div>
-                            <div class="service-info-row">
-                                <div class="label">Price:</div>
-                                <div class="value">
-                                    <strong>$10</strong>
-                                </div>
-                            </div>
-                            <div class="service-info-row">
-                                <div class="label">Buffer:</div>
-                                <div class="value">
-                                    <strong>10/10</strong> min
-                                </div>
-                            </div>
-                            <div class="service-info-row">
-                                <div class="label">Capacity:</div>
-                                <div class="value">
-                                    <strong>1</strong> person
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit Service</button>
-                </a>
-
+                @endforeach
                 <a class="create-service-link-w" href="{{url('/resource/createservices')}}">
                     <div class="create-service-link-i">
                         <div class="add-service-graphic-w">
@@ -223,7 +124,8 @@ $configData = Helper::appClasses();
             </div>
 
             <div class="index-agent-boxes">
-                <a href="{{ url('/resource/editservices/1') }}" class="agent-box-w agent-status-active text-center os-service">
+                @foreach ($cosmeticServices as $cosmetic)
+                <a href="{{ route('resource-editservices', $cosmetic->id) }}" class="agent-box-w agent-status-active text-center os-service">
                     <div class="agent-info-w">
                         <div class="agent-info">
                             <div class="agent-name">Tooth Whitening</div>
@@ -272,56 +174,7 @@ $configData = Helper::appClasses();
 
                     <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit Service</button>
                 </a>
-
-                <a href="{{ url('/resource/editservices/1') }}" class="agent-box-w agent-status-active text-center os-service">
-                    <div class="agent-info-w">
-                        <div class="agent-info">
-                            <div class="agent-name">Invisilign Braces</div>
-                        </div>
-                    </div>
-                    <div class="os-service-body">
-                        <div class="os-service-agents">
-                            <div class="label">Agents:</div>
-                            <div class="agents-avatars">
-                                <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/7.png") ?>)">
-                                      
-                                </div>
-                                <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/8.png") ?>)">
-                                      
-                                </div>
-                                <div class="agents-more">+4 more</div>      
-                            </div>
-                        </div>
-                        <div class="os-service-info">
-                            <div class="service-info-row">
-                                <div class="label">Duration:</div>
-                                <div class="value">
-                                    <strong>30</strong> min
-                                </div>
-                            </div>
-                            <div class="service-info-row">
-                                <div class="label">Price:</div>
-                                <div class="value">
-                                    <strong>$20</strong>
-                                </div>
-                            </div>
-                            <div class="service-info-row">
-                                <div class="label">Buffer:</div>
-                                <div class="value">
-                                    <strong>0/0</strong> min
-                                </div>
-                            </div>
-                            <div class="service-info-row">
-                                <div class="label">Capacity:</div>
-                                <div class="value">
-                                    <strong>1 - 6</strong> person
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit Service</button>
-                </a>
+                @endforeach
 
                 <a class="create-service-link-w" href="{{url('/resource/createservices')}}">
                     <div class="create-service-link-i">
@@ -340,7 +193,8 @@ $configData = Helper::appClasses();
             </div>
 
             <div class="index-agent-boxes">
-                <a href="{{ url('/resource/editservices/1') }}" class="agent-box-w agent-status-active text-center os-service">
+                @foreach ($implantsServices as $implants)
+                <a href="{{ route('resource-editservices', $implants->id) }}" class="agent-box-w agent-status-active text-center os-service">
                     <div class="agent-info-w">
                         <div class="agent-info">
                             <div class="agent-name">Porcelain Crown</div>
@@ -389,6 +243,8 @@ $configData = Helper::appClasses();
 
                     <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit Service</button>
                 </a>
+                @endforeach
+                
 
                 <a class="create-service-link-w" href="{{url('/resource/createservices')}}">
                     <div class="create-service-link-i">
