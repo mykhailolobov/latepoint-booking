@@ -62,40 +62,44 @@ $configData = Helper::appClasses();
             <div class="row">
                 <div class="col-md-12 col-12 mb-md-0 mb-4">
                     <ul class="location-categories list-group list-group-flush" id="handle-list-1">
-                        <li class="list-group-item lh-1 justify-content-between align-items-center mb-3">
-                            <div class="row">
-                                <span class="d-flex align-items-center">
-                                    <i class="drag-handle cursor-move bx bx-menu align-text-bottom me-2"></i>
-                                    <span>General Dentistry</span>
-                                </span>
-                            </div>
-                            <div class="card-body edit_category_section">
-                                <div class="col-lg-12 d-flex mb-3">
-                                    <div class="col-lg-6 px-1">
-                                        <label for="defaultFormControlInput" class="form-label">Category Name</label>
-                                        <input type="text" class="form-control" id="defaultFormControlInput" placeholder="Category Name" aria-describedby="defaultFormControlHelp" value="General Dentistry" />
-                                    </div>
-                                    <div class="col-lg-6 px-1">
-                                        <label for="defaultFormControlInput" class="form-label">Short Description</label>
-                                        <textarea class="form-control" id="defaultFormControlInput" placeholder="Short Description" aria-describedby="defaultFormControlHelp" rows="1"></textarea>
-                                    </div>
+                        @foreach ($categories as $category)
+                       <form action="{{route('resource-updatecategories')}}" method="post">
+                            @csrf
+                            <li class="list-group-item lh-1 justify-content-between align-items-center mb-3">
+                                <div class="row">
+                                    <span class="d-flex align-items-center">
+                                        <i class="drag-handle cursor-move bx bx-menu align-text-bottom me-2"></i>
+                                        <span>{{$category->name}} Dentistry</span>
+                                    </span>
                                 </div>
-                                <div class="col-lg-12 mb-3">
-                                    <form action="/upload" class="dropzone needsclick" id="dropzone-basic">
-                                        <div class="dz-message needsclick">
-                                            Remove Image
+                                <div class="card-body edit_category_section">
+                                    <div class="col-lg-12 d-flex mb-3">
+                                        <div class="col-lg-6 px-1">
+                                            <label for="defaultFormControlInput" class="form-label">Category Name</label>
+                                            <input type="text" name="name" value="{{$category->name}}" class="form-control" id="defaultFormControlInput" placeholder="Category Name" aria-describedby="defaultFormControlHelp" value="General Dentistry" />
                                         </div>
-                                        <div class="fallback">
-                                            <input name="file" type="file" />
+                                        <div class="col-lg-6 px-1">
+                                            <label for="defaultFormControlInput" class="form-label">Short Description</label>
+                                            <textarea class="form-control" name="short_description" id="defaultFormControlInput" placeholder="Short Description" aria-describedby="defaultFormControlHelp" rows="1">{{$category->short_description}}</textarea>
                                         </div>
-                                    </form>
+                                    </div>
+                                    <div class="col-lg-12 mb-3">
+                                        <div action="/upload" class="dropzone needsclick" id="dropzone-basic">
+                                            <div class="dz-message needsclick">
+                                                Remove Image
+                                            </div>                                            
+                                        </div>
+                                        <input type="text" name="id" value="{{$category->id}}" hidden>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Save Category</button>
+                                    <a href="/resource/deletecategories/{{$category->id}}" class="btn btn-danger add-customer">Delete Category</a>
                                 </div>
-                                <button type="button" class="btn btn-primary">Save Category</button>
-                                <button type="button" class="btn btn-danger">Delete Category</button>
-                            </div>
-                        </li>
+                            </li>
+                       </form>
+                        @endforeach
+                        
                             
-                        <li class="list-group-item lh-1 justify-content-between align-items-center mb-3">
+                        {{-- <li class="list-group-item lh-1 justify-content-between align-items-center mb-3">
                             <div class="row">
                                 <span class="d-flex align-items-center">
                                   <i class="drag-handle cursor-move bx bx-menu align-text-bottom me-2"></i>
@@ -161,7 +165,7 @@ $configData = Helper::appClasses();
                                 <button type="button" class="btn btn-primary">Save Category</button>
                                 <button type="button" class="btn btn-danger">Delete Category</button>
                             </div>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </div>
@@ -170,30 +174,31 @@ $configData = Helper::appClasses();
         <div class="col-md-12 create_new_category mt-2">
             <div class="card mb-4">
                 <h5 class="card-header">Create New Service Category</h5>
-                <div class="card-body demo-vertical-spacing demo-only-element">
-                    <div class="d-flex mb-3">
-                        <div class="col-lg-6 px-3">
-                            <label for="selectpickerBasic" class="form-label">Category Name</label>
-                            <input type="text" class="form-control" id="defaultFormControlInput" placeholder="Category Name" aria-describedby="defaultFormControlHelp" />
-                        </div>
-                        <div class="col-lg-6 px-3">
-                            <label for="selectpickerBasic" class="form-label">Short Description</label>
-                            <textarea rows="1" class="form-control" id="defaultFormControlInput" placeholder="Short Description" aria-describedby="defaultFormControlHelp"></textarea>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 mb-3 p-3">
-                        <form action="/upload" class="dropzone needsclick" id="dropzone-basic">
-                            <div class="dz-message needsclick">
-                                Category Image
+                <form action="{{route('resource-storecategories')}}" method="post" class="add-categories">
+                    <div class="card-body demo-vertical-spacing demo-only-element">
+                        <div class="d-flex mb-3">
+                            <div class="col-lg-6 px-3">
+                                <label for="selectpickerBasic" class="form-label">Category Name</label>
+                                <input type="text" class="form-control" name="name" id="defaultFormControlInput" placeholder="Category Name" aria-describedby="defaultFormControlHelp" />
                             </div>
-                            <div class="fallback">
-                                <input name="file" type="file" />
+                            <div class="col-lg-6 px-3">
+                                <label for="selectpickerBasic" class="form-label">Short Description</label>
+                                <textarea rows="1" class="form-control" name="short_description" id="defaultFormControlInput" placeholder="Short Description" aria-describedby="defaultFormControlHelp"></textarea>
                             </div>
-                        </form>
+                        </div>
+                        <div class="col-lg-12 mb-3 p-3">
+                            <div action="/upload" class="dropzone needsclick" id="dropzone-basic">
+                                <div class="dz-message needsclick">
+                                    Category Image
+                                </div>                                
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Category</button>
+                        <meta name="csrf-token" content="{{ csrf_token() }}">
+                        <button type="button" class="btn btn-default cancel_create_category">Cancel</button>
                     </div>
-                    <button type="button" class="btn btn-primary">Save Category</button>
-                    <button type="button" class="btn btn-default cancel_create_category">Cancel</button>
-                </div>
+                </form>
+                
             </div>
         </div>
 
@@ -225,10 +230,40 @@ $configData = Helper::appClasses();
                 $(this).children().next().show();    
             }
             else{
-                $(this).children().next().hide();
+                // $(this).children().next().hide();
             }
         })
     });
+
+    $('form.add-categories').on('submit', function(e){
+        e.preventDefault();
+        const csrf_token = $('meta[name="csrf-token"]').attr('content');
+        const name = $('input[name="name"]').val();
+        const short_description = $('textarea[name="short_description"]').val();
+        const image = $('.dz-thumbnail>img').attr('src');
+        
+       
+
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('resource-storecategories') }}",
+            headers: {
+                'X-CSRF-TOKEN': csrf_token
+            },
+            data: {
+                name: name,
+                short_description: short_description ? short_description : null,
+                selection_image_id: image ? image : null,
+            },
+            success: function() {
+                console.log('success');
+                window.location.href = "{{ route('resource-categories') }}";
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+    })
 </script>
 
 @endsection
