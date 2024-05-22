@@ -1517,7 +1517,7 @@
                                 <div class="ru-email">lnicely@me.com</div>
                                 <div class="ru-user-meta">
                                     <div class="ru-role">Administrator</div>
-                                    <a href="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-admin/profile.php" target="__blank" class="ru-wp-user-link">
+                                    <a href="profile.php" target="__blank" class="ru-wp-user-link">
                                         <span>WP User</span>
                                         <i class="latepoint-icon latepoint-icon-external-link"></i>
                                     </a>
