@@ -71,7 +71,7 @@
                             <div class="step-drag "></div>
                             <div class="step-name">Select Location</div>
                             <div class="step-type">locations</div>
-                            <a href="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-admin/admin.php?page=latepoint&amp;route_name=locations__index"
+                            <a href="locations__index"
                                 class="step-message">Since you only have one location, this step will be skipped</a>
                             <button class="step-edit-btn"><i class="latepoint-icon latepoint-icon-edit-3"></i></button>
                         </div>
@@ -141,7 +141,7 @@
                                             <div id="custom-step-image-w-locations" class="custom-step-image-w-locations"
                                                 style="display: none;">
                                                 <div class="os-image-selector-w "><a
-                                                        href="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-admin/media-upload.php?post_id=0&amp;type=image&amp;TB_iframe=1"
+                                                        href="media-upload.php?post_id=0&amp;type=image&amp;TB_iframe=1"
                                                         data-label-remove-str="Remove Image"
                                                         data-label-set-str="Step Image" class="os-image-selector-trigger">
                                                         <div class="os-image-container has-image"><img
@@ -240,7 +240,7 @@
                                             <div id="custom-step-image-w-services" class="custom-step-image-w-services"
                                                 style="display: none;">
                                                 <div class="os-image-selector-w "><a
-                                                        href="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-admin/media-upload.php?post_id=0&amp;type=image&amp;TB_iframe=1"
+                                                        href="media-upload.php?post_id=0&amp;type=image&amp;TB_iframe=1"
                                                         data-label-remove-str="Remove Image"
                                                         data-label-set-str="Step Image" class="os-image-selector-trigger">
                                                         <div class="os-image-container has-image"><img
@@ -340,7 +340,7 @@
                                             <div id="custom-step-image-w-service_extras"
                                                 class="custom-step-image-w-service_extras" style="display: none;">
                                                 <div class="os-image-selector-w "><a
-                                                        href="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-admin/media-upload.php?post_id=0&amp;type=image&amp;TB_iframe=1"
+                                                        href="media-upload.php?post_id=0&amp;type=image&amp;TB_iframe=1"
                                                         data-label-remove-str="Remove Image"
                                                         data-label-set-str="Step Image" class="os-image-selector-trigger">
                                                         <div class="os-image-container "></div>
@@ -439,7 +439,7 @@
                                                 class="custom-step-image-w-custom_fields_for_booking"
                                                 style="display: none;">
                                                 <div class="os-image-selector-w "><a
-                                                        href="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-admin/media-upload.php?post_id=0&amp;type=image&amp;TB_iframe=1"
+                                                        href="media-upload.php?post_id=0&amp;type=image&amp;TB_iframe=1"
                                                         data-label-remove-str="Remove Image"
                                                         data-label-set-str="Step Image" class="os-image-selector-trigger">
                                                         <div class="os-image-container "></div>
@@ -539,7 +539,7 @@
                                             <div id="custom-step-image-w-agents" class="custom-step-image-w-agents"
                                                 style="display: none;">
                                                 <div class="os-image-selector-w "><a
-                                                        href="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-admin/media-upload.php?post_id=0&amp;type=image&amp;TB_iframe=1"
+                                                        href="media-upload.php?post_id=0&amp;type=image&amp;TB_iframe=1"
                                                         data-label-remove-str="Remove Image"
                                                         data-label-set-str="Step Image" class="os-image-selector-trigger">
                                                         <div class="os-image-container has-image"><img
@@ -639,7 +639,7 @@
                                             <div id="custom-step-image-w-datepicker"
                                                 class="custom-step-image-w-datepicker" style="display: none;">
                                                 <div class="os-image-selector-w "><a
-                                                        href="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-admin/media-upload.php?post_id=0&amp;type=image&amp;TB_iframe=1"
+                                                        href="media-upload.php?post_id=0&amp;type=image&amp;TB_iframe=1"
                                                         data-label-remove-str="Remove Image"
                                                         data-label-set-str="Step Image" class="os-image-selector-trigger">
                                                         <div class="os-image-container has-image"><img
@@ -739,7 +739,7 @@
                                             <div id="custom-step-image-w-contact" class="custom-step-image-w-contact"
                                                 style="display: none;">
                                                 <div class="os-image-selector-w "><a
-                                                        href="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-admin/media-upload.php?post_id=0&amp;type=image&amp;TB_iframe=1"
+                                                        href="media-upload.php?post_id=0&amp;type=image&amp;TB_iframe=1"
                                                         data-label-remove-str="Remove Image"
                                                         data-label-set-str="Step Image" class="os-image-selector-trigger">
                                                         <div class="os-image-container has-image"><img
@@ -771,7 +771,7 @@
                             <div class="step-drag disabled"><span>Order of this step can not be changed.</span></div>
                             <div class="step-name">Select Payment Method</div>
                             <div class="step-type">payment</div>
-                            <a href="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-admin/admin.php?page=latepoint&amp;route_name=settings__payments"
+                            <a href="settings__payments"
                                 class="step-message">Payment processing is disabled. Click to setup.</a>
                             <button class="step-edit-btn"><i class="latepoint-icon latepoint-icon-edit-3"></i></button>
                         </div>
@@ -841,7 +841,7 @@
                                             <div id="custom-step-image-w-payment" class="custom-step-image-w-payment"
                                                 style="display: none;">
                                                 <div class="os-image-selector-w "><a
-                                                        href="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-admin/media-upload.php?post_id=0&amp;type=image&amp;TB_iframe=1"
+                                                        href="media-upload.php?post_id=0&amp;type=image&amp;TB_iframe=1"
                                                         data-label-remove-str="Remove Image"
                                                         data-label-set-str="Step Image" class="os-image-selector-trigger">
                                                         <div class="os-image-container "></div>
@@ -939,7 +939,7 @@
                                             <div id="custom-step-image-w-verify" class="custom-step-image-w-verify"
                                                 style="display: none;">
                                                 <div class="os-image-selector-w "><a
-                                                        href="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-admin/media-upload.php?post_id=0&amp;type=image&amp;TB_iframe=1"
+                                                        href="media-upload.php?post_id=0&amp;type=image&amp;TB_iframe=1"
                                                         data-label-remove-str="Remove Image"
                                                         data-label-set-str="Step Image" class="os-image-selector-trigger">
                                                         <div class="os-image-container "></div>
@@ -1037,7 +1037,7 @@
                                             <div id="custom-step-image-w-confirmation"
                                                 class="custom-step-image-w-confirmation" style="display: none;">
                                                 <div class="os-image-selector-w "><a
-                                                        href="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-admin/media-upload.php?post_id=0&amp;type=image&amp;TB_iframe=1"
+                                                        href="media-upload.php?post_id=0&amp;type=image&amp;TB_iframe=1"
                                                         data-label-remove-str="Remove Image"
                                                         data-label-set-str="Step Image" class="os-image-selector-trigger">
                                                         <div class="os-image-container has-image"><img
