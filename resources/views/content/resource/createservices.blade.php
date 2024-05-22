@@ -50,7 +50,7 @@ $configData = Helper::appClasses();
 <link href="{{asset('/assets/css/createservices_custom.css')}}" rel="stylesheet">
 
 <div class="row">
-    <form action="{{route('')}}" method="post" class="add-service">
+    <form action="{{route('resource-storeservices')}}" method="post" class="add-service">
         @csrf
         <div class="col-lg-12 col-xxl-12 mb-4 order-3 order-xxl-1">
             <div class="card-header mb-0">
@@ -75,7 +75,7 @@ $configData = Helper::appClasses();
                             <div class="col-lg-6 px-3">
                                 <label for="selectpickerBasic" class="form-label">Category</label>
                                 <div class="d-flex">
-                                    <select id="selectpickerBasic" class="selectpicker w-100" name="" data-style="btn-default">
+                                    <select id="selectpickerBasic" class="selectpicker w-100" name="category_id" data-style="btn-default">
                                         <option>Uncategorized</option>
                                         <option value="general">General Dentistry</option>
                                         <option value="cosmetic">Cosmetic Dentistry</option>
@@ -114,21 +114,18 @@ $configData = Helper::appClasses();
                     <h5 class="card-header">Media</h5>
                     <div class="card-body">
                         <div class="row">
-                            <div class="d-flex col-lg-12 px-3">
-                                <div class="col-lg-6" style="text-align: center;">
-                                    <form action="/upload" class="dropzone needsclick" id="dropzone-basic">
+                            <div class="d-flex col-lg-12 px-3 ">
+                                <div class="col-lg-6 selection_image" style="text-align: center;">
+                                    <div action="/upload" class="dropzone needsclick selection_image" id="dropzone-basic">
                                         <div class="dz-message needsclick">
                                             Selection Image
                                         </div>
                                         <span>This image is used on a service selection step in the booking form.</span>
-                                        <div class="fallback">
-                                            <input name="file" type="file" />
-                                        </div>
-                                    </form>
+                                    </div>
                                 </div>
     
-                                <div class="col-lg-6" style="text-align: center;">
-                                    <form action="/upload" class="dropzone needsclick" id="dropzone-basic1">
+                                <div class="col-lg-6 description_image" style="text-align: center;">
+                                    <div action="/upload" class="dropzone needsclick description_image" id="dropzone-basic1">
                                         <div class="dz-message needsclick">
                                             Service Tile Image
                                         </div>
@@ -136,7 +133,7 @@ $configData = Helper::appClasses();
                                         <div class="fallback">
                                             <input name="file" type="file" />
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -151,19 +148,19 @@ $configData = Helper::appClasses();
                         <div class="d-flex">
                             <div class="col-lg-3 px-3">
                                 <label for="selectpickerBasic" class="form-label">Optional Duration Name</label>
-                                <input type="text" class="form-control" name="duration" id="defaultFormControlInput" placeholder="Optional Duration Name" aria-describedby="defaultFormControlHelp" value="" />
+                                <input type="text" class="form-control" name="duration_name" id="defaultFormControlInput" placeholder="Optional Duration Name" aria-describedby="defaultFormControlHelp" value="" />
                             </div>
                             <div class="col-lg-3 px-3">
                                 <label for="selectpickerBasic" class="form-label">Duration(minutes)</label>
-                                <input type="text" class="form-control" name="duration" id="defaultFormControlInput" placeholder="" aria-describedby="defaultFormControlHelp" value="60 minutes" />
+                                <input type="text" class="form-control" name="duration" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp" placeholder="60 min" />
                             </div>
                             <div class="col-lg-3 px-3">
                                 <label for="selectpickerBasic" class="form-label">Charge Amount</label>
-                                <input type="text" class="form-control" name="charge_amount" id="defaultFormControlInput" placeholder="" aria-describedby="defaultFormControlHelp" value="$0.00" />
+                                <input type="text" class="form-control" name="charge_amount" id="defaultFormControlInput" placeholder="0.00" aria-describedby="defaultFormControlHelp" value="" />
                             </div>
                             <div class="col-lg-3 px-3">
                                 <label for="selectpickerBasic" class="form-label">Deposit Amount</label>
-                                <input type="text" class="form-control" name="deposit_amount" id="defaultFormControlInput" placeholder="" aria-describedby="defaultFormControlHelp" value="$0.00" />
+                                <input type="text" class="form-control" name="deposit_amount" id="defaultFormControlInput" placeholder="0.00" aria-describedby="defaultFormControlHelp" value="" />
                             </div>
                         </div>    
     
@@ -191,11 +188,11 @@ $configData = Helper::appClasses();
                         <div class="d-flex">
                             <div class="col-lg-6 px-3">
                                 <label for="selectpickerBasic" class="form-label">Minimum Price</label>
-                                <input type="text" class="form-control" name="price_min" id="defaultFormControlInput" placeholder="Minimum Price" aria-describedby="defaultFormControlHelp" value="$0.00" />
+                                <input type="text" class="form-control" name="price_min" id="defaultFormControlInput" placeholder="Minimum Price" aria-describedby="defaultFormControlHelp" placeholder="0.00" />
                             </div>
                             <div class="col-lg-6 px-3">
                                 <label for="selectpickerBasic" class="form-label">Maximum Price</label>
-                                <input type="text" class="form-control" name="price_max" id="defaultFormControlInput" placeholder="Maximum Price" aria-describedby="defaultFormControlHelp" value="$0.00" />
+                                <input type="text" class="form-control" name="price_max" id="defaultFormControlInput" placeholder="Maximum Price" aria-describedby="defaultFormControlHelp" placeholder="0.00" />
                             </div>
                         </div>    
                     </div>
@@ -209,15 +206,15 @@ $configData = Helper::appClasses();
                         <div class="d-flex">
                             <div class="col-lg-3 px-3">
                                 <label for="selectpickerBasic" class="form-label">Buffer Before</label>
-                                <input type="text" class="form-control" name="buffer_before" id="defaultFormControlInput" placeholder="Buffer Before" aria-describedby="defaultFormControlHelp" value="0 minutes" />
+                                <input type="text" class="form-control" name="buffer_before" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp" placeholder="0 (min)" />
                             </div>
                             <div class="col-lg-3 px-3">
                                 <label for="selectpickerBasic" class="form-label">Buffer After</label>
-                                <input type="text" class="form-control" name="buffer_after" id="defaultFormControlInput" placeholder="Buffer After" aria-describedby="defaultFormControlHelp" value="0 minutes" />
+                                <input type="text" class="form-control" name="buffer_after" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp" placeholder="0 (min)" />
                             </div>
                             <div class="col-lg-3 px-3">
                                 <label for="selectpickerBasic" class="form-label">Override Time Intervals</label>
-                                <input type="text" class="form-control" name="timeblock_interval" id="defaultFormControlInput" placeholder="Override Time Intervals" aria-describedby="defaultFormControlHelp" value="0 minutes" />
+                                <input type="text" class="form-control" name="timeblock_interval" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp" placeholder="0 (min)" />
                             </div>
                             <div class="col-lg-3 px-3">
                                 <label for="selectpickerBasic" class="form-label">Override status for bookings</label>
@@ -788,62 +785,59 @@ $configData = Helper::appClasses();
 
         const price_min = $('input[name="price_min"]').val();
         const price_max = $('input[name="price_max"]').val();
-        const charge_amount = $('textarea[name="charge_amount"]').val();
-        const deposit_amount = $('textarea[name="deposit_amount"]').val();
+        const charge_amount = $('input[name="charge_amount"]').val();
+        const deposit_amount = $('input[name="deposit_amount"]').val();
 
-        const duration_name = $('textarea[name="duration_name"]').val();
-        const duration = $('textarea[name="duration"]').val();
-        const buffer_before = $('textarea[name="buffer_before"]').val();
-        const buffer_after = $('textarea[name="buffer_after"]').val();
-        const category_id = $('textarea[name="category_id"]').val();
-        const order_number = $('textarea[name="order_number"]').val();
-        const selection_image_id = $('.dz-thumbnail>img').attr('src');
-        const description_image_id = $('.dz-thumbnail>img').attr('src');
-        const bg_color = $('textarea[name="bg_color"]').val();
-        const timeblock_interval = $('textarea[name="timeblock_interval"]').val();
-        const capacity_min = $('textarea[name="capacity_min"]').val();
-        const capacity_max = $('textarea[name="capacity_max"]').val();
-        const status = $('textarea[name="status"]').val();
-        const visibility = $('textarea[name="visibility"]').val();
-        const override_default_booking_status = $('textarea[name="override_default_booking_status"]').val();
+        const duration_name = $('input[name="duration_name"]').val();
+        const duration = $('input[name="duration"]').val();
+        const buffer_before = $('input[name="buffer_before"]').val();
+        const buffer_after = $('input[name="buffer_after"]').val();
+        const category_id = $('select[name="category_id"]').val();
+        // const order_number = $('input[name="order_number"]').val();
+        const selection_image_id = $('.selection_image>.dz-preview>.dz-details>.dz-thumbnail>img').attr('src');
+        const description_image_id = $('.description_image>.dz-preview>.dz-details>.dz-thumbnail>img').attr('src');
+        const bg_color = $('input[name="bg_color"]').val();
+        const timeblock_interval = $('input[name="timeblock_interval"]').val();
+        const capacity_min = $('input[name="capacity_min"]').val();
+        const capacity_max = $('input[name="capacity_max"]').val();
+        const status = $('select[name="status"]').val();
+        const visibility = $('select[name="visibility"]').val();
+        const override_default_booking_status = $('select[name="override_default_booking_status"]').val();
 
        
 
         $.ajax({
             type: 'POST',
-            url: "{{ route('add_customer') }}",
+            url: "{{ route('resource-storeservices') }}",
             headers: {
                 'X-CSRF-TOKEN': csrf_token
             },
             data: {
                 name: name,
-                short_description: short_description,
-                price_min: price_min,
-                price_max: price_max,
-                charge_amount: charge_amount,
-                deposit_amount: deposit_amount,
-                duration_name: duration_name,
+                short_description: short_description ? short_description : null,
+                price_min: price_min ? price_min : null,
+                price_max: price_max ? price_max : null,
+                charge_amount: charge_amount ? charge_amount : null,
+                deposit_amount: deposit_amount ? deposit_amount : null,
+                duration_name: duration_name ? duration_name : null,
                 duration: duration,
-                buffer_before: buffer_before,
-                buffer_after: buffer_after,
-                category_id: category_id,
-                order_number: order_number,
-                selection_image_id: selection_image_id,
-                description_image_id: description_image_id,
-                bg_color: bg_color,
-                timeblock_interval: timeblock_interval,
-                capacity_min: capacity_min,
-                capacity_max: capacity_max,
+                buffer_before: buffer_before ? buffer_before : null,
+                buffer_after: buffer_after ? buffer_after : null,
+                category_id: category_id ? category_id : null,
+                // order_number: order_number,
+                selection_image_id: selection_image_id ? selection_image_id : null,
+                description_image_id: description_image_id ? description_image_id : null,
+                bg_color: bg_color ? bg_color : null,
+                timeblock_interval: timeblock_interval ? timeblock_interval : null,
+                capacity_min: capacity_min ? capacity_min : null,
+                capacity_max: capacity_max ? capacity_max : null,
                 status: status,
                 visibility: visibility,
-                override_default_booking_status: override_default_booking_status
-                // country: phone? country: null,
-                // customer_avatar: file? file: null,
-
+                override_default_booking_status: override_default_booking_status ? override_default_booking_status : null
             },
             success: function() {
                 console.log('success');
-                window.location.href = "{{ route('app-customers') }}";
+                window.location.href = "{{ route('resource-services') }}";
             },
             error: function(err) {
                 console.log(err);

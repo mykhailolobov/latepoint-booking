@@ -85,6 +85,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/resource/services', [Services::class, 'index'])->name('resource-services');
     Route::get('/resource/createservices', [Services::class, 'create'])->name('resource-createservices');
     Route::get('/resource/editservices/{id}', [Services::class, 'edit'])->name('resource-editservices');
+    Route::post('/resource/storeservice', [Services::class, 'store'])->name('resource-storeservices');
+    Route::post('/resource/updateservice', [Services::class, 'update'])->name('resource-updateservice');
+    Route::get('/resource/deleteservice/{id}', [Customers::class, 'destroy']);
+
+
 
     // Category Section
     Route::get('/resource/categories', [Categories::class, 'index'])->name('resource-categories');
