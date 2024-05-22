@@ -51,10 +51,11 @@ $configData = Helper::appClasses();
             <hr>
         </div>
         <div class="index-agent-boxes">
-            <a href="{{ url('/resource/editserviceextras/1') }}" class="agent-box-w agent-status-active text-center os-service">
+            @foreach ($extras as $serviceExtra)
+            <a href="{{ route('/resource/editserviceextras/', $serviceExtra->id) }}" class="agent-box-w agent-status-active text-center os-service">
                 <div class="agent-info-w">
                     <div class="agent-info">
-                        <div class="agent-name">Teeth Whitening</div>
+                        <div class="agent-name">{{$serviceExtra->name}}</div>
                     </div>
                 </div>
                 <div class="os-service-body">
@@ -68,7 +69,7 @@ $configData = Helper::appClasses();
                         <div class="service-info-row">
                             <div class="label">Duration:</div>
                             <div class="value">
-                                <strong>30</strong> min
+                                <strong>{{$serviceExtra->duration}}</strong> min
                             </div>
                         </div>
                         <div class="service-info-row">
@@ -80,7 +81,7 @@ $configData = Helper::appClasses();
                         <div class="service-info-row">
                             <div class="label">Max Qty:</div>
                             <div class="value">
-                                <strong>1</strong>
+                                <strong>{{$serviceExtra->maximum_quantity}}</strong>
                             </div>
                         </div>
                     </div>
@@ -88,82 +89,8 @@ $configData = Helper::appClasses();
 
                 <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit Extra</button>
             </a>
-
-            <a href="{{ url('/resource/editserviceextras/1') }}" class="agent-box-w agent-status-active text-center os-service">
-                <div class="agent-info-w">
-                    <div class="agent-info">
-                        <div class="agent-name">Hair Wash</div>
-                    </div>
-                </div>
-                <div class="os-service-body">
-                    <div class="os-service-agents">
-                        <div class="label">Services:</div>
-                        <div class="selected-count selected-count-all">
-                            All Selected
-                        </div>
-                    </div>
-                    <div class="os-service-info">
-                        <div class="service-info-row">
-                            <div class="label">Duration:</div>
-                            <div class="value">
-                                <strong>30</strong> min
-                            </div>
-                        </div>
-                        <div class="service-info-row">
-                            <div class="label">Price:</div>
-                            <div class="value">
-                                <strong>$10</strong>
-                            </div>
-                        </div>
-                        <div class="service-info-row">
-                            <div class="label">Max Qty:</div>
-                            <div class="value">
-                                <strong>5</strong>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit Extra</button>
-            </a>
-
-            <a href="{{ url('/resource/editserviceextras/1') }}" class="agent-box-w agent-status-active text-center os-service">
-                <div class="agent-info-w">
-                    <div class="agent-info">
-                        <div class="agent-name">Recovery Mask</div>
-                    </div>
-                </div>
-                <div class="os-service-body">
-                    <div class="os-service-agents">
-                        <div class="label">Services:</div>
-                        <div class="selected-count selected-count-all">
-                            All Selected
-                        </div>
-                    </div>
-                    <div class="os-service-info">
-                        <div class="service-info-row">
-                            <div class="label">Duration:</div>
-                            <div class="value">
-                                <strong>30</strong> min
-                            </div>
-                        </div>
-                        <div class="service-info-row">
-                            <div class="label">Price:</div>
-                            <div class="value">
-                                <strong>$10</strong>
-                            </div>
-                        </div>
-                        <div class="service-info-row">
-                            <div class="label">Max Qty:</div>
-                            <div class="value">
-                                <strong>4</strong>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit Extra</button>
-            </a>
+            @endforeach
+            
 
             <a class="create-service-link-w" href="{{url('/resource/createserviceextras')}}">
                 <div class="create-service-link-i">

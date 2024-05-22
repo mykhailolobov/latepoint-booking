@@ -102,6 +102,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/resource/serviceextras', [Serviceextras::class, 'index'])->name('resource-serviceextras');
     Route::get('/resource/createserviceextras', [Serviceextras::class, 'create'])->name('resource-createserviceextras');
     Route::get('/resource/editserviceextras/{id}', [Serviceextras::class, 'edit'])->name('resource-editserviceextras');
+    Route::post('/resource/storeserviceextras', [Serviceextras::class, 'store'])->name('resource-storeserviceextras');
+    Route::get('/resource/deleteserviceextras/{id}', [Serviceextras::class, 'destroy']);
+    Route::post('/resource/updateserviceextras', [Serviceextras::class, 'update'])->name('resource-updateserviceextras');
 
 
     // Resources Section->Agents part
