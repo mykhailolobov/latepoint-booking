@@ -86,34 +86,35 @@ $configData = Helper::appClasses();
         </div>
 
         <div class="col-md-12 create_new_location_category">
-            <div class="card mb-4">
-                <h5 class="card-header">Create New Location Category</h5>
-                <div class="card-body demo-vertical-spacing demo-only-element">
-                    <div class="d-flex">
-                        <div class="col-lg-6 px-3">
-                            <input type="text" class="form-control" id="defaultFormControlInput" placeholder="Category Name" aria-describedby="defaultFormControlHelp" />
-                        </div>
-                        <div class="col-lg-6 px-3">
-                            <input type="text" class="form-control" id="defaultFormControlInput" placeholder="Short Description" aria-describedby="defaultFormControlHelp" />
-                        </div>
-                    </div>   
-                    <div class="col-lg-12 px-3 mb-4">
-                        <form action="/upload" class="dropzone needsclick" id="dropzone-basic1">
-                            <div class="dz-message needsclick">
-                                Category Image
+            <form action="{{route('resource-storelocationcategories')}}" method="post" class="add-locationCategory">
+                @csrf
+                <div class="card mb-4">
+                    <h5 class="card-header">Create New Location Category</h5>
+                    <div class="card-body demo-vertical-spacing demo-only-element">
+                        <div class="d-flex">
+                            <div class="col-lg-6 px-3">
+                                <input type="text" name="name" class="form-control" id="defaultFormControlInput" placeholder="Category Name" aria-describedby="defaultFormControlHelp" />
                             </div>
-                            <div class="fallback">
-                                <input name="file" type="file" />
+                            <div class="col-lg-6 px-3">
+                                <input type="text" name="short_description" class="form-control" id="defaultFormControlInput" placeholder="Short Description" aria-describedby="defaultFormControlHelp" />
                             </div>
-                        </form>
+                        </div>   
+                        <div class="col-lg-12 px-3 mb-4">
+                            <div action="/upload" class="dropzone needsclick" id="dropzone-basic1">
+                                <div class="dz-message needsclick">
+                                    Category Image
+                                </div>                            
+                            </div>
+                        </div>
+    
+                        <div>
+                            <button class="btn btn-primary add-location-category" type="submit">Save Category</button>
+                            <meta name="csrf-token" content="{{ csrf_token() }}">
+                            <button class="btn btn-default cancel-location-category" type="button">Cancel</button>
+                        </div> 
                     </div>
-
-                    <div>
-                        <button class="btn btn-primary add-location-category" type="button">Save Category</button>
-                        <button class="btn btn-default cancel-location-category" type="button">Cancel</button>
-                    </div> 
                 </div>
-            </div>
+            </form>
         </div>
 
         <div id="add-category-box" class="add-category-box" data-os-action="coupons__new_form" data-os-output-target-do="append" data-os-output-target=".os-coupons-w">
@@ -138,6 +139,35 @@ $configData = Helper::appClasses();
             $(".create_new_location_category").hide();
         });
     });
+
+    $('form.add-locationCategory').on('submit', function(e){
+        e.preventDefault();
+        const csrf_token = $('meta[name="csrf-token"]').attr('content');
+        const name = $('input[name="name"]').val();
+        const short_description = $('input[name="short_description"]').val();
+        const selection_image_id = $('.dz-thumbnail>img').attr('src');
+       
+
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('resource-storelocationcategories') }}",
+            headers: {
+                'X-CSRF-TOKEN': csrf_token
+            },
+            data: {
+                name: name,
+                short_description: short_description,
+                selection_image_id: selection_image_id,
+            },
+            success: function() {
+                console.log('success');
+                window.location.href = "{{ route('resource-locationcategories') }}";
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+    })
 </script>
 
 @endsection
