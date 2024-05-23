@@ -18,8 +18,8 @@ return new class extends Migration
             $table->decimal('charge_amount', 20, 4)->nullable();
             $table->integer('duration');
             $table->integer('maximum_quantity')->nullable();
-            $table->unsignedBigInteger('selection_image_id')->nullable();
-            $table->unsignedBigInteger('description_image_id')->nullable();
+            $table->longText('selection_image_id')->nullable();
+            $table->longText('description_image_id')->nullable();
             $table->string('multiplied_by_attendies', 10)->nullable();
             $table->string('status', 20);
             $table->timestamps();

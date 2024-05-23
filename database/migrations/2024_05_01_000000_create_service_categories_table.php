@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('short_description')->nullable();
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->foreign('parent_id')->references('id')->on('service_categories')->onDelete('cascade');
-            $table->unsignedBigInteger('selection_image_id')->nullable();
+            $table->longText('selection_image_id')->nullable();
             $table->integer('order_number')->nullable();
             $table->timestamps();
         });
