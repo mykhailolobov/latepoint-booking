@@ -44,24 +44,28 @@ $configData = Helper::appClasses();
             <div class="card-header mb-0">
                 <h4 class="m-0 me-2">Performance</h4>
             </div>
-            <div class="card-header d-flex gap-3">
-                <select id="select2Basic1" class="select2 form-select form-select-lg" data-allow-clear="true">
-                    <option>All Agents</option>
-                    <option>John Mayers</option>
-                    <option>Kim collins</option>
-                    <option>Ben Stones</option>
-                    <option>Clark Simeone</option>
-                </select>
-                <select id="select2Basic2" class="select2 form-select form-select-lg" data-allow-clear="true">
-                    <option>All Services</option>
-                    <option>Tooth Whitening</option>
-                    <option>Imvisilingn Braces</option>
-                    <option>Group Booking</option>
-                    <option>Pocelain Crown</option>
-                    <option>Root Canal Therapy</option>
-                    <option>Gum Decease</option>
-                </select>
-                <div class="">
+            <div class="card-header row py-1">
+                <div class="col-md-4 mb-2">
+                    <select id="select2Basic1" class="select2 form-select form-select-lg" data-allow-clear="true">
+                        <option>All Agents</option>
+                        <option>John Mayers</option>
+                        <option>Kim collins</option>
+                        <option>Ben Stones</option>
+                        <option>Clark Simeone</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-2">
+                    <select id="select2Basic2" class="select2 form-select col-md-4 form-select-lg" data-allow-clear="true">
+                        <option>All Services</option>
+                        <option>Tooth Whitening</option>
+                        <option>Imvisilingn Braces</option>
+                        <option>Group Booking</option>
+                        <option>Pocelain Crown</option>
+                        <option>Root Canal Therapy</option>
+                        <option>Gum Decease</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-2">
                     <input type="text" class="form-control" placeholder="YYYY-MM-DD to YYYY-MM-DD"
                         id="flatpickr-range" />
                 </div>
@@ -115,27 +119,34 @@ $configData = Helper::appClasses();
             <div class="card-header mb-0">
                 <h4 class="m-0 me-2">Upcoming</h4>
             </div>
-            <div class="card-header d-flex gap-3">
-                <select id="select2Basic3" class="select2 form-select form-select-lg" data-allow-clear="true">
-                    <option>All Locations</option>
-                    <option>Los Angeles</option>
-                </select>
-                <select id="select2Basic4" class="select2 form-select form-select-lg" data-allow-clear="true">
-                    <option>All Services</option>
-                    <option>Tooth Whitening</option>
-                    <option>Imvisilingn Braces</option>
-                    <option>Group Booking</option>
-                    <option>Pocelain Crown</option>
-                    <option>Root Canal Therapy</option>
-                    <option>Gum Decease</option>
-                </select>
-                <select id="select2Basic5" class="select2 form-select form-select-lg" data-allow-clear="true">
-                    <option>All Agents</option>
-                    <option>John Mayers</option>
-                    <option>Kim collins</option>
-                    <option>Ben Stones</option>
-                    <option>Clark Simeone</option>
-                </select>
+            <div class="card-header row pt-1">
+                <div class="col-md-4 mb-2">
+                    <select id="select2Basic3" class="select2 form-select form-select-lg" data-allow-clear="true">
+                        <option>All Locations</option>
+                        <option>Los Angeles</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-2">
+                    <select id="select2Basic4" class="select2 form-select form-select-lg" data-allow-clear="true">
+                        <option>All Services</option>
+                        <option>Tooth Whitening</option>
+                        <option>Imvisilingn Braces</option>
+                        <option>Group Booking</option>
+                        <option>Pocelain Crown</option>
+                        <option>Root Canal Therapy</option>
+                        <option>Gum Decease</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-2">
+                    <select id="select2Basic5" class="select2 form-select form-select-lg" data-allow-clear="true">
+                        <option>All Agents</option>
+                        <option>John Mayers</option>
+                        <option>Kim collins</option>
+                        <option>Ben Stones</option>
+                        <option>Clark Simeone</option>
+                    </select>
+                </div>
+                
             </div>
             <div class="d-fex align-items-center justify-content-center text-center">
                 <i class='bx bx-sm bxs-inbox'></i>
