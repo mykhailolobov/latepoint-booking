@@ -117,6 +117,9 @@ Route::middleware('auth')->group(function () {
 
     // Resources Section->Coupons part
     Route::get('/resource/coupons', [Coupons::class, 'index'])->name('resource-coupons');
+    Route::post('/resource/updatecoupons', [Coupons::class, 'update'])->name('resource-updatecoupons');
+    Route::post('/resource/storecoupons', [Coupons::class, 'store'])->name('resource-storecoupons');
+
 
 
     // Resources Section->Locations part
