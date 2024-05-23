@@ -48,24 +48,27 @@ $configData = Helper::appClasses();
             <hr>
         </div>
         <div class="index-agent-boxes">
-            <a href="{{ url('/resource/editlocations/1') }}" class="agent-box-w agent-status-active">
-                <div id="googleMap" style="width:100%; height:400px;"></div>
-                <div class="agent-info-w">
-                    <div class="agent-info">
-                        <div class="agent-name">Los Angeles</div>
-                        <div class="agent-phone">3625 Vermont Ave, Los Angeles, CA 90007</div>
+            @foreach ($locations as $location)
+                <a href="{{ route('resource-editlocations', $location->id) }}" class="agent-box-w agent-status-active">
+                    <div id="googleMap" style="width:100%; height:400px;"></div>
+                    <div class="agent-info-w">
+                        <div class="agent-info">
+                            <div class="agent-name">{{$location->name}}</div>
+                            <div class="agent-phone">{{$location->full_address}}</div>
+                        </div>
                     </div>
-                </div>
-                <div class="os-location-agents">
-                    <div class="label">Agents:</div>
-                    <div class="agents-avatars">
-                        <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/9.png") ?>)"></div>
-                        <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/10.png") ?>)"></div>
-                        <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/11.png") ?>)"></div>
-                        <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/12.png") ?>)"></div>
+                    <div class="os-location-agents">
+                        <div class="label">Agents:</div>
+                        <div class="agents-avatars">
+                            <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/9.png") ?>)"></div>
+                            <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/10.png") ?>)"></div>
+                            <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/11.png") ?>)"></div>
+                            <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/12.png") ?>)"></div>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            @endforeach
+            
 
             <a href="{{url('/resource/createlocations')}}" class="create-agent-link-w">
                 <div class="create-agent-link-i">
