@@ -72,8 +72,8 @@ $configData = Helper::appClasses();
             </div>
             <hr>
 
-            <div class="d-none d-lg-flex vehicles-progress-labels" style="padding: 0 2% 0 2%;">
-                <div class="col-lg-3 vehicles-progress-label on-the-way-text">
+            <div class="d-md-flex row vehicles-progress-labels" style="padding: 0 2% 0 2%;">
+                <div class="col-md-3 col-6 vehicles-progress-label on-the-way-text">
                     <div class="d-flex">
                         <h2 class="m-1">0</h2>
                         <span class="p-3 percent_val">0%</span>
@@ -81,7 +81,7 @@ $configData = Helper::appClasses();
                     </div>
                     <h6>Appointments</h6>
                 </div>
-                <div class="col-lg-3 vehicles-progress-label unloading-text">
+                <div class="col-md-3 col-6 vehicles-progress-label unloading-text">
                     <div class="d-flex">
                         <h2 class="m-1">$0</h2>
                         <span class="p-3 percent_val">0%</span>
@@ -89,7 +89,7 @@ $configData = Helper::appClasses();
                     </div>
                     <h6>Sales Revenue</h6>
                 </div>
-                <div class="col-lg-3 vehicles-progress-label loading-text">
+                <div class="col-md-3 col-6 vehicles-progress-label loading-text">
                     <div class="d-flex">
                         <h2 class="m-1">0</h2>
                         <span class="p-3 percent_val">0%</span>
@@ -97,7 +97,7 @@ $configData = Helper::appClasses();
                     </div>
                     <h6>Hours Worked</h6>
                 </div>
-                <div class="col-lg-3 vehicles-progress-label waiting-text">
+                <div class="col-md-3 col-6 vehicles-progress-label waiting-text">
                     <div class="d-flex">
                         <h2 class="m-1">5</h2>
                         <span class="p-3 percent_val">0%</span>
