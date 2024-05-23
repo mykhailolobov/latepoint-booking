@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Resource;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Coupon;
 
 class Coupons extends Controller
 {
@@ -12,7 +13,8 @@ class Coupons extends Controller
      */
     public function index()
     {
-        return view('content.resource.coupons');
+        $coupons = Coupon::all();
+        return view('content.resource.coupons', compact('coupons'));
     }
 
     /**
@@ -28,7 +30,14 @@ class Coupons extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $coupon = new Coupon();
+        $coupon->code = $request.input('coupon_code');
+        $coupon->name = $request.input('coupon_name');
+        $coupon->discount_value = $request.input('discount_value');
+        $coupon->discount_type = $request.input('discount_type');
+        $coupon->status = $request.input('status');
+
+        $coupon->save();
     }
 
     /**
@@ -52,7 +61,14 @@ class Coupons extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $coupon = Coupon::findOrFail($request.input('id'));
+        $coupon->code = $request.input('coupon_code');
+        $coupon->name = $request.input('coupon_name');
+        $coupon->discount_value = $request.input('discount_value');
+        $coupon->discount_type = $request.input('discount_type');
+        $coupon->status = $request.input('status');
+
+        $coupon->save();
     }
 
     /**
