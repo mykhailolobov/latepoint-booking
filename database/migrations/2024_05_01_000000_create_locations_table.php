@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('status');
             $table->unsignedBigInteger('category_id')->nullable();
             $table->integer('order_number')->nullable();
-            $table->unsignedBigInteger('selection_image_id')->nullable();
+            $table->longText('selection_image_id')->nullable();
             $table->timestamps();
 
             // Define indexes

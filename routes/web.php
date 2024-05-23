@@ -127,6 +127,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/resource/locations', [Locations::class, 'index'])->name('resource-locations');
     Route::get('/resource/createlocations', [Locations::class, 'create'])->name('resource-createlocations');
     Route::get('/resource/editlocations/{id}', [Locations::class, 'edit'])->name('resource-editlocations');
+    Route::post('/resource/storelocations', [Locations::class, 'store'])->name('resource-storelocations');
+    Route::post('/resource/updatelocations', [Locations::class, 'update'])->name('resource-updatelocations');
 
 
     // Resources Section -> Locations/Categories part
