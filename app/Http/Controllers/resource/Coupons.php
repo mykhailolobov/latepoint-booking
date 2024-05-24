@@ -31,13 +31,16 @@ class Coupons extends Controller
     public function store(Request $request)
     {
         $coupon = new Coupon();
-        $coupon->code = $request.input('coupon_code');
-        $coupon->name = $request.input('coupon_name');
-        $coupon->discount_value = $request.input('discount_value');
-        $coupon->discount_type = $request.input('discount_type');
-        $coupon->status = $request.input('status');
+        $coupon->code = $request->input('coupon_code');
+        $coupon->name = $request->input('coupon_name');
+        $coupon->discount_value = $request->input('discount_value');
+        $coupon->discount_type = $request->input('discount_type');
+        $coupon->status = $request->input('status');
 
         $coupon->save();
+
+        return redirect('/resource/coupons')->with('success', 'Category updated successfully.');
+
     }
 
     /**
@@ -59,16 +62,19 @@ class Coupons extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        $coupon = Coupon::findOrFail($request.input('id'));
-        $coupon->code = $request.input('coupon_code');
-        $coupon->name = $request.input('coupon_name');
-        $coupon->discount_value = $request.input('discount_value');
-        $coupon->discount_type = $request.input('discount_type');
-        $coupon->status = $request.input('status');
+        $coupon = Coupon::findOrFail($request->input('id'));
+        $coupon->code = $request->input('coupon_code');
+        $coupon->name = $request->input('coupon_name');
+        $coupon->discount_value = $request->input('discount_value');
+        $coupon->discount_type = $request->input('discount_type');
+        $coupon->status = $request->input('status');
 
         $coupon->save();
+
+        return redirect('/resource/coupons')->with('success', 'Category updated successfully.');
+
     }
 
     /**
@@ -76,6 +82,8 @@ class Coupons extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $coupon = Coupon::findOrFail($id);
+        $coupon->delete();
+        return redirect('/resource/coupons')->with('success', 'Category updated successfully.');
     }
 }

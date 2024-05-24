@@ -31,14 +31,14 @@ class Serviceextras extends Controller
     public function store(Request $request)
     {
         $serviceExtra = new Serviceextra();
-        $serviceExtra->name = $request.input('name');
-        $serviceExtra->short_description = $request.input('short_description');
-        $serviceExtra->charge_amount = $request.input('charge_amount');
-        $serviceExtra->duration = $request.input('duration');
-        $serviceExtra->maximum_quantity = $request.input('max_quantity');
+        $serviceExtra->name = $request->input('name');
+        $serviceExtra->short_description = $request->input('short_description');
+        $serviceExtra->charge_amount = $request->input('charge_amount');
+        $serviceExtra->duration = $request->input('duration');
+        $serviceExtra->maximum_quantity = $request->input('max_quantity');
         $serviceExtra->selection_image_id = $request->selection_image_id;
         // $serviceExtra->description_image_id = $request->description_image_id;
-        $serviceExtra->status = $request.input('status');
+        $serviceExtra->status = $request->input('status');
 
         $serviceExtra->save();
     }
@@ -56,7 +56,7 @@ class Serviceextras extends Controller
      */
     public function edit(string $id)
     {
-        $serviceExtra = Serviceextra::fincOrFail($id);
+        $serviceExtra = Serviceextra::findOrFail($id);
         return view('content.resource.editserviceextras', compact('serviceExtra'));
     }
 
@@ -65,15 +65,16 @@ class Serviceextras extends Controller
      */
     public function update(Request $request)
     {
-        $serviceExtra = Serviceextra::findOrFail($request.input('id'));
-        $serviceExtra->name = $request.input('name');
-        $serviceExtra->short_description = $request.input('short_description');
-        $serviceExtra->charge_amount = $request.input('charge_amount');
-        $serviceExtra->duration = $request.input('duration');
-        $serviceExtra->maximum_quantity = $request.input('max_quantity');
+        $id = $request->input('id');
+        $serviceExtra = Serviceextra::findOrFail($id);
+        $serviceExtra->name = $request->input('name');
+        $serviceExtra->short_description = $request->input('short_description');
+        $serviceExtra->charge_amount = $request->input('charge_amount');
+        $serviceExtra->duration = $request->input('duration');
+        $serviceExtra->maximum_quantity = $request->input('max_quantity');
         $serviceExtra->selection_image_id = $request->selection_image_id;
         // $serviceExtra->description_image_id = $request->description_image_id;
-        $serviceExtra->status = $request.input('status');
+        $serviceExtra->status = $request->input('status');
 
         $serviceExtra->save();
     }
@@ -85,5 +86,7 @@ class Serviceextras extends Controller
     {
         $serviceExtra = Serviceextra::findOrFail($id);
         $serviceExtra->delete();
+
+        return redirect('/resource/serviceextras')->with('success', 'Category updated successfully.');
     }
 }

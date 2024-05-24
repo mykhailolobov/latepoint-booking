@@ -119,6 +119,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/resource/coupons', [Coupons::class, 'index'])->name('resource-coupons');
     Route::post('/resource/updatecoupons', [Coupons::class, 'update'])->name('resource-updatecoupons');
     Route::post('/resource/storecoupons', [Coupons::class, 'store'])->name('resource-storecoupons');
+    Route::get('/resource/deletecoupons/{id}', [Coupons::class, 'destroy']);
+
 
 
 

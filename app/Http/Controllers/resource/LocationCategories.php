@@ -31,8 +31,8 @@ class LocationCategories extends Controller
     public function store(Request $request)
     {
         $locationcategory = new LocationCategory();
-        $locationcategory->name = $request.input('name');
-        $locationcategory->short_description = $request.input('short_description');
+        $locationcategory->name = $request->input('name');
+        $locationcategory->short_description = $request->input('short_description');
         $locationcategory->selection_image_id = $request->selection_image_id;
 
         $locationcategory->save();

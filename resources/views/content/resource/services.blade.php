@@ -92,13 +92,13 @@ $configData = Helper::appClasses();
                             <div class="service-info-row">
                                 <div class="label">Buffer:</div>
                                 <div class="value">
-                                    <strong>0/0</strong> min
+                                    <strong>{{$general->buffer_before}}/{{$general->buffer_after}}</strong> min
                                 </div>
                             </div>
                             <div class="service-info-row">
                                 <div class="label">Capacity:</div>
                                 <div class="value">
-                                    <strong>1 - 6</strong> person
+                                    <strong>{{$general->capacity_min}} - {{$general->capacity_max}}</strong> person
                                 </div>
                             </div>
                         </div>
@@ -160,13 +160,13 @@ $configData = Helper::appClasses();
                             <div class="service-info-row">
                                 <div class="label">Buffer:</div>
                                 <div class="value">
-                                    <strong>0/0</strong> min
+                                    <strong>{{$cosmetic->buffer_before}}/{{$cosmetic->buffer_after}}</strong> min
                                 </div>
                             </div>
                             <div class="service-info-row">
                                 <div class="label">Capacity:</div>
                                 <div class="value">
-                                    <strong>1 - 6</strong> person
+                                    <strong>{{$cosmetic->capacity_min}} - {{$cosmetic->capacity_max}}</strong> person
                                 </div>
                             </div>
                         </div>
@@ -229,13 +229,13 @@ $configData = Helper::appClasses();
                             <div class="service-info-row">
                                 <div class="label">Buffer:</div>
                                 <div class="value">
-                                    <strong>0/0</strong> min
+                                    <strong>{{$implants->buffer_before}}/{{$implants->buffer_after}}</strong> min
                                 </div>
                             </div>
                             <div class="service-info-row">
                                 <div class="label">Capacity:</div>
                                 <div class="value">
-                                    <strong>1 - 6</strong> person
+                                    <strong>{{$implants->capacity_min}} - {{$implants->capacity_max}}</strong> person
                                 </div>
                             </div>
                         </div>

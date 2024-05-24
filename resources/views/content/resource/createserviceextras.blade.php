@@ -279,7 +279,7 @@ $configData = Helper::appClasses();
             },
             success: function() {
                 console.log('success');
-                window.location.href = "{{ route('resource-services') }}";
+                window.location.href = "{{ route('resource-serviceextras') }}";
             },
             error: function(err) {
                 console.log(err);

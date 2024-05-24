@@ -31,11 +31,11 @@ class Locations extends Controller
     public function store(Request $request)
     {
         $location = new Location();
-        $location->name = $request.input('name');
-        $location->full_address = $request.input('full_address');
-        $location->status = $request.input('status');
+        $location->name = $request->input('name');
+        $location->full_address = $request->input('full_address');
+        $location->status = $request->input('status');
         $location->selection_image_id = $request->selection_image_id;
-        $location->category_id = $request.input('category_id');
+        $location->category_id = $request->input('category_id');
 
         $location->save();
     }
@@ -62,12 +62,12 @@ class Locations extends Controller
      */
     public function update(Request $request)
     {
-        $location = Location::findOrFail($request.input('id'));
-        $location->name = $request.input('name');
-        $location->full_address = $request.input('full_address');
-        $location->status = $request.input('status');
+        $location = Location::findOrFail($request->input('id'));
+        $location->name = $request->input('name');
+        $location->full_address = $request->input('full_address');
+        $location->status = $request->input('status');
         $location->selection_image_id = $request->selection_image_id;
-        $location->category_id = $request.input('category_id');
+        $location->category_id = $request->input('category_id');
 
         $location->save();
     }

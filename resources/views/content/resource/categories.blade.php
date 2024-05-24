@@ -63,7 +63,7 @@ $configData = Helper::appClasses();
                 <div class="col-md-12 col-12 mb-md-0 mb-4">
                     <ul class="location-categories list-group list-group-flush" id="handle-list-1">
                         @foreach ($categories as $category)
-                       <form action="{{route('resource-storecategories')}}" method="post" class="add-categories">
+                       <form action="{{route('resource-updatecategories')}}" method="post" class="update-categories">
                             @csrf
                             <li class="list-group-item lh-1 justify-content-between align-items-center mb-3">
                                 <div class="row">

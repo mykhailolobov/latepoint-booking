@@ -52,7 +52,7 @@ $configData = Helper::appClasses();
         </div>
         <div class="index-agent-boxes">
             @foreach ($extras as $serviceExtra)
-            <a href="{{ route('/resource/editserviceextras/', $serviceExtra->id) }}" class="agent-box-w agent-status-active text-center os-service">
+            <a href="{{ route('resource-editserviceextras', $serviceExtra->id) }}" class="agent-box-w agent-status-active text-center os-service">
                 <div class="agent-info-w">
                     <div class="agent-info">
                         <div class="agent-name">{{$serviceExtra->name}}</div>

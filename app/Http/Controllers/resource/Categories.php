@@ -31,9 +31,10 @@ class Categories extends Controller
     public function store(Request $request)
     {
         $category = new ServiceCategory();
-        $category->name = $request.input('name');
-        $category->short_description = $request.input('short_description');
+        $category->name = $request->input('name');
+        $category->short_description = $request->input('short_description');
         $category->selection_image_id = $request->selection_image_id;
+        // $category->parent_id = 1;
 
         $category->save();
     }

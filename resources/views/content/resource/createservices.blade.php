@@ -75,8 +75,7 @@ $configData = Helper::appClasses();
                             <div class="col-lg-6 px-3">
                                 <label for="selectpickerBasic" class="form-label">Category</label>
                                 <div class="d-flex">
-                                    <select id="selectpickerBasic" class="selectpicker w-100" name="category_id" data-style="btn-default">
-                                        <option>Uncategorized</option>
+                                    <select id="selectpickerBasic" class="selectpicker w-100" name="category_id" data-style="btn-default">                                        
                                         <option value="general">General Dentistry</option>
                                         <option value="cosmetic">Cosmetic Dentistry</option>
                                         <option value="implants">Implants Dentistry</option>
