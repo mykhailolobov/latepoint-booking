@@ -133,6 +133,7 @@ Route::middleware('auth')->group(function () {
 
     // Resources Section -> Locations/Categories part
     Route::get('/resource/locationcategories', [LocationCategories::class, 'index'])->name('resource-locationcategories');
+    Route::post('/resource/storelocationcategories', [LocationCategories::class, 'store'])->name('resource-storelocationcategories');
 
   
     // Settings Section -> Settings

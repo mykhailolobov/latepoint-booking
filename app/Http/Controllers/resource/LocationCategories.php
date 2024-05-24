@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Resource;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\LocationCategory;
 
 class LocationCategories extends Controller
 {
@@ -12,7 +13,8 @@ class LocationCategories extends Controller
      */
     public function index()
     {
-        return view('content.resource.locationcategories');
+        $locationcategories = LocationCategory::all();
+        return view('content.resource.locationcategories', compact('locationcategories'));
     }
 
     /**
@@ -28,7 +30,12 @@ class LocationCategories extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $locationcategory = new LocationCategory();
+        $locationcategory->name = $request.input('name');
+        $locationcategory->short_description = $request.input('short_description');
+        $locationcategory->selection_image_id = $request->selection_image_id;
+
+        $locationcategory->save();
     }
 
     /**
