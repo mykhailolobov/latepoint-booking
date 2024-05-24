@@ -71,9 +71,9 @@ class Agents extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, string $id)
     {
-        $agent = Agent::findOrFail($request->input('id'));
+        $agent = Agent::findOrFail($id);
         
         $agent->first_name = $request->input('first_name');
         $agent->last_name = $request->input('last_name');
@@ -94,7 +94,7 @@ class Agents extends Controller
        
         $agent->save();
         
-        // return redirect('/customers')->with('success', 'Customer created successfully.');
+        return redirect('/resource/agents')->with('success', 'Customer created successfully.');
     }
 
     /**

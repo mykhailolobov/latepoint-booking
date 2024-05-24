@@ -726,7 +726,6 @@ $configData = Helper::appClasses();
                                                 <h6 class="switch-label">Create Zoom meeting for bookings</h6>
                                                 <span>Zoom meeting for bookings of this service will be created automatically</span>        
                                             </div>
-                                            <input type="text" value="{{$service->id}}" hidden name="id">
                                         </label>
                                     </div>
                                 </div>
@@ -797,7 +796,7 @@ $configData = Helper::appClasses();
     $('form.add-service').on('submit', function(e) {
         e.preventDefault();
         const csrf_token = $('meta[name="csrf-token"]').attr('content');
-        const id = $('input[name = "id"]').val();
+        const id = "{{$service->id}}";
         const name = $('input[name="name"]').val();
         const short_description = $('input[name="short_description"]').val();
 

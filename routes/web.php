@@ -77,9 +77,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/customers/list', [Customers::class, 'list']);
     Route::post('/add_customer', [Customers::class, 'add_customer'])->name('add_customer');
     Route::get('/edit_customer/{id}', [Customers::class, 'edit_customer'])->name('edit_customer');
-    Route::post('/customers', [Customers::class, 'update_customer'])->name('update_customer');
+    Route::post('/update_customers', [Customers::class, 'update_customer'])->name('update_customer');
     Route::get('/delete_customer/{id}', [Customers::class, 'delete_customer']);
-    Route::get('/customers/search', [Customers::class, 'search_customer'])->name('search_customer');
 
 
     // Resources Section
@@ -96,7 +95,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/resource/categories', [Categories::class, 'index'])->name('resource-categories');
     Route::post('/resource/storecategories', [Categories::class, 'store'])->name('resource-storecategories');
     Route::get('/resource/deletecategories/{id}', [Categories::class, 'destroy']);
-    Route::post('/resource/updatecategories', [Categories::class, 'update'])->name('resource-updatecategories');
+    Route::post('/resource/updatecategories/{id}', [Categories::class, 'update'])->name('resource-updatecategories');
 
 
     // Service Extra Section
@@ -113,12 +112,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/resource/createagents', [Agents::class, 'create'])->name('resource-createagents');
     Route::get('/resource/editagents/{id}', [Agents::class, 'edit'])->name('resource-editagents');
     Route::post('/resource/storeagent', [Agents::class, 'store'])->name('resource-storeagent');
-    Route::post('/resource/updateagent', [Agents::class, 'update'])->name('resource-updateagent');
+    Route::post('/resource/updateagent/{id}', [Agents::class, 'update'])->name('resource-updateagent');
     
 
     // Resources Section->Coupons part
     Route::get('/resource/coupons', [Coupons::class, 'index'])->name('resource-coupons');
-    Route::post('/resource/updatecoupons', [Coupons::class, 'update'])->name('resource-updatecoupons');
+    Route::post('/resource/updatecoupons/{id}', [Coupons::class, 'update'])->name('resource-updatecoupons');
     Route::post('/resource/storecoupons', [Coupons::class, 'store'])->name('resource-storecoupons');
     Route::get('/resource/deletecoupons/{id}', [Coupons::class, 'destroy']);
 

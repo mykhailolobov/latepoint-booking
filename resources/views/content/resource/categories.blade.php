@@ -63,7 +63,7 @@ $configData = Helper::appClasses();
                 <div class="col-md-12 col-12 mb-md-0 mb-4">
                     <ul class="location-categories list-group list-group-flush" id="handle-list-1">
                         @foreach ($categories as $category)
-                       <form action="{{route('resource-updatecategories')}}" method="post" class="update-categories">
+                       <form action="{{route('resource-updatecategories', $category->id)}}" method="post" class="update-categories">
                             @csrf
                             <li class="list-group-item lh-1 justify-content-between align-items-center mb-3">
                                 <div class="row">
@@ -89,7 +89,6 @@ $configData = Helper::appClasses();
                                                 Remove Image
                                             </div>                                            
                                         </div>
-                                        <input type="text" name="id" value="{{$category->id}}" hidden>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Save Category</button>
                                     <a href="/resource/deletecategories/{{$category->id}}" class="btn btn-danger add-customer">Delete Category</a>

@@ -362,7 +362,6 @@ $configData = Helper::appClasses();
                                                 <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time-finish6" />
                                             </div>
                                         </div>
-                                        <input type="text" name="id" value="{{$location->id}}" hidden>
                                     </div>
                                 </div>
                             </div>
@@ -404,7 +403,7 @@ $configData = Helper::appClasses();
         const status = $('select[name="status"]').val();
         const selection_image_id = $('.dz-thumbnail>img').attr('src');
         const category_id = $('select[name="category_id"]').val();
-        const id = $('input[name="id"]').val();
+        const id = "{{$location->id}}";
        
 
         $.ajax({

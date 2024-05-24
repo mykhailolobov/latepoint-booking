@@ -62,9 +62,9 @@ class Coupons extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, string $id)
     {
-        $coupon = Coupon::findOrFail($request->input('id'));
+        $coupon = Coupon::findOrFail($id);
         $coupon->code = $request->input('coupon_code');
         $coupon->name = $request->input('coupon_name');
         $coupon->discount_value = $request->input('discount_value');

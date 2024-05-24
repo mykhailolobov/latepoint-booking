@@ -58,9 +58,9 @@ class Categories extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, string $id)
     {
-        $category = ServiceCategory::findOrFail($request->id);
+        $category = ServiceCategory::findOrFail($id);
 
         $category->name = $request->name;
         $category->short_description = $request->short_description;

@@ -100,7 +100,6 @@ $configData = Helper::appClasses();
                             <textarea class="form-control" name="admin_notes" placeholder="Notes by admins, only visible to admins" aria-describedby="defaultFormControlHelp" >{{$customer->admin_notes}}</textarea>
                         </div>
                     </div>
-                    <input type="text" name="id" hidden value="{{$customer->id}}">
                 </div>
             </div>
             <div class="edit-btns">
@@ -121,7 +120,7 @@ $configData = Helper::appClasses();
     const input = document.querySelector("#phone");
     window.intlTelInput(input, {
         fixDropdownWidth: false,
-        initialCountry: initialCountry,
+        initialCountry: initialCountry? initialCountry: "us",
         separateDialCode: true,
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/utils.js",
     });
@@ -134,7 +133,7 @@ $configData = Helper::appClasses();
         const email = $('input[name="email"]').val();
         const phone = $('input[name="phone"]').val();
         const notes = $('textarea[name="notes"]').val();
-        const id = $('input[name="id"]').val();
+        const id = "{{$customer->id}}";
         const admin_notes = $('textarea[name="admin_notes"]').val();
         const file = $('.dz-thumbnail>img').attr('src');
         const country = $('.iti__selected-country-primary').children().first().attr('class').slice(-2);
