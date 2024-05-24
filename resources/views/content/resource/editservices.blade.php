@@ -76,7 +76,6 @@ $configData = Helper::appClasses();
                                 <label for="selectpickerBasic" class="form-label">Category</label>
                                 <div class="d-flex">
                                     <select id="selectpickerBasic" class="selectpicker w-100" name="category_id" data-style="btn-default">
-                                        <option>Uncategorized</option>
                                         <option value="general">General Dentistry</option>
                                         <option value="cosmetic">Cosmetic Dentistry</option>
                                         <option value="implants">Implants Dentistry</option>
@@ -740,7 +739,7 @@ $configData = Helper::appClasses();
             <div>
                 <button class="btn btn-primary add-location" type="submit">Update Service</button>
                 <meta name="csrf-token" content="{{ csrf_token() }}">
-                <a href="/resource/delete/{{$service->id}}" class="btn btn-danger add-customer">Delete Service</a>
+                <a href="/resource/deleteservice/{{$service->id}}" class="btn btn-danger add-customer">Delete Service</a>
             </div>
         </div>
     </form>

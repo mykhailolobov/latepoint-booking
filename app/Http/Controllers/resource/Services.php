@@ -112,6 +112,9 @@ class Services extends Controller
         }
 
         $service->save();
+
+        return redirect('/resource/services')->with('success', 'Category updated successfully.');
+
     }
 
     /**
@@ -121,5 +124,7 @@ class Services extends Controller
     {
         $service = Service::findOrFail($id);
         $service->delete();
+
+        return redirect('/resource/services')->with('success', 'Category updated successfully.');
     }
 }
