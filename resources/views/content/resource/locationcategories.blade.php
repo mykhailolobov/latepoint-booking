@@ -61,24 +61,14 @@ $configData = Helper::appClasses();
                 <div class="row">
                     <div class="col-md-12 col-12 mb-md-0 mb-4">
                         <ul class="location-categories list-group list-group-flush" id="handle-list-1">
+                            @foreach ($locationcategories as $locationcategory)
                             <li class="list-group-item lh-1 d-flex justify-content-between align-items-center mb-2">
                                 <span class="d-flex justify-content-between align-items-center">
                                   <i class="drag-handle cursor-move bx bx-menu align-text-bottom me-2"></i>
-                                  <span>Los Angeles</span>
+                                  <span>{{$locationcategory->name}}</span>
                                 </span>
                             </li>
-                            <li class="list-group-item lh-1 d-flex justify-content-between align-items-center mb-2">
-                                <span class="d-flex justify-content-between align-items-center">
-                                  <i class="drag-handle cursor-move bx bx-menu align-text-bottom me-2"></i>
-                                  <span>California</span>
-                                </span>
-                            </li>
-                            <li class="list-group-item lh-1 d-flex justify-content-between align-items-center mb-3">
-                                <span class="d-flex justify-content-between align-items-center">
-                                  <i class="drag-handle cursor-move bx bx-menu align-text-bottom me-2"></i>
-                                  <span>New York</span>
-                                </span>
-                            </li>
+                            @endforeach                            
                         </ul>
                     </div>
                 </div>
