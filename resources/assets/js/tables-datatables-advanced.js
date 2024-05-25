@@ -202,13 +202,13 @@ $(function () {
         { data: 'id' },
         { data: 'token' },
         { data: 'booking_id' },
-        { data: 'customer' },
+        { data: 'customer_id' },
         { data: 'processor' },
-        { data: 'method' },
+        { data: 'payment_method' },
         { data: 'amount' },
         { data: 'status' },
         { data: 'funds_status' },
-        { data: 'date' }
+        { data: 'created_at' }
       ],
       orderCellsTop: true,
       dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end"f>><"table-responsive"t><"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>'
