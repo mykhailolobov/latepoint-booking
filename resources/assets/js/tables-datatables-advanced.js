@@ -254,7 +254,12 @@ $(function () {
             return row.first_name + " " + row.last_name;
           }
         },
-        { data: 'phone' },
+        {
+          data: null, // No data source needed
+          render: function (data, type, row) {
+            return row.country.slice(2) + " " + row.phone;
+          }
+        },,
         { data: 'email' },
         {
           data: null, // No data source needed for "0"
