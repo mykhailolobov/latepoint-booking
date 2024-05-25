@@ -453,7 +453,7 @@ $configData = Helper::appClasses();
             </div>
     
             <div>
-                <button class="btn btn-primary add-agent" type="su">Add Agent</button>
+                <button class="btn btn-primary add-agent" type="su">Save Agent</button>
                 <meta name="csrf-token" content="{{ csrf_token() }}">
             </div>
         </div>

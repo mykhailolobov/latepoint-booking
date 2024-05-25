@@ -50,8 +50,7 @@ $configData = Helper::appClasses();
 <link href="{{asset('/assets/css/editservices_custom.css')}}" rel="stylesheet">
 
 <div class="row">
-    <form action="{{route('resource-updateservices')}}" method="post" class="add-service">
-        @csrf
+    <form action="{{route('resource-updateservices')}}" method="post" id="updateService">
         <div class="col-lg-12 col-xxl-12 mb-4 order-3 order-xxl-1">
             <div class="card-header mb-0">
                 <h4 class="m-0 me-2">Edit Service</h4>
@@ -746,6 +745,78 @@ $configData = Helper::appClasses();
 
 <script type="text/javascript" src="{{asset('/assets/jquery.js')}}"></script>
 <script type="text/javascript">
+    console.log('ton');
+    $('#updateService').on('submit', function(e) {
+
+        e.preventDefault();
+        const csrf_token = $('meta[name="csrf-token"]').attr('content');
+        const id = "{{$service->id}}";
+        const name = $('input[name="name"]').val();
+        const short_description = $('input[name="short_description"]').val();
+
+        const price_min = $('input[name="price_min"]').val();
+        const price_max = $('input[name="price_max"]').val();
+        const charge_amount = $('input[name="charge_amount"]').val();
+        const deposit_amount = $('input[name="deposit_amount"]').val();
+
+        const duration_name = $('input[name="duration_name"]').val();
+        const duration = $('input[name="duration"]').val();
+        const buffer_before = $('input[name="buffer_before"]').val();
+        const buffer_after = $('input[name="buffer_after"]').val();
+        const category_id = $('select[name="category_id"]').val();
+        // const order_number = $('input[name="order_number"]').val();
+        const selection_image_id = $('.selection_image>.dz-preview>.dz-details>.dz-thumbnail>img').attr('src');
+        const description_image_id = $('.description_image>.dz-preview>.dz-details>.dz-thumbnail>img').attr('src');
+        const bg_color = $('input[name="bg_color"]').val();
+        const timeblock_interval = $('input[name="timeblock_interval"]').val();
+        const capacity_min = $('input[name="capacity_min"]').val();
+        const capacity_max = $('input[name="capacity_max"]').val();
+        const status = $('select[name="status"]').val();
+        const visibility = $('select[name="visibility"]').val();
+        const override_default_booking_status = $('select[name="override_default_booking_status"]').val();
+
+       
+
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('resource-updateservices') }}",
+            headers: {
+                'X-CSRF-TOKEN': csrf_token
+            },
+            data: {
+                id: id,
+                name: name,
+                short_description: short_description ? short_description : null,
+                price_min: price_min ? price_min : null,
+                price_max: price_max ? price_max : null,
+                charge_amount: charge_amount ? charge_amount : null,
+                deposit_amount: deposit_amount ? deposit_amount : null,
+                duration_name: duration_name ? duration_name : null,
+                duration: duration,
+                buffer_before: buffer_before ? buffer_before : null,
+                buffer_after: buffer_after ? buffer_after : null,
+                category_id: category_id ? category_id : null,
+                // order_number: order_number,
+                selection_image_id: selection_image_id ? selection_image_id : null,
+                description_image_id: description_image_id ? description_image_id : null,
+                bg_color: bg_color ? bg_color : null,
+                timeblock_interval: timeblock_interval ? timeblock_interval : null,
+                capacity_min: capacity_min ? capacity_min : null,
+                capacity_max: capacity_max ? capacity_max : null,
+                status: status,
+                visibility: visibility,
+                override_default_booking_status: override_default_booking_status ? override_default_booking_status : null
+            },
+            success: function() {
+                console.log('success');
+                window.location.href = "{{ route('resource-services') }}";
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+    });
+
     $(document).ready(function() {
         $('.custom-schedule-wrapper').hide();
 
@@ -793,75 +864,7 @@ $configData = Helper::appClasses();
         });
     });
 
-    $('form.add-service').on('submit', function(e) {
-        e.preventDefault();
-        const csrf_token = $('meta[name="csrf-token"]').attr('content');
-        const id = "{{$service->id}}";
-        const name = $('input[name="name"]').val();
-        const short_description = $('input[name="short_description"]').val();
-
-        const price_min = $('input[name="price_min"]').val();
-        const price_max = $('input[name="price_max"]').val();
-        const charge_amount = $('input[name="charge_amount"]').val();
-        const deposit_amount = $('input[name="deposit_amount"]').val();
-
-        const duration_name = $('input[name="duration_name"]').val();
-        const duration = $('input[name="duration"]').val();
-        const buffer_before = $('input[name="buffer_before"]').val();
-        const buffer_after = $('input[name="buffer_after"]').val();
-        const category_id = $('select[name="category_id"]').val();
-        // const order_number = $('input[name="order_number"]').val();
-        const selection_image_id = $('.selection_image>.dz-preview>.dz-details>.dz-thumbnail>img').attr('src');
-        const description_image_id = $('.description_image>.dz-preview>.dz-details>.dz-thumbnail>img').attr('src');
-        const bg_color = $('input[name="bg_color"]').val();
-        const timeblock_interval = $('input[name="timeblock_interval"]').val();
-        const capacity_min = $('input[name="capacity_min"]').val();
-        const capacity_max = $('input[name="capacity_max"]').val();
-        const status = $('select[name="status"]').val();
-        const visibility = $('select[name="visibility"]').val();
-        const override_default_booking_status = $('select[name="override_default_booking_status"]').val();
-
-       
-
-        $.ajax({
-            type: 'POST',
-            url: "{{ route('resource-updateservices') }}",
-            headers: {
-                'X-CSRF-TOKEN': csrf_token
-            },
-            data: {
-                id: id
-                name: name,
-                short_description: short_description ? short_description : null,
-                price_min: price_min ? price_min : null,
-                price_max: price_max ? price_max : null,
-                charge_amount: charge_amount ? charge_amount : null,
-                deposit_amount: deposit_amount ? deposit_amount : null,
-                duration_name: duration_name ? duration_name : null,
-                duration: duration,
-                buffer_before: buffer_before ? buffer_before : null,
-                buffer_after: buffer_after ? buffer_after : null,
-                category_id: category_id ? category_id : null,
-                // order_number: order_number,
-                selection_image_id: selection_image_id ? selection_image_id : null,
-                description_image_id: description_image_id ? description_image_id : null,
-                bg_color: bg_color ? bg_color : null,
-                timeblock_interval: timeblock_interval ? timeblock_interval : null,
-                capacity_min: capacity_min ? capacity_min : null,
-                capacity_max: capacity_max ? capacity_max : null,
-                status: status,
-                visibility: visibility,
-                override_default_booking_status: override_default_booking_status ? override_default_booking_status : null
-            },
-            success: function() {
-                console.log('success');
-                window.location.href = "{{ route('resource-services') }}";
-            },
-            error: function(err) {
-                console.log(err);
-            }
-        });
-    });
+    
 </script>
 
 @endsection
