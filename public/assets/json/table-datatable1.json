@@ -1,17 +1,1 @@
-{
-  "data": [
-    {
-      "id": 1,
-      "token": "10",
-      "booking_id": "$23896.35",
-      "customer_id": "61",
-      "processor": "1 Year",
-      "payment_method": "2",
-      "amount": "2",
-      "status": "2",
-      "funds_status": "2",
-      "created_at": "2"
-    }
-    
-  ]
-}
+{"data":[{"id":1,"token":"qweqeqweqweq","booking_id":11,"customer_id":11,"processor":"11","payment_method":"11","payment_portion":"11","funds_status":"11","status":"1","amount":"1.0000","notes":null,"created_at":"2024-05-25T07:26:30.000000Z","updated_at":"2024-05-25T07:26:33.000000Z"}]}

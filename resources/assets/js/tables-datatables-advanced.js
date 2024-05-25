@@ -208,7 +208,13 @@ $(function () {
         { data: 'amount' },
         { data: 'status' },
         { data: 'funds_status' },
-        { data: 'created_at' }
+        { data: 'created_at',
+          render: function (data, type, row) {
+            // Replace 'YYYY-MM-DD' with your desired format (e.g., 'MM-DD-YYYY' for '05-16-2024')
+            var formattedDate = new Date(data).toLocaleDateString('en-US'); // 'YYYY-MM-DD' format
+            return formattedDate;
+          } 
+        }
       ],
       orderCellsTop: true,
       dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end"f>><"table-responsive"t><"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>'
