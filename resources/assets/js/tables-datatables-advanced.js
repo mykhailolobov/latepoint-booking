@@ -257,9 +257,12 @@ $(function () {
         {
           data: null, // No data source needed
           render: function (data, type, row) {
+            if(row.phone) {
             return row.country.slice(2) + " " + row.phone;
+            }
+            else{return null}
           }
-        },,
+        },
         { data: 'email' },
         {
           data: null, // No data source needed for "0"
