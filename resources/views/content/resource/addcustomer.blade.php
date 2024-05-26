@@ -159,7 +159,7 @@ $configData = Helper::appClasses();
             },
             success: function() {
                 console.log('success');
-                // window.location.href = "{{ route('app-customers') }}";
+                window.location.href = "{{ route('app-customers') }}";
             },
             error: function(err) {
                 console.log(err);
