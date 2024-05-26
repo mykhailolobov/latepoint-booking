@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Resource;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Serviceextra;
+use App\Models\ServiceExtra;
 
 class Serviceextras extends Controller
 {
@@ -13,7 +13,7 @@ class Serviceextras extends Controller
      */
     public function index()
     {
-        $extras = Serviceextra::all();
+        $extras = ServiceExtra::all();
         return view('content.resource.serviceextras', compact('extras'));
     }
 
@@ -30,7 +30,7 @@ class Serviceextras extends Controller
      */
     public function store(Request $request)
     {
-        $serviceExtra = new Serviceextra();
+        $serviceExtra = new ServiceExtra();
         $serviceExtra->name = $request->input('name');
         $serviceExtra->short_description = $request->input('short_description');
         $serviceExtra->charge_amount = $request->input('charge_amount');
@@ -56,7 +56,7 @@ class Serviceextras extends Controller
      */
     public function edit(string $id)
     {
-        $serviceExtra = Serviceextra::findOrFail($id);
+        $serviceExtra = ServiceExtra::findOrFail($id);
         return view('content.resource.editserviceextras', compact('serviceExtra'));
     }
 
@@ -66,7 +66,7 @@ class Serviceextras extends Controller
     public function update(Request $request)
     {
         $id = $request->input('id');
-        $serviceExtra = Serviceextra::findOrFail($id);
+        $serviceExtra = ServiceExtra::findOrFail($id);
         $serviceExtra->name = $request->input('name');
         $serviceExtra->short_description = $request->input('short_description');
         $serviceExtra->charge_amount = $request->input('charge_amount');
@@ -84,7 +84,7 @@ class Serviceextras extends Controller
      */
     public function destroy(string $id)
     {
-        $serviceExtra = Serviceextra::findOrFail($id);
+        $serviceExtra = ServiceExtra::findOrFail($id);
         $serviceExtra->delete();
 
         return redirect('/resource/serviceextras')->with('success', 'Category updated successfully.');
