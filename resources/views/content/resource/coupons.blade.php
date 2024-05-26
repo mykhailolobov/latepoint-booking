@@ -54,7 +54,7 @@ $configData = Helper::appClasses();
                     </button>
                 </h2>
                 <div id="accordionIcon{{$coupon->id}}" class="accordion-collapse collapse" data-bs-parent="#accordionIcon">
-                    <form action="{{route('resource-updatecoupons')}}" method="post" class="update-coupon">
+                    <form action="{{route('resource-updatecoupons', $coupon->id)}}" method="post" class="update-coupon">
                         @csrf
                         <div class="accordion-body">
                             <div class="card-body">
@@ -120,7 +120,6 @@ $configData = Helper::appClasses();
                                                 <option value="disabled">Coupon is Disabled</option>
                                             </select>
                                         </div>
-                                        <input type="text" name="id" value="{{$coupon->id}}" hidden/>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Save Coupon</button>
@@ -208,8 +207,7 @@ $configData = Helper::appClasses();
                                                 <option value="active">Coupon is Active</option>
                                                 <option value="disabled">Coupon is Disabled</option>
                                             </select>
-                                        </div>
-                                        <input type="text" id="id" name="id" value="{{$coupon->id}}" hidden>
+                                        </div>                                        
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Save Coupon</button>
@@ -240,73 +238,7 @@ $configData = Helper::appClasses();
         });
     });
 
-    // $('form.update-coupon').on('submit', function(e){
-    //     e.preventDefault();
-    //     const csrf_token = $('meta[name="csrf-token"]').attr('content');
-    //     const id = $('input[name="id"]').val();
-    //     const coupon_name = $('input[name="coupon_name"]').val();
-    //     const coupon_code = $('input[name="coupon_code"]').val();
-    //     const discount_value = $('input[name="discount_value"]').val();
-    //     const discount_type = $('input[name="discount_type"]').val();
-    //     const status = $('select[name="status"]').val();
-       
-
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: "{{ route('resource-updatecoupons') }}",
-    //         headers: {
-    //             'X-CSRF-TOKEN': csrf_token
-    //         },
-    //         data: {
-    //             id: id,
-    //             coupon_name: coupon_name ? coupon_name: null,
-    //             coupon_code: coupon_code,
-    //             discount_type: discount_type? discount_type: null,
-    //             discount_value: discount_value? discount_value: null,
-    //             status: status
-    //         },
-    //         success: function() {
-    //             console.log('success');
-    //             window.location.href = "{{ route('resource-coupons') }}";
-    //         },
-    //         error: function(err) {
-    //             console.log(err);
-    //         }
-    //     });
-    // })
-
-    // $('form.add-coupon').on('submit', function(e){
-    //     e.preventDefault();
-    //     const csrf_token = $('meta[name="csrf-token"]').attr('content');
-    //     const coupon_name = $('input[name="coupon_name"]').val();
-    //     const coupon_code = $('input[name="coupon_code"]').val();
-    //     const discount_value = $('input[name="discount_value"]').val();
-    //     const discount_type = $('input[name="discount_type"]').val();
-    //     const status = $('select[name="status"]').val();
-       
-
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: "{{ route('resource-storecoupons') }}",
-    //         headers: {
-    //             'X-CSRF-TOKEN': csrf_token
-    //         },
-    //         data: {
-    //             coupon_name: coupon_name ? coupon_name: null,
-    //             coupon_code: coupon_code,
-    //             discount_type: discount_type? discount_type: null,
-    //             discount_value: discount_value? discount_value: null,
-    //             status: status
-    //         },
-    //         success: function() {
-    //             console.log('success');
-    //             window.location.href = "{{ route('resource-coupons') }}";
-    //         },
-    //         error: function(err) {
-    //             console.log(err);
-    //         }
-    //     });
-    // })
+    
 </script>
 
 @endsection

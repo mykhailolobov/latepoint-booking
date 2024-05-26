@@ -50,7 +50,7 @@ $configData = Helper::appClasses();
 <link href="{{asset('/assets/css/editagent_custom.css')}}" rel="stylesheet">
 
 <div class="row">
-    <form action="{{route('resource-updateagent')}}" class="update-agent" method="POST">
+    <form action="{{route('resource-updateagent',$agent->id)}}" class="update-agent" method="POST">
         @csrf
         <div class="col-lg-12 col-xxl-12 mb-4 order-3 order-xxl-1">
             <div class="card-header mb-0">
@@ -442,8 +442,7 @@ $configData = Helper::appClasses();
                                             <div class="finish_time">
                                                 <label for="flatpickr-time" class="form-label">Finish Time</label>
                                                 <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time-finish6" />
-                                            </div>
-                                            <input type="text" name="id" value="{{$agent->id}}" hidden>
+                                            </div>                                            
                                         </div>
                                     </div>
                                 </div>
@@ -454,7 +453,7 @@ $configData = Helper::appClasses();
             </div>
     
             <div>
-                <button class="btn btn-primary add-agent" type="su">Add Agent</button>
+                <button class="btn btn-primary add-agent" type="su">Save Agent</button>
                 <meta name="csrf-token" content="{{ csrf_token() }}">
             </div>
         </div>
@@ -478,57 +477,7 @@ $configData = Helper::appClasses();
         });
     });
 
-    $('form.update-agent').on('submit', function(e) {
-        e.preventDefault();
-        const csrf_token = $('meta[name="csrf-token"]').attr('content');
-        const id = $('input[name="id"]').val();
-        const avatar_image = $('.set-avatar>.dropzone>.dz-preview>.dz-details>.dz-thumbnail>img').attr('src');
-        const bio_image = $('.set-bio>.dropzone>.dz-preview>.dz-details>.dz-thumbnail>img').attr('src');
-        const first_name = $('input[name="first_name"]').val();
-        const last_name = $('input[name="last_name"]').val();
-        const display_name = $('input[name="display_name"]').val();
-        const title = $('input[name="title"]').val();
-        const bio = $('textarea[name="bio"]').val();
-        // const features = $('textarea[name="features"]').val();
-        const email = $('input[name="email"]').val();
-        const phone = $('input[name="phone"]').val();
-        // const custom_hours = $('input[name="custom_hours"]').val();
-        const status = $('select[name="status"]').val();
-        const extra_email = $('input[name="extra_email"]').val();
-        const extra_phone = $('input[name="extra_phones"]').val();
-
-        console.log(status);
-
-        $.ajax({
-            type: 'POST',
-            url: "/resource/updateagent",
-            headers: {
-                'X-CSRF-TOKEN': csrf_token
-            },
-            data: {
-                id: id,
-                avatar_image: avatar_image? avatar_image: null,
-                bio_image: bio_image? bio_image: null,
-                first_name: first_name,
-                last_name: last_name? last_name: null,
-                display_name: display_name? display_name: null,
-                title: title? title: null,
-                bio: bio? bio: null,
-                email: email,
-                phone: phone? phone: null,
-                status: status,
-                extra_email: extra_email? extra_email: null,
-                extra_phone: extra_phone? extra_phone: null
-            },
-            success: function() {
-                console.log('success');
-                window.location.href = "{{ route('resource-agents') }}";
-            },
-            error: function(err) {
-                console.log(err);
-            }
-        });
-    });
+    
 </script>
 
 @endsection

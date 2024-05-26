@@ -133,25 +133,40 @@ $(function () {
       ajax: assetsPath + 'json/table-datatable.json',
       columns: [
         { data: 'id' },
-        { data: 'service' },
-        { data: 'date_time' },
-        { data: 'time_left' },
-        { data: 'aganet' },
-        { data: 'customer' },
+        { data: 'service_id' },
+        { data: 'start_datetime_utc' },
+        { data: 'end_datetime_utc' },
+        { data: 'agent_id' },
+        { data: 'customer_id' },
         { data: 'status' },
-        { data: 'payment_Status' },
-        { data: 'crated_On' },
-        { data: 'email' },
-        { data: 'phone' },
-        { data: 'code' },
+        { data: 'payment_status' },
+        { data: 'start_datetime_utc' },
+        {
+          data: null, // No data source needed for "0"
+          render: function (data, type, row) {
+            return "example@gmail.com"; 
+          }//email
+        },
+        {
+          data: null, // No data source needed for "0"
+          render: function (data, type, row) {
+            return "+81 xxx"; //phone
+          }
+        },
+        {
+          data: null, // No data source needed for "0"
+          render: function (data, type, row) {
+            return "xxxxx"; //code
+          }
+        },
         { data: 'duration' },
-        { data: 'source_ID' },
-        { data: 'payment_Method' },
-        { data: 'payment_Portion' },
+        { data: 'source_id' },
+        { data: 'payment_method' },
+        { data: 'payment_portion' },
         { data: 'price' },
-        { data: 'coupon_Code' },
-        { data: 'coupon_Discount' },
-        { data: 'total_Attendees' }
+        { data: 'coupon_code' },
+        { data: 'coupon_discount' },
+        { data: 'total_attendies' }
       ],
       orderCellsTop: true,
       dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end"f>><"table-responsive"t><"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>'
@@ -187,13 +202,19 @@ $(function () {
         { data: 'id' },
         { data: 'token' },
         { data: 'booking_id' },
-        { data: 'customer' },
+        { data: 'customer_id' },
         { data: 'processor' },
-        { data: 'method' },
+        { data: 'payment_method' },
         { data: 'amount' },
         { data: 'status' },
         { data: 'funds_status' },
-        { data: 'date' }
+        { data: 'created_at',
+          render: function (data, type, row) {
+            // Replace 'YYYY-MM-DD' with your desired format (e.g., 'MM-DD-YYYY' for '05-16-2024')
+            var formattedDate = new Date(data).toLocaleDateString('en-US'); // 'YYYY-MM-DD' format
+            return formattedDate;
+          } 
+        }
       ],
       orderCellsTop: true,
       dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end"f>><"table-responsive"t><"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>'
@@ -233,7 +254,15 @@ $(function () {
             return row.first_name + " " + row.last_name;
           }
         },
-        { data: 'phone' },
+        {
+          data: null, // No data source needed
+          render: function (data, type, row) {
+            if(row.phone) {
+            return row.country.slice(2) + " " + row.phone;
+            }
+            else{return null}
+          }
+        },
         { data: 'email' },
         {
           data: null, // No data source needed for "0"

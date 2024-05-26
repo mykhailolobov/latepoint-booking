@@ -96,9 +96,7 @@ $configData = Helper::appClasses();
                                            {{$serviceExtra->short_description}}
                                         </textarea>
                                     </div>
-                                </div>
-                                <input type="text" name="id" value="{{$serviceExtra->id}}" hidden>
-    
+                                </div>                                    
                                 <div class="col-lg-12 px-3 mb-3">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="" id="defaultCheck3" checked="">
@@ -256,7 +254,7 @@ $configData = Helper::appClasses();
     $('form.update-serviceExtra').on('submit', function(e) {
         e.preventDefault();
         const csrf_token = $('meta[name="csrf-token"]').attr('content');
-        const id = $('input[name="id"]').val();
+        const id = "{{$serviceExtra->id}}";
         const name = $('input[name="name"]').val();
         const duration = $('input[name="duration"]').val();
         const charge_amount = $('input[name="charge_amount"]').val();

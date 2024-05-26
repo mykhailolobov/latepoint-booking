@@ -132,8 +132,9 @@ $configData = Helper::appClasses();
         const notes = $('textarea[name="notes"]').val();
         const admin_notes = $('textarea[name="admin_notes"]').val();
         const file = $('.dz-thumbnail>img').attr('src');
-        const country = $('.iti__selected-country-primary').children().first().attr('class').slice(-2);
-
+        const countryName = $('.iti__selected-country-primary').children().first().attr('class').slice(-2);
+        const countryCode = $('.iti__selected-dial-code').text()
+        const country = countryName + countryCode ;
 
         console.log(country);
 
@@ -158,7 +159,7 @@ $configData = Helper::appClasses();
             },
             success: function() {
                 console.log('success');
-                window.location.href = "{{ route('app-customers') }}";
+                // window.location.href = "{{ route('app-customers') }}";
             },
             error: function(err) {
                 console.log(err);
