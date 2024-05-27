@@ -178,7 +178,7 @@ $configData = Helper::appClasses();
                         <div class="d-flex mb-3">
                             <div class="col-lg-6 px-3">
                                 <label for="selectpickerBasic" class="form-label">Category Name</label>
-                                <input type="text" class="form-control" name="name" id="defaultFormControlInput" placeholder="Category Name" aria-describedby="defaultFormControlHelp" />
+                                <input type="text" class="form-control" name="name" id="defaultFormControlInput" placeholder="Category Name" aria-describedby="defaultFormControlHelp" required/>
                             </div>
                             <div class="col-lg-6 px-3">
                                 <label for="selectpickerBasic" class="form-label">Short Description</label>

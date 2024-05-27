@@ -30,10 +30,15 @@ class Locations extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255', // Adjust length if needed
+            'full_address' => 'nullable|string', // Allow optional address with basic validation
+            'status' => 'required|string', // Validate allowed statuses
+        ]);
         $location = new Location();
-        $location->name = $request->input('name');
-        $location->full_address = $request->input('full_address');
-        $location->status = $request->input('status');
+        $location->name = $validatedData['name'];
+        $location->full_address = $validatedData['full_address'];
+        $location->status = $validatedData['status'];
         $location->selection_image_id = $request->selection_image_id;
         $location->category_id = $request->input('category_id');
 
@@ -61,11 +66,16 @@ class Locations extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request)
-    {
+    {   
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255', // Adjust length if needed
+            'full_address' => 'nullable|string', // Allow optional address with basic validation
+            'status' => 'required|string', // Validate allowed statuses
+        ]);
         $location = Location::findOrFail($request->input('id'));
-        $location->name = $request->input('name');
-        $location->full_address = $request->input('full_address');
-        $location->status = $request->input('status');
+        $location->name = $validatedData['name'];
+        $location->full_address = $validatedData['full_address'];
+        $location->status = $validatedData['status'];
         $location->selection_image_id = $request->selection_image_id;
         $location->category_id = $request->input('category_id');
 

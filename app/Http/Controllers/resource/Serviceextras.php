@@ -30,6 +30,15 @@ class Serviceextras extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255', // Adjust length if needed
+            'short_description' => 'string|nullable',
+            'charge_amount' => 'nullable|numeric|min:0.0000', // Allow decimals, non-negative
+            'duration' => 'required|integer|min:0', // Non-negative integer
+            'maximum_quantity' => 'nullable|integer|min:0', // Non-negative integer
+            // 'multiplied_by_attendees' => 'nullable|string|in:yes,no', // Validate allowed options
+            'status' => 'required|string', // Validate allowed statuses
+        ]);
         $serviceExtra = new ServiceExtra();
         $serviceExtra->name = $request->input('name');
         $serviceExtra->short_description = $request->input('short_description');
@@ -38,7 +47,6 @@ class Serviceextras extends Controller
         $serviceExtra->maximum_quantity = $request->input('max_quantity');
         $serviceExtra->selection_image_id = $request->selection_image_id;
         // $serviceExtra->description_image_id = $request->description_image_id;
-        $serviceExtra->status = $request->input('status');
 
         $serviceExtra->save();
     }
@@ -65,6 +73,16 @@ class Serviceextras extends Controller
      */
     public function update(Request $request)
     {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255', // Adjust length if needed
+            'short_description' => 'string|nullable',
+            'charge_amount' => 'nullable|numeric|min:0.0000', // Allow decimals, non-negative
+            'duration' => 'required|integer|min:0', // Non-negative integer
+            'maximum_quantity' => 'nullable|integer|min:0', // Non-negative integer
+            // 'multiplied_by_attendees' => 'nullable|string|in:yes,no', // Validate allowed options
+            'status' => 'required|string', // Validate allowed statuses
+        ]);
+
         $id = $request->input('id');
         $serviceExtra = ServiceExtra::findOrFail($id);
         $serviceExtra->name = $request->input('name');
@@ -74,8 +92,10 @@ class Serviceextras extends Controller
         $serviceExtra->maximum_quantity = $request->input('max_quantity');
         $serviceExtra->selection_image_id = $request->selection_image_id;
         // $serviceExtra->description_image_id = $request->description_image_id;
-        $serviceExtra->status = $request->input('status');
 
+        if($request->selection_image_id) {
+            $serviceExtra->selection_image_id = $request->selection_image_id;
+        }
         $serviceExtra->save();
     }
 
