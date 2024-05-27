@@ -30,9 +30,16 @@ class LocationCategories extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:100', // Adjust length if needed
+            'short_description' => 'string|nullable',
+            // 'parent_id' => 'nullable|exists:location_categories,id', // Validate parent category ID existence
+            // 'selection_image_id' => 'nullable|integer', // Allow integer or null for image ID
+            // 'order_number' => 'nullable|integer', // Allow integer or null for order number
+        ]);
         $locationcategory = new LocationCategory();
-        $locationcategory->name = $request->input('name');
-        $locationcategory->short_description = $request->input('short_description');
+        $locationcategory->name = $validatedData['name'];
+        $locationcategory->short_description = $validatedData['short_description'];
         $locationcategory->selection_image_id = $request->selection_image_id;
 
         $locationcategory->save();

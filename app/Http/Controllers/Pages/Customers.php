@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Pages;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use Illuminate\Validation\Rule;
 
 class Customers extends Controller
 {
@@ -32,14 +33,30 @@ class Customers extends Controller
 
   public function add_customer(Request $request)
   {
+
+    $validatedData = $request->validate([
+      'first_name' => 'string|nullable|max:255', // Adjust length as needed
+      'last_name' => 'string|nullable|max:255',
+      'email' => [
+          'required',
+          'string',
+          'email',
+          'max:255',
+          Rule::unique('customers'), // Unique email validation
+      ],
+      'country' => 'string|nullable|max:255',
+      'phone' => 'string|nullable|max:255', // Adjust for phone number format
+  ]);
+
+
     $customer = new Customer();
     $customer->user_id = $request->user()['id'];
-    $customer->first_name = $request->input('first_name');
-    $customer->last_name = $request->input('last_name');
-    $customer->email = $request->input('email');
+    $customer->first_name = $validatedData['first_name'];
+    $customer->last_name = $validatedData['last_name'];
+    $customer->email = $validatedData['email'];
     $customer->country = $request->country;
-    $customer->phone = $request->input('phone');
-    $customer->status = 'Active'; // TODO
+    $customer->phone = $validatedData['phone'];
+    $customer->status = "Active";
     $customer->notes = $request->input('notes');
     $customer->admin_notes = $request->input('admin_notes');
     
@@ -68,13 +85,26 @@ class Customers extends Controller
   }
 
   public function update_customer(Request $request) {
-    // dd($request->id);
-    $customer = Customer::findOrFail($request->input('id'));
-    $customer->first_name = $request->input('first_name');
-    $customer->last_name = $request->input('last_name');
-    $customer->email = $request->input('email');
+
+    $validatedData = $request->validate([
+      'first_name' => 'string|nullable|max:255', // Adjust length as needed
+      'last_name' => 'string|nullable|max:255',
+      'email' => [
+          'required',
+          'string',
+          'email',
+          'max:255',
+          Rule::unique('customers'), // Unique email validation
+      ],
+      'phone' => 'string|nullable|max:255', // Adjust for phone number format
+  ]);
+
+    $customer->first_name = $validatedData['first_name'];
+    $customer->last_name = $validatedData['last_name'];
+    $customer->email = $validatedData['email'];
     $customer->country = $request->country;
-    $customer->phone = $request->input('phone');
+    $customer->phone = $validatedData['phone'];
+    $customer->status = "Active";
     $customer->notes = $request->input('notes');
     $customer->admin_notes = $request->input('admin_notes');
 

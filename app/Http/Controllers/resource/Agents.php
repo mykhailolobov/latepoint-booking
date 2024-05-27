@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Resource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Agent;
+use Illuminate\Validation\Rule;
+
 
 class Agents extends Controller
 {
@@ -30,19 +32,36 @@ class Agents extends Controller
      */
     public function store(Request $request)
     {
-        
+        $validatedData = $request->validate([
+            'first_name' => 'required|string|max:255', // Adjust length as needed
+            'last_name' => 'string|nullable|max:255',
+            'display_name' => 'string|nullable|max:255',
+            'title' => 'string|nullable|max:255',
+            
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                Rule::unique('customers'), // Unique email validation
+            ],
+            'phone' => 'string|nullable|max:255',
+            'status' => 'string|nullable|max:255',
+
+        ]);
+
         $agent = new Agent();
         $agent->user_id = $request->user()['id'];
         $agent->avatar_image_id = $request->avatar_image;
         $agent->bio_image_id = $request->bio_image;
-        $agent->first_name = $request->input('first_name');
-        $agent->last_name = $request->input('last_name');
-        $agent->display_name = $request->input('display_name');
-        $agent->title = $request->input('title');
+        $agent->first_name = $validatedData['first_name'];
+        $agent->last_name = $validatedData['last_name'];
+        $agent->display_name = $validatedData['display_name'];
+        $agent->title = $validatedData['title'];
         $agent->bio = $request->input('bio');
-        $agent->email = $request->input('email');
-        $agent->phone = $request->input('phone');
-        $agent->status = $request->input('status');
+        $agent->email = $validatedData['email'];
+        $agent->phone = $validatedData['phone'];
+        $agent->status = $validatedData['status'];
         $agent->extra_emails = $request->input('extra_email');
         $agent->extra_phones = $request->input('extra_phone');
        
@@ -74,15 +93,33 @@ class Agents extends Controller
     public function update(Request $request, string $id)
     {
         $agent = Agent::findOrFail($id);
+
+        $validatedData = $request->validate([
+            'first_name' => 'required|string|max:255', // Adjust length as needed
+            'last_name' => 'string|nullable|max:255',
+            'display_name' => 'string|nullable|max:255',
+            'title' => 'string|nullable|max:255',
+            
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                Rule::unique('customers'), // Unique email validation
+            ],
+            'phone' => 'string|nullable|max:255',
+            'status' => 'string|nullable|max:255',
+
+        ]);
         
-        $agent->first_name = $request->input('first_name');
-        $agent->last_name = $request->input('last_name');
-        $agent->display_name = $request->input('display_name');
-        $agent->title = $request->input('title');
+        $agent->first_name = $validatedData['first_name'];
+        $agent->last_name = $validatedData['last_name'];
+        $agent->display_name = $validatedData['display_name'];
+        $agent->title = $validatedData['title'];
         $agent->bio = $request->input('bio');
-        $agent->email = $request->input('email');
-        $agent->phone = $request->input('phone');
-        $agent->status = $request->input('status');
+        $agent->email = $validatedData['email'];
+        $agent->phone = $validatedData['phone'];
+        $agent->status = $validatedData['status'];
         $agent->extra_emails = $request->input('extra_email');
         $agent->extra_phones = $request->input('extra_phone');
         if($request->avatar_image) {
