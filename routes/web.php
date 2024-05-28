@@ -64,6 +64,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/app/chat', [Chat::class, 'index'])->name('app-chat');
     Route::get('/app/email', [Email::class, 'index'])->name('app-email');
     Route::get('/user/profile', [Profile::class, 'index'])->name('user-profile');
+    Route::get('/user/editprofile', [Profile::class, 'edit'])->name('user-editprofile');
+    Route::post('/user/updateprofile', [Profile::class, 'update'])->name('user-updateprofile');
+
 
     // Main Page Route
     Route::get('/dashboard', [Dashboard::class, 'index'])->name('dashboard');

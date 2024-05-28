@@ -50,9 +50,13 @@ class Profile extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit()
     {
-        //
+        $user = Auth::user();
+        $user_id = $user->id;
+        $currentUser = User::findOrFail($user_id);
+
+        return view('content.settings.editprofile', compact('currentUser'));
     }
 
     /**

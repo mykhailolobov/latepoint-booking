@@ -121,6 +121,7 @@ $formattedDate = Carbon\Carbon::parse($dateString)->format('F Y');
     <!--/ About User -->
     <!--/ Profile Overview -->
   </div>
+  <a href="/user/editprofile" class="btn btn-primary add-customer">Edit Profile</a>
 </div>
 <!--/ User Profile Content -->
 @endsection
