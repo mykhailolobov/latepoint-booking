@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Setting;
 
 class General extends Controller
 {
@@ -12,7 +13,8 @@ class General extends Controller
      */
     public function index()
     {
-        return view('content.settings.general');
+        $settings = Setting::all();
+        return view('content.settings.general', compact('settings'));
     }
 
     /**
@@ -27,7 +29,7 @@ class General extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->get('settings'));
     }
 
     /**

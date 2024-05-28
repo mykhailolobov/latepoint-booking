@@ -141,6 +141,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/settings/add-ons', [AddOns::class, 'index'])->name('settings-add-ons');
 
     Route::get('/settings/general', [General::class, 'index'])->name('settings-general');
+    Route::post('/settings/storegeneral', [General::class, 'store'])->name('settings-storegeneral');
+    Route::post('/settings/updategeneral', [General::class, 'update'])->name('settings-updategeneral');
+    
     Route::get('/settings/schedule', [Schedule::class, 'index'])->name('settings-schedule');
     Route::get('/settings/tax', [Tax::class, 'index'])->name('settings-tax');
     Route::get('/settings/steps', [Steps::class, 'index'])->name('settings-steps');

@@ -41,7 +41,8 @@ $configData = Helper::appClasses();
 <link href="{{asset('/assets/css/settings.css')}}" rel="stylesheet">
 
 <div class="row">
-    <form action="" method="post">
+    <form action="{{route('settings-storegeneral')}}" method="post">
+        @csrf
         <div class="col-lg-12 col-xxl-12 mb-4 order-3 order-xxl-1">
             <div class="card-header mb-4 d-flex">
                 <a href="{{ url('/settings/general') }}" class="agent-status-active text-center mx-2 acitive-tab">
@@ -174,7 +175,7 @@ $configData = Helper::appClasses();
                                 <div class="d-flex">
                                     <div class="col-lg-6 px-3">
                                         <label class="switch">
-                                            <input type="checkbox" class="switch-input" name="settings[show_appointment_end_time]" />
+                                            <input type="checkbox" class="switch-input" name="settings[show_appointment_end_time]" checked/>
                                             <span class="switch-toggle-slider">
                                             <span class="switch-on"></span>
                                             <span class="switch-off"></span>
@@ -348,7 +349,7 @@ $configData = Helper::appClasses();
                             <div class="d-flex mb-3">
                                 <div class="col-lg-12 px-3">
                                     <label class="switch">
-                                        <input type="checkbox" class="switch-input" name="settings[currency_symbol_before]" />
+                                        <input type="checkbox" class="switch-input" name="settings[validate_phone_type]" />
                                         <span class="switch-toggle-slider">
                                         <span class="switch-on"></span>
                                         <span class="switch-off"></span>
@@ -360,7 +361,7 @@ $configData = Helper::appClasses();
                             <div class="d-flex mb-3">
                                 <div class="col-lg-12 px-3">
                                     <label class="switch">
-                                        <input type="checkbox" class="switch-input" />
+                                        <input type="checkbox" class="switch-input" name="settings[format_phone_number]" />
                                         <span class="switch-toggle-slider">
                                         <span class="switch-on"></span>
                                         <span class="switch-off"></span>
@@ -372,7 +373,7 @@ $configData = Helper::appClasses();
                             <div class="d-flex">
                                 <div class="col-lg-12 px-3">
                                     <label class="switch">
-                                        <input type="checkbox" class="switch-input" />
+                                        <input type="checkbox" class="switch-input" name="settings[show_country_dial_code]" />
                                         <span class="switch-toggle-slider">
                                         <span class="switch-on"></span>
                                         <span class="switch-off"></span>
@@ -435,7 +436,7 @@ $configData = Helper::appClasses();
                             <div class="d-flex mb-3">
                                 <div class="col-lg-12 px-3">
                                     <label class="switch">
-                                        <input type="checkbox" class="switch-input" />
+                                        <input type="checkbox" class="switch-input" name="settings[hide_time_picker]" />
                                         <span class="switch-toggle-slider">
                                         <span class="switch-on"></span>
                                         <span class="switch-off"></span>
@@ -447,7 +448,7 @@ $configData = Helper::appClasses();
                             <div class="d-flex">
                                 <div class="col-lg-12 px-3">
                                     <label class="switch">
-                                        <input type="checkbox" class="switch-input" />
+                                        <input type="checkbox" class="switch-input" name="settings[hide_slot_availability_count]" />
                                         <span class="switch-toggle-slider">
                                         <span class="switch-on"></span>
                                         <span class="switch-off"></span>
@@ -475,7 +476,7 @@ $configData = Helper::appClasses();
                             <div class="d-flex mb-4">
                                 <div class="col-lg-12 px-3">
                                     <label class="switch">
-                                        <input type="checkbox" class="switch-input" />
+                                        <input type="checkbox" class="switch-input" name="settings[one_agent_location]" />
                                         <span class="switch-toggle-slider">
                                         <span class="switch-on"></span>
                                         <span class="switch-off"></span>
@@ -487,7 +488,7 @@ $configData = Helper::appClasses();
                             <div class="d-flex">
                                 <div class="col-lg-12 px-3">
                                     <label class="switch">
-                                        <input type="checkbox" class="switch-input" />
+                                        <input type="checkbox" class="switch-input" name="settings[one_location_agent]" />
                                         <span class="switch-toggle-slider">
                                         <span class="switch-on"></span>
                                         <span class="switch-off"></span>
@@ -508,7 +509,7 @@ $configData = Helper::appClasses();
                             <div class="d-flex mb-4">
                                 <div class="col-lg-12 px-3">
                                     <label class="switch">
-                                        <input type="checkbox" class="switch-input" />
+                                        <input type="checkbox" class="switch-input" name="settings[one_agent_different_services]" />
                                         <span class="switch-toggle-slider">
                                         <span class="switch-on"></span>
                                         <span class="switch-off"></span>
@@ -535,7 +536,7 @@ $configData = Helper::appClasses();
                             <div class="d-flex">
                                 <div class="col-lg-12 px-3">
                                     <label class="switch">
-                                        <input type="checkbox" class="switch-input" />
+                                        <input type="checkbox" class="switch-input" name="settings[customers_reshedule_bookings]" />
                                         <span class="switch-toggle-slider">
                                         <span class="switch-on"></span>
                                         <span class="switch-off"></span>
@@ -557,7 +558,7 @@ $configData = Helper::appClasses();
                             <div class="d-flex mb-3">
                                 <div class="col-lg-12 px-3">
                                     <label class="switch">
-                                        <input type="checkbox" class="switch-input" />
+                                        <input type="checkbox" class="switch-input" name="settings[customers_cancel_bookings]" />
                                         <span class="switch-toggle-slider">
                                         <span class="switch-on"></span>
                                         <span class="switch-off"></span>
@@ -569,7 +570,7 @@ $configData = Helper::appClasses();
                             <div class="d-flex">
                                 <div class="col-lg-12 px-3">
                                     <label class="switch">
-                                        <input type="checkbox" class="switch-input" />
+                                        <input type="checkbox" class="switch-input" name="settings[customer_set_restriction]" />
                                         <span class="switch-toggle-slider">
                                         <span class="switch-on"></span>
                                         <span class="switch-off"></span>
@@ -620,7 +621,7 @@ $configData = Helper::appClasses();
                             <div class="d-flex mb-4">
                                 <div class="col-lg-12 px-3">
                                     <label class="switch">
-                                        <input type="checkbox" class="switch-input" />
+                                        <input type="checkbox" class="switch-input" name="settings[wordpress_users_use]" />
                                         <span class="switch-toggle-slider">
                                         <span class="switch-on"></span>
                                         <span class="switch-off"></span>
@@ -633,7 +634,7 @@ $configData = Helper::appClasses();
                             <div class="d-flex mb-4">
                                 <div class="col-lg-12 px-3">
                                     <label class="switch">
-                                        <input type="checkbox" class="switch-input" />
+                                        <input type="checkbox" class="switch-input" name="settings[require_customers_set_password]" />
                                         <span class="switch-toggle-slider">
                                         <span class="switch-on"></span>
                                         <span class="switch-off"></span>
@@ -646,7 +647,7 @@ $configData = Helper::appClasses();
                             <div class="d-flex mb-4">
                                 <div class="col-lg-12 px-3">
                                     <label class="switch">
-                                        <input type="checkbox" class="switch-input" />
+                                        <input type="checkbox" class="switch-input" name="settings[remove_auth_tabs]" />
                                         <span class="switch-toggle-slider">
                                         <span class="switch-on"></span>
                                         <span class="switch-off"></span>
@@ -659,7 +660,7 @@ $configData = Helper::appClasses();
                             <div class="d-flex">
                                 <div class="col-lg-12 px-3">
                                     <label class="switch">
-                                        <input type="checkbox" class="switch-input" />
+                                        <input type="checkbox" class="switch-input" name="settings[hide_create_account]" />
                                         <span class="switch-toggle-slider">
                                         <span class="switch-on"></span>
                                         <span class="switch-off"></span>
@@ -680,7 +681,7 @@ $configData = Helper::appClasses();
                             <div class="d-flex mb-4">
                                 <div class="col-lg-12 px-3">
                                     <label class="switch">
-                                        <input type="checkbox" class="switch-input" />
+                                        <input type="checkbox" class="switch-input" name="settings[enable_google_login]" />
                                         <span class="switch-toggle-slider">
                                         <span class="switch-on"></span>
                                         <span class="switch-off"></span>
@@ -692,7 +693,7 @@ $configData = Helper::appClasses();
                             <div class="d-flex">
                                 <div class="col-lg-12 px-3">
                                     <label class="switch">
-                                        <input type="checkbox" class="switch-input" />
+                                        <input type="checkbox" class="switch-input" name="settings[enable_facebook_login]" />
                                         <span class="switch-toggle-slider">
                                         <span class="switch-on"></span>
                                         <span class="switch-off"></span>
@@ -719,13 +720,13 @@ $configData = Helper::appClasses();
                             <div class="d-flex mb-3">
                                 <div class="col-lg-12 px-3">
                                     <label for="selectpickerBasic" class="form-label">Customer Dashboard Page URL</label>
-                                    <input type="text" name="settings[currency_symbol_before]" class="form-control" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp" placeholder="Customer Dashboard Page URL" value="/customer-cabinet/" />
+                                    <input type="text" name="settings[customer_dashboard_url]" class="form-control" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp" placeholder="Customer Dashboard Page URL" value="/customer-cabinet/" />
                                 </div>
                             </div>
                             <div class="d-flex">
                                 <div class="col-lg-12 px-3">
                                     <label for="selectpickerBasic" class="form-label">Customer Login Page URL</label>
-                                    <input type="text" name="settings[currency_symbol_before]" class="form-control" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp" placeholder="Customer Login Page URL" value="/customer-cabinet/" />
+                                    <input type="text" name="settings[customer_login_url]" class="form-control" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp" placeholder="Customer Login Page URL" value="/customer-cabinet/" />
                                 </div>
                             </div>
                         </div>
@@ -761,12 +762,12 @@ $configData = Helper::appClasses();
                                     <input type="text" name="settings[business_name]" class="form-control" id="settings_business_name" aria-describedby="defaultFormControlHelp" placeholder="Company Name" />                        
                                 </div>
                                 <div class="col-lg-3 px-3">
-                                    <label for="settings_business_name" class="form-label">Business Phone</label>
-                                    <input type="text" name="settings[business_phone]" class="form-control" id="settings_business_name" aria-describedby="defaultFormControlHelp" placeholder="Business Phone" />                        
+                                    <label for="settings_business_phone" class="form-label">Business Phone</label>
+                                    <input type="text" name="settings[business_phone]" class="form-control" id="settings_business_phone" aria-describedby="defaultFormControlHelp" placeholder="Business Phone" />                        
                                 </div>
                                 <div class="col-lg-6 px-3">
-                                    <label for="settings_business_name" class="form-label">Business Address</label>
-                                    <input type="text" name="settings[business_address]" class="form-control" id="settings_business_name" aria-describedby="defaultFormControlHelp" placeholder="Business Address" />                        
+                                    <label for="settings_business_address" class="form-label">Business Address</label>
+                                    <input type="text" name="settings[business_address]" class="form-control" id="settings_business_address" aria-describedby="defaultFormControlHelp" placeholder="Business Address" />                        
                                 </div>
                             </div>
                         </div>
@@ -781,8 +782,8 @@ $configData = Helper::appClasses();
                         <div class="sub-section-content">
                             <div class="d-flex mb-3">
                                 <div class="col-lg-12 px-3">
-                                    <label for="settings_business_name" class="form-label">Daily Calendar Minimum Height (in pixels)</label>
-                                    <input type="text" name="settings[business_name]" class="form-control" id="settings_business_name" aria-describedby="defaultFormControlHelp" placeholder="Daily Calendar Minimum Height (in pixels)" value="700" />                        
+                                    <label for="settings_calendar_height" class="form-label">Daily Calendar Minimum Height (in pixels)</label>
+                                    <input type="text" name="settings[calendar_height]" class="form-control" id="settings_calendar_height" aria-describedby="defaultFormControlHelp" placeholder="Daily Calendar Minimum Height (in pixels)" value="700" />                        
                                 </div>
                             </div>
                             <div class="d-flex">
@@ -795,8 +796,8 @@ $configData = Helper::appClasses();
                             </div>
                             <div class="d-flex">
                                 <div class="col-lg-12 px-3">
-                                    <label for="settings_business_name" class="form-label">Booking tile information to display on calendar</label>
-                                    <input type="text" name="settings[business_name]" class="form-control" id="settings_business_name" aria-describedby="defaultFormControlHelp" placeholder="Booking tile information to display on calendar" value="@{{ service_name }}" />                        
+                                    <label for="settings_booking_title" class="form-label">Booking tile information to display on calendar</label>
+                                    <input type="text" name="settings[booking_title]" class="form-control" id="settings_booking_title" aria-describedby="defaultFormControlHelp" placeholder="Booking tile information to display on calendar" value="@{{ service_name }}" />                        
                                 </div>
                             </div>
                         </div>
@@ -846,6 +847,7 @@ $configData = Helper::appClasses();
             </div>
             <div>
                 <button class="btn btn-primary add-agent" type="submit">Save Settings</button>
+
             </div>
         </div>
     </form>
