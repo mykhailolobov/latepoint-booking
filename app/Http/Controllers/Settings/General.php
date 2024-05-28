@@ -29,7 +29,15 @@ class General extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->get('settings'));
+        // dd($request->get('settings'));
+        foreach ($request->get('settings') as $key => $value) {
+            $general = new Setting();
+            $general->name = $key;
+            $general->value = $value;
+
+            $general ->save();
+          }
+        return redirect('/settings/general')->with('success', 'Customer created successfully.');
     }
 
     /**

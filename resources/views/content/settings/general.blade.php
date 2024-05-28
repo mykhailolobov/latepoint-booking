@@ -175,7 +175,7 @@ $configData = Helper::appClasses();
                                 <div class="d-flex">
                                     <div class="col-lg-6 px-3">
                                         <label class="switch">
-                                            <input type="checkbox" class="switch-input" name="settings[show_appointment_end_time]" checked/>
+                                            <input type="checkbox" class="switch-input" name="settings[show_appointment_end_time]" value="off" />
                                             <span class="switch-toggle-slider">
                                             <span class="switch-on"></span>
                                             <span class="switch-off"></span>
