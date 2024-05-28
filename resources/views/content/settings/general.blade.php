@@ -175,7 +175,7 @@ $configData = Helper::appClasses();
                                 <div class="d-flex">
                                     <div class="col-lg-6 px-3">
                                         <label class="switch">
-                                            <input type="checkbox" class="switch-input" name="settings[show_appointment_end_time]" value="off" />
+                                            <input type="checkbox" class="switch-input" name="settings[show_appointment_end_time]" />
                                             <span class="switch-toggle-slider">
                                             <span class="switch-on"></span>
                                             <span class="switch-off"></span>
@@ -361,7 +361,8 @@ $configData = Helper::appClasses();
                             <div class="d-flex mb-3">
                                 <div class="col-lg-12 px-3">
                                     <label class="switch">
-                                        <input type="checkbox" class="switch-input" name="settings[format_phone_number]" />
+                                        <input type="checkbox" class="switch-input" name="settings[format_phone_number]"/>
+                                        <input type="hidden" name="settings[format_phone_number]" value="off">
                                         <span class="switch-toggle-slider">
                                         <span class="switch-on"></span>
                                         <span class="switch-off"></span>
@@ -374,6 +375,7 @@ $configData = Helper::appClasses();
                                 <div class="col-lg-12 px-3">
                                     <label class="switch">
                                         <input type="checkbox" class="switch-input" name="settings[show_country_dial_code]" />
+                                        <input type="hidden" name="settings[show_country_dial_code]" value="off">
                                         <span class="switch-toggle-slider">
                                         <span class="switch-on"></span>
                                         <span class="switch-off"></span>

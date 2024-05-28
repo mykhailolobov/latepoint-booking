@@ -14,7 +14,10 @@ class General extends Controller
     public function index()
     {
         $settings = Setting::all();
-        return view('content.settings.general', compact('settings'));
+        $checkVal = Setting::query()
+        ->where('name','LIKE',"default_booking_status")
+        ->get();
+        return view('content.settings.general', compact('settings', 'checkVal'));
     }
 
     /**
@@ -31,11 +34,22 @@ class General extends Controller
     {
         // dd($request->get('settings'));
         foreach ($request->get('settings') as $key => $value) {
+            $settings = Setting::all();
             $general = new Setting();
-            $general->name = $key;
-            $general->value = $value;
+            $checkVal = Setting::query()
+            ->where('name','LIKE',"%{$key}%")
+            ->get();
+            $count = $checkVal->count();
+            if($count>0) {
+                $currentGeneral = $checkVal[0];
+                $currentGeneral -> value = $value;
+                $currentGeneral->save();
+            } else {
+                $general->name = $key;
+                $general->value = $value;
+                $general ->save();
+            }            
 
-            $general ->save();
           }
         return redirect('/settings/general')->with('success', 'Customer created successfully.');
     }
@@ -58,10 +72,10 @@ class General extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
-    }
+        
+      }
 
     /**
      * Remove the specified resource from storage.
