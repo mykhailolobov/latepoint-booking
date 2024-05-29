@@ -58,8 +58,7 @@ $configData = Helper::appClasses();
         </div>
     </div>
     <div class="col-md-12">
-        <form  method="POST" class="add-customer" action="{{ route('user-updateprofile')}}" enctype="multipart/form-data">
-            @csrf
+        <form  method="POST" class="update-user" action="{{ route('user-updateprofile')}}" enctype="multipart/form-data">
             <div class="card mb-4">
                 <h5 class="card-header">General Information</h5>
                 <div class="card-body demo-vertical-spacing demo-only-element">
@@ -68,10 +67,7 @@ $configData = Helper::appClasses();
                             <div class="dz-message needsclick">
                                 <i class='bx bxs-tennis-ball' ></i>
                                 Set Avatar
-                            </div>
-                            {{-- <div class="fallback">
-                                <input type="file" name="customer_avatar" id="customer_avatar"/>
-                            </div> --}}
+                            </div>                            
                         </div>
                     </div>
                     <div class="d-flex mb-3">
@@ -89,25 +85,20 @@ $configData = Helper::appClasses();
                         <div class="col-lg-6 px-3">
                             <input type="tel" class="form-control" id="phone" name="phone" placeholder="201-555-0123" aria-describedby="defaultFormControlHelp"/>
                         </div>
-                    </div>    
-                    <div class="d-flex mb-3">
-                        <div class="col-lg-12 px-3">
-                            <textarea class="form-control" name="notes" placeholder="Notes by Customer" aria-describedby="defaultFormControlHelp" ></textarea>
-                        </div>
-                    </div>
-                    <div class="d-flex mb-3">
-                        <div class="col-lg-12 px-3">
-                            <textarea class="form-control" name="admin_notes" placeholder="Notes by admins, only visible to admins" aria-describedby="defaultFormControlHelp" ></textarea>
-                        </div>
+                    </div>                    
+                    <div class="w-100 px-3">
+                        <input type="password" class="form-control" name="new_password" placeholder="Enter New Password" aria-describedby="password"/>
+                    </div>                    
+                    <div class="w-100 px-3">
+                        <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" aria-describedby="password"/>
                     </div>
                 </div>
             </div>
             <div class="edit-btns">
-                <button type="submit" class="btn btn-primary add-customer">Save Customer</button>
+                <button type="submit" class="btn btn-primary add-customer">Save</button>
                 <meta name="csrf-token" content="{{ csrf_token() }}">
-                <a href="/delete_customer/{{$currentUser->id}}" class="btn btn-danger add-customer">Delete Customer</a>
+                {{-- <a href="/delete_customer/{{$currentUser->id}}" class="btn btn-danger add-customer">Delete Customer</a> --}}
             </div>
-
         </form>
     </div>
 </div>
@@ -116,35 +107,37 @@ $configData = Helper::appClasses();
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/intlTelInput.min.js"></script>
 <script>
     // ITI
-    const Country = "{{$currentUser->country}}"
-    const initialCountry = Country.slice(0,2);
-    console.log(initialCountry);
+    // const Country = "{{$currentUser->country}}"
+    // const initialCountry = Country.slice(0,2);
+    // console.log(initialCountry);
     const input = document.querySelector("#phone");
     window.intlTelInput(input, {
         fixDropdownWidth: false,
-        initialCountry: initialCountry? initialCountry: "us",
+        initialCountry: "us",  //initialCountry? initialCountry: "us"
         separateDialCode: true,
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/js/utils.js",
     });
 
-    $('form.add-customer').on('submit', function(e) {
+    $('form.update-user').on('submit', function(e) {
         e.preventDefault();
         const csrf_token = $('meta[name="csrf-token"]').attr('content');
         const first_name = $('input[name="first_name"]').val();
         const last_name = $('input[name="last_name"]').val();
         const email = $('input[name="email"]').val();
         const phone = $('input[name="phone"]').val();
-        const notes = $('textarea[name="notes"]').val();
         const id = "{{$currentUser->id}}";
-        const admin_notes = $('textarea[name="admin_notes"]').val();
+        const new_password = $('input[name="new_password"]').val();
+        const confirm_password = $('input[name="confirm_password"]').val();
         const file = $('.dz-thumbnail>img').attr('src');
-        const countryName = $('.iti__selected-country-primary').children().first().attr('class').slice(-2);
-        const countryCode = $('.iti__selected-dial-code').text()
-        const country = countryName + countryCode ;
+        
+        // const admin_notes = $('textarea[name="admin_notes"]').val();
+        // const countryName = $('.iti__selected-country-primary').children().first().attr('class').slice(-2);
+        // const countryCode = $('.iti__selected-dial-code').text()
+        // const country = countryName + countryCode ;
 
         $.ajax({
             type: 'POST',
-            url: "{{ route('update_customer')}}",
+            url: "{{ route('user-updateprofile')}}",
             headers: {
                 'X-CSRF-TOKEN': csrf_token
             },
@@ -153,15 +146,15 @@ $configData = Helper::appClasses();
                 first_name: first_name,
                 last_name: last_name,
                 email: email,
-                phone: phone,
-                notes: notes,
-                admin_notes: admin_notes,
+                // phone: phone,
                 customer_avatar: file? file: null,
-                country: phone? country: null,
+                new_password: new_password? new_password: null,
+                confirm_password: confirm_password? confirm_password: null,
+
             },
             success: function() {
                 console.log('success');
-                window.location.href = "{{ route('app-customers') }}";
+                window.location.href = "{{ route('user-profile') }}";
             },
             error: function(err) {
                 console.log(err);

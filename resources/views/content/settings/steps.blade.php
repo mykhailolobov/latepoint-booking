@@ -77,7 +77,7 @@
                         </div>
                         <div class="step-body">
                             <div class="os-form-w">
-                                <form data-os-action="settings__update_step" action="">
+                                <form data-os-action="settings__update_step" action="" method="post">
 
                                     <div class="sub-section-row">
                                         <div class="sub-section-label">
@@ -160,8 +160,9 @@
                                         id="step_order_numberlocations">
                                     <div class="os-step-form-buttons">
                                         <a href="#" class="btn btn-secondary step-edit-cancel-btn">Cancel</a>
-                                        <div class="os-form-group"><button type="submit" name="submit"
-                                                class="btn btn-primary" id="submitlocations">Save Step</button></div>
+                                        <div class="os-form-group">
+                                            <button type="submit" name="submit" class="btn btn-primary" id="submitlocations">Save Step</button>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
