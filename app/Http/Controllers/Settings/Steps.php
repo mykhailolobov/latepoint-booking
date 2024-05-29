@@ -28,7 +28,29 @@ class Steps extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $typeName = $request->step['name'];
+        dd($typeName);
+        foreach ($request->get('step') as $key => $value) {
+            
+            $step = new Setting();
+            $checkVal = Setting::query()
+            ->where('label','LIKE',"%{$key}%")
+            ->where('step','LIKE',"%{$typeName}%")
+            ->get();
+            $count = $checkVal->count();
+            if($count>0) {
+                $currentStep = $checkVal[0];
+                $currentStep -> value = $value;
+                $currentStep->save();
+            } else {
+                $step->label = $key;
+                $step->value = $value;
+                $step->step = $typeName;
+                $step ->save();
+            }            
+
+          }
+        return redirect('/settings/steps')->with('success', 'Customer created successfully.');
     }
 
     /**

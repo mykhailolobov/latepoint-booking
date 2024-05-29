@@ -77,8 +77,8 @@
                         </div>
                         <div class="step-body">
                             <div class="os-form-w">
-                                <form data-os-action="settings__update_step" action="" method="post">
-
+                                <form data-os-action="settings__update_step" action="{{route('settings-storesteps')}}" method="post">
+                                    @csrf
                                     <div class="sub-section-row">
                                         <div class="sub-section-label">
                                             <h3>Step Title</h3>
@@ -156,8 +156,7 @@
                                     </div>
 
                                     <input type="hidden" name="step[name]" value="locations" id="step_namelocations">
-                                    <input type="hidden" name="step[order_number]" value="1"
-                                        id="step_order_numberlocations">
+                                    <input type="hidden" name="step[order_number]" value="1" id="step_order_numberlocations">
                                     <div class="os-step-form-buttons">
                                         <a href="#" class="btn btn-secondary step-edit-cancel-btn">Cancel</a>
                                         <div class="os-form-group">
@@ -177,8 +176,8 @@
                         </div>
                         <div class="step-body">
                             <div class="os-form-w">
-                                <form data-os-action="settings__update_step" action="">
-
+                                <form data-os-action="settings__update_step" action="{{route('settings-storesteps')}}" method="post">
+                                    @csrf
                                     <div class="sub-section-row">
                                         <div class="sub-section-label">
                                             <h3>Step Title</h3>
@@ -261,8 +260,9 @@
                                     <div class="os-step-form-buttons">
                                         <a href="#"
                                             class="latepoint-btn latepoint-btn-secondary step-edit-cancel-btn">Cancel</a>
-                                        <div class="os-form-group"><button type="submit" name="submit"
-                                                class="latepoint-btn" id="submitservices">Save Step</button></div>
+                                        <div class="os-form-group">
+                                            <button type="submit" name="submit" class="latepoint-btn" id="submitservices">Save Step</button>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -277,8 +277,8 @@
                         </div>
                         <div class="step-body">
                             <div class="os-form-w">
-                                <form data-os-action="settings__update_step" action="">
-
+                                <form data-os-action="settings__update_step" action="{{route('settings-storesteps')}}" method="post">
+                                    @csrf
                                     <div class="sub-section-row">
                                         <div class="sub-section-label">
                                             <h3>Step Title</h3>
@@ -375,8 +375,8 @@
                         </div>
                         <div class="step-body">
                             <div class="os-form-w">
-                                <form data-os-action="settings__update_step" action="">
-
+                                <form data-os-action="settings__update_step" action="{{route('settings-storesteps')}}" method="post">
+                                    @csrf
                                     <div class="sub-section-row">
                                         <div class="sub-section-label">
                                             <h3>Step Title</h3>
@@ -476,8 +476,8 @@
                         </div>
                         <div class="step-body">
                             <div class="os-form-w">
-                                <form data-os-action="settings__update_step" action="">
-
+                                <form data-os-action="settings__update_step" action="{{route('settings-storesteps')}}" method="post">
+                                    @csrf
                                     <div class="sub-section-row">
                                         <div class="sub-section-label">
                                             <h3>Step Title</h3>
@@ -576,8 +576,8 @@
                         </div>
                         <div class="step-body">
                             <div class="os-form-w">
-                                <form data-os-action="settings__update_step" action="">
-
+                                <form data-os-action="settings__update_step" action="{{route('settings-storesteps')}}" method="post">
+                                    @csrf
                                     <div class="sub-section-row">
                                         <div class="sub-section-label">
                                             <h3>Step Title</h3>
@@ -676,7 +676,7 @@
                         </div>
                         <div class="step-body">
                             <div class="os-form-w">
-                                <form data-os-action="settings__update_step" action="">
+                                <form data-os-action="settings__update_step" action="{{route('settings-storesteps')}}" method="post">
 
                                     <div class="sub-section-row">
                                         <div class="sub-section-label">
@@ -778,8 +778,8 @@
                         </div>
                         <div class="step-body">
                             <div class="os-form-w">
-                                <form data-os-action="settings__update_step" action="">
-
+                                <form data-os-action="settings__update_step" action="{{route('settings-storesteps')}}" method="post">
+                                    @csrf
                                     <div class="sub-section-row">
                                         <div class="sub-section-label">
                                             <h3>Step Title</h3>
@@ -876,7 +876,7 @@
                         </div>
                         <div class="step-body">
                             <div class="os-form-w">
-                                <form data-os-action="settings__update_step" action="">
+                                <form data-os-action="settings__update_step" action="{{route('settings-storesteps')}}" method="post">
 
                                     <div class="sub-section-row">
                                         <div class="sub-section-label">
@@ -974,8 +974,8 @@
                         </div>
                         <div class="step-body">
                             <div class="os-form-w">
-                                <form data-os-action="settings__update_step" action="">
-
+                                <form data-os-action="settings__update_step" action="{{route('settings-storesteps')}}" method="post">
+                                    @csrf
                                     <div class="sub-section-row">
                                         <div class="sub-section-label">
                                             <h3>Step Title</h3>
@@ -1070,7 +1070,8 @@
                     <h3>Other Settings</h3>
                 </div>
                 <div class="os-form-w">
-                    <form action="" data-os-action="settings__update">
+                    <form action="{{route('settings-storesteps')}}" data-os-action="settings__update" method="post">
+                        @csrf
                         <input type="hidden" id="_wpnonce" name="_wpnonce" value="45429e9a8b"><input type="hidden"
                             name="_wp_http_referer"
                             value="/demo_4217c15f9eb342a2/wp-admin/admin.php?page=latepoint&amp;route_name=settings__steps">
