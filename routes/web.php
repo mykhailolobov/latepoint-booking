@@ -149,6 +149,10 @@ Route::middleware('auth')->group(function () {
     
     Route::get('/settings/schedule', [Schedule::class, 'index'])->name('settings-schedule');
     Route::get('/settings/tax', [Tax::class, 'index'])->name('settings-tax');
+    Route::post('/settings/storetax', [Tax::class, 'store'])->name('settings-storetax');
+    Route::post('/settings/updatetax', [Tax::class, 'update'])->name('settings-updatetax');
+    Route::get('/resource/deletetax/{id}', [Tax::class, 'destroy']);
+
     Route::get('/settings/steps', [Steps::class, 'index'])->name('settings-steps');
     Route::get('/settings/payments', [PaymentSetting::class, 'index'])->name('settings-payments');
     Route::get('/settings/notifications', [Notifications::class, 'index'])->name('settings-notifications');

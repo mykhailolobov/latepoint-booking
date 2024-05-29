@@ -56,6 +56,65 @@ $configData = Helper::appClasses();
             <hr>
         </div>
         <div class="col-md-12">
+            <div class="tax_list">
+                @foreach ($results as $item)
+                    <form action="{{route('settings-updatetax')}}" method="post" data-os-form-block-id="tax_FfgQTHyJ" data-os-action="taxes__save" class="os-form-block os-form-block-type-percentage os-is-editing">
+                        @csrf
+                        @php
+                            $value = unserialize($item->value);
+                        @endphp
+                        <div class="os-form-block-i">
+                            <div class="os-form-block-header">
+                                <div class="os-form-block-drag"></div>
+                                <div class="os-form-block-name">{{ $value['name'] }}</div>
+                                <div class="os-form-block-type">{{ $value['type'] }}</div>
+                                <div class="os-form-block-edit-btn"><i class="latepoint-icon latepoint-icon-edit-3"></i></div>
+                            </div>
+                            <div class="os-form-block-params os-form-w">
+                                <div class="sub-section-row">
+                                    <div class="sub-section-label">
+                                        <h3>Tax Name</h3>
+                                    </div>
+                                    <div class="sub-section-content">
+                                        <div class="os-form-group os-form-textfield-group os-form-group-bordered no-label">
+                                            <input type="text" placeholder="Enter Tax Name" name="name" value="{{ $value['name'] }}" theme="bordered" class="os-form-block-name-input os-form-control" id="taxes_tax_ffgqthyj_name">
+                                        </div>        
+                                    </div>
+                                </div>                        
+                                <div class="sub-section-row">
+                                    <div class="sub-section-label">
+                                        <h3>Tax Type</h3>
+                                    </div>
+                                    <div class="sub-section-content">
+                                        <div class="os-row">
+                                            <div class="os-col-4">
+                                                <div class="os-form-group os-form-select-group os-form-group-transparent">
+                                                    <select name="type" value="{{ $value['type'] }}" class="os-form-block-type-select tax-type-selector os-form-control" id="taxes_tax_ffgqthyj_type">
+                                                        <option value="percentage">Percentage of the booking price</option>
+                                                        <option value="fixed">Fixed amount</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="os-col-8">
+                                                <div class="os-form-group os-form-textfield-group os-form-group-bordered has-value no-label">
+                                                    <input type="text" value="{{ $value['value'] }}"  placeholder="Enter Tax Value" name="value" value="0" theme="bordered" class="os-form-block-value-input os-form-control" id="taxes_tax_ffgqthyj_value">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                    
+                                <div class="os-form-block-buttons">
+                                    <a href="#" class="btn btn-danger pull-left" data-os-prompt="Are you sure you want to delete this tax?" data-os-after-call="latepointTaxesAddon.latepoint_tax_removed" data-os-pass-this="yes" data-os-action="taxes__destroy" data-os-params="id=tax_FfgQTHyJ" onclick="deleteTax(this)">Delete</a>
+                                    <button type="submit" class="os-form-block-save-btn btn btn-primary"><span>Save Tax</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="id" value="{{$item->id}}" class="os-form-block-id" id="taxes_tax_ffgqthyj_id">	
+                        <a href="#" data-os-prompt="Are you sure you want to delete this tax?" data-os-after-call="latepointTaxesAddon.latepoint_tax_removed" data-os-pass-this="yes" data-os-action="taxes__destroy" data-os-params="id=tax_FfgQTHyJ" class="os-remove-form-block"><i class="latepoint-icon latepoint-icon-cross"></i></a>
+                    </form>
+                @endforeach
+                
+            </div>
             <div class="os-taxes-w os-form-blocks-w os-taxes-ordering-w" data-order-update-route="taxes__update_order">
                 
             </div>
@@ -72,7 +131,8 @@ $configData = Helper::appClasses();
 <script>
     function addTax() {
         $('.os-taxes-w').append(`
-            <form data-os-form-block-id="tax_FfgQTHyJ" data-os-action="taxes__save" class="os-form-block os-form-block-type-percentage os-is-editing">
+            <form action="{{route('settings-storetax')}}" method=post data-os-form-block-id="tax_FfgQTHyJ" data-os-action="taxes__save" class="os-form-block os-form-block-type-percentage os-is-editing">
+                @csrf
                 <div class="os-form-block-i">
                     <div class="os-form-block-header">
                         <div class="os-form-block-drag"></div>
@@ -86,7 +146,7 @@ $configData = Helper::appClasses();
                       <h3>Tax Name</h3>
                     </div>
                     <div class="sub-section-content">
-                      <div class="os-form-group os-form-textfield-group os-form-group-bordered no-label"><input type="text" placeholder="Enter Tax Name" name="taxes[tax_FfgQTHyJ][name]" value="" theme="bordered" class="os-form-block-name-input os-form-control" id="taxes_tax_ffgqthyj_name"></div>        </div>
+                      <div class="os-form-group os-form-textfield-group os-form-group-bordered no-label"><input type="text" placeholder="Enter Tax Name" name="name" value="" theme="bordered" class="os-form-block-name-input os-form-control" id="taxes_tax_ffgqthyj_name"></div>        </div>
                   </div>
             
                   <div class="sub-section-row">
@@ -96,21 +156,18 @@ $configData = Helper::appClasses();
                     <div class="sub-section-content">
                         <div class="os-row">
                             <div class="os-col-4">
-                                  <div class="os-form-group os-form-select-group os-form-group-transparent"><select name="taxes[tax_FfgQTHyJ][type]" class="os-form-block-type-select tax-type-selector os-form-control" id="taxes_tax_ffgqthyj_type"><option value="percentage" selected="">Percentage of the booking price</option><option value="fixed">Fixed amount</option></select></div>		        </div>
+                                  <div class="os-form-group os-form-select-group os-form-group-transparent"><select name="type" class="os-form-block-type-select tax-type-selector os-form-control" id="taxes_tax_ffgqthyj_type"><option value="percentage" selected="">Percentage of the booking price</option><option value="fixed">Fixed amount</option></select></div>		        </div>
                             <div class="os-col-8">
-                                <div class="os-form-group os-form-textfield-group os-form-group-bordered has-value no-label"><input type="text" placeholder="Enter Tax Value" name="taxes[tax_FfgQTHyJ][value]" value="0" theme="bordered" class="os-form-block-value-input os-form-control" id="taxes_tax_ffgqthyj_value"></div>		        </div>
+                                <div class="os-form-group os-form-textfield-group os-form-group-bordered has-value no-label"><input type="text" placeholder="Enter Tax Value" name="value" value="0" theme="bordered" class="os-form-block-value-input os-form-control" id="taxes_tax_ffgqthyj_value"></div>		        </div>
                         </div>
                     </div>
                     </div>
             
                     <div class="os-form-block-buttons">
-                        <a href="#" class="btn btn-danger pull-left" data-os-prompt="Are you sure you want to delete this tax?" data-os-after-call="latepointTaxesAddon.latepoint_tax_removed" data-os-pass-this="yes" data-os-action="taxes__destroy" data-os-params="id=tax_FfgQTHyJ" onclick="deleteTax(this)">Delete</a>
                         <button type="submit" class="os-form-block-save-btn btn btn-primary"><span>Save Tax</span></button>
                     </div>
                     </div>
-                </div>
-                <input type="hidden" name="taxes[tax_FfgQTHyJ][id]" value="tax_FfgQTHyJ" class="os-form-block-id" id="taxes_tax_ffgqthyj_id">	
-                <a href="#" data-os-prompt="Are you sure you want to delete this tax?" data-os-after-call="latepointTaxesAddon.latepoint_tax_removed" data-os-pass-this="yes" data-os-action="taxes__destroy" data-os-params="id=tax_FfgQTHyJ" class="os-remove-form-block"><i class="latepoint-icon latepoint-icon-cross"></i></a>
+                </div>                
             </form>
         `);
     }

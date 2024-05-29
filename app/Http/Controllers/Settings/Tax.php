@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Setting;
 
 class Tax extends Controller
 {
@@ -12,7 +13,11 @@ class Tax extends Controller
      */
     public function index()
     {
-        return view('content.settings.tax');
+        $settings = Setting::all();
+        $results = Setting::query()
+        ->where('name', 'LIKE', '%tax%')
+        ->get();
+        return view('content.settings.tax', compact('results'));
     }
 
     /**
@@ -28,7 +33,19 @@ class Tax extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $settings = Setting::all();
+        $count = $settings->count();
+        $finalId = $settings[$count-1]->id;
+        $tax= new Setting();
+        $tax->name = "tax".$finalId;
+        $tax->value = serialize([
+            "name" => $request->name,
+            "type" => $request->type,
+            "value" => $request->value
+        ]);
+        $tax->save();        
+
+        return redirect('/settings/tax')->with('success', 'Tax created successfully.');
     }
 
     /**
@@ -50,9 +67,17 @@ class Tax extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $tax = Setting::findOrFail($request->id);
+        $tax->value = serialize([
+            "name" => $request->name,
+            "type" => $request->type,
+            "value" => $request->value
+        ]);
+        $tax->save();        
+
+        return redirect('/settings/tax')->with('success', 'Tas updated successfully.');
     }
 
     /**
@@ -60,6 +85,9 @@ class Tax extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $tax = Setting::findOrFail($id);
+        $tax->delete();
+
+        return redirect('/settings/tax')->with('success', 'Tax deleted successfully.');
     }
 }
