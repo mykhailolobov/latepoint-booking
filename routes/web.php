@@ -64,6 +64,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/app/chat', [Chat::class, 'index'])->name('app-chat');
     Route::get('/app/email', [Email::class, 'index'])->name('app-email');
     Route::get('/user/profile', [Profile::class, 'index'])->name('user-profile');
+    Route::get('/user/editprofile', [Profile::class, 'edit'])->name('user-editprofile');
+    Route::post('/user/updateprofile', [Profile::class, 'update'])->name('user-updateprofile');
+
 
     // Main Page Route
     Route::get('/dashboard', [Dashboard::class, 'index'])->name('dashboard');
@@ -141,6 +144,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/settings/add-ons', [AddOns::class, 'index'])->name('settings-add-ons');
 
     Route::get('/settings/general', [General::class, 'index'])->name('settings-general');
+    Route::post('/settings/storegeneral', [General::class, 'store'])->name('settings-storegeneral');
+    Route::post('/settings/updategeneral', [General::class, 'update'])->name('settings-updategeneral');
+    
     Route::get('/settings/schedule', [Schedule::class, 'index'])->name('settings-schedule');
     Route::get('/settings/tax', [Tax::class, 'index'])->name('settings-tax');
     Route::get('/settings/steps', [Steps::class, 'index'])->name('settings-steps');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Setting;
 
 class General extends Controller
 {
@@ -12,7 +13,11 @@ class General extends Controller
      */
     public function index()
     {
-        return view('content.settings.general');
+        $settings = Setting::all();
+        $checkVal = Setting::query()
+        ->where('name','LIKE',"default_booking_status")
+        ->get();
+        return view('content.settings.general', compact('settings', 'checkVal'));
     }
 
     /**
@@ -27,7 +32,26 @@ class General extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->get('settings'));
+        foreach ($request->get('settings') as $key => $value) {
+            $settings = Setting::all();
+            $general = new Setting();
+            $checkVal = Setting::query()
+            ->where('name','LIKE',"%{$key}%")
+            ->get();
+            $count = $checkVal->count();
+            if($count>0) {
+                $currentGeneral = $checkVal[0];
+                $currentGeneral -> value = $value;
+                $currentGeneral->save();
+            } else {
+                $general->name = $key;
+                $general->value = $value;
+                $general ->save();
+            }            
+
+          }
+        return redirect('/settings/general')->with('success', 'Customer created successfully.');
     }
 
     /**
@@ -48,10 +72,10 @@ class General extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
-    }
+        
+      }
 
     /**
      * Remove the specified resource from storage.
