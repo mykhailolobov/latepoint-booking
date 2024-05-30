@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Settings\Processes;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Process;
 
 class ScheduledJobs extends Controller
 {
@@ -12,7 +13,8 @@ class ScheduledJobs extends Controller
      */
     public function index()
     {
-        return view('content.settings.processes.scheduled-job');
+        $processes = Process::all();
+        return view('content.settings.processes.scheduled-job', compact('processes'));
     }
 
     /**
