@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\StepSetting;
+
 
 class Steps extends Controller
 {
@@ -29,11 +31,10 @@ class Steps extends Controller
     public function store(Request $request)
     {
         $typeName = $request->step['name'];
-        dd($typeName);
         foreach ($request->get('step') as $key => $value) {
             
-            $step = new Setting();
-            $checkVal = Setting::query()
+            $step = new StepSetting();
+            $checkVal = StepSetting::query()
             ->where('label','LIKE',"%{$key}%")
             ->where('step','LIKE',"%{$typeName}%")
             ->get();

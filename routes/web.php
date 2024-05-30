@@ -141,14 +141,10 @@ Route::middleware('auth')->group(function () {
 
   
     // Settings Section -> Settings
-    Route::get('/settings/add-ons', [AddOns::class, 'index'])->name('settings-add-ons');
-
     Route::get('/settings/general', [General::class, 'index'])->name('settings-general');
     Route::post('/settings/storegeneral', [General::class, 'store'])->name('settings-storegeneral');
     Route::post('/settings/updategeneral', [General::class, 'update'])->name('settings-updategeneral');
     
-    Route::get('/settings/schedule', [Schedule::class, 'index'])->name('settings-schedule');
-
     Route::get('/settings/tax', [Tax::class, 'index'])->name('settings-tax');
     Route::post('/settings/storetax', [Tax::class, 'store'])->name('settings-storetax');
     Route::post('/settings/updatetax', [Tax::class, 'update'])->name('settings-updatetax');
@@ -158,6 +154,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/settings/storesteps', [Steps::class, 'store'])->name('settings-storesteps');
 
     Route::get('/settings/payments', [PaymentSetting::class, 'index'])->name('settings-payments');
+    Route::post('/settings/storepayments', [PaymentSetting::class, 'store'])->name('settings-storepayments');
+
+
     Route::get('/settings/notifications', [Notifications::class, 'index'])->name('settings-notifications');
     Route::get('/settings/roles', [Roles::class, 'index'])->name('settings-roles');
     Route::get('/settings/system', [System::class, 'index'])->name('settings-system');
@@ -168,6 +167,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/settings/integrations-meeting', [Meetings::class, 'index'])->name('settings-integrations-meeting');
     Route::get('/settings/integrations-marketing', [Marketing::class, 'index'])->name('settings-integrations-marketing');
     Route::get('/settings/form-fields', [FormFields::class, 'index'])->name('settings-form-fields');
+    Route::get('/settings/schedule', [Schedule::class, 'index'])->name('settings-schedule');
+    Route::get('/settings/add-ons', [AddOns::class, 'index'])->name('settings-add-ons');
+
+
 });
 
 require __DIR__ . '/auth.php';

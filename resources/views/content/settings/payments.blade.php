@@ -40,10 +40,10 @@
                 <hr>
             </div>
             <div class="col-md-12 os-form-w">
-                <form action="" data-os-action="settings__update">
-                    <input type="hidden" id="_wpnonce" name="_wpnonce" value="45429e9a8b"><input type="hidden"
-                        name="_wp_http_referer"
-                        value="/demo_4217c15f9eb342a2/wp-admin/admin.php?page=latepoint&amp;route_name=settings__payments">
+                <form action="{{route('settings-storepayments')}}" data-os-action="settings__update" method="post">
+                    @csrf
+                    <input type="hidden" id="_wpnonce" name="_wpnonce" value="45429e9a8b">
+                    <input type="hidden" name="_wp_http_referer" value="/demo_4217c15f9eb342a2/wp-admin/admin.php?page=latepoint&amp;route_name=settings__payments">
                     <div class="os-section-header">
                         <h3>Payment Processors</h3>
                     </div>
@@ -51,11 +51,8 @@
                         <div class="os-togglable-item-w" id="paymentProcessorToggler_paypal">
                             <div class="os-togglable-item-head">
                                 <div class="os-toggler-w">
-                                    <input type="hidden" name="settings[enable_payment_processor_paypal]" value="off"
-                                        id="settings_enable_payment_processor_paypal">
-                                    <div data-controlled-toggle-id="togglePaymentSettings_paypal"
-                                        class="os-toggler off size-large" data-is-string-value="true"
-                                        data-for="settings_enable_payment_processor_paypal">
+                                    <input type="hidden" name="settings[enable_payment_processor_paypal]" value="off" id="settings_enable_payment_processor_paypal">
+                                    <div data-controlled-toggle-id="togglePaymentSettings_paypal" class="os-toggler off size-large" data-is-string-value="true" data-for="settings_enable_payment_processor_paypal">
                                         <div class="toggler-rail">
                                             <div class="toggler-pill"></div>
                                         </div>
@@ -928,8 +925,9 @@
                         </div>
                     </div>
                     <div class="os-form-buttons">
-                        <div class="os-form-group"><button type="submit" name="submit" class="btn btn-primary"
-                                id="submit">Save Settings</button></div>
+                        <div class="os-form-group">
+                            <button type="submit" name="submit" class="btn btn-primary" id="submit">Save Settings</button>
+                        </div>
                     </div>
                 </form>
             </div>
