@@ -164,6 +164,10 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/settings/roles', [Roles::class, 'index'])->name('settings-roles');
+    Route::post('/settings/storeroles', [Roles::class, 'store'])->name('settings-storeroles');
+    Route::post('/settings/updateroles/{id}', [Roles::class, 'update'])->name('settings-updateroles');
+
+
     Route::get('/settings/system', [System::class, 'index'])->name('settings-system');
     Route::get('/settings/processes', [Processes::class, 'index'])->name('settings-processes');
     Route::get('/settings/process_jobs', [ScheduledJobs::class, 'index'])->name('settings-process_jobs');
