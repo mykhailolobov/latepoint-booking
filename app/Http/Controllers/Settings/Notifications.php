@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Setting;
+
 
 class Notifications extends Controller
 {
@@ -12,7 +14,21 @@ class Notifications extends Controller
      */
     public function index()
     {
-        return view('content.settings.notifications');
+        $settings = Setting::all();
+        $results = Setting::query()
+        ->where('name', 'LIKE', '%settingsnotifications%')
+        ->get();
+        $count = $results->count();
+        if($count>0) {
+            $result = $results[0];
+            $check = 1;
+            return view('content.settings.notifications', compact('result', 'check'));
+        } else {
+            $check = 0;
+            return view('content.settings.notifications', compact('check'));
+
+        }
+        
     }
 
     /**
@@ -28,7 +44,17 @@ class Notifications extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $settings = Setting::all();
+        $count = $settings->count();
+        $finalId = $settings[$count-1]->id;
+        $tax= new Setting();
+        $tax->name = "settingsnotifications".$finalId;
+        $tax->value = serialize($request->settings);
+        // dd($tax->value);
+        $tax->save();
+        
+        return redirect('/settings/notifications')->with('success', 'Tax created successfully.');
+
     }
 
     /**
@@ -52,7 +78,12 @@ class Notifications extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $tax= Setting::findOrFail($id);
+        $tax->value = serialize($request->settings);
+        // dd($tax->value);
+        $tax->save();
+        
+        return redirect('/settings/notifications')->with('success', 'Tax created successfully.');
     }
 
     /**

@@ -158,6 +158,11 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/settings/notifications', [Notifications::class, 'index'])->name('settings-notifications');
+    Route::post('/settings/storenotifications', [Notifications::class, 'store'])->name('settings-storenotifications');
+    Route::post('/settings/updatenotifications/{id}', [Notifications::class, 'update'])->name('settings-updatenotifications');
+
+
+
     Route::get('/settings/roles', [Roles::class, 'index'])->name('settings-roles');
     Route::get('/settings/system', [System::class, 'index'])->name('settings-system');
     Route::get('/settings/processes', [Processes::class, 'index'])->name('settings-processes');
