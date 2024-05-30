@@ -167,9 +167,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/settings/storeroles', [Roles::class, 'store'])->name('settings-storeroles');
     Route::post('/settings/updateroles/{id}', [Roles::class, 'update'])->name('settings-updateroles');
 
-
-    Route::get('/settings/system', [System::class, 'index'])->name('settings-system');
     Route::get('/settings/processes', [Processes::class, 'index'])->name('settings-processes');
+    Route::post('/settings/storeprocesses', [Processes::class, 'store'])->name('settings-storeprocesses');
+    Route::post('/settings/updateprocesses/{id}', [Processes::class, 'update'])->name('settings-updateprocesses');
+    Route::get('/resource/deleteprocesses/{id}', [Processes::class, 'destroy']);
+
+
+
+
     Route::get('/settings/process_jobs', [ScheduledJobs::class, 'index'])->name('settings-process_jobs');
     Route::get('/settings/activities', [ActivityLog::class, 'index'])->name('settings-activities');
     Route::get('/settings/integrations-calendars', [CalendarsIntegration::class, 'index'])->name('settings-integrations-calendars');
@@ -178,6 +183,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/settings/form-fields', [FormFields::class, 'index'])->name('settings-form-fields');
     Route::get('/settings/schedule', [Schedule::class, 'index'])->name('settings-schedule');
     Route::get('/settings/add-ons', [AddOns::class, 'index'])->name('settings-add-ons');
+    Route::get('/settings/system', [System::class, 'index'])->name('settings-system');
+
 
 
 });
