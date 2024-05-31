@@ -180,6 +180,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/settings/integrations-updatecalendars/{id}', [CalendarsIntegration::class, 'store'])->name('settings-integrations-updatecalendars');
 
     Route::get('/settings/integrations-meeting', [Meetings::class, 'index'])->name('settings-integrations-meeting');
+    Route::post('/settings/integrations-storemeeting', [Meetings::class, 'store'])->name('settings-integrations-storemeeting');
+    Route::post('/settings/integrations-updatemeeting/{id}', [Meetings::class, 'update'])->name('settings-integrations-updatemeeting');
+
+
+    
     Route::get('/settings/integrations-marketing', [Marketing::class, 'index'])->name('settings-integrations-marketing');
     Route::get('/settings/form-fields', [FormFields::class, 'index'])->name('settings-form-fields');
     Route::get('/settings/schedule', [Schedule::class, 'index'])->name('settings-schedule');
