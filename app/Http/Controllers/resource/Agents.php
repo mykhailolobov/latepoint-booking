@@ -44,7 +44,7 @@ class Agents extends Controller
                 'string',
                 'email',
                 'max:255',
-                Rule::unique('customers'), // Unique email validation
+                Rule::unique('agents'), // Unique email validation
             ],
             'phone' => 'string|nullable|max:255',
             'status' => 'string|nullable|max:255',
@@ -121,7 +121,7 @@ class Agents extends Controller
                 'string',
                 'email',
                 'max:255',
-                Rule::unique('customers'), // Unique email validation
+                Rule::unique('agents'), // Unique email validation
             ],
             'phone' => 'string|nullable|max:255',
             'status' => 'string|nullable|max:255',

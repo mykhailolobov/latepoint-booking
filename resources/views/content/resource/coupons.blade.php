@@ -56,12 +56,16 @@ $configData = Helper::appClasses();
                 <div id="accordionIcon{{$coupon->id}}" class="accordion-collapse collapse" data-bs-parent="#accordionIcon">
                     <form action="{{route('resource-updatecoupons', $coupon->id)}}" method="post" class="update-coupon">
                         @csrf
+                        @php                        
+                            $value = unserialize($coupon->description);
+                        @endphp
+                        
                         <div class="accordion-body">
                             <div class="card-body">
                                 <div class="col-lg-12 d-flex mb-3">
                                     <div class="col-lg-3 px-1">
                                         <label for="defaultFormControlInput" class="form-label">Coupon Code</label>
-                                        <input type="text" name="coupon_code" value="{{$coupon->code}}" class="form-control" id="defaultFormControlInput" placeholder="Coupon Code" aria-describedby="defaultFormControlHelp" />
+                                        <input type="text" name="code" value="{{$coupon->code}}" class="form-control" id="defaultFormControlInput" placeholder="Coupon Code" aria-describedby="defaultFormControlHelp" />
                                     </div>
                                     <div class="col-lg-3 px-1">
                                         <label for="defaultFormControlInput" class="form-label">Name (For Internal Use)</label>
@@ -85,33 +89,33 @@ $configData = Helper::appClasses();
                                     <div class="row d-flex">
                                         <div class="col-lg-3 px-1">
                                             <label for="defaultFormControlInput" class="form-label">Use Limit Per Customer</label>
-                                            <input type="text" name="limit_per_customer" value="" class="form-control" id="defaultFormControlInput" placeholder="Use Limit Per Customer" aria-describedby="defaultFormControlHelp" />
+                                            <input type="text" name="description[limit_per_customer]" value="{{htmlspecialchars($value['limit_per_customer']) }}" class="form-control" id="defaultFormControlInput" placeholder="Use Limit Per Customer" aria-describedby="defaultFormControlHelp" />
                                         </div>
                                         <div class="col-lg-3 px-1">
                                             <label for="defaultFormControlInput" class="form-label">Total Use Limit</label>
-                                            <input type="text" name="total_use_limit" value="" class="form-control" id="defaultFormControlInput" placeholder="Total Use Limit" aria-describedby="defaultFormControlHelp" />
+                                            <input type="text" name="description[total_use_limit]" value="{{htmlspecialchars($value['total_use_limit']) }}" class="form-control" id="defaultFormControlInput" placeholder="Total Use Limit" aria-describedby="defaultFormControlHelp" />
                                         </div>
                                         <div class="col-lg-3 px-1">
                                             <label for="defaultFormControlInput" class="form-label">Min Number of Customer Orders</label>
-                                            <input type="text" name="min_number" value="" class="form-control" id="defaultFormControlInput" placeholder="Min Number of Customer Orders" aria-describedby="defaultFormControlHelp" />
+                                            <input type="text" name="description[min_number]" value="{{htmlspecialchars($value['min_number']) }}" class="form-control" id="defaultFormControlInput" placeholder="Min Number of Customer Orders" aria-describedby="defaultFormControlHelp" />
                                         </div>
                                         <div class="col-lg-3 px-1">
                                             <label for="defaultFormControlInput" class="form-label">Max Number of Customer Orders</label>
-                                            <input type="text" name="max_number" value="" class="form-control" id="defaultFormControlInput" placeholder="Max Number of Customer Orders" aria-describedby="defaultFormControlHelp" />
+                                            <input type="text" name="description[max_number]" value="{{htmlspecialchars($value['max_number']) }}" class="form-control" id="defaultFormControlInput" placeholder="Max Number of Customer Orders" aria-describedby="defaultFormControlHelp" />
                                         </div>
                                     </div>
                                     <div class="row d-flex">
                                         <div class="col-lg-3 px-1">
                                             <label for="defaultFormControlInput" class="form-label">Agent IDs</label>
-                                            <input type="text" name="agentID" value="" class="form-control" id="defaultFormControlInput" placeholder="Agent IDs" aria-describedby="defaultFormControlHelp" />
+                                            <input type="text" name="description[agentID]" value="{{htmlspecialchars($value['agentID']) }}" class="form-control" id="defaultFormControlInput" placeholder="Agent IDs" aria-describedby="defaultFormControlHelp" />
                                         </div>
                                         <div class="col-lg-3 px-1">
                                             <label for="defaultFormControlInput" class="form-label">Service IDs</label>
-                                            <input type="text" name="serviceID" value="" class="form-control" id="defaultFormControlInput" placeholder="Service IDs" aria-describedby="defaultFormControlHelp" />
+                                            <input type="text" name="description[serviceID]" value="{{htmlspecialchars($value['serviceID']) }}" class="form-control" id="defaultFormControlInput" placeholder="Service IDs" aria-describedby="defaultFormControlHelp" />
                                         </div>
                                         <div class="col-lg-3 px-1">
                                             <label for="defaultFormControlInput" class="form-label">Customer IDs</label>
-                                            <input type="text" name="customerID" value="" class="form-control" id="defaultFormControlInput" placeholder="Customer IDs" aria-describedby="defaultFormControlHelp" />
+                                            <input type="text" name="description[customerID]" value="{{htmlspecialchars($value['customerID']) }}" class="form-control" id="defaultFormControlInput" placeholder="Customer IDs" aria-describedby="defaultFormControlHelp" />
                                         </div>
                                         <div class="col-lg-3 px-1">
                                             <label for="selectpickerBasic" class="form-label">Status</label>
@@ -149,7 +153,7 @@ $configData = Helper::appClasses();
                                 <div class="col-lg-12 d-flex mb-3">
                                     <div class="col-lg-3 px-1">
                                         <label for="defaultFormControlInput" class="form-label">Coupon Code</label>
-                                        <input type="text" name="coupon_code" value="" class="form-control" id="defaultFormControlInput" placeholder="Coupon Code" aria-describedby="defaultFormControlHelp" />
+                                        <input type="text" name="code" value="" class="form-control" id="defaultFormControlInput" placeholder="Coupon Code" aria-describedby="defaultFormControlHelp" />
                                     </div>
                                     <div class="col-lg-3 px-1">
                                         <label for="defaultFormControlInput" class="form-label">Name (For Internal Use)</label>
@@ -173,33 +177,33 @@ $configData = Helper::appClasses();
                                     <div class="row d-flex">
                                         <div class="col-lg-3 px-1">
                                             <label for="defaultFormControlInput" class="form-label">Use Limit Per Customer</label>
-                                            <input type="text" name="limit_per_customer" value="" class="form-control" id="defaultFormControlInput" placeholder="Use Limit Per Customer" aria-describedby="defaultFormControlHelp" />
+                                            <input type="text" name="description[limit_per_customer]" value="" class="form-control" id="defaultFormControlInput" placeholder="Use Limit Per Customer" aria-describedby="defaultFormControlHelp" />
                                         </div>
                                         <div class="col-lg-3 px-1">
                                             <label for="defaultFormControlInput" class="form-label">Total Use Limit</label>
-                                            <input type="text" name="total_use_limit" value="" class="form-control" id="defaultFormControlInput" placeholder="Total Use Limit" aria-describedby="defaultFormControlHelp" />
+                                            <input type="text" name="description[total_use_limit]" value="" class="form-control" id="defaultFormControlInput" placeholder="Total Use Limit" aria-describedby="defaultFormControlHelp" />
                                         </div>
                                         <div class="col-lg-3 px-1">
                                             <label for="defaultFormControlInput" class="form-label">Min Number of Customer Orders</label>
-                                            <input type="text" name="min_number" value="" class="form-control" id="defaultFormControlInput" placeholder="Min Number of Customer Orders" aria-describedby="defaultFormControlHelp" />
+                                            <input type="text" name="description[min_number]" value="" class="form-control" id="defaultFormControlInput" placeholder="Min Number of Customer Orders" aria-describedby="defaultFormControlHelp" />
                                         </div>
                                         <div class="col-lg-3 px-1">
                                             <label for="defaultFormControlInput" class="form-label">Max Number of Customer Orders</label>
-                                            <input type="text" name="max_number" value="" class="form-control" id="defaultFormControlInput" placeholder="Max Number of Customer Orders" aria-describedby="defaultFormControlHelp" />
+                                            <input type="text" name="description[max_number]" value="" class="form-control" id="defaultFormControlInput" placeholder="Max Number of Customer Orders" aria-describedby="defaultFormControlHelp" />
                                         </div>
                                     </div>
                                     <div class="row d-flex">
                                         <div class="col-lg-3 px-1">
                                             <label for="defaultFormControlInput" class="form-label">Agent IDs</label>
-                                            <input type="text" name="agentID" value="" class="form-control" id="defaultFormControlInput" placeholder="Agent IDs" aria-describedby="defaultFormControlHelp" />
+                                            <input type="text" name="description[agentID]" value="" class="form-control" id="defaultFormControlInput" placeholder="Agent IDs" aria-describedby="defaultFormControlHelp" />
                                         </div>
                                         <div class="col-lg-3 px-1">
                                             <label for="defaultFormControlInput" class="form-label">Service IDs</label>
-                                            <input type="text" name="serviceID" value="" class="form-control" id="defaultFormControlInput" placeholder="Service IDs" aria-describedby="defaultFormControlHelp" />
+                                            <input type="text" name="description[serviceID]" value="" class="form-control" id="defaultFormControlInput" placeholder="Service IDs" aria-describedby="defaultFormControlHelp" />
                                         </div>
                                         <div class="col-lg-3 px-1">
                                             <label for="defaultFormControlInput" class="form-label">Customer IDs</label>
-                                            <input type="text" name="customerID" value="" class="form-control" id="defaultFormControlInput" placeholder="Customer IDs" aria-describedby="defaultFormControlHelp" />
+                                            <input type="text" name="description[customerID]" value="" class="form-control" id="defaultFormControlInput" placeholder="Customer IDs" aria-describedby="defaultFormControlHelp" />
                                         </div>
                                         <div class="col-lg-3 px-1">
                                             <label for="selectpickerBasic" class="form-label">Status</label>
