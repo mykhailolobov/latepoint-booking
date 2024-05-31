@@ -183,10 +183,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/settings/integrations-storemeeting', [Meetings::class, 'store'])->name('settings-integrations-storemeeting');
     Route::post('/settings/integrations-updatemeeting/{id}', [Meetings::class, 'update'])->name('settings-integrations-updatemeeting');
 
+    Route::get('/settings/form-fields', [FormFields::class, 'index'])->name('settings-form-fields');
+    Route::post('/settings/storeform-fields', [FormFields::class, 'store'])->name('settings-storeform-fields');
+    Route::post('/settings/updateform-fields', [FormFields::class, 'update'])->name('settings-updateform-fields');
+
+
 
     
     Route::get('/settings/integrations-marketing', [Marketing::class, 'index'])->name('settings-integrations-marketing');
-    Route::get('/settings/form-fields', [FormFields::class, 'index'])->name('settings-form-fields');
     Route::get('/settings/schedule', [Schedule::class, 'index'])->name('settings-schedule');
     Route::get('/settings/add-ons', [AddOns::class, 'index'])->name('settings-add-ons');
     Route::get('/settings/system', [System::class, 'index'])->name('settings-system');
