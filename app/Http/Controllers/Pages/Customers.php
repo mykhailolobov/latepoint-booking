@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Pages;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Models\Activity;
 use Illuminate\Validation\Rule;
 
 class Customers extends Controller
@@ -69,6 +70,26 @@ class Customers extends Controller
     };
 
     $customer->save(); 
+
+    $activity = new Activity();
+    $activity->customer_id = $customer->id;
+    $activity->code = "customer_created";
+    $activity->description = [
+        'customer_data' =>[
+          'user_id' => $request->user()['id'],
+          'first_name' => $validatedData['first_name'],
+          'last_name' => $validatedData['last_name'],
+          'email' => $validatedData['email'],
+          'country' => $request->country,
+          'phone' => $validatedData['phone'],
+          'status' => "Active",
+          'notes' => $request->input('notes'),
+          'admin_notes' => $request->input('admin_notes'),
+        ]
+    ];
+    $activity->initiated_by = "admin";
+    $activity->initiated_by_id = $request->user()['id'];
+    $activity->save();
     
     
     $jsonData = json_encode(['data' => $customers]);
@@ -117,6 +138,25 @@ class Customers extends Controller
 
     $customer->save(); 
 
+    $activity = new Activity();
+    $activity->customer_id = $customer->id;
+    $activity->code = "customer_updated";
+    $activity->description = [
+        'customer_data' =>[
+          'user_id' => $request->user()['id'],
+          'first_name' => $validatedData['first_name'],
+          'last_name' => $validatedData['last_name'],
+          'email' => $validatedData['email'],
+          'country' => $request->country,
+          'phone' => $validatedData['phone'],
+          'status' => "Active",
+          'notes' => $request->input('notes'),
+          'admin_notes' => $request->input('admin_notes'),
+        ]
+    ];
+    $activity->initiated_by = "admin";
+    $activity->initiated_by_id = $request->user()['id'];
+    $activity->save();
 
     $jsonData = json_encode(['data' => $customers]);
     $filePath = public_path('assets/json/table-datatable2.json');
@@ -129,6 +169,24 @@ class Customers extends Controller
   {
     // dd($id);
     $customer = Customer::findOrFail($id);
+    $activity = new Activity();
+    $activity->customer_id = $customer->id;
+    $activity->code = "customer_deleted";
+    $activity->description = [
+        'customer_data' =>[
+          'user_id' => $request->user()['id'],
+          'first_name' => $validatedData['first_name'],
+          'last_name' => $validatedData['last_name'],
+          'email' => $validatedData['email'],
+          'country' => $request->country,
+          'phone' => $validatedData['phone'],
+          'status' => "Active",
+          'notes' => $request->input('notes'),
+          'admin_notes' => $request->input('admin_notes'),
+        ]
+    ];
+    $activity->initiated_by = "admin";
+    $activity->save();
     $customer->delete();
 
     $customers = Customer::all();

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Resource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Service;
+use App\Models\Activity;
 
 class Services extends Controller
 {
@@ -85,6 +86,35 @@ class Services extends Controller
         $service->override_default_booking_status = $validatedData['override_default_booking_status'];
 
         $service->save();
+
+        $activity = new Activity();
+        $activity->service_id = $service->id;
+        $activity->code = "service_created";
+        $activity->description = [
+            'service_data' =>[
+                'name' => $validatedData['name'],
+                'short_description' => $validatedData['short_description'],
+                'price_min' => $validatedData['price_min'],
+                'price_max' => $validatedData['price_max'],
+                'charge_amount' => $validatedData['charge_amount'],
+                'deposit_amount' => $validatedData['deposit_amount'],
+                'duration_name' => $validatedData['duration_name'],
+                'duration' => $validatedData['duration'],
+                'buffer_before' => $validatedData['buffer_before'],
+                'buffer_after' => $validatedData['buffer_after'],
+                'category_id' => $validatedData['category_id'],
+                'bg_color' => $validatedData['bg_color'],
+                'timeblock_interval' => $validatedData['timeblock_interval'],
+                'capacity_min' => $validatedData['capacity_min'],
+                'capacity_max' => $validatedData['capacity_max'],
+                'status' => $validatedData['status'],
+                'visibility' => $validatedData['visibility'],
+                'override_default_booking_status' => $validatedData['override_default_booking_status'],
+            ]
+        ];
+        $activity->initiated_by = "admin";
+        $activity->initiated_by_id = $request->user()['id'];
+        $activity->save();
     }
 
     /**
@@ -166,6 +196,35 @@ class Services extends Controller
 
         $service->save();
 
+        $activity = new Activity();
+        $activity->service_id = $service->id;
+        $activity->code = "service_updated";
+        $activity->description = [
+            'service_data' =>[
+                'name' => $validatedData['name'],
+                'short_description' => $validatedData['short_description'],
+                'price_min' => $validatedData['price_min'],
+                'price_max' => $validatedData['price_max'],
+                'charge_amount' => $validatedData['charge_amount'],
+                'deposit_amount' => $validatedData['deposit_amount'],
+                'duration_name' => $validatedData['duration_name'],
+                'duration' => $validatedData['duration'],
+                'buffer_before' => $validatedData['buffer_before'],
+                'buffer_after' => $validatedData['buffer_after'],
+                'category_id' => $validatedData['category_id'],
+                'bg_color' => $validatedData['bg_color'],
+                'timeblock_interval' => $validatedData['timeblock_interval'],
+                'capacity_min' => $validatedData['capacity_min'],
+                'capacity_max' => $validatedData['capacity_max'],
+                'status' => $validatedData['status'],
+                'visibility' => $validatedData['visibility'],
+                'override_default_booking_status' => $validatedData['override_default_booking_status'],
+            ]
+        ];
+        $activity->initiated_by = "admin";
+        $activity->initiated_by_id = $request->user()['id'];
+        $activity->save();
+
         return redirect('/resource/services')->with('success', 'Category updated successfully.');
 
     }
@@ -176,6 +235,36 @@ class Services extends Controller
     public function destroy(string $id)
     {
         $service = Service::findOrFail($id);
+
+        $activity = new Activity();
+        $activity->service_id = $service->id;
+        $activity->code = "service_deleted";
+        $activity->description = [
+            'service_data' =>[
+                'name' => $service->name,
+                'short_description' => $service->short_description,
+                'price_min' => $service->price_min,
+                'price_max' => $service->price_max,
+                'charge_amount' => $service->charge_amount,
+                'deposit_amount' => $service->deposit_amount,
+                'duration_name' => $service->duration_name,
+                'duration' => $service->duration,
+                'buffer_before' => $service->buffer_before,
+                'buffer_after' => $service->buffer_after,
+                'category_id' => $service->category_id,
+                'bg_color' => $service->bg_color,
+                'timeblock_interval' => $service->timeblock_interval,
+                'capacity_min' => $service->capacity_min,
+                'capacity_max' => $service->capacity_max,
+                'status' => $service->status,
+                'visibility' => $service->visibility,
+                'override_default_booking_status' => $service->override_default_booking_status,
+            ]
+        ];
+        $activity->initiated_by = "admin";
+        $activity->initiated_by_id = $request->user()['id'];
+        $activity->save();
+        
         $service->delete();
 
         return redirect('/resource/services')->with('success', 'Category updated successfully.');

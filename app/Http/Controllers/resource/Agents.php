@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Agent;
 use Illuminate\Validation\Rule;
+use App\Models\Activity;
 
 
 class Agents extends Controller
@@ -67,6 +68,21 @@ class Agents extends Controller
        
         $agent->save();
 
+        $activity = new Activity();
+        $activity->agent_id = $agent->id;
+        $activity->code = "agent_created";
+        $activity->description = [
+            'agent_data' =>[
+                'id' => $agent->id,
+                'full_name' => $agent->first_name.$agent->last_name,
+                'email' => $agent->email,
+                'phone' => $agent->phone
+            ]
+        ];
+        $activity->initiated_by = "admin";
+        $activity->initiated_by_id = $request->user()['id'];
+        $activity->save();
+        
         // return redirect('/customers')->with('success', 'Customer created successfully.');
         }
 
@@ -130,6 +146,21 @@ class Agents extends Controller
         }
        
         $agent->save();
+
+        $activity = new Activity();
+        $activity->agent_id = $agent->id;
+        $activity->code = "agent_updated";
+        $activity->description = [
+            'agent_data' =>[
+                'id' => $agent->id,
+                'full_name' => $agent->first_name.$agent->last_name,
+                'email' => $agent->email,
+                'phone' => $agent->phone
+            ]
+        ];
+        $activity->initiated_by = "admin";
+        $activity->initiated_by_id = $request->user()['id'];
+        $activity->save();
         
         return redirect('/resource/agents')->with('success', 'Customer created successfully.');
     }
@@ -140,6 +171,24 @@ class Agents extends Controller
     public function destroy(string $id)
     {
         $agent = Agent::findOrFail($id);
+        
+
+        $activity = new Activity();
+        $activity->agent_id = $agent->id;
+        $activity->code = "agent_deleted";
+        $activity->description = [
+            'agent_data' =>[
+                'id' => $agent->id,
+                'full_name' => $agent->first_name.$agent->last_name,
+                'email' => $agent->email,
+                'phone' => $agent->phone
+            ]
+        ];
+        $activity->initiated_by = "admin";
+        $activity->initiated_by_id = $request->user_id;
+        $activity->save();
+
         $agent->delete();
+        return redirect('/resource/agents')->with('success', 'Customer created successfully.');
     }
 }
