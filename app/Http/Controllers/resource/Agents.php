@@ -71,14 +71,14 @@ class Agents extends Controller
         $activity = new Activity();
         $activity->agent_id = $agent->id;
         $activity->code = "agent_created";
-        $activity->description = [
+        $activity->description =json_encode( [
             'agent_data' =>[
                 'id' => $agent->id,
                 'full_name' => $agent->first_name.$agent->last_name,
                 'email' => $agent->email,
                 'phone' => $agent->phone
             ]
-        ];
+        ]);
         $activity->initiated_by = "admin";
         $activity->initiated_by_id = $request->user()['id'];
         $activity->save();
@@ -150,14 +150,14 @@ class Agents extends Controller
         $activity = new Activity();
         $activity->agent_id = $agent->id;
         $activity->code = "agent_updated";
-        $activity->description = [
+        $activity->description = json_encode([
             'agent_data' =>[
                 'id' => $agent->id,
                 'full_name' => $agent->first_name.$agent->last_name,
                 'email' => $agent->email,
                 'phone' => $agent->phone
             ]
-        ];
+        ]);
         $activity->initiated_by = "admin";
         $activity->initiated_by_id = $request->user()['id'];
         $activity->save();
@@ -176,14 +176,14 @@ class Agents extends Controller
         $activity = new Activity();
         $activity->agent_id = $agent->id;
         $activity->code = "agent_deleted";
-        $activity->description = [
+        $activity->description = json_encode([
             'agent_data' =>[
                 'id' => $agent->id,
                 'full_name' => $agent->first_name.$agent->last_name,
                 'email' => $agent->email,
                 'phone' => $agent->phone
             ]
-        ];
+        ]);
         $activity->initiated_by = "admin";
         $activity->initiated_by_id = $request->user_id;
         $activity->save();

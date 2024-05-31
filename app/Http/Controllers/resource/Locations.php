@@ -49,7 +49,7 @@ class Locations extends Controller
         $activity = new Activity();
         $activity->location_id = $location->id;
         $activity->code = "location_created";
-        $activity->description = [
+        $activity->description = json_encode([
             'location_data' =>[
                 'name' => $validatedData['name'],
                 'full_address' => $validatedData['full_address'],
@@ -57,7 +57,7 @@ class Locations extends Controller
                 'selection_image_id' => $request->selection_image_id,
                 'category_id' => $request->input('category_id'),
             ]
-        ];
+        ]);
         $activity->initiated_by = "admin";
         $activity->initiated_by_id = $request->user()['id'];
         $activity->save();
@@ -102,7 +102,7 @@ class Locations extends Controller
         $activity = new Activity();
         $activity->location_id = $location->id;
         $activity->code = "location_updated";
-        $activity->description = [
+        $activity->description = json_encode([
             'location_data' =>[
                 'name' => $validatedData['name'],
                 'full_address' => $validatedData['full_address'],
@@ -110,7 +110,7 @@ class Locations extends Controller
                 'selection_image_id' => $request->selection_image_id,
                 'category_id' => $request->input('category_id'),
             ]
-        ];
+        ]);
         $activity->initiated_by = "admin";
         $activity->initiated_by_id = $request->user()['id'];
         $activity->save();

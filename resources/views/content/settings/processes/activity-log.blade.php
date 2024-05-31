@@ -126,96 +126,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="activity-type-customer_created">
-                                            <td class="activity-column-name">
-                                                <div>New Customer Registration</div>
-                                            </td>
-                                            <td><a class="user-link-with-avatar" target="_blank" href="profile.php"><span
-                                                        class="ula-avatar"
-                                                        style="background-image: url(https://secure.gravatar.com/avatar/ea50452414da73d7519f0cf07b2831fe?s=200&amp;d=mm&amp;r=g)"></span><span
-                                                        class="ula-name">Sandbox Site Admin</span><span
-                                                        class="latepoint-icon latepoint-icon-external-link"></span></a>
-                                            </td>
-                                            <td>05/16/24 6:56 AM</td>
-                                            <td><a class="view-activity-link" href="customers__edit_form&amp;id=24">View</a>
-                                            </td>
-                                        </tr>
-                                        <tr class="activity-type-customer_updated">
-                                            <td class="activity-column-name">
-                                                <div>Customer Profile Update</div>
-                                            </td>
-                                            <td><a class="user-link-with-avatar" target="_blank" href="profile.php"><span
-                                                        class="ula-avatar"
-                                                        style="background-image: url(https://secure.gravatar.com/avatar/ea50452414da73d7519f0cf07b2831fe?s=200&amp;d=mm&amp;r=g)"></span><span
-                                                        class="ula-name">Sandbox Site Admin</span><span
-                                                        class="latepoint-icon latepoint-icon-external-link"></span></a>
-                                            </td>
-                                            <td>05/16/24 6:33 AM</td>
-                                            <td><a class="view-activity-link"
-                                                    href="customers__edit_form&amp;id=23">View</a>
-                                            </td>
-                                        </tr>
-                                        <tr class="activity-type-customer_created">
-                                            <td class="activity-column-name">
-                                                <div>New Customer Registration</div>
-                                            </td>
-                                            <td><a class="user-link-with-avatar" target="_blank" href="profile.php"><span
-                                                        class="ula-avatar"
-                                                        style="background-image: url(https://secure.gravatar.com/avatar/ea50452414da73d7519f0cf07b2831fe?s=200&amp;d=mm&amp;r=g)"></span><span
-                                                        class="ula-name">Sandbox Site Admin</span><span
-                                                        class="latepoint-icon latepoint-icon-external-link"></span></a>
-                                            </td>
-                                            <td>05/16/24 6:27 AM</td>
-                                            <td><a class="view-activity-link"
-                                                    href="customers__edit_form&amp;id=23">View</a>
-                                            </td>
-                                        </tr>
-                                        <tr class="activity-type-process_job_run">
-                                            <td class="activity-column-name">
-                                                <div>Process Job Run</div>
-                                            </td>
-                                            <td><a class="user-link-with-avatar" target="_blank" href="profile.php"><span
-                                                        class="ula-avatar"
-                                                        style="background-image: url(https://secure.gravatar.com/avatar/ea50452414da73d7519f0cf07b2831fe?s=200&amp;d=mm&amp;r=g)"></span><span
-                                                        class="ula-name">Sandbox Site Admin</span><span
-                                                        class="latepoint-icon latepoint-icon-external-link"></span></a>
-                                            </td>
-                                            <td>05/15/24 5:51 AM</td>
-                                            <td><a class="view-activity-link" href="#" data-os-params="id=8"
-                                                    data-os-action="activities__view" data-os-lightbox-classes="width-800"
-                                                    data-os-after-call="latepoint_init_json_view"
-                                                    data-os-output-target="lightbox">View</a></td>
-                                        </tr>
-                                        <tr class="activity-type-customer_created">
-                                            <td class="activity-column-name">
-                                                <div>New Customer Registration</div>
-                                            </td>
-                                            <td><a class="user-link-with-avatar" target="_blank" href="profile.php"><span
-                                                        class="ula-avatar"
-                                                        style="background-image: url(https://secure.gravatar.com/avatar/ea50452414da73d7519f0cf07b2831fe?s=200&amp;d=mm&amp;r=g)"></span><span
-                                                        class="ula-name">Sandbox Site Admin</span><span
-                                                        class="latepoint-icon latepoint-icon-external-link"></span></a>
-                                            </td>
-                                            <td>05/15/24 5:46 AM</td>
-                                            <td><a class="view-activity-link"
-                                                    href="customers__edit_form&amp;id=22">View</a>
-                                            </td>
-                                        </tr>
-                                        <tr class="activity-type-customer_created">
-                                            <td class="activity-column-name">
-                                                <div>New Customer Registration</div>
-                                            </td>
-                                            <td><a class="user-link-with-avatar" target="_blank" href="profile.php"><span
-                                                        class="ula-avatar"
-                                                        style="background-image: url(https://secure.gravatar.com/avatar/ea50452414da73d7519f0cf07b2831fe?s=200&amp;d=mm&amp;r=g)"></span><span
-                                                        class="ula-name">Sandbox Site Admin</span><span
-                                                        class="latepoint-icon latepoint-icon-external-link"></span></a>
-                                            </td>
-                                            <td>05/15/24 2:28 AM</td>
-                                            <td><a class="view-activity-link"
-                                                    href="customers__edit_form&amp;id=21">View</a>
-                                            </td>
-                                        </tr>
+                                        @foreach ($activities as $activity)
+                                            <tr class="activity-type-customer_created">
+                                                <td class="activity-column-name">
+                                                    <div>{{$activity->code}}</div>
+                                                </td>
+                                                <td><a class="user-link-with-avatar" target="_blank" href="profile.php"><span
+                                                            class="ula-avatar"
+                                                            style="background-image: url(https://secure.gravatar.com/avatar/ea50452414da73d7519f0cf07b2831fe?s=200&amp;d=mm&amp;r=g)"></span><span
+                                                            class="ula-name">{{$activity->initiated_by}}</span><span
+                                                            class="latepoint-icon latepoint-icon-external-link"></span></a>
+                                                </td>
+                                                <td>{{$activity->created_at}}</td>
+                                                <td><a class="view-activity-link" href="customers__edit_form&amp;id=24">View</a>
+                                                </td>
+                                            </tr>  
+                                        @endforeach
+                                                                              
                                     </tbody>
                                     <tfoot>
                                         <tr>
@@ -230,7 +157,7 @@
                         </div>
                         <div class="os-pagination-w">
                             <div class="pagination-info">Showing activities <span class="os-pagination-from">1</span> to
-                                <span class="os-pagination-to">6</span> of <span class="os-pagination-total">6</span>
+                                <span class="os-pagination-to">1</span> of <span class="os-pagination-total">10</span>
                             </div>
                             <div class="pagination-page-select-w">
                                 <label for="">Page:</label>

@@ -41,10 +41,11 @@
             </div>
             <div class="col-md-12">
                 <div class="latepoint-settings-w os-form-w">
-                    <form action="" data-os-action="settings__update">
-                        <input type="hidden" id="_wpnonce" name="_wpnonce" value="f1cd9b5daa"><input type="hidden"
-                            name="_wp_http_referer"
-                            value="/demo_4217c15f9eb342a2/wp-admin/admin.php?page=latepoint&amp;route_name=integrations__external_calendars">
+                    @if ($check == 0)
+                    <form action="{{route('settings-integrations-storecalendars')}}" data-os-action="settings__update" method="post">
+                        @csrf
+                        <input type="hidden" id="_wpnonce" name="_wpnonce" value="f1cd9b5daa">
+                        <input type="hidden" name="_wp_http_referer" value="/demo_4217c15f9eb342a2/wp-admin/admin.php?page=latepoint&amp;route_name=integrations__external_calendars">
                         <div class="os-section-header">
                             <h3>External Calendars</h3>
                         </div>
@@ -147,6 +148,119 @@
                                     id="submit">Save Settings</button></div>
                         </div>
                     </form>
+                    @else
+                    <form action="{{route('settings-integrations-updatecalendars', $result->id)}}" data-os-action="settings__update" method="post">
+                        @csrf
+                        @php
+                            $value = unserialize($result->value);
+                        @endphp
+                        {{-- {{ htmlspecialchars($othervalue['agent__view']) }} --}}
+                        <input type="hidden" id="_wpnonce" name="_wpnonce" value="f1cd9b5daa">
+                        <input type="hidden" name="_wp_http_referer" value="/demo_4217c15f9eb342a2/wp-admin/admin.php?page=latepoint&amp;route_name=integrations__external_calendars">
+                        <div class="os-section-header">
+                            <h3>External Calendars</h3>
+                        </div>
+                        <div class="os-togglable-items-w">
+                            <div class="os-togglable-item-w">
+                                <div class="os-togglable-item-head">
+                                    <div class="os-toggler-w">
+                                        <input type="hidden" name="settings[enable_google_calendar]" value="{{htmlspecialchars($value['enable_google_calendar']) }}"
+                                            id="settings_enable_google_calendar">
+                                        <div data-controlled-toggle-id="toggleCalendarSettings_google_calendar"
+                                            class="os-toggler size-large {{htmlspecialchars($value['enable_google_calendar']) }}" data-is-string-value="true"
+                                            data-for="settings_enable_google_calendar">
+                                            <div class="toggler-rail">
+                                                <div class="toggler-pill"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="os-togglable-item-name">Google Calendar</div>
+                                </div>
+                                <div class="os-togglable-item-body" style="display: none;"
+                                    id="toggleCalendarSettings_google_calendar">
+                                    <div class="sub-section-row">
+                                        <div class="sub-section-label">
+                                            <h3>Agent Connections</h3>
+                                        </div>
+                                        <div class="sub-section-content">
+                                            <div class="latepoint-message latepoint-message-subtle">Each agent can link
+                                                their Google Calendar from their agent profile form.</div>
+                                            <div class="latepoint-gcal-agent-connections">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="sub-section-row">
+                                        <div class="sub-section-label">
+                                            <h3>Event Template</h3>
+                                        </div>
+                                        <div class="sub-section-content">
+                                            <div class="latepoint-message latepoint-message-subtle">You can use variables in
+                                                your event title and description, they will be replaced with a value for the
+                                                booking. <a href="#"
+                                                    class="field-note-info-link open-template-variables-panel"><i
+                                                        class="latepoint-icon latepoint-icon-info"></i><span>Show Available
+                                                        Variables</span></a></div>
+                                            <div class="os-row">
+                                                <div class="os-col-12">
+                                                    <div
+                                                        class="os-form-group os-form-textfield-group os-form-group-bordered has-value">
+                                                        <label
+                                                            for="settings_google_calendar_event_summary_template">Template
+                                                            For Event Title</label><input type="text"
+                                                            placeholder="Template For Event Title"
+                                                            name="settings[google_calendar_event_summary_template]"
+                                                            value="{{htmlspecialchars($value['google_calendar_event_summary_template']) }}" theme="bordered"
+                                                            id="settings_google_calendar_event_summary_template"
+                                                            class="os-form-control"></div>
+                                                    <div class="os-form-group os-form-control-wp-editor-group"><label
+                                                            for="settings[google_calendar_event_description_template]">Template
+                                                            For Event Description</label>
+															<div id="full-editor1">
+																Customer Name: <strong>@{{customer_full_name}}</strong>
+																Phone: <strong>@{{customer_phone}}</strong>
+															</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="sub-section-row">
+                                        <div class="sub-section-label">
+                                            <h3>Other Settings</h3>
+                                        </div>
+                                        <div class="sub-section-content">
+                                            <div class="os-row">
+                                                <div class="os-col-12">
+                                                    <div
+                                                        class="os-form-group os-form-toggler-group  with-sub-label size-normal">
+                                                        <input type="hidden"
+                                                            name="settings[google_calendar_hide_event_name]"
+                                                            value="{{htmlspecialchars($value['google_calendar_hide_event_name']) }}" id="settings_google_calendar_hide_event_name">
+                                                        <div class="os-toggler {{htmlspecialchars($value['google_calendar_hide_event_name']) }} size-normal"
+                                                            data-is-string-value="true"
+                                                            data-for="settings_google_calendar_hide_event_name">
+                                                            <div class="toggler-rail">
+                                                                <div class="toggler-pill"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="os-toggler-label-w"><label>Hide titles of imported
+                                                                events</label><span>For privacy reasons hides titles of
+                                                                events imported from Google Calendar</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="os-form-buttons">
+                            <div class="os-form-group"><button type="submit" name="submit" class="latepoint-btn"
+                                    id="submit">Save Settings</button></div>
+                        </div>
+                    </form>
+                    @endif
+                    
                 </div>
             </div>
         </div>

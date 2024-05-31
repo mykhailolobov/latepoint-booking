@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Settings\Processes;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Activity;
 
 class ActivityLog extends Controller
 {
@@ -12,7 +13,8 @@ class ActivityLog extends Controller
      */
     public function index()
     {
-        return view('content.settings.processes.activity-log');
+        $activities = Activity::all();
+        return view('content.settings.processes.activity-log', compact('activities'));
     }
 
     /**

@@ -90,7 +90,7 @@ class Services extends Controller
         $activity = new Activity();
         $activity->service_id = $service->id;
         $activity->code = "service_created";
-        $activity->description = [
+        $activity->description = json_encode([
             'service_data' =>[
                 'name' => $validatedData['name'],
                 'short_description' => $validatedData['short_description'],
@@ -111,7 +111,7 @@ class Services extends Controller
                 'visibility' => $validatedData['visibility'],
                 'override_default_booking_status' => $validatedData['override_default_booking_status'],
             ]
-        ];
+        ]);
         $activity->initiated_by = "admin";
         $activity->initiated_by_id = $request->user()['id'];
         $activity->save();
@@ -199,7 +199,7 @@ class Services extends Controller
         $activity = new Activity();
         $activity->service_id = $service->id;
         $activity->code = "service_updated";
-        $activity->description = [
+        $activity->description = json_encode([
             'service_data' =>[
                 'name' => $validatedData['name'],
                 'short_description' => $validatedData['short_description'],
@@ -220,7 +220,7 @@ class Services extends Controller
                 'visibility' => $validatedData['visibility'],
                 'override_default_booking_status' => $validatedData['override_default_booking_status'],
             ]
-        ];
+        ]);
         $activity->initiated_by = "admin";
         $activity->initiated_by_id = $request->user()['id'];
         $activity->save();
@@ -239,7 +239,7 @@ class Services extends Controller
         $activity = new Activity();
         $activity->service_id = $service->id;
         $activity->code = "service_deleted";
-        $activity->description = [
+        $activity->description = json_encode([
             'service_data' =>[
                 'name' => $service->name,
                 'short_description' => $service->short_description,
@@ -260,7 +260,7 @@ class Services extends Controller
                 'visibility' => $service->visibility,
                 'override_default_booking_status' => $service->override_default_booking_status,
             ]
-        ];
+        ]);
         $activity->initiated_by = "admin";
         $activity->initiated_by_id = $request->user()['id'];
         $activity->save();

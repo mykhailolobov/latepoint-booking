@@ -74,7 +74,7 @@ class Customers extends Controller
     $activity = new Activity();
     $activity->customer_id = $customer->id;
     $activity->code = "customer_created";
-    $activity->description = [
+    $activity->description = json_encode([
         'customer_data' =>[
           'user_id' => $request->user()['id'],
           'first_name' => $validatedData['first_name'],
@@ -86,7 +86,7 @@ class Customers extends Controller
           'notes' => $request->input('notes'),
           'admin_notes' => $request->input('admin_notes'),
         ]
-    ];
+    ]);
     $activity->initiated_by = "admin";
     $activity->initiated_by_id = $request->user()['id'];
     $activity->save();
@@ -141,7 +141,7 @@ class Customers extends Controller
     $activity = new Activity();
     $activity->customer_id = $customer->id;
     $activity->code = "customer_updated";
-    $activity->description = [
+    $activity->description = json_encode([
         'customer_data' =>[
           'user_id' => $request->user()['id'],
           'first_name' => $validatedData['first_name'],
@@ -153,7 +153,7 @@ class Customers extends Controller
           'notes' => $request->input('notes'),
           'admin_notes' => $request->input('admin_notes'),
         ]
-    ];
+    ]);
     $activity->initiated_by = "admin";
     $activity->initiated_by_id = $request->user()['id'];
     $activity->save();
@@ -172,7 +172,7 @@ class Customers extends Controller
     $activity = new Activity();
     $activity->customer_id = $customer->id;
     $activity->code = "customer_deleted";
-    $activity->description = [
+    $activity->description = json_encode([
         'customer_data' =>[
           'user_id' => $request->user()['id'],
           'first_name' => $validatedData['first_name'],
@@ -184,7 +184,7 @@ class Customers extends Controller
           'notes' => $request->input('notes'),
           'admin_notes' => $request->input('admin_notes'),
         ]
-    ];
+    ]);
     $activity->initiated_by = "admin";
     $activity->save();
     $customer->delete();
