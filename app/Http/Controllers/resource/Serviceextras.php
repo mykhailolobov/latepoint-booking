@@ -35,17 +35,19 @@ class Serviceextras extends Controller
             'short_description' => 'string|nullable',
             'charge_amount' => 'nullable|numeric|min:0.0000', // Allow decimals, non-negative
             'duration' => 'required|integer|min:0', // Non-negative integer
-            'maximum_quantity' => 'nullable|integer|min:0', // Non-negative integer
+            'max_quantity' => 'nullable|integer|min:0', // Non-negative integer
             // 'multiplied_by_attendees' => 'nullable|string|in:yes,no', // Validate allowed options
             'status' => 'required|string', // Validate allowed statuses
         ]);
         $serviceExtra = new ServiceExtra();
-        $serviceExtra->name = $request->input('name');
-        $serviceExtra->short_description = $request->input('short_description');
-        $serviceExtra->charge_amount = $request->input('charge_amount');
-        $serviceExtra->duration = $request->input('duration');
-        $serviceExtra->maximum_quantity = $request->input('max_quantity');
+        $serviceExtra->name = $validatedData['name'];
+        $serviceExtra->status = $validatedData['status'];
+        $serviceExtra->short_description =  $validatedData['short_description'];
+        $serviceExtra->charge_amount = $validatedData['charge_amount'];
+        $serviceExtra->duration = $validatedData['duration'];
+        $serviceExtra->maximum_quantity = $validatedData['max_quantity'];
         $serviceExtra->selection_image_id = $request->selection_image_id;
+        $serviceExtra->multiplied_by_attendies = $request->multiplied_by_attendies;
         // $serviceExtra->description_image_id = $request->description_image_id;
 
         $serviceExtra->save();
@@ -78,19 +80,21 @@ class Serviceextras extends Controller
             'short_description' => 'string|nullable',
             'charge_amount' => 'nullable|numeric|min:0.0000', // Allow decimals, non-negative
             'duration' => 'required|integer|min:0', // Non-negative integer
-            'maximum_quantity' => 'nullable|integer|min:0', // Non-negative integer
+            'max_quantity' => 'nullable|integer|min:0', // Non-negative integer
             // 'multiplied_by_attendees' => 'nullable|string|in:yes,no', // Validate allowed options
             'status' => 'required|string', // Validate allowed statuses
         ]);
 
         $id = $request->input('id');
         $serviceExtra = ServiceExtra::findOrFail($id);
-        $serviceExtra->name = $request->input('name');
-        $serviceExtra->short_description = $request->input('short_description');
-        $serviceExtra->charge_amount = $request->input('charge_amount');
-        $serviceExtra->duration = $request->input('duration');
-        $serviceExtra->maximum_quantity = $request->input('max_quantity');
+        $serviceExtra->name = $validatedData['name'];
+        $serviceExtra->status = $validatedData['status'];
+        $serviceExtra->short_description =  $validatedData['short_description'];
+        $serviceExtra->charge_amount = $validatedData['charge_amount'];
+        $serviceExtra->duration = $validatedData['duration'];
+        $serviceExtra->maximum_quantity = $validatedData['max_quantity'];
         $serviceExtra->selection_image_id = $request->selection_image_id;
+        $serviceExtra->multiplied_by_attendies = $request->multiplied_by_attendies;
         // $serviceExtra->description_image_id = $request->description_image_id;
 
         if($request->selection_image_id) {

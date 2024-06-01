@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Settings\Processes;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Process;
 
 class Processes extends Controller
 {
@@ -12,7 +13,8 @@ class Processes extends Controller
      */
     public function index()
     {
-        return view('content.settings.processes.processes');
+        $processes = Process::all();
+        return view('content.settings.processes.processes', compact('processes'));
     }
 
     /**
@@ -28,7 +30,17 @@ class Processes extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $process= new Process();
+        $process->name = $request->process['name'];
+        $process->status = $request->process['status'];
+        $process->event_type = $request->process['event']['type'];
+        $process->actions_json = serialize($request->process['actions']);
+        
+        // dd($tax->value);
+        $process->save();
+        
+        return redirect('/settings/processes')->with('success', 'process created successfully.');
     }
 
     /**
@@ -52,7 +64,16 @@ class Processes extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $process = Process::findOrFail($id);
+        $process->name = $request->process['name'];
+        $process->status = $request->process['status'];
+        $process->event_type = $request->process['event']['type'];
+        $process->actions_json = serialize($request->process['actions']);
+        
+        // dd($tax->value);
+        $process->save();
+        
+        return redirect('/settings/processes')->with('success', 'process created successfully.');
     }
 
     /**
@@ -60,6 +81,7 @@ class Processes extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $process = Process::findOrFail($id);
+        $process->delete();
     }
 }

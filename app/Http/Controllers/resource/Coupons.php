@@ -34,7 +34,7 @@ class Coupons extends Controller
     {
         $validatedData = $request->validate([
             'coupon_name' => 'string|nullable|max:110', 
-            'coupon_code' => [
+            'code' => [
                 'required',
                 'string',
                 'max:110',
@@ -42,15 +42,16 @@ class Coupons extends Controller
             ],
             'discount_type' => 'string|nullable|max:110', // Validate allowed types
             'discount_value' => 'nullable|numeric|between:0.0000,1.0000', // Allow decimals and limit range (0 to 1)
-            'status' => 'required|string|in:active,inactive',
+            'status' => 'required|string',
         ]);
 
         $coupon = new Coupon();
-        $coupon->code = $validatedData['coupon_code'];
+        $coupon->code = $validatedData['code'];
         $coupon->name = $validatedData['coupon_name'];
         $coupon->discount_value = $validatedData['discount_value'];
         $coupon->discount_type = $validatedData['discount_type'];
         $coupon->status = $validatedData['status'];
+        $coupon->description = serialize($request->description);
 
         $coupon->save();
 
@@ -81,7 +82,7 @@ class Coupons extends Controller
     {
         $validatedData = $request->validate([
             'coupon_name' => 'string|nullable|max:110', 
-            'coupon_code' => [
+            'code' => [
                 'required',
                 'string',
                 'max:110',
@@ -89,15 +90,16 @@ class Coupons extends Controller
             ],
             'discount_type' => 'string|nullable|max:110', // Validate allowed types
             'discount_value' => 'nullable|numeric|between:0.0000,1.0000', // Allow decimals and limit range (0 to 1)
-            'status' => 'required|string|in:active,inactive',
+            'status' => 'required|string',
         ]);
 
         $coupon = Coupon::findOrFail($id);
-        $coupon->code = $validatedData['coupon_code'];
+        $coupon->code = $validatedData['code'];
         $coupon->name = $validatedData['coupon_name'];
         $coupon->discount_value = $validatedData['discount_value'];
         $coupon->discount_type = $validatedData['discount_type'];
         $coupon->status = $validatedData['status'];
+        $coupon->description = serialize($request->description);
 
         $coupon->save();
 

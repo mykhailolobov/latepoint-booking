@@ -55,21 +55,24 @@
                                                         <option value="booking_end">Booking Ended</option>
                                                         <option value="customer_created">Customer Created</option>
                                                         <option value="transaction_created">Transaction Created</option>
-                                                    </select></div>
+                                                    </select>
+                                                </div>
                                             </th>
                                             <th>
                                                 <div class="os-form-group os-form-select-group os-form-group-transparent">
                                                     <select name="filter[process_id]" placeholder="All Processes"
                                                         class="os-table-filter os-form-control" id="filter_process_id">
                                                         <option value="">All Processes</option>
-                                                    </select></div>
+                                                    </select>
+                                                </div>
                                             </th>
                                             <th>
                                                 <div
                                                     class="os-form-group os-form-textfield-group os-form-group-transparent no-label">
                                                     <input type="text" placeholder="Object ID" name="filter[object_id]"
                                                         value="" class="os-table-filter os-form-control"
-                                                        style="width: 80px;" id="filter_object_id"></div>
+                                                        style="width: 80px;" id="filter_object_id">
+                                                </div>
                                             </th>
                                             <th></th>
                                             <th>
@@ -80,7 +83,8 @@
                                                         <option value="completed">Completed</option>
                                                         <option value="scheduled">Scheduled</option>
                                                         <option value="cancelled">Cancelled</option>
-                                                    </select></div>
+                                                    </select>
+                                                </div>
                                             </th>
                                             <th>
                                                 <div class="os-form-group">
@@ -102,133 +106,82 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td><strong>Booking Created</strong></td>
-                                            <td>
-                                                <a href="processes__index"
-                                                    target="_blank">New Booking Notification [Deleted]</a>
-                                            </td>
-                                            <td><a href="#">14</a></td>
-                                            <td><span data-os-action="process_jobs__preview_job_action"
-                                                    data-os-output-target="lightbox"
-                                                    data-os-after-call="latepoint_init_json_view"
-                                                    data-os-params="job_id=3&amp;action_id=pa_dwoDq8"
-                                                    data-os-lightbox-classes="width-800" class="action-run-info-pill"><i
-                                                        class="latepoint-icon latepoint-icon-mail"></i><span>Send
-                                                        Email</span><i style="color: #ad0606;"
-                                                        class="latepoint-icon latepoint-icon-x-square"></i></span><span
-                                                    data-os-action="process_jobs__preview_job_action"
-                                                    data-os-output-target="lightbox"
-                                                    data-os-after-call="latepoint_init_json_view"
-                                                    data-os-params="job_id=3&amp;action_id=pa_yd7auC"
-                                                    data-os-lightbox-classes="width-800" class="action-run-info-pill"><i
-                                                        class="latepoint-icon latepoint-icon-mail"></i><span>Send
-                                                        Email</span><i style="color: #ad0606;"
-                                                        class="latepoint-icon latepoint-icon-x-square"></i></span></td>
-                                            <td>
-                                                <span class="os-column-status os-column-status-error" "="">Error</span>      </td>
-                        <td>
-                          2024-05-11 11:45:05      </td>
-                          <td>
-                            <span class="in-table-time-left"><span class="time-left left-days time-past">9 days ago</span></span> <a href="#" data-os-params="id=3" data-os-action="process_jobs__view_job_run_result" data-os-lightbox-classes="width-800" data-os-after-call="latepoint_init_json_view" data-os-output-target="lightbox"><i class="latepoint-icon latepoint-icon-file-text"></i></a>      </td>
-                        <td>
-                          <a class="latepoint-link" data-os-after-call="reload_process_jobs_table" href="#" data-os-prompt="Are you sure you want to run this job?" data-os-action="process_jobs__run_job" data-os-params="job_id=3&amp;_wpnonce=91bf1c44ef">
-                                        <i class="latepoint-icon latepoint-icon-refresh-cw"></i>
-                              <span>Run Again</span>
-                                    </a>
-                        </td>
-                      </tr>
-                  
-                          <tr>
-                        <td><strong>Booking Created</strong></td>
-                        <td>
-                            <a href="processes__index" target="_blank">New Booking Notification [Deleted]</a></td>
-                        <td><a href="#">13</a></td>
-                        <td><span data-os-action="process_jobs__preview_job_action" data-os-output-target="lightbox" data-os-after-call="latepoint_init_json_view" data-os-params="job_id=2&amp;action_id=pa_dwoDq8" data-os-lightbox-classes="width-800" class="action-run-info-pill"><i class="latepoint-icon latepoint-icon-mail"></i><span>Send Email</span><i style="color: #ad0606;" class="latepoint-icon latepoint-icon-x-square"></i></span><span data-os-action="process_jobs__preview_job_action" data-os-output-target="lightbox" data-os-after-call="latepoint_init_json_view" data-os-params="job_id=2&amp;action_id=pa_yd7auC" data-os-lightbox-classes="width-800" class="action-run-info-pill"><i class="latepoint-icon latepoint-icon-mail"></i><span>Send Email</span><i style="color: #ad0606;" class="latepoint-icon latepoint-icon-x-square"></i></span></td>
-                        <td>
-                            <span class="os-column-status os-column-status-error" "="">Error</span>
-                                            </td>
-                                            <td>
-                                                2023-05-26 07:02:33 </td>
-                                            <td>
-                                                <span class="in-table-time-left"><span
-                                                        class="time-left left-days time-past">360 days ago</span></span> <a
-                                                    href="#" data-os-params="id=2"
-                                                    data-os-action="process_jobs__view_job_run_result"
-                                                    data-os-lightbox-classes="width-800"
-                                                    data-os-after-call="latepoint_init_json_view"
-                                                    data-os-output-target="lightbox"><i
-                                                        class="latepoint-icon latepoint-icon-file-text"></i></a>
-                                            </td>
-                                            <td>
-                                                <a class="latepoint-link" data-os-after-call="reload_process_jobs_table"
-                                                    href="#" data-os-prompt="Are you sure you want to run this job?"
-                                                    data-os-action="process_jobs__run_job"
-                                                    data-os-params="job_id=2&amp;_wpnonce=4e5c739512">
-                                                    <i class="latepoint-icon latepoint-icon-refresh-cw"></i>
-                                                    <span>Run Again</span>
-                                                </a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td><strong>Booking Created</strong></td>
-                                            <td>
-                                                <a href="processes__index"
-                                                    target="_blank">New Booking Notifications [Deleted]</a>
-                                            </td>
-                                            <td><a href="#">12</a></td>
-                                            <td><span data-os-action="process_jobs__preview_job_action"
-                                                    data-os-output-target="lightbox"
-                                                    data-os-after-call="latepoint_init_json_view"
-                                                    data-os-params="job_id=1&amp;action_id=pa_KFULUA"
-                                                    data-os-lightbox-classes="width-800" class="action-run-info-pill"><i
-                                                        class="latepoint-icon latepoint-icon-mail"></i><span>Send
-                                                        Email</span><i style="color: #ad0606;"
-                                                        class="latepoint-icon latepoint-icon-x-square"></i></span></td>
-                                            <td>
-                                                <span class="os-column-status os-column-status-error" "="">Error</span>      </td>
-                        <td>
-                          2023-03-12 00:36:52      </td>
-                          <td>
-                            <span class="in-table-time-left"><span class="time-left left-days time-past">436 days ago</span></span> <a href="#" data-os-params="id=1" data-os-action="process_jobs__view_job_run_result" data-os-lightbox-classes="width-800" data-os-after-call="latepoint_init_json_view" data-os-output-target="lightbox"><i class="latepoint-icon latepoint-icon-file-text"></i></a>      </td>
-                        <td>
-                          <a class="latepoint-link" data-os-after-call="reload_process_jobs_table" href="#" data-os-prompt="Are you sure you want to run this job?" data-os-action="process_jobs__run_job" data-os-params="job_id=1&amp;_wpnonce=2d446e22e4">
-                                        <i class="latepoint-icon latepoint-icon-refresh-cw"></i>
-                              <span>Run Again</span>
-                                    </a>
-                        </td>
-                      </tr>
-                  
-                              </tbody>
-                          <tfoot>
-                            <tr>
-                              <th>Event</th>
-                              <th>Process</th>
-                              <th>Object ID</th>
-                              <th>Actions</th>
-                              <th>Status</th>
-                              <th>Run Time (UTC)</th>
-                              <th>Run Info</th>
-                                <th></th>
-                            </tr>
-                          </tfoot>
-                        </table>
-                      </div>
-                      </div>
+                                        @foreach ($processes as $process)
+                                            <tr>
+                                                <td><strong>{{$process->event_type}}</strong></td>
+                                                <td>
+                                                    <a href="processes__index" target="_blank">New Booking Notification
+                                                        [Deleted]</a>
+                                                </td>
+                                                <td><a href="#">14</a></td>
+                                                <td>
+                                                    <span data-os-action="process_jobs__preview_job_action"
+                                                        data-os-output-target="lightbox"
+                                                        data-os-after-call="latepoint_init_json_view"
+                                                        data-os-params="job_id=3&amp;action_id=pa_dwoDq8"
+                                                        data-os-lightbox-classes="width-800" class="action-run-info-pill">
+                                                        <i class="latepoint-icon latepoint-icon-mail"></i> 
+                                                        <span>Send Email</span>
+                                                        <i style="color: #ad0606;" class="latepoint-icon latepoint-icon-x-square"></i>
+                                                    </span>
+                                                    <span data-os-action="process_jobs__preview_job_action"
+                                                        data-os-output-target="lightbox"
+                                                        data-os-after-call="latepoint_init_json_view"
+                                                        data-os-params="job_id=3&amp;action_id=pa_yd7auC"
+                                                        data-os-lightbox-classes="width-800" class="action-run-info-pill">
+                                                        <i class="latepoint-icon latepoint-icon-mail"></i>
+                                                        <span>Send Email</span>
+                                                        <i style="color: #ad0606;" class="latepoint-icon latepoint-icon-x-square"></i>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="os-column-status os-column-status-error">Error</span>
+                                                </td>
+                                                <td> 2024-05-11 11:45:05</td> 
+                                                <td>
+                                                    <span class="in-table-time-left">
+                                                        <span class="time-left left-days time-past">9 days ago</span>
+                                                    </span> 
+                                                    <a href="#" data-os-params="id=3" data-os-action="process_jobs__view_job_run_result" data-os-lightbox-classes="width-800" data-os-after-call="latepoint_init_json_view" data-os-output-target="lightbox"><i class="latepoint-icon latepoint-icon-file-text"></i>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a class="latepoint-link" data-os-after-call="reload_process_jobs_table" href="#" data-os-prompt="Are you sure you want to run this job?" data-os-action="process_jobs__run_job" data-os-params="job_id=3&amp;_wpnonce=91bf1c44ef">
+                                                        <i class="latepoint-icon latepoint-icon-refresh-cw"></i>
+                                                        <span>Run Again</span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach                      
+                                  </tbody>
+                                <tfoot>
+                                    <tr>
+                                    <th>Event</th>
+                                    <th>Process</th>
+                                    <th>Object ID</th>
+                                    <th>Actions</th>
+                                    <th>Status</th>
+                                    <th>Run Time (UTC)</th>
+                                    <th>Run Info</th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                          </div>
+                          </div>
+                        </div>
+                        <div class="os-pagination-w">
+                          <div class="pagination-info">Showing jobs <span class="os-pagination-from">1</span> to <span class="os-pagination-to">3</span> of <span class="os-pagination-total">3</span></div>
+                          <div class="pagination-page-select-w">
+                            <label for="">Page:</label>
+                            <select name="page" class="pagination-page-select">
+                              <option selected="">1</option>
+                            </select>
+                          </div>
+                        </div>
                     </div>
-                    <div class="os-pagination-w">
-                      <div class="pagination-info">Showing jobs <span class="os-pagination-from">1</span> to <span class="os-pagination-to">3</span> of <span class="os-pagination-total">3</span></div>
-                      <div class="pagination-page-select-w">
-                        <label for="">Page:</label>
-                        <select name="page" class="pagination-page-select">
-                          <option selected="">1</option>      
-                        </select>
-                      </div>
-                    </div>
-                      </div>
+                </div>
             </div>
         </div>
-    </div>
 
 @endsection

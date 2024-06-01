@@ -144,13 +144,16 @@ $configData = Helper::appClasses();
                             </label>
                         </div>
                     </div>
+                    @php
+                        $multiplied_by_attendies = json_decode($serviceExtra->multiplied_by_attendies, true);
+                    @endphp
                         
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 mb-md-0 mb-2">
                                 <div class="form-check custom-option custom-option-basic">
                                     <label class="form-check-label custom-option-content" for="service_extra_1">
-                                        <input class="form-check-input" type="checkbox" value="" id="service_extra_1" checked />
+                                        <input class="form-check-input" name="service_extra[teeth_whitening]" type="checkbox"  id="service_extra_1" <?php echo ($multiplied_by_attendies['teeth_whitening'] ? 'checked' : ''); ?> />
                                         <span class="custom-option-header">
                                             <img src="http://latepoint-demo.com/demo_4217c15f9eb342a2/wp-content/uploads/sites/25848/2018/11/service1-150x150.png" class="w-px-30 border-50" />
                                             <span class="h6 mb-0">Teeth Whitening</span>
@@ -161,7 +164,7 @@ $configData = Helper::appClasses();
                             <div class="col-md-12">
                                 <div class="form-check custom-option custom-option-basic">
                                     <label class="form-check-label custom-option-content" for="service_extra_2">
-                                        <input class="form-check-input" type="checkbox" value="" id="service_extra_2" checked />
+                                        <input class="form-check-input" name="service_extra[invisilign_braces]" type="checkbox"  id="service_extra_2" <?php echo ($multiplied_by_attendies['invisilign_braces'] ? 'checked' : ''); ?> />
                                         <span class="custom-option-header">
                                             <img src="http://latepoint-demo.com/demo_4217c15f9eb342a2/wp-content/uploads/sites/25848/2018/11/service3-150x150.png" class="w-px-30 border-50" />
                                             <span class="h6 mb-0">Invisilign Braces</span>
@@ -172,7 +175,7 @@ $configData = Helper::appClasses();
                             <div class="col-md-12 mb-md-0 mb-2">
                                 <div class="form-check custom-option custom-option-basic">
                                     <label class="form-check-label custom-option-content" for="service_extra_3">
-                                        <input class="form-check-input" type="checkbox" value="" id="service_extra_3" checked />
+                                        <input class="form-check-input" name="service_extra[group_booking]" type="checkbox"  id="service_extra_3" <?php echo ($multiplied_by_attendies['group_booking'] ? 'checked' : ''); ?> />
                                         <span class="custom-option-header">
                                             <img src="http://latepoint-demo.com/demo_4217c15f9eb342a2/wp-content/uploads/sites/25848/2018/11/service4-150x150.png" class="w-px-30 border-50" />
                                             <span class="h6 mb-0">Group Booking</span>
@@ -183,7 +186,7 @@ $configData = Helper::appClasses();
                             <div class="col-md-12 mb-md-0 mb-2">
                                 <div class="form-check custom-option custom-option-basic">
                                     <label class="form-check-label custom-option-content" for="service_extra_4">
-                                        <input class="form-check-input" type="checkbox" value="" id="service_extra_4" checked />
+                                        <input class="form-check-input" name="service_extra[porcelain_crown]" type="checkbox"  id="service_extra_4" <?php echo ($multiplied_by_attendies['porcelain_crown'] ? 'checked' : ''); ?> />
                                         <span class="custom-option-header">
                                             <img src="http://latepoint-demo.com/demo_4217c15f9eb342a2/wp-content/uploads/sites/25848/2018/11/service2-150x150.png" class="w-px-30 border-50" />
                                             <span class="h6 mb-0">Porcelain Crown</span>
@@ -194,7 +197,7 @@ $configData = Helper::appClasses();
                             <div class="col-md-12 mb-md-0 mb-2">
                                 <div class="form-check custom-option custom-option-basic">
                                     <label class="form-check-label custom-option-content" for="service_extra_5">
-                                        <input class="form-check-input" type="checkbox" value="" id="service_extra_5" checked />
+                                        <input class="form-check-input" name="service_extra[root_canal_therapy]" type="checkbox"  id="service_extra_5" <?php echo ($multiplied_by_attendies['root_canal_therapy'] ? 'checked' : ''); ?> />
                                         <span class="custom-option-header">
                                             <img src="http://latepoint-demo.com/demo_4217c15f9eb342a2/wp-content/uploads/sites/25848/2018/11/service3-150x150.png" class="w-px-30 border-50" />
                                             <span class="h6 mb-0">Root Canal Therapy</span>
@@ -202,7 +205,6 @@ $configData = Helper::appClasses();
                                     </label>
                                 </div>
                             </div>
-                           
                         </div>
                     </div>
                 </div>
@@ -219,6 +221,7 @@ $configData = Helper::appClasses();
 
 <script type="text/javascript" src="{{asset('/assets/jquery.js')}}"></script>
 <script type="text/javascript">
+    const multiplied_by_attendies ={};
     $(document).ready(function() {
         $('.custom-schedule-wrapper').hide();
 
@@ -262,7 +265,11 @@ $configData = Helper::appClasses();
         const status = $('select[name="status"]').val();
         const short_description = $('textarea[name="short_description"]').val();
         const selection_image_id = $('.dz-thumbnail>img').attr('src');
-        
+         multiplied_by_attendies['teeth_whitening'] = $('input[name="service_extra[teeth_whitening]"]').prop('checked');
+         multiplied_by_attendies['invisilign_braces'] = $('input[name="service_extra[invisilign_braces]"]').prop('checked');
+         multiplied_by_attendies['group_booking'] = $('input[name="service_extra[group_booking]"]').prop('checked');
+         multiplied_by_attendies['porcelain_crown'] = $('input[name="service_extra[porcelain_crown]"]').prop('checked');
+         multiplied_by_attendies['root_canal_therapy'] = $('input[name="service_extra[root_canal_therapy]"]').prop('checked');
 
         $.ajax({
             type: 'POST',
@@ -278,7 +285,8 @@ $configData = Helper::appClasses();
                 max_quantity: max_quantity,
                 status: status,
                 short_description: short_description,
-                selection_image_id: selection_image_id
+                selection_image_id: selection_image_id,
+                multiplied_by_attendies: JSON.stringify(multiplied_by_attendies)
             },
             success: function() {
                 console.log('success');

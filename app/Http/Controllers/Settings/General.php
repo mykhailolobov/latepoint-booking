@@ -13,11 +13,16 @@ class General extends Controller
      */
     public function index()
     {
-        $settings = Setting::all();
         $checkVal = Setting::query()
-        ->where('name','LIKE',"default_booking_status")
+        ->where('name','LIKE',"%settingsgeneral%")
         ->get();
-        return view('content.settings.general', compact('settings', 'checkVal'));
+        $check = $checkVal->count();
+        if($check==0) {
+            return view('content.settings.general', compact('check'));
+        } else {
+            $general = $checkVal[0];
+            return view('content.settings.general', compact('general', 'check'));
+        }
     }
 
     /**
@@ -32,25 +37,28 @@ class General extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->get('settings'));
-        foreach ($request->get('settings') as $key => $value) {
+        $checkVal = Setting::query()
+        ->where('name','LIKE',"%settingsgeneral%")
+        ->get();
+        $check = $checkVal->count();
+        if($check == 0) {
             $settings = Setting::all();
-            $general = new Setting();
-            $checkVal = Setting::query()
-            ->where('name','LIKE',"%{$key}%")
-            ->get();
-            $count = $checkVal->count();
+            $count = $settings->count();
             if($count>0) {
-                $currentGeneral = $checkVal[0];
-                $currentGeneral -> value = $value;
-                $currentGeneral->save();
+                $finalId = $settings[$count-1]->id;
             } else {
-                $general->name = $key;
-                $general->value = $value;
-                $general ->save();
-            }            
-
-          }
+                $finalId = 0;
+            }
+            
+            $general= new Setting();
+            $general->name = "settingsgeneral".$finalId;
+            $general->value = serialize($request->settings);
+        } else {
+            $id = $checkVal[0]->id;
+            $general = Setting::findOrFail($id);
+            $general->value = serialize($request->settings);            
+        }
+        $general->save();
         return redirect('/settings/general')->with('success', 'Customer created successfully.');
     }
 

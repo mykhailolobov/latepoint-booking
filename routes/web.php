@@ -141,30 +141,62 @@ Route::middleware('auth')->group(function () {
 
   
     // Settings Section -> Settings
-    Route::get('/settings/add-ons', [AddOns::class, 'index'])->name('settings-add-ons');
-
     Route::get('/settings/general', [General::class, 'index'])->name('settings-general');
     Route::post('/settings/storegeneral', [General::class, 'store'])->name('settings-storegeneral');
     Route::post('/settings/updategeneral', [General::class, 'update'])->name('settings-updategeneral');
     
-    Route::get('/settings/schedule', [Schedule::class, 'index'])->name('settings-schedule');
     Route::get('/settings/tax', [Tax::class, 'index'])->name('settings-tax');
     Route::post('/settings/storetax', [Tax::class, 'store'])->name('settings-storetax');
     Route::post('/settings/updatetax', [Tax::class, 'update'])->name('settings-updatetax');
     Route::get('/resource/deletetax/{id}', [Tax::class, 'destroy']);
 
     Route::get('/settings/steps', [Steps::class, 'index'])->name('settings-steps');
+    Route::post('/settings/storesteps', [Steps::class, 'store'])->name('settings-storesteps');
+
     Route::get('/settings/payments', [PaymentSetting::class, 'index'])->name('settings-payments');
+    Route::post('/settings/storepayments', [PaymentSetting::class, 'store'])->name('settings-storepayments');
+
+
     Route::get('/settings/notifications', [Notifications::class, 'index'])->name('settings-notifications');
+    Route::post('/settings/storenotifications', [Notifications::class, 'store'])->name('settings-storenotifications');
+    Route::post('/settings/updatenotifications/{id}', [Notifications::class, 'update'])->name('settings-updatenotifications');
+
+
+
     Route::get('/settings/roles', [Roles::class, 'index'])->name('settings-roles');
-    Route::get('/settings/system', [System::class, 'index'])->name('settings-system');
+    Route::post('/settings/storeroles', [Roles::class, 'store'])->name('settings-storeroles');
+    Route::post('/settings/updateroles/{id}', [Roles::class, 'update'])->name('settings-updateroles');
+
     Route::get('/settings/processes', [Processes::class, 'index'])->name('settings-processes');
+    Route::post('/settings/storeprocesses', [Processes::class, 'store'])->name('settings-storeprocesses');
+    Route::post('/settings/updateprocesses/{id}', [Processes::class, 'update'])->name('settings-updateprocesses');
+    Route::get('/resource/deleteprocesses/{id}', [Processes::class, 'destroy']);
+
     Route::get('/settings/process_jobs', [ScheduledJobs::class, 'index'])->name('settings-process_jobs');
     Route::get('/settings/activities', [ActivityLog::class, 'index'])->name('settings-activities');
+
     Route::get('/settings/integrations-calendars', [CalendarsIntegration::class, 'index'])->name('settings-integrations-calendars');
+    Route::post('/settings/integrations-storecalendars', [CalendarsIntegration::class, 'store'])->name('settings-integrations-storecalendars');
+    Route::post('/settings/integrations-updatecalendars/{id}', [CalendarsIntegration::class, 'store'])->name('settings-integrations-updatecalendars');
+
     Route::get('/settings/integrations-meeting', [Meetings::class, 'index'])->name('settings-integrations-meeting');
-    Route::get('/settings/integrations-marketing', [Marketing::class, 'index'])->name('settings-integrations-marketing');
+    Route::post('/settings/integrations-storemeeting', [Meetings::class, 'store'])->name('settings-integrations-storemeeting');
+    Route::post('/settings/integrations-updatemeeting/{id}', [Meetings::class, 'update'])->name('settings-integrations-updatemeeting');
+
     Route::get('/settings/form-fields', [FormFields::class, 'index'])->name('settings-form-fields');
+    Route::post('/settings/storeform-fields', [FormFields::class, 'store'])->name('settings-storeform-fields');
+    Route::post('/settings/updateform-fields', [FormFields::class, 'update'])->name('settings-updateform-fields');
+
+
+
+    
+    Route::get('/settings/integrations-marketing', [Marketing::class, 'index'])->name('settings-integrations-marketing');
+    Route::get('/settings/schedule', [Schedule::class, 'index'])->name('settings-schedule');
+    Route::get('/settings/add-ons', [AddOns::class, 'index'])->name('settings-add-ons');
+    Route::get('/settings/system', [System::class, 'index'])->name('settings-system');
+
+
+
 });
 
 require __DIR__ . '/auth.php';

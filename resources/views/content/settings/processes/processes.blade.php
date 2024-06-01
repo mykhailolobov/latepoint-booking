@@ -40,6 +40,311 @@
                 <hr>
             </div>
             <div class="col-md-12">
+                @foreach ($processes as $process)
+                    <div class="os-processes-w os-form-blocks-w">
+                    <form action="{{route('settings-updateprocesses', $process->id)}}" method="post" data-os-action="processes__save" data-os-after-call="latepoint_process_updated" class="os-process-form os-form-block os-form-block-type- status-active">
+                        @csrf
+                        @php
+                            $value = unserialize($process->actions_json);
+                        @endphp
+                        {{-- {{ htmlspecialchars($value['agent__view']) }} --}}
+                        <div class="os-form-block-i">
+                            <div class="os-form-block-header">
+                                <div class="os-form-block-drag"></div>
+                                <div class="os-form-block-name">New Process</div>
+                                <div class="os-form-block-type"></div>
+                                <div class="os-form-block-edit-btn"><i class="latepoint-icon latepoint-icon-edit-3"></i></div>
+                            </div>
+                            <div class="os-form-block-params os-form-w">
+                                <div class="sub-section-row">
+                                    <div class="sub-section-label">
+                                        <h3>Status</h3>
+                                    </div>
+                                    <div class="sub-section-content">
+                                        <div class="os-form-group os-form-select-group os-form-group-transparent">
+                                            <select name="process[status]" id="process_status" class="os-form-control">
+                                                <option value="active" selected="">Active</option>
+                                                <option value="disabled">Disabled</option>
+                                            </select></div>
+                                    </div>
+                                </div>
+                                <div class="sub-section-row">
+                                    <div class="sub-section-label">
+                                        <h3>Name</h3>
+                                    </div>
+                                    <div class="sub-section-content">
+                                        <div class="os-form-group os-form-textfield-group os-form-group-bordered no-label">
+                                            <input type="text" placeholder="Process Name" name="process[name]" value="{{$process->name}}" theme="bordered" class="os-form-block-name-input os-form-control" id="process_name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sub-section-row">
+                                    <div class="sub-section-label">
+                                        <h3>Event Type</h3>
+                                    </div>
+                                    <div class="sub-section-content">
+                                        <div class="os-form-group os-form-select-group os-form-group-transparent"><select
+                                                name="process[event][type]" class="process-event-type-selector os-form-control"
+                                                data-route="processes__reload_event_trigger_conditions" id="process_event_type">
+                                                <option value="booking_created" selected="">Booking Created</option>
+                                                <option value="booking_updated">Booking Updated</option>
+                                                <option value="booking_start">Booking Started</option>
+                                                <option value="booking_end">Booking Ended</option>
+                                                <option value="customer_created">Customer Created</option>
+                                                <option value="transaction_created">Transaction Created</option>
+                                            </select></div>
+                                    </div>
+                                </div>
+                                <div class="process-event-condition-wrapper">
+                                    <div class="sub-section-row">
+                                        <div class="sub-section-label">
+                                            <h3>Conditional</h3>
+                                        </div>
+                                        <div class="sub-section-content">
+                                            <div class="os-form-group os-form-toggler-group  size-normal process_event_conditional">
+                                                <input type="hidden" name="process[event][conditional]" value="on"
+                                                    id="process_event_conditional">
+                                                <div data-controlled-toggle-id="pe-conditions-for-pe_ZuOF5X"
+                                                    class="os-toggler size-normal off" data-is-string-value="true"
+                                                    data-for="process_event_conditional">
+                                                    <div class="toggler-rail">
+                                                        <div class="toggler-pill"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="os-toggler-label-w"><label>Trigger only when specific conditions are
+                                                        met</label></div>
+                                            </div>
+                                            <div class="pe-conditions" id="pe-conditions-for-pe_ZuOF5X" style="display: none;">
+                                                <div class="pe-conditions-heading">Trigger only if:</div>
+                                                <div class="pe-condition" data-condition-id="pec_ZJ8JA6"><button
+                                                        class="pe-remove-condition"><i
+                                                            class="latepoint-icon latepoint-icon-cross"></i></button>
+                                                    <div class="process-condition-properties-w">
+                                                        <div class="os-form-group os-form-select-group os-form-group-transparent">
+                                                            <select name="process[event][trigger_conditions][pec_ZJ8JA6][property]"
+                                                                class="process-condition-property-selector os-form-control"
+                                                                data-route="processes__available_operators_for_trigger_condition_property"
+                                                                id="process_event_trigger_conditions_pec_zj8ja6_property">
+                                                                <option value="booking__service_id" selected="">Service</option>
+                                                                <option value="booking__agent_id">Agent</option>
+                                                                <option value="booking__status">Status</option>
+                                                                <option value="booking__payment_status">Payment Status</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="process-condition-operators-w">
+                                                        <div class="os-form-group os-form-select-group os-form-group-transparent">
+                                                            <select name="process[event][trigger_conditions][pec_ZJ8JA6][operator]"
+                                                                class="process-condition-operator-selector os-form-control"
+                                                                data-route="processes__available_values_for_trigger_condition_property"
+                                                                id="process_event_trigger_conditions_pec_zj8ja6_operator">
+                                                                <option value="equal" selected="">is equal to</option>
+                                                                <option value="not_equal">is not equal to</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="process-condition-values-w" style="">
+                                                        <div class="os-form-group os-form-select-group os-form-group-transparent">
+                                                            <div class="lateselect-w">
+                                                                <select id=" process_event_trigger_conditions_pec_zj8ja6_value" class="os-late-select os-late-select-active"
+                                                                    data-placeholder="Click to select..." multiple=""
+                                                                    style="display: none;">
+                                                                    <option value="1">Tooth Whitening</option>
+                                                                    <option value="2">Invisilign Braces</option>
+                                                                    <option value="3">Group Booking</option>
+                                                                    <option value="4">Porcelain Crown</option>
+                                                                    <option value="5">Root Canal Therapy</option>
+                                                                    <option value="6">Gum Decease</option>
+                                                                </select>
+                                                                <div class="ls-selected-items-w">
+                                                                    <div class="ls-placeholder">Click to select...</div>
+                                                                </div>
+                                                                <div class="ls-all-items-w">
+                                                                    <div class="ls-item " data-value="1">Tooth Whitening</div>
+                                                                    <div class="ls-item " data-value="2">Invisilign Braces</div>
+                                                                    <div class="ls-item " data-value="3">Group Booking</div>
+                                                                    <div class="ls-item " data-value="4">Porcelain Crown</div>
+                                                                    <div class="ls-item " data-value="5">Root Canal Therapy</div>
+                                                                    <div class="ls-item " data-value="6">Gum Decease</div>
+                                                                </div>
+                                                            </div><input type="hidden"
+                                                                name="process[event][trigger_conditions][pec_ZJ8JA6][value]" value="">
+                                                        </div>
+                                                    </div>
+                                                    <div data-os-action="processes__new_trigger_condition" data-os-pass-response="yes"
+                                                        data-os-pass-this="yes" data-os-before-after="none"
+                                                        data-os-params="event_type=booking_created"
+                                                        data-os-after-call="latepoint_add_process_condition"><button type="button"
+                                                            onclick="addPeCondition(this)" class="btn btn-outline-primary"><i
+                                                                class="latepoint-icon latepoint-icon-plus2"></i><span>AND</span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sub-section-row">
+                                    <div class="sub-section-label">
+                                        <h3>Time offset</h3>
+                                    </div>
+                                    <div class="sub-section-content">
+                                        <div class="os-form-group os-form-toggler-group  size-normal process_event_has_time_offset"><input
+                                                type="hidden" name="process[event][has_time_offset]" value="on"
+                                                id="process_event_has_time_offset">
+                                            <div data-controlled-toggle-id="pe-conditions-for-pe_C0UjnF" class="os-toggler size-normal off"
+                                                data-is-string-value="true" data-for="process_event_has_time_offset">
+                                                <div class="toggler-rail">
+                                                    <div class="toggler-pill"></div>
+                                                </div>
+                                            </div>
+                                            <div class="os-toggler-label-w"><label>Execute actions with a time offset</label></div>
+                                        </div>
+                                        <div class="pe-conditions" id="pe-conditions-for-pe_C0UjnF" style="display: none;">
+                                            <div class="time-offset-actions">
+                                                <div class="time-offset-label">Actions will be executed:</div>
+                                                <div
+                                                    class="os-form-group os-form-textfield-group os-form-group-bordered has-value no-label">
+                                                    <input type="number" placeholder="" name="process[event][time_offset][value]" value="1"
+                                                        theme="bordered" min="1" id="process_event_time_offset_value"
+                                                        class="os-form-control"></div>
+                                                <div class="os-form-group os-form-select-group os-form-group-transparent"><select
+                                                        name="process[event][time_offset][unit]" id="process_event_time_offset_unit"
+                                                        class="os-form-control">
+                                                        <option value="minute">minutes</option>
+                                                        <option value="hour">hours</option>
+                                                        <option value="day" selected="">days</option>
+                                                    </select></div>
+                                                <div class="os-form-group os-form-select-group os-form-group-transparent"><select
+                                                        name="process[event][time_offset][before_after]"
+                                                        id="process_event_time_offset_before_after" class="os-form-control">
+                                                        <option value="before">before the event</option>
+                                                        <option value="after" selected="">after the event</option>
+                                                    </select></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sub-section-row">
+                                    <div class="sub-section-label">
+                                        <h3>Actions</h3>
+                                    </div>
+                                    <div class="sub-section-content">
+                                        <div class="process-action-form pa-type-send_email pa-status-active is-editing" data-id="pa_NF3Iic">
+                                            <div class="process-action-heading">
+                                                <div class="process-action-status"></div>
+                                                <div class="process-action-icon"></div>
+                                                <div class="process-action-name">Send Email</div>
+
+                                                <div class="process-action-chevron"><i
+                                                        class="latepoint-icon latepoint-icon-chevron-down"></i></div>
+                                                <a href="javascript:;" class="process-action-remove os-remove-process-action"
+                                                    data-os-prompt="Are you sure you want to delete this action?"><i
+                                                        class="latepoint-icon latepoint-icon-cross"></i></a>
+                                            </div>
+                                            <div class="process-action-content">
+                                                <div class="os-row">
+                                                    <div class="os-col-10">
+                                                        <div class="os-form-group os-form-select-group os-form-group-transparent"><label
+                                                                for="process_actions_pa_nf3iic_type">Action Type</label><select
+                                                                name="process[actions][pa_NF3Iic][type]"
+                                                                class="process-action-type os-form-control" data-action-id="pa_NF3Iic"
+                                                                data-route="processes__load_action_settings"
+                                                                id="process_actions_pa_nf3iic_type">
+                                                                <option value="send_email" selected="">Send Email</option>
+                                                                <option value="send_sms">Send SMS</option>
+                                                                <option value="trigger_webhook">HTTP Request</option>
+                                                            </select></div>
+                                                    </div>
+                                                    <div class="os-col-2">
+                                                        <div class="os-form-group os-form-select-group os-form-group-transparent"><label
+                                                                for="process_actions_pa_nf3iic_status">Status</label><select
+                                                                name="process[actions][pa_NF3Iic][status]"
+                                                                id="process_actions_pa_nf3iic_status" class="os-form-control">
+                                                                <option value="active" selected="">Active</option>
+                                                                <option value="disabled">Disabled</option>
+                                                            </select></div>
+                                                    </div>
+                                                </div>
+                                                <div class="process-action-settings">
+                                                    <div class="process-action-controls-wrapper"><a href="javascript:;"
+                                                            data-os-after-call="latepoint_init_template_library"
+                                                            data-os-params="action_id=pa_NF3Iic&amp;action_type=send_email"
+                                                            data-os-lightbox-classes="width-1000"
+                                                            data-os-action="notifications__templates_index" data-os-output-target="lightbox"
+                                                            class="latepoint-btn latepoint-btn-outline latepoint-btn-sm"><i
+                                                                class="latepoint-icon latepoint-icon-book"></i><span>Load from
+                                                                template</span></a><a href="javascript:;"
+                                                            class="latepoint-btn latepoint-btn-outline latepoint-btn-sm open-template-variables-panel"><i
+                                                                class="latepoint-icon latepoint-icon-zap"></i><span>Show smart
+                                                                variables</span></a></div>
+                                                    <div class="os-row">
+                                                        <div class="os-col-6">
+                                                            <div class="os-form-group os-form-textfield-group os-form-group-simple"><label
+                                                                    for="process_actions_pa_nf3iic_settings_to_email">To Email</label><input
+                                                                    type="text" placeholder="To email address"
+                                                                    name="process[actions][pa_NF3Iic][settings][to_email]" value=""
+                                                                    id="process_actions_pa_nf3iic_settings_to_email"
+                                                                    class="os-form-control"></div>
+                                                        </div>
+                                                        <div class="os-col-6">
+                                                            <div class="os-form-group os-form-textfield-group os-form-group-simple"><label
+                                                                    for="process_actions_pa_nf3iic_settings_subject">Email
+                                                                    Subject</label><input type="text" placeholder="Email Subject"
+                                                                    name="process[actions][pa_NF3Iic][settings][subject]" value=""
+                                                                    id="process_actions_pa_nf3iic_settings_subject" class="os-form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div id="full-editor1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="process-buttons">
+                                                    <a href="javascript:;"
+                                                        class="latepoint-btn latepoint-btn-danger pull-left os-remove-process-action"
+                                                        data-os-prompt="Are you sure you want to delete this action?">Delete</a>
+                                                    <a href="javascript:;" data-route="processes__action_test_preview"
+                                                        class="latepoint-btn latepoint-btn-secondary os-run-process-action"><i
+                                                            class="latepoint-icon latepoint-icon-play-circle"></i><span>Test this
+                                                            action</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="javascript:;" id="new_action"
+                                            class="latepoint-btn latepoint-btn-block latepoint-btn-outline"
+                                            data-os-after-call="latepoint_init_added_process_action_form" data-os-pass-this="yes"
+                                            data-os-action="processes__new_action" data-os-before-after="before">
+                                            <i class="latepoint-icon latepoint-icon-plus"></i>
+                                            <span>Add Action</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="os-form-block-buttons">
+                                    <a href="/resource/deleteprocesses/{{$process->id}}" class="latepoint-btn latepoint-btn-danger pull-left os-remove-process"
+                                        data-os-prompt="Are you sure you want to delete this process?"
+                                        data-os-after-call="latepoint_process_action_removed" data-os-pass-this="yes"
+                                        data-os-action="processes__destroy" data-os-params="_wpnonce=90dc251364">Delete </a>
+                                    <a href="javascript:;" class="latepoint-btn latepoint-btn-secondary os-run-process"
+                                        data-route="processes__test_preview"><i
+                                            class="latepoint-icon latepoint-icon-play-circle"></i><span>Test this process</span></a>
+                                    <button type="submit" class="os-form-block-save-btn latepoint-btn latepoint-btn-primary"><span>Save
+                                            Process</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/resource/deleteprocesses/{{$process->id}}" data-os-prompt="Are you sure you want to delete this process?"
+                            data-os-after-call="latepoint_process_action_removed" data-os-pass-this="yes"
+                            data-os-action="processes__destroy" data-os-params="_wpnonce=90dc251364" class="os-remove-form-block"><i
+                                class="latepoint-icon latepoint-icon-cross"></i></a>
+                        {{-- <input type="hidden" name="process[id]" value="" class="os-form-block-id" id="process_id">
+                        <input type="hidden" id="_wpnonce" name="_wpnonce" value="c05095649a">
+                        <input type="hidden" name="_wp_http_referer" value="/demo_4217c15f9eb342a2/wp-admin/admin-ajax.php"> --}}
+                    </form>
+                </div>
+                @endforeach
+                
+
                 <div class="os-add-box" data-os-after-call="latepoint_init_process_conditions_form"
                     data-os-action="processes__new_form" data-os-output-target-do="append"
                     data-os-output-target=".os-processes-w">
@@ -69,182 +374,327 @@
         <script>
             function addPeCondition(obj) {
                 $(obj).parents('.pe-conditions').append(`
-            <div class="pe-condition" data-condition-id="pec_dEgOqa">
-                <button class="pe-remove-condition" type="button">
-                    <i class="latepoint-icon latepoint-icon-cross"></i></button>
-                    <div class="process-condition-properties-w">
-                        <div class="os-form-group os-form-select-group os-form-group-transparent">
-                            <select name="process[event][trigger_conditions][pec_dEgOqa][property]" class="process-condition-property-selector os-form-control" data-route="processes__available_operators_for_trigger_condition_property" id="process_event_trigger_conditions_pec_degoqa_property">
-                                <option value="booking__service_id" selected="">Service</option>
-                                <option value="booking__agent_id">Agent</option>
-                                <option value="booking__status">Status</option>
-                                <option value="booking__payment_status">Payment Status</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="process-condition-operators-w">
-                        <div class="os-form-group os-form-select-group os-form-group-transparent">
-                            <select name="process[event][trigger_conditions][pec_dEgOqa][operator]" class="process-condition-operator-selector os-form-control" data-route="processes__available_values_for_trigger_condition_property" id="process_event_trigger_conditions_pec_degoqa_operator"><option value="equal" selected="">is equal to</option><option value="not_equal">is not equal to</option></select></div></div><div class="process-condition-values-w" style=""><div class="os-form-group os-form-select-group os-form-group-transparent"><div class="lateselect-w"><select "="" id="process_event_trigger_conditions_pec_degoqa_value" class="os-late-select os-late-select-active" data-placeholder="Click to select..." multiple="" style="display: none;"><option value="1">Tooth Whitening</option><option value="2">Invisilign Braces</option><option value="3">Group Booking</option><option value="4">Porcelain Crown</option><option value="5">Root Canal Therapy</option><option value="6">Gum Decease</option></select><div class="ls-selected-items-w"><div class="ls-placeholder">Click to select...</div></div><div class="ls-all-items-w"><div class="ls-item " data-value="1">Tooth Whitening</div><div class="ls-item " data-value="2">Invisilign Braces</div><div class="ls-item " data-value="3">Group Booking</div><div class="ls-item " data-value="4">Porcelain Crown</div><div class="ls-item " data-value="5">Root Canal Therapy</div><div class="ls-item " data-value="6">Gum Decease</div></div></div><input type="hidden" name="process[event][trigger_conditions][pec_dEgOqa][value]" value=""></div></div><div data-os-action="processes__new_trigger_condition" data-os-pass-response="yes" data-os-pass-this="yes" data-os-before-after="none" data-os-params="event_type=booking_created" data-os-after-call="latepoint_add_process_condition" class=""><button type="button" class="btn btn-outline-primary" onclick=""><i class="latepoint-icon latepoint-icon-plus2"></i><span>AND</span></button></div></div>
-        `)
+                    <div class="pe-condition" data-condition-id="pec_dEgOqa">
+                        <button class="pe-remove-condition" type="button">
+                            <i class="latepoint-icon latepoint-icon-cross"></i></button>
+                            <div class="process-condition-properties-w">
+                                <div class="os-form-group os-form-select-group os-form-group-transparent">
+                                    <select name="process[event][trigger_conditions][pec_dEgOqa][property]" class="process-condition-property-selector os-form-control" data-route="processes__available_operators_for_trigger_condition_property" id="process_event_trigger_conditions_pec_degoqa_property">
+                                        <option value="booking__service_id" selected="">Service</option>
+                                        <option value="booking__agent_id">Agent</option>
+                                        <option value="booking__status">Status</option>
+                                        <option value="booking__payment_status">Payment Status</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="process-condition-operators-w">
+                                <div class="os-form-group os-form-select-group os-form-group-transparent">
+                                    <select name="process[event][trigger_conditions][pec_dEgOqa][operator]" class="process-condition-operator-selector os-form-control" data-route="processes__available_values_for_trigger_condition_property" id="process_event_trigger_conditions_pec_degoqa_operator"><option value="equal" selected="">is equal to</option><option value="not_equal">is not equal to</option></select></div></div><div class="process-condition-values-w" style=""><div class="os-form-group os-form-select-group os-form-group-transparent"><div class="lateselect-w"><select "="" id="process_event_trigger_conditions_pec_degoqa_value" class="os-late-select os-late-select-active" data-placeholder="Click to select..." multiple="" style="display: none;"><option value="1">Tooth Whitening</option><option value="2">Invisilign Braces</option><option value="3">Group Booking</option><option value="4">Porcelain Crown</option><option value="5">Root Canal Therapy</option><option value="6">Gum Decease</option></select><div class="ls-selected-items-w"><div class="ls-placeholder">Click to select...</div></div><div class="ls-all-items-w"><div class="ls-item " data-value="1">Tooth Whitening</div><div class="ls-item " data-value="2">Invisilign Braces</div><div class="ls-item " data-value="3">Group Booking</div><div class="ls-item " data-value="4">Porcelain Crown</div><div class="ls-item " data-value="5">Root Canal Therapy</div><div class="ls-item " data-value="6">Gum Decease</div></div></div><input type="hidden" name="process[event][trigger_conditions][pec_dEgOqa][value]" value=""></div></div><div data-os-action="processes__new_trigger_condition" data-os-pass-response="yes" data-os-pass-this="yes" data-os-before-after="none" data-os-params="event_type=booking_created" data-os-after-call="latepoint_add_process_condition" class=""><button type="button" class="btn btn-outline-primary" onclick=""><i class="latepoint-icon latepoint-icon-plus2"></i><span>AND</span></button></div></div>
+                `)
             }
 
             $('.os-add-box').click(function() {
                 $(this).before(`
                 <div class="os-processes-w os-form-blocks-w">
-        <form action="" data-os-action="processes__save" data-os-after-call="latepoint_process_updated"
-            class="os-process-form os-form-block os-form-block-type- status-active os-is-editing">
-
-            <div class="os-form-block-i">
-                <div class="os-form-block-header">
-                    <div class="os-form-block-drag"></div>
-                    <div class="os-form-block-name">New Process</div>
-                    <div class="os-form-block-type"></div>
-                    <div class="os-form-block-edit-btn"><i class="latepoint-icon latepoint-icon-edit-3"></i></div>
-                </div>
-                <div class="os-form-block-params os-form-w">
-                    <div class="sub-section-row">
-                        <div class="sub-section-label">
-                            <h3>Status</h3>
-                        </div>
-                        <div class="sub-section-content">
-                            <div class="os-form-group os-form-select-group os-form-group-transparent"><select
-                                    name="process[status]" id="process_status" class="os-form-control">
-                                    <option value="active" selected="">Active</option>
-                                    <option value="disabled">Disabled</option>
-                                </select></div>
-                        </div>
-                    </div>
-                    <div class="sub-section-row">
-                        <div class="sub-section-label">
-                            <h3>Name</h3>
-                        </div>
-                        <div class="sub-section-content">
-                            <div class="os-form-group os-form-textfield-group os-form-group-bordered no-label"><input
-                                    type="text" placeholder="Process Name" name="process[name]" value=""
-                                    theme="bordered" class="os-form-block-name-input os-form-control" id="process_name">
+                    <form action="{{route('settings-storeprocesses')}}" method="post" data-os-action="processes__save" data-os-after-call="latepoint_process_updated" class="os-process-form os-form-block os-form-block-type- status-active os-is-editing">
+                        @csrf
+                        <div class="os-form-block-i">
+                            <div class="os-form-block-header">
+                                <div class="os-form-block-drag"></div>
+                                <div class="os-form-block-name">New Process</div>
+                                <div class="os-form-block-type"></div>
+                                <div class="os-form-block-edit-btn"><i class="latepoint-icon latepoint-icon-edit-3"></i></div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="sub-section-row">
-                        <div class="sub-section-label">
-                            <h3>Event Type</h3>
-                        </div>
-                        <div class="sub-section-content">
-                            <div class="os-form-group os-form-select-group os-form-group-transparent"><select
-                                    name="process[event][type]" class="process-event-type-selector os-form-control"
-                                    data-route="processes__reload_event_trigger_conditions" id="process_event_type">
-                                    <option value="booking_created" selected="">Booking Created</option>
-                                    <option value="booking_updated">Booking Updated</option>
-                                    <option value="booking_start">Booking Started</option>
-                                    <option value="booking_end">Booking Ended</option>
-                                    <option value="customer_created">Customer Created</option>
-                                    <option value="transaction_created">Transaction Created</option>
-                                </select></div>
-                        </div>
-                    </div>
-                    <div class="process-event-condition-wrapper">
-                        <div class="sub-section-row">
-                            <div class="sub-section-label">
-                                <h3>Conditional</h3>
-                            </div>
-                            <div class="sub-section-content">
-                                <div class="os-form-group os-form-toggler-group  size-normal process_event_conditional">
-                                    <input type="hidden" name="process[event][conditional]" value="on"
-                                        id="process_event_conditional">
-                                    <div data-controlled-toggle-id="pe-conditions-for-pe_ZuOF5X"
-                                        class="os-toggler size-normal off" data-is-string-value="true"
-                                        data-for="process_event_conditional">
-                                        <div class="toggler-rail">
-                                            <div class="toggler-pill"></div>
-                                        </div>
+                            <div class="os-form-block-params os-form-w">
+                                <div class="sub-section-row">
+                                    <div class="sub-section-label">
+                                        <h3>Status</h3>
                                     </div>
-                                    <div class="os-toggler-label-w"><label>Trigger only when specific conditions are
-                                            met</label></div>
+                                    <div class="sub-section-content">
+                                        <div class="os-form-group os-form-select-group os-form-group-transparent"><select
+                                                name="process[status]" id="process_status" class="os-form-control">
+                                                <option value="active" selected="">Active</option>
+                                                <option value="disabled">Disabled</option>
+                                            </select></div>
+                                    </div>
                                 </div>
-                                <div class="pe-conditions" id="pe-conditions-for-pe_ZuOF5X" style="display: none;">
-                                    <div class="pe-conditions-heading">Trigger only if:</div>
-                                    <div class="pe-condition" data-condition-id="pec_ZJ8JA6"><button
-                                            class="pe-remove-condition"><i
-                                                class="latepoint-icon latepoint-icon-cross"></i></button>
-                                        <div class="process-condition-properties-w">
-                                            <div class="os-form-group os-form-select-group os-form-group-transparent">
-                                                <select name="process[event][trigger_conditions][pec_ZJ8JA6][property]"
-                                                    class="process-condition-property-selector os-form-control"
-                                                    data-route="processes__available_operators_for_trigger_condition_property"
-                                                    id="process_event_trigger_conditions_pec_zj8ja6_property">
-                                                    <option value="booking__service_id" selected="">Service</option>
-                                                    <option value="booking__agent_id">Agent</option>
-                                                    <option value="booking__status">Status</option>
-                                                    <option value="booking__payment_status">Payment Status</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="process-condition-operators-w">
-                                            <div class="os-form-group os-form-select-group os-form-group-transparent">
-                                                <select name="process[event][trigger_conditions][pec_ZJ8JA6][operator]"
-                                                    class="process-condition-operator-selector os-form-control"
-                                                    data-route="processes__available_values_for_trigger_condition_property"
-                                                    id="process_event_trigger_conditions_pec_zj8ja6_operator">
-                                                    <option value="equal" selected="">is equal to</option>
-                                                    <option value="not_equal">is not equal to</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="process-condition-values-w" style="">
-                                            <div class="os-form-group os-form-select-group os-form-group-transparent">
-                                                <div class="lateselect-w"><select "="" id="process_event_trigger_conditions_pec_zj8ja6_value" class="os-late-select os-late-select-active" data-placeholder="Click to select..." multiple="" style="display: none;"><option value="1">Tooth Whitening</option><option value="2">Invisilign Braces</option><option value="3">Group Booking</option><option value="4">Porcelain Crown</option><option value="5">Root Canal Therapy</option><option value="6">Gum Decease</option></select><div class="ls-selected-items-w"><div class="ls-placeholder">Click to select...</div></div><div class="ls-all-items-w"><div class="ls-item " data-value="1">Tooth Whitening</div><div class="ls-item " data-value="2">Invisilign Braces</div><div class="ls-item " data-value="3">Group Booking</div><div class="ls-item " data-value="4">Porcelain Crown</div><div class="ls-item " data-value="5">Root Canal Therapy</div><div class="ls-item " data-value="6">Gum Decease</div></div></div><input type="hidden" name="process[event][trigger_conditions][pec_ZJ8JA6][value]" value=""></div></div><div data-os-action="processes__new_trigger_condition" data-os-pass-response="yes" data-os-pass-this="yes" data-os-before-after="none" data-os-params="event_type=booking_created" data-os-after-call="latepoint_add_process_condition"><button type="button" onclick="addPeCondition(this)" class="btn btn-outline-primary"><i class="latepoint-icon latepoint-icon-plus2"></i><span>AND</span></button></div></div>
-                                            </div>
-                    </div>
-                </div>			</div>
-                    <div class="sub-section-row">
-                    <div class="sub-section-label">
-                    <h3>Time offset</h3>
-                    </div>
-                    <div class="sub-section-content">
-                    <div class="os-form-group os-form-toggler-group  size-normal process_event_has_time_offset"><input type="hidden" name="process[event][has_time_offset]" value="on" id="process_event_has_time_offset"><div data-controlled-toggle-id="pe-conditions-for-pe_C0UjnF" class="os-toggler size-normal off" data-is-string-value="true" data-for="process_event_has_time_offset"><div class="toggler-rail"><div class="toggler-pill"></div></div></div><div class="os-toggler-label-w"><label>Execute actions with a time offset</label></div></div>
-                    <div class="pe-conditions" id="pe-conditions-for-pe_C0UjnF" style="display: none;">
-                        <div class="time-offset-actions">
-                            <div class="time-offset-label">Actions will be executed:</div>
-                            <div class="os-form-group os-form-textfield-group os-form-group-bordered has-value no-label"><input type="number" placeholder="" name="process[event][time_offset][value]" value="1" theme="bordered" min="1" id="process_event_time_offset_value" class="os-form-control"></div>
-                            <div class="os-form-group os-form-select-group os-form-group-transparent"><select name="process[event][time_offset][unit]" id="process_event_time_offset_unit" class="os-form-control"><option value="minute">minutes</option><option value="hour">hours</option><option value="day" selected="">days</option></select></div>
-                            <div class="os-form-group os-form-select-group os-form-group-transparent"><select name="process[event][time_offset][before_after]" id="process_event_time_offset_before_after" class="os-form-control"><option value="before">before the event</option><option value="after" selected="">after the event</option></select></div>
+                                <div class="sub-section-row">
+                                    <div class="sub-section-label">
+                                        <h3>Name</h3>
                                     </div>
-                    </div>
-                    </div>
-                </div>      <div class="sub-section-row">
-                <div class="sub-section-label">
-                <h3>Actions</h3>
+                                    <div class="sub-section-content">
+                                        <div class="os-form-group os-form-textfield-group os-form-group-bordered no-label"><input
+                                                type="text" placeholder="Process Name" name="process[name]" value="" theme="bordered"
+                                                class="os-form-block-name-input os-form-control" id="process_name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sub-section-row">
+                                    <div class="sub-section-label">
+                                        <h3>Event Type</h3>
+                                    </div>
+                                    <div class="sub-section-content">
+                                        <div class="os-form-group os-form-select-group os-form-group-transparent"><select
+                                                name="process[event][type]" class="process-event-type-selector os-form-control"
+                                                data-route="processes__reload_event_trigger_conditions" id="process_event_type">
+                                                <option value="booking_created" selected="">Booking Created</option>
+                                                <option value="booking_updated">Booking Updated</option>
+                                                <option value="booking_start">Booking Started</option>
+                                                <option value="booking_end">Booking Ended</option>
+                                                <option value="customer_created">Customer Created</option>
+                                                <option value="transaction_created">Transaction Created</option>
+                                            </select></div>
+                                    </div>
+                                </div>
+                                <div class="process-event-condition-wrapper">
+                                    <div class="sub-section-row">
+                                        <div class="sub-section-label">
+                                            <h3>Conditional</h3>
+                                        </div>
+                                        <div class="sub-section-content">
+                                            <div class="os-form-group os-form-toggler-group  size-normal process_event_conditional">
+                                                <input type="hidden" name="process[event][conditional]" value="on"
+                                                    id="process_event_conditional">
+                                                <div data-controlled-toggle-id="pe-conditions-for-pe_ZuOF5X"
+                                                    class="os-toggler size-normal off" data-is-string-value="true"
+                                                    data-for="process_event_conditional">
+                                                    <div class="toggler-rail">
+                                                        <div class="toggler-pill"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="os-toggler-label-w"><label>Trigger only when specific conditions are
+                                                        met</label></div>
+                                            </div>
+                                            <div class="pe-conditions" id="pe-conditions-for-pe_ZuOF5X" style="display: none;">
+                                                <div class="pe-conditions-heading">Trigger only if:</div>
+                                                <div class="pe-condition" data-condition-id="pec_ZJ8JA6"><button
+                                                        class="pe-remove-condition"><i
+                                                            class="latepoint-icon latepoint-icon-cross"></i></button>
+                                                    <div class="process-condition-properties-w">
+                                                        <div class="os-form-group os-form-select-group os-form-group-transparent">
+                                                            <select name="process[event][trigger_conditions][pec_ZJ8JA6][property]"
+                                                                class="process-condition-property-selector os-form-control"
+                                                                data-route="processes__available_operators_for_trigger_condition_property"
+                                                                id="process_event_trigger_conditions_pec_zj8ja6_property">
+                                                                <option value="booking__service_id" selected="">Service</option>
+                                                                <option value="booking__agent_id">Agent</option>
+                                                                <option value="booking__status">Status</option>
+                                                                <option value="booking__payment_status">Payment Status</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="process-condition-operators-w">
+                                                        <div class="os-form-group os-form-select-group os-form-group-transparent">
+                                                            <select name="process[event][trigger_conditions][pec_ZJ8JA6][operator]"
+                                                                class="process-condition-operator-selector os-form-control"
+                                                                data-route="processes__available_values_for_trigger_condition_property"
+                                                                id="process_event_trigger_conditions_pec_zj8ja6_operator">
+                                                                <option value="equal" selected="">is equal to</option>
+                                                                <option value="not_equal">is not equal to</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="process-condition-values-w" style="">
+                                                        <div class="os-form-group os-form-select-group os-form-group-transparent">
+                                                            <div class="lateselect-w"><select "="" id="
+                                                                    process_event_trigger_conditions_pec_zj8ja6_value"
+                                                                    class="os-late-select os-late-select-active"
+                                                                    data-placeholder="Click to select..." multiple=""
+                                                                    style="display: none;">
+                                                                    <option value="1">Tooth Whitening</option>
+                                                                    <option value="2">Invisilign Braces</option>
+                                                                    <option value="3">Group Booking</option>
+                                                                    <option value="4">Porcelain Crown</option>
+                                                                    <option value="5">Root Canal Therapy</option>
+                                                                    <option value="6">Gum Decease</option>
+                                                                </select>
+                                                                <div class="ls-selected-items-w">
+                                                                    <div class="ls-placeholder">Click to select...</div>
+                                                                </div>
+                                                                <div class="ls-all-items-w">
+                                                                    <div class="ls-item " data-value="1">Tooth Whitening</div>
+                                                                    <div class="ls-item " data-value="2">Invisilign Braces</div>
+                                                                    <div class="ls-item " data-value="3">Group Booking</div>
+                                                                    <div class="ls-item " data-value="4">Porcelain Crown</div>
+                                                                    <div class="ls-item " data-value="5">Root Canal Therapy</div>
+                                                                    <div class="ls-item " data-value="6">Gum Decease</div>
+                                                                </div>
+                                                            </div><input type="hidden"
+                                                                name="process[event][trigger_conditions][pec_ZJ8JA6][value]" value="">
+                                                        </div>
+                                                    </div>
+                                                    <div data-os-action="processes__new_trigger_condition" data-os-pass-response="yes"
+                                                        data-os-pass-this="yes" data-os-before-after="none"
+                                                        data-os-params="event_type=booking_created"
+                                                        data-os-after-call="latepoint_add_process_condition"><button type="button"
+                                                            onclick="addPeCondition(this)" class="btn btn-outline-primary"><i
+                                                                class="latepoint-icon latepoint-icon-plus2"></i><span>AND</span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sub-section-row">
+                                    <div class="sub-section-label">
+                                        <h3>Time offset</h3>
+                                    </div>
+                                    <div class="sub-section-content">
+                                        <div class="os-form-group os-form-toggler-group  size-normal process_event_has_time_offset"><input
+                                                type="hidden" name="process[event][has_time_offset]" value="on"
+                                                id="process_event_has_time_offset">
+                                            <div data-controlled-toggle-id="pe-conditions-for-pe_C0UjnF" class="os-toggler size-normal off"
+                                                data-is-string-value="true" data-for="process_event_has_time_offset">
+                                                <div class="toggler-rail">
+                                                    <div class="toggler-pill"></div>
+                                                </div>
+                                            </div>
+                                            <div class="os-toggler-label-w"><label>Execute actions with a time offset</label></div>
+                                        </div>
+                                        <div class="pe-conditions" id="pe-conditions-for-pe_C0UjnF" style="display: none;">
+                                            <div class="time-offset-actions">
+                                                <div class="time-offset-label">Actions will be executed:</div>
+                                                <div
+                                                    class="os-form-group os-form-textfield-group os-form-group-bordered has-value no-label">
+                                                    <input type="number" placeholder="" name="process[event][time_offset][value]" value="1"
+                                                        theme="bordered" min="1" id="process_event_time_offset_value"
+                                                        class="os-form-control"></div>
+                                                <div class="os-form-group os-form-select-group os-form-group-transparent"><select
+                                                        name="process[event][time_offset][unit]" id="process_event_time_offset_unit"
+                                                        class="os-form-control">
+                                                        <option value="minute">minutes</option>
+                                                        <option value="hour">hours</option>
+                                                        <option value="day" selected="">days</option>
+                                                    </select></div>
+                                                <div class="os-form-group os-form-select-group os-form-group-transparent"><select
+                                                        name="process[event][time_offset][before_after]"
+                                                        id="process_event_time_offset_before_after" class="os-form-control">
+                                                        <option value="before">before the event</option>
+                                                        <option value="after" selected="">after the event</option>
+                                                    </select></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sub-section-row">
+                                    <div class="sub-section-label">
+                                        <h3>Actions</h3>
+                                    </div>
+                                    <div class="sub-section-content">
+                                        <div class="process-action-form pa-type-send_email pa-status-active is-editing" data-id="pa_NF3Iic">
+                                            <div class="process-action-heading">
+                                                <div class="process-action-status"></div>
+                                                <div class="process-action-icon"></div>
+                                                <div class="process-action-name">Send Email</div>
+
+                                                <div class="process-action-chevron"><i
+                                                        class="latepoint-icon latepoint-icon-chevron-down"></i></div>
+                                                <a href="javascript:;" class="process-action-remove os-remove-process-action"
+                                                    data-os-prompt="Are you sure you want to delete this action?"><i
+                                                        class="latepoint-icon latepoint-icon-cross"></i></a>
+                                            </div>
+                                            <div class="process-action-content">
+                                                <div class="os-row">
+                                                    <div class="os-col-10">
+                                                        <div class="os-form-group os-form-select-group os-form-group-transparent"><label
+                                                                for="process_actions_pa_nf3iic_type">Action Type</label><select
+                                                                name="process[actions][pa_NF3Iic][type]"
+                                                                class="process-action-type os-form-control" data-action-id="pa_NF3Iic"
+                                                                data-route="processes__load_action_settings"
+                                                                id="process_actions_pa_nf3iic_type">
+                                                                <option value="send_email" selected="">Send Email</option>
+                                                                <option value="send_sms">Send SMS</option>
+                                                                <option value="trigger_webhook">HTTP Request</option>
+                                                            </select></div>
+                                                    </div>
+                                                    <div class="os-col-2">
+                                                        <div class="os-form-group os-form-select-group os-form-group-transparent"><label
+                                                                for="process_actions_pa_nf3iic_status">Status</label><select
+                                                                name="process[actions][pa_NF3Iic][status]"
+                                                                id="process_actions_pa_nf3iic_status" class="os-form-control">
+                                                                <option value="active" selected="">Active</option>
+                                                                <option value="disabled">Disabled</option>
+                                                            </select></div>
+                                                    </div>
+                                                </div>
+                                                <div class="process-action-settings">
+                                                    <div class="process-action-controls-wrapper"><a href="javascript:;"
+                                                            data-os-after-call="latepoint_init_template_library"
+                                                            data-os-params="action_id=pa_NF3Iic&amp;action_type=send_email"
+                                                            data-os-lightbox-classes="width-1000"
+                                                            data-os-action="notifications__templates_index" data-os-output-target="lightbox"
+                                                            class="latepoint-btn latepoint-btn-outline latepoint-btn-sm"><i
+                                                                class="latepoint-icon latepoint-icon-book"></i><span>Load from
+                                                                template</span></a><a href="javascript:;"
+                                                            class="latepoint-btn latepoint-btn-outline latepoint-btn-sm open-template-variables-panel"><i
+                                                                class="latepoint-icon latepoint-icon-zap"></i><span>Show smart
+                                                                variables</span></a></div>
+                                                    <div class="os-row">
+                                                        <div class="os-col-6">
+                                                            <div class="os-form-group os-form-textfield-group os-form-group-simple"><label
+                                                                    for="process_actions_pa_nf3iic_settings_to_email">To Email</label><input
+                                                                    type="text" placeholder="To email address"
+                                                                    name="process[actions][pa_NF3Iic][settings][to_email]" value=""
+                                                                    id="process_actions_pa_nf3iic_settings_to_email"
+                                                                    class="os-form-control"></div>
+                                                        </div>
+                                                        <div class="os-col-6">
+                                                            <div class="os-form-group os-form-textfield-group os-form-group-simple"><label
+                                                                    for="process_actions_pa_nf3iic_settings_subject">Email
+                                                                    Subject</label><input type="text" placeholder="Email Subject"
+                                                                    name="process[actions][pa_NF3Iic][settings][subject]" value=""
+                                                                    id="process_actions_pa_nf3iic_settings_subject" class="os-form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div id="full-editor1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="process-buttons">
+                                                    <a href="javascript:;"
+                                                        class="latepoint-btn latepoint-btn-danger pull-left os-remove-process-action"
+                                                        data-os-prompt="Are you sure you want to delete this action?">Delete</a>
+                                                    <a href="javascript:;" data-route="processes__action_test_preview"
+                                                        class="latepoint-btn latepoint-btn-secondary os-run-process-action"><i
+                                                            class="latepoint-icon latepoint-icon-play-circle"></i><span>Test this
+                                                            action</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="javascript:;" id="new_action"
+                                            class="latepoint-btn latepoint-btn-block latepoint-btn-outline"
+                                            data-os-after-call="latepoint_init_added_process_action_form" data-os-pass-this="yes"
+                                            data-os-action="processes__new_action" data-os-before-after="before">
+                                            <i class="latepoint-icon latepoint-icon-plus"></i>
+                                            <span>Add Action</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="os-form-block-buttons">
+                                    <a href="javascript:;" class="latepoint-btn latepoint-btn-danger pull-left os-remove-process"
+                                        data-os-prompt="Are you sure you want to delete this process?"
+                                        data-os-after-call="latepoint_process_action_removed" data-os-pass-this="yes"
+                                        data-os-action="processes__destroy" data-os-params="_wpnonce=90dc251364">Delete </a>
+                                    <a href="javascript:;" class="latepoint-btn latepoint-btn-secondary os-run-process"
+                                        data-route="processes__test_preview"><i
+                                            class="latepoint-icon latepoint-icon-play-circle"></i><span>Test this process</span></a>
+                                    <button type="submit" class="os-form-block-save-btn latepoint-btn latepoint-btn-primary"><span>Save
+                                            Process</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="javascript:;" data-os-prompt="Are you sure you want to delete this process?"
+                            data-os-after-call="latepoint_process_action_removed" data-os-pass-this="yes"
+                            data-os-action="processes__destroy" data-os-params="_wpnonce=90dc251364" class="os-remove-form-block"><i
+                                class="latepoint-icon latepoint-icon-cross"></i></a>
+                        <input type="hidden" name="process[id]" value="" class="os-form-block-id" id="process_id">
+                        <input type="hidden" id="_wpnonce" name="_wpnonce" value="c05095649a">
+                        <input type="hidden" name="_wp_http_referer" value="/demo_4217c15f9eb342a2/wp-admin/admin-ajax.php">
+                    </form>
                 </div>
-                <div class="sub-section-content">
-                                        <div class="process-action-form pa-type-send_email pa-status-active is-editing" data-id="pa_NF3Iic"><div class="process-action-heading">
-                                        <div class="process-action-status"></div>
-                                        <div class="process-action-icon"></div>
-                                        <div class="process-action-name">Send Email</div>
-                                        
-                                        <div class="process-action-chevron"><i class="latepoint-icon latepoint-icon-chevron-down"></i></div>
-                                        <a href="javascript:;" class="process-action-remove os-remove-process-action" data-os-prompt="Are you sure you want to delete this action?"><i class="latepoint-icon latepoint-icon-cross"></i></a>
-                                    </div><div class="process-action-content"><div class="os-row"><div class="os-col-10"><div class="os-form-group os-form-select-group os-form-group-transparent"><label for="process_actions_pa_nf3iic_type">Action Type</label><select name="process[actions][pa_NF3Iic][type]" class="process-action-type os-form-control" data-action-id="pa_NF3Iic" data-route="processes__load_action_settings" id="process_actions_pa_nf3iic_type"><option value="send_email" selected="">Send Email</option><option value="send_sms">Send SMS</option><option value="trigger_webhook">HTTP Request</option></select></div></div><div class="os-col-2"><div class="os-form-group os-form-select-group os-form-group-transparent"><label for="process_actions_pa_nf3iic_status">Status</label><select name="process[actions][pa_NF3Iic][status]" id="process_actions_pa_nf3iic_status" class="os-form-control"><option value="active" selected="">Active</option><option value="disabled">Disabled</option></select></div></div></div><div class="process-action-settings"><div class="process-action-controls-wrapper"><a href="javascript:;" data-os-after-call="latepoint_init_template_library" data-os-params="action_id=pa_NF3Iic&amp;action_type=send_email" data-os-lightbox-classes="width-1000" data-os-action="notifications__templates_index" data-os-output-target="lightbox" class="latepoint-btn latepoint-btn-outline latepoint-btn-sm"><i class="latepoint-icon latepoint-icon-book"></i><span>Load from template</span></a><a href="javascript:;" class="latepoint-btn latepoint-btn-outline latepoint-btn-sm open-template-variables-panel"><i class="latepoint-icon latepoint-icon-zap"></i><span>Show smart variables</span></a></div><div class="os-row"><div class="os-col-6"><div class="os-form-group os-form-textfield-group os-form-group-simple"><label for="process_actions_pa_nf3iic_settings_to_email">To Email</label><input type="text" placeholder="To email address" name="process[actions][pa_NF3Iic][settings][to_email]" value="" id="process_actions_pa_nf3iic_settings_to_email" class="os-form-control"></div></div><div class="os-col-6"><div class="os-form-group os-form-textfield-group os-form-group-simple"><label for="process_actions_pa_nf3iic_settings_subject">Email Subject</label><input type="text" placeholder="Email Subject" name="process[actions][pa_NF3Iic][settings][subject]" value="" id="process_actions_pa_nf3iic_settings_subject" class="os-form-control"></div></div></div>
-                                    <div><div id="full-editor1">
-                                            </div></div></div><div class="process-buttons">
-                                        <a href="javascript:;" class="latepoint-btn latepoint-btn-danger pull-left os-remove-process-action" data-os-prompt="Are you sure you want to delete this action?">Delete</a>
-                                        <a href="javascript:;" data-route="processes__action_test_preview" class="latepoint-btn latepoint-btn-secondary os-run-process-action"><i class="latepoint-icon latepoint-icon-play-circle"></i><span>Test this action</span></a>
-                                    </div></div></div>
-                                    <a href="javascript:;" id="new_action" class="latepoint-btn latepoint-btn-block latepoint-btn-outline" data-os-after-call="latepoint_init_added_process_action_form" data-os-pass-this="yes" data-os-action="processes__new_action" data-os-before-after="before">
-                        <i class="latepoint-icon latepoint-icon-plus"></i>
-                        <span>Add Action</span>
-                    </a>
-                </div>
-            </div>
-            <div class="os-form-block-buttons">
-                        <a href="javascript:;" class="latepoint-btn latepoint-btn-danger pull-left os-remove-process" data-os-prompt="Are you sure you want to delete this process?" data-os-after-call="latepoint_process_action_removed" data-os-pass-this="yes" data-os-action="processes__destroy" data-os-params="_wpnonce=90dc251364">Delete				</a>
-                <a href="javascript:;" class="latepoint-btn latepoint-btn-secondary os-run-process" data-route="processes__test_preview"><i class="latepoint-icon latepoint-icon-play-circle"></i><span>Test this process</span></a>
-                    <button type="submit" class="os-form-block-save-btn latepoint-btn latepoint-btn-primary"><span>Save Process</span></button>
-                </div>
-                </div>
-            </div>
-            <a href="javascript:;" data-os-prompt="Are you sure you want to delete this process?" data-os-after-call="latepoint_process_action_removed" data-os-pass-this="yes" data-os-action="processes__destroy" data-os-params="_wpnonce=90dc251364" class="os-remove-form-block"><i class="latepoint-icon latepoint-icon-cross"></i></a>
-            <input type="hidden" name="process[id]" value="" class="os-form-block-id" id="process_id">	<input type="hidden" id="_wpnonce" name="_wpnonce" value="c05095649a"><input type="hidden" name="_wp_http_referer" value="/demo_4217c15f9eb342a2/wp-admin/admin-ajax.php"></form></div>
-        `)
+                `)
             })
 
             $('body').on('click', '.os-form-block-header', function() {

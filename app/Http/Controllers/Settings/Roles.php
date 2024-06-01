@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Setting;
 
 class Roles extends Controller
 {
@@ -12,6 +13,23 @@ class Roles extends Controller
      */
     public function index()
     {
+        $settings = Setting::all();
+        $latepoints = Setting::query()
+        ->where('name', 'LIKE', '%latepoint_agent%')
+        ->get();
+        $otherroles = Setting::query()
+        ->where('name', 'LIKE', '%role_custom%')
+        ->get();
+        $count = $latepoints->count();
+        if($count>0) {
+            $latepoint = $latepoints[0];
+            $check = 1;
+            return view('content.settings.roles', compact('latepoint', 'check', 'otherroles'));
+        } else {
+            $check = 0;
+            return view('content.settings.roles', compact('check', 'otherroles'));
+
+        }
         return view('content.settings.roles');
     }
 
@@ -28,7 +46,16 @@ class Roles extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $settings = Setting::all();
+        $count = $settings->count();
+        $finalId = $settings[$count-1]->id;
+        $role= new Setting();
+        $role->name = $request->role['wp_role'].$finalId;
+        $role->value = serialize($request->role['capabilities']);
+        // dd($tax->value);
+        $role->save();
+        
+        return redirect('/settings/roles')->with('success', 'Tax created successfully.');
     }
 
     /**
@@ -52,7 +79,12 @@ class Roles extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $role = Setting::findOrFail($id);
+        $role->value = serialize($request->role['capabilities']);
+        // dd($tax->value);
+        $role->save();
+
+        return redirect('/settings/roles')->with('success', 'Tax created successfully.');
     }
 
     /**

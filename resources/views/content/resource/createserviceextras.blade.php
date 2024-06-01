@@ -51,6 +51,7 @@ $configData = Helper::appClasses();
 
 <div class="row">
     <form action="{{route('resource-storeserviceextras')}}" method="post" class="add-serviceExtra">
+        @csrf
         <div class="col-lg-12 col-xxl-12 mb-4 order-3 order-xxl-1">
             <div class="card-header mb-0">
                 <h4 class="m-0 me-2">Create New Service Extra</h4>
@@ -73,7 +74,7 @@ $configData = Helper::appClasses();
                                     </div>
                                     <div class="col-lg-4 px-3 mb-3">
                                         <label for="selectpickerBasic" class="form-label">Charge Amount</label>
-                                        <input type="text" name="charge_amount" class="form-control" id="defaultFormControlInput" placeholder="$0.00" value="$0.00" aria-describedby="defaultFormControlHelp" />
+                                        <input type="text" name="charge_amount" class="form-control" id="defaultFormControlInput" placeholder="0.00" value="" aria-describedby="defaultFormControlHelp" />
                                     </div>
                                     <div class="col-lg-4 px-3 mb-3">
                                         <label for="selectpickerBasic" class="form-label">Maximum Quantity</label>
@@ -151,7 +152,7 @@ $configData = Helper::appClasses();
                             <div class="col-md-12 mb-md-0 mb-2">
                                 <div class="form-check custom-option custom-option-basic">
                                     <label class="form-check-label custom-option-content" for="service_extra_1">
-                                        <input class="form-check-input" type="checkbox" value="" id="service_extra_1" checked />
+                                        <input class="form-check-input" name="service_extra[teeth_whitening]" type="checkbox"  id="service_extra_1" checked />
                                         <span class="custom-option-header">
                                             <img src="http://latepoint-demo.com/demo_4217c15f9eb342a2/wp-content/uploads/sites/25848/2018/11/service1-150x150.png" class="w-px-30 border-50" />
                                             <span class="h6 mb-0">Teeth Whitening</span>
@@ -162,7 +163,7 @@ $configData = Helper::appClasses();
                             <div class="col-md-12">
                                 <div class="form-check custom-option custom-option-basic">
                                     <label class="form-check-label custom-option-content" for="service_extra_2">
-                                        <input class="form-check-input" type="checkbox" value="" id="service_extra_2" checked />
+                                        <input class="form-check-input" name="service_extra[invisilign_braces]" type="checkbox"  id="service_extra_2" checked />
                                         <span class="custom-option-header">
                                             <img src="http://latepoint-demo.com/demo_4217c15f9eb342a2/wp-content/uploads/sites/25848/2018/11/service3-150x150.png" class="w-px-30 border-50" />
                                             <span class="h6 mb-0">Invisilign Braces</span>
@@ -173,7 +174,7 @@ $configData = Helper::appClasses();
                             <div class="col-md-12 mb-md-0 mb-2">
                                 <div class="form-check custom-option custom-option-basic">
                                     <label class="form-check-label custom-option-content" for="service_extra_3">
-                                        <input class="form-check-input" type="checkbox" value="" id="service_extra_3" checked />
+                                        <input class="form-check-input" name="service_extra[group_booking]" type="checkbox"  id="service_extra_3" checked />
                                         <span class="custom-option-header">
                                             <img src="http://latepoint-demo.com/demo_4217c15f9eb342a2/wp-content/uploads/sites/25848/2018/11/service4-150x150.png" class="w-px-30 border-50" />
                                             <span class="h6 mb-0">Group Booking</span>
@@ -184,7 +185,7 @@ $configData = Helper::appClasses();
                             <div class="col-md-12 mb-md-0 mb-2">
                                 <div class="form-check custom-option custom-option-basic">
                                     <label class="form-check-label custom-option-content" for="service_extra_4">
-                                        <input class="form-check-input" type="checkbox" value="" id="service_extra_4" checked />
+                                        <input class="form-check-input" name="service_extra[porcelain_crown]" type="checkbox"  id="service_extra_4" checked />
                                         <span class="custom-option-header">
                                             <img src="http://latepoint-demo.com/demo_4217c15f9eb342a2/wp-content/uploads/sites/25848/2018/11/service2-150x150.png" class="w-px-30 border-50" />
                                             <span class="h6 mb-0">Porcelain Crown</span>
@@ -195,7 +196,7 @@ $configData = Helper::appClasses();
                             <div class="col-md-12 mb-md-0 mb-2">
                                 <div class="form-check custom-option custom-option-basic">
                                     <label class="form-check-label custom-option-content" for="service_extra_5">
-                                        <input class="form-check-input" type="checkbox" value="" id="service_extra_5" checked />
+                                        <input class="form-check-input" name="service_extra[root_canal_therapy]" type="checkbox"  id="service_extra_5" checked />
                                         <span class="custom-option-header">
                                             <img src="http://latepoint-demo.com/demo_4217c15f9eb342a2/wp-content/uploads/sites/25848/2018/11/service3-150x150.png" class="w-px-30 border-50" />
                                             <span class="h6 mb-0">Root Canal Therapy</span>
@@ -218,6 +219,7 @@ $configData = Helper::appClasses();
 
 <script type="text/javascript" src="{{asset('/assets/jquery.js')}}"></script>
 <script type="text/javascript">
+    const multiplied_by_attendies ={};
     $(document).ready(function() {
         $('.custom-schedule-wrapper').hide();
 
@@ -260,6 +262,12 @@ $configData = Helper::appClasses();
         const status = $('select[name="status"]').val();
         const short_description = $('textarea[name="short_description"]').val();
         const selection_image_id = $('.dz-thumbnail>img').attr('src');
+         multiplied_by_attendies['teeth_whitening'] = $('input[name="service_extra[teeth_whitening]"]').prop('checked');
+         multiplied_by_attendies['invisilign_braces'] = $('input[name="service_extra[invisilign_braces]"]').prop('checked');
+         multiplied_by_attendies['group_booking'] = $('input[name="service_extra[group_booking]"]').prop('checked');
+         multiplied_by_attendies['porcelain_crown'] = $('input[name="service_extra[porcelain_crown]"]').prop('checked');
+         multiplied_by_attendies['root_canal_therapy'] = $('input[name="service_extra[root_canal_therapy]"]').prop('checked');
+
         
 
         $.ajax({
@@ -275,7 +283,8 @@ $configData = Helper::appClasses();
                 max_quantity: max_quantity,
                 status: status,
                 short_description: short_description,
-                selection_image_id: selection_image_id
+                selection_image_id: selection_image_id,
+                multiplied_by_attendies: JSON.stringify(multiplied_by_attendies)
             },
             success: function() {
                 console.log('success');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Settings\Integrations;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Setting;
 
 class Calendars extends Controller
 {
@@ -12,7 +13,20 @@ class Calendars extends Controller
      */
     public function index()
     {
-        return view('content.settings.integrations.calendars');
+        $settings = Setting::all();
+        $results = Setting::query()
+        ->where('name', 'LIKE', '%settingscalendar%')
+        ->get();
+        $count = $results->count();
+        if($count>0) {
+            $result = $results[0];
+            $check = 1;
+            return view('content.settings.integrations.calendars', compact('result', 'check'));
+        } else {
+            $check = 0;
+            return view('content.settings.integrations.calendars', compact('check'));
+
+        }        
     }
 
     /**
@@ -28,7 +42,16 @@ class Calendars extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $settings = Setting::all();
+        $count = $settings->count();
+        $finalId = $settings[$count-1]->id;
+        $calendar= new Setting();
+        $calendar->name = "settingscalendar".$finalId;
+        $calendar->value = serialize($request->settings);
+        // dd($tax->value);
+        $calendar->save();
+        
+        return redirect('/settings/integrations-calendars')->with('success', 'Calendar created successfully.');
     }
 
     /**
@@ -52,7 +75,12 @@ class Calendars extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $calendar= Setting::findOrFail($id);
+        $calendar->value = serialize($request->settings);
+        // dd($tax->value);
+        $calendar->save();
+        
+        return redirect('/settings/integrations-calendars')->with('success', 'Calendar created successfully.');
     }
 
     /**

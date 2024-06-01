@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('maximum_quantity')->nullable();
             $table->longText('selection_image_id')->nullable();
             $table->longText('description_image_id')->nullable();
-            $table->string('multiplied_by_attendies', 10)->nullable();
+            $table->longText('multiplied_by_attendies')->nullable();
             $table->string('status', 20);
             $table->timestamps();
         });
