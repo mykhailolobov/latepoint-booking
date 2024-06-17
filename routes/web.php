@@ -4,43 +4,42 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 
 use App\Http\Controllers\Language\LanguageController;
-use App\Http\Controllers\Apps\Chat;
-use App\Http\Controllers\Apps\Email;
-use App\Http\Controllers\Settings\Profile;
 
-use App\Http\Controllers\Pages\Dashboard;
-use App\Http\Controllers\Pages\Calendar;
-use App\Http\Controllers\Pages\Appointments;
-use App\Http\Controllers\Pages\Payments;
-use App\Http\Controllers\Pages\Customers;
+use App\Http\Controllers\Admin\Apps\Chat;
+use App\Http\Controllers\Admin\Apps\Email;
 
-use App\Http\Controllers\Resource\Agents;
-use App\Http\Controllers\Resource\Coupons;
-use App\Http\Controllers\Resource\LocationCategories;
-use App\Http\Controllers\Resource\Locations;
-use App\Http\Controllers\Resource\Services;
-use App\Http\Controllers\Resource\Categories;
-use App\Http\Controllers\Resource\Serviceextras;
+use App\Http\Controllers\Admin\Pages\Dashboard;
+use App\Http\Controllers\Admin\Pages\Calendar;
+use App\Http\Controllers\Admin\Pages\Appointments;
+use App\Http\Controllers\Admin\Pages\Payments;
+use App\Http\Controllers\Admin\Pages\Customers;
 
-use App\Http\Controllers\Settings\AddOns;
-use App\Http\Controllers\Settings\General;
-use App\Http\Controllers\Settings\Notifications;
-use App\Http\Controllers\Settings\Payments as PaymentSetting;
-use App\Http\Controllers\Settings\Roles;
-use App\Http\Controllers\Settings\Schedule;
-use App\Http\Controllers\Settings\Steps;
-use App\Http\Controllers\Settings\System;
-use App\Http\Controllers\Settings\Tax;
-use App\Http\Controllers\Settings\Integrations\Calendars as CalendarsIntegration;
-use App\Http\Controllers\Settings\Integrations\Marketing;
-use App\Http\Controllers\Settings\Integrations\Meetings;
-use App\Http\Controllers\Settings\Processes\ActivityLog;
-use App\Http\Controllers\Settings\Processes\Processes;
-use App\Http\Controllers\Settings\Processes\ScheduledJobs;
+use App\Http\Controllers\Admin\Resource\Agents;
+use App\Http\Controllers\Admin\Resource\Coupons;
+use App\Http\Controllers\Admin\Resource\LocationCategories;
+use App\Http\Controllers\Admin\Resource\Locations;
+use App\Http\Controllers\Admin\Resource\Services;
+use App\Http\Controllers\Admin\Resource\Categories;
+use App\Http\Controllers\Admin\Resource\Serviceextras;
 
-use App\Http\Controllers\Settings\FormFields;
-// Test Controller
-use App\Http\Controllers\TestController;
+use App\Http\Controllers\Admin\Settings\Profile;
+use App\Http\Controllers\Admin\Settings\AddOns;
+use App\Http\Controllers\Admin\Settings\General;
+use App\Http\Controllers\Admin\Settings\Notifications;
+use App\Http\Controllers\Admin\Settings\Payments as PaymentSetting;
+use App\Http\Controllers\Admin\Settings\Roles;
+use App\Http\Controllers\Admin\Settings\Schedule;
+use App\Http\Controllers\Admin\Settings\Steps;
+use App\Http\Controllers\Admin\Settings\System;
+use App\Http\Controllers\Admin\Settings\Tax;
+use App\Http\Controllers\Admin\Settings\Integrations\Calendars as CalendarsIntegration;
+use App\Http\Controllers\Admin\Settings\Integrations\Marketing;
+use App\Http\Controllers\Admin\Settings\Integrations\Meetings;
+use App\Http\Controllers\Admin\Settings\Processes\ActivityLog;
+use App\Http\Controllers\Admin\Settings\Processes\Processes;
+use App\Http\Controllers\Admin\Settings\Processes\ScheduledJobs;
+use App\Http\Controllers\Admin\Settings\FormFields;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -53,9 +52,6 @@ use App\Http\Controllers\TestController;
 |
 */
 
-
-Route::get('emails/verify', [TestController::class, 'verify']);
-Route::get('emails/forgot', [TestController::class, 'forgot']);
 Route::get('/', function () {
     return redirect()->route('login');
 });
@@ -64,7 +60,7 @@ Route::get('/', function () {
 Route::get('lang/{locale}', [LanguageController::class, 'swap']);
 
 Route::middleware('auth')->group(function () {
-    
+
     Route::get('/app/chat', [Chat::class, 'index'])->name('app-chat');
     Route::get('/app/email', [Email::class, 'index'])->name('app-email');
     Route::get('/user/profile', [Profile::class, 'index'])->name('user-profile');
@@ -124,7 +120,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/resource/editagents/{id}', [Agents::class, 'edit'])->name('resource-editagents');
     Route::post('/resource/storeagent', [Agents::class, 'store'])->name('resource-storeagent');
     Route::post('/resource/updateagent', [Agents::class, 'update'])->name('resource-updateagent');
-    
+
 
     // Resources Section->Coupons part
     Route::get('/resource/coupons', [Coupons::class, 'index'])->name('resource-coupons');
@@ -147,12 +143,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/resource/locationcategories', [LocationCategories::class, 'index'])->name('resource-locationcategories');
     Route::post('/resource/storelocationcategories', [LocationCategories::class, 'store'])->name('resource-storelocationcategories');
 
-  
+
     // Settings Section -> Settings
     Route::get('/settings/general', [General::class, 'index'])->name('settings-general');
     Route::post('/settings/storegeneral', [General::class, 'store'])->name('settings-storegeneral');
     Route::post('/settings/updategeneral', [General::class, 'update'])->name('settings-updategeneral');
-    
+
     Route::get('/settings/tax', [Tax::class, 'index'])->name('settings-tax');
     Route::post('/settings/storetax', [Tax::class, 'store'])->name('settings-storetax');
     Route::post('/settings/updatetax', [Tax::class, 'update'])->name('settings-updatetax');
@@ -205,11 +201,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/settings/store-schedule', [Schedule::class, 'store'])->name('settings-storeschedule');
 
 
-   
 
 
 
-    
+
+
     Route::get('/settings/integrations-marketing', [Marketing::class, 'index'])->name('settings-integrations-marketing');
     Route::get('/settings/add-ons', [AddOns::class, 'index'])->name('settings-add-ons');
     Route::get('/settings/system', [System::class, 'index'])->name('settings-system');
