@@ -53,7 +53,7 @@
                             <div class="os-togglable-item-w">
                                 <div class="os-togglable-item-head">
                                     <div class="os-toggler-w">
-                                        <input type="hidden" name="settings[enable_google_calendar]" value="off"
+                                        <input type="hidden" name="settings[enable_google_calendar]" value=""
                                             id="settings_enable_google_calendar">
                                         <div data-controlled-toggle-id="toggleCalendarSettings_google_calendar"
                                             class="os-toggler size-large off" data-is-string-value="true"
@@ -164,7 +164,7 @@
                             <div class="os-togglable-item-w">
                                 <div class="os-togglable-item-head">
                                     <div class="os-toggler-w">
-                                        <input type="hidden" name="settings[enable_google_calendar]" value="{{htmlspecialchars($value['enable_google_calendar']) }}"
+                                        <input type="hidden" name="settings[enable_google_calendar]" value="<?php echo (!empty($value['enable_google_calendar']) ? $value['enable_google_calendar'] : 'off'); ?>"
                                             id="settings_enable_google_calendar">
                                         <div data-controlled-toggle-id="toggleCalendarSettings_google_calendar"
                                             class="os-toggler size-large {{htmlspecialchars($value['enable_google_calendar']) }}" data-is-string-value="true"
@@ -176,7 +176,7 @@
                                     </div>
                                     <div class="os-togglable-item-name">Google Calendar</div>
                                 </div>
-                                <div class="os-togglable-item-body" style="display: none;"
+                                <div class="os-togglable-item-body" style="<?php echo (!empty($value['enable_google_calendar']) && $value['enable_google_calendar'] =="on"? '' : 'display:none'); ?>"
                                     id="toggleCalendarSettings_google_calendar">
                                     <div class="sub-section-row">
                                         <div class="sub-section-label">
@@ -243,7 +243,8 @@
                                                                 <div class="toggler-pill"></div>
                                                             </div>
                                                         </div>
-                                                        <div class="os-toggler-label-w"><label>Hide titles of imported
+                                                        <div class="os-toggler-label-w">
+                                                            <label>Hide titles of imported
                                                                 events</label><span>For privacy reasons hides titles of
                                                                 events imported from Google Calendar</span></div>
                                                     </div>
@@ -269,25 +270,33 @@
     <script>
         $('.os-form-toggler-group').click(function() {
             var obj = $(this).children('.os-toggler');
+            var val = $(this).children('input');     
             if (obj.hasClass('on')) {
                 obj.removeClass('on');
                 obj.addClass('off');
+                val.val("off");
+
             } else {
                 obj.removeClass('off');
                 obj.addClass('on');
+                val.val("on");
+
             }
         });
 
         $('.os-toggler-w').click(function() {
             var obj = $(this).children('.os-toggler');
+            var val = $(this).children('input');     
             if (obj.hasClass('on')) {
                 obj.removeClass('on');
                 obj.addClass('off');
                 obj.parents('.os-togglable-item-w').children('.os-togglable-item-body').hide();
+                val.val("off");
             } else {
                 obj.removeClass('off');
                 obj.addClass('on');
                 obj.parents('.os-togglable-item-w').children('.os-togglable-item-body').show();
+                val.val("on");
             }
         });
     </script>

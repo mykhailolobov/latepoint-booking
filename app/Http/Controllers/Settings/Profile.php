@@ -56,7 +56,7 @@ class Profile extends Controller
         $user = Auth::user();
         $user_id = $user->id;
         $currentUser = User::findOrFail($user_id);
-        
+
 
         return view('content.settings.editprofile', compact('currentUser'));
     }
@@ -92,7 +92,7 @@ class Profile extends Controller
             $user->save();
         } else {
             $user->save();
-        }        
+        }
     }
 
     /**

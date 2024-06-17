@@ -50,7 +50,7 @@ class Locations extends Controller
         $activity->location_id = $location->id;
         $activity->code = "location_created";
         $activity->description = json_encode([
-            'location_data' =>[
+            'location_data' => [
                 'name' => $validatedData['name'],
                 'full_address' => $validatedData['full_address'],
                 'status' => $validatedData['status'],
@@ -84,7 +84,7 @@ class Locations extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request)
-    {   
+    {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255', // Adjust length if needed
             'full_address' => 'nullable|string', // Allow optional address with basic validation
@@ -103,7 +103,7 @@ class Locations extends Controller
         $activity->location_id = $location->id;
         $activity->code = "location_updated";
         $activity->description = json_encode([
-            'location_data' =>[
+            'location_data' => [
                 'name' => $validatedData['name'],
                 'full_address' => $validatedData['full_address'],
                 'status' => $validatedData['status'],

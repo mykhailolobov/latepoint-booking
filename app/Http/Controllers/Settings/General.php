@@ -14,10 +14,10 @@ class General extends Controller
     public function index()
     {
         $checkVal = Setting::query()
-        ->where('name','LIKE',"%settingsgeneral%")
-        ->get();
+            ->where('name', 'LIKE', "%settingsgeneral%")
+            ->get();
         $check = $checkVal->count();
-        if($check==0) {
+        if ($check == 0) {
             return view('content.settings.general', compact('check'));
         } else {
             $general = $checkVal[0];
@@ -38,25 +38,25 @@ class General extends Controller
     public function store(Request $request)
     {
         $checkVal = Setting::query()
-        ->where('name','LIKE',"%settingsgeneral%")
-        ->get();
+            ->where('name', 'LIKE', "%settingsgeneral%")
+            ->get();
         $check = $checkVal->count();
-        if($check == 0) {
+        if ($check == 0) {
             $settings = Setting::all();
             $count = $settings->count();
-            if($count>0) {
-                $finalId = $settings[$count-1]->id;
+            if ($count > 0) {
+                $finalId = $settings[$count - 1]->id;
             } else {
                 $finalId = 0;
             }
-            
-            $general= new Setting();
-            $general->name = "settingsgeneral".$finalId;
+
+            $general = new Setting();
+            $general->name = "settingsgeneral" . $finalId;
             $general->value = serialize($request->settings);
         } else {
             $id = $checkVal[0]->id;
             $general = Setting::findOrFail($id);
-            $general->value = serialize($request->settings);            
+            $general->value = serialize($request->settings);
         }
         $general->save();
         return redirect('/settings/general')->with('success', 'Customer created successfully.');
@@ -82,8 +82,8 @@ class General extends Controller
      */
     public function update(Request $request)
     {
-        
-      }
+
+    }
 
     /**
      * Remove the specified resource from storage.

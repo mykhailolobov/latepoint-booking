@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Setting;
 
 class Payments extends Controller
 {
@@ -12,7 +13,16 @@ class Payments extends Controller
      */
     public function index()
     {
-        return view('content.settings.payments');
+        $checkVal = Setting::query()
+            ->where('name', 'LIKE', "%settingspayment%")
+            ->get();
+        $check = $checkVal->count();
+        if ($check == 0) {
+            return view('content.settings.payments', compact('check'));
+        } else {
+            $paymentVal = $checkVal[0];
+            return view('content.settings.payments', compact('check', 'paymentVal'));
+        }
     }
 
     /**
@@ -20,7 +30,7 @@ class Payments extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -28,7 +38,30 @@ class Payments extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $checkVal = Setting::query()
+            ->where('name', 'LIKE', "%settingspayment%")
+            ->get();
+        $check = $checkVal->count();
+        if ($check == 0) {
+            $settings = Setting::all();
+            $count = $settings->count();
+            if ($count > 0) {
+                $finalId = $settings[$count - 1]->id;
+            } else {
+                $finalId = 0;
+            }
+
+            $payment = new Setting();
+            $payment->name = "settingspayment" . $finalId;
+            $payment->value = serialize($request->settings);
+        } else {
+            $id = $checkVal[0]->id;
+            $payment = Setting::findOrFail($id);
+            $payment->value = serialize($request->settings);
+        }
+        $payment->save();
+
+        return redirect('/settings/payments')->with('success', 'Payment created successfully.');
     }
 
     /**

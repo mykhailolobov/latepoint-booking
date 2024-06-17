@@ -22,7 +22,7 @@ class PasswordResetLinkController extends Controller
     {
         return view('auth.forgot-password');
     }
-    
+
     /**
      * Handle an incoming password reset link request.
      *
@@ -36,7 +36,7 @@ class PasswordResetLinkController extends Controller
         $request->validate([
             'email' => 'required|email|exists:users,email',
         ], [
-            'email.required' =>  __('frontend.required_field'),
+            'email.required' => __('frontend.required_field'),
             'email.email' => __('Email must be a valid email address'),
         ]);
 
@@ -51,10 +51,10 @@ class PasswordResetLinkController extends Controller
                 'created_at' => Carbon::now()
             ]);
 
-            // Mail::send('emails.forgotPassword', ['token' => $token], function ($message) use ($request) {
-            //     $message->to($request->email);
-            //     $message->subject(__('Forgot your password?'));
-            // });
+            Mail::send('emails.forgotPassword', ['token' => $token], function ($message) use ($request) {
+                $message->to($request->email);
+                $message->subject(__('Forgot your password?'));
+            });
 
             return back()->with('success', __('We have emailed your password reset link.'));
         } else {

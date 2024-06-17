@@ -76,7 +76,7 @@ class Categories extends Controller
     public function destroy(string $id)
     {
         $category = ServiceCategory::findOrFail($id);
-        $category -> delete();
+        $category->delete();
 
         return redirect('/resource/categories')->with('success', 'Category updated successfully.');
 

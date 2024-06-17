@@ -42,7 +42,7 @@ class Serviceextras extends Controller
         $serviceExtra = new ServiceExtra();
         $serviceExtra->name = $validatedData['name'];
         $serviceExtra->status = $validatedData['status'];
-        $serviceExtra->short_description =  $validatedData['short_description'];
+        $serviceExtra->short_description = $validatedData['short_description'];
         $serviceExtra->charge_amount = $validatedData['charge_amount'];
         $serviceExtra->duration = $validatedData['duration'];
         $serviceExtra->maximum_quantity = $validatedData['max_quantity'];
@@ -89,7 +89,7 @@ class Serviceextras extends Controller
         $serviceExtra = ServiceExtra::findOrFail($id);
         $serviceExtra->name = $validatedData['name'];
         $serviceExtra->status = $validatedData['status'];
-        $serviceExtra->short_description =  $validatedData['short_description'];
+        $serviceExtra->short_description = $validatedData['short_description'];
         $serviceExtra->charge_amount = $validatedData['charge_amount'];
         $serviceExtra->duration = $validatedData['duration'];
         $serviceExtra->maximum_quantity = $validatedData['max_quantity'];
@@ -97,7 +97,7 @@ class Serviceextras extends Controller
         $serviceExtra->multiplied_by_attendies = $request->multiplied_by_attendies;
         // $serviceExtra->description_image_id = $request->description_image_id;
 
-        if($request->selection_image_id) {
+        if ($request->selection_image_id) {
             $serviceExtra->selection_image_id = $request->selection_image_id;
         }
         $serviceExtra->save();

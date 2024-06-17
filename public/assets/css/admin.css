@@ -18223,9 +18223,6 @@ body.latepoint-lightbox-active .latepoint-lightbox-w {
   border-bottom-right-radius: 6px;
 }
 
-.pe-conditions {
-  display: none;
-}
 .pe-conditions.is-active {
   display: block;
 }

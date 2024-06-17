@@ -15,13 +15,13 @@ class Roles extends Controller
     {
         $settings = Setting::all();
         $latepoints = Setting::query()
-        ->where('name', 'LIKE', '%latepoint_agent%')
-        ->get();
+            ->where('name', 'LIKE', '%latepoint_agent%')
+            ->get();
         $otherroles = Setting::query()
-        ->where('name', 'LIKE', '%role_custom%')
-        ->get();
+            ->where('name', 'LIKE', '%role_custom%')
+            ->get();
         $count = $latepoints->count();
-        if($count>0) {
+        if ($count > 0) {
             $latepoint = $latepoints[0];
             $check = 1;
             return view('content.settings.roles', compact('latepoint', 'check', 'otherroles'));
@@ -48,13 +48,13 @@ class Roles extends Controller
     {
         $settings = Setting::all();
         $count = $settings->count();
-        $finalId = $settings[$count-1]->id;
-        $role= new Setting();
-        $role->name = $request->role['wp_role'].$finalId;
+        $finalId = $settings[$count - 1]->id;
+        $role = new Setting();
+        $role->name = $request->role['wp_role'] . $finalId;
         $role->value = serialize($request->role['capabilities']);
         // dd($tax->value);
         $role->save();
-        
+
         return redirect('/settings/roles')->with('success', 'Tax created successfully.');
     }
 
@@ -84,7 +84,7 @@ class Roles extends Controller
         // dd($tax->value);
         $role->save();
 
-        return redirect('/settings/roles')->with('success', 'Tax created successfully.');
+        return redirect('/settings/roles')->with('success', 'role updated successfully.');
     }
 
     /**
@@ -92,6 +92,9 @@ class Roles extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $role = Setting::findOrFail($id);
+        $role->delete();
+
+        return redirect('/settings/roles')->with('success', 'Tax deleted successfully.');
     }
 }

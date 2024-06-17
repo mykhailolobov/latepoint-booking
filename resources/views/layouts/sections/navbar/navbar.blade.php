@@ -437,224 +437,230 @@ $navbarDetached = ($navbarDetached ?? '');
     }
 </style>
 <div class="col-lg-3 col-md-6">
-    <div class="mt-3">
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEnd" aria-labelledby="offcanvasEndLabel">
-            <div class="offcanvas-header">
-                <h5 id="offcanvasEndLabel" class="offcanvas-title">New Appointment</h5>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            
-            <div class="offcanvas-body mx-0 flex-grow-0">
-                <div class="col-lg-12 mb-3">
-                    <select id="selectpickerGroups" class="selectpicker w-100" data-style="btn-default">
-                        <option>Select Service</option>
-                        <optgroup label="General Dentistry">
-                            <option>Tooth Whitening</option>
-                            <option>Group Booking</option>
-                            <option>Gum Decease</option>
-                        </optgroup>
-                        <optgroup label="Cosmetic Dentistry">
-                            <option>Invisilign Braces</option>
-                            <option>Root Canal Therapy</option>
-                            <option>Money Heist</option>
-                        </optgroup>
-                        <optgroup label="Implants Dentistry">
-                            <option>Porcelain Crown</option>
-                        </optgroup>
-                    </select>
+    <form action="{{route('app-storeappointments')}}" method="post">
+        @csrf
+        <div class="mt-3">
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEnd" aria-labelledby="offcanvasEndLabel">
+                <div class="offcanvas-header">
+                    <h5 id="offcanvasEndLabel" class="offcanvas-title">New Appointment</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div class="col-lg-12 mb-3">
-                    <label for="selectpickerBasic" class="form-label">Service Extras</label>
-                    <div class="select2-primary">
-                        <select id="select2Primary" class="select2 form-select" multiple>
-                            <option value="1" selected>Teeth Whitening</option>
-                            <option value="2" selected>Hair Wash</option>
-                            <option value="3">Recovery Mask</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-lg-12 d-flex mb-3">
-                    <div class="col-lg-6">
-                        <label for="selectpickerBasic" class="form-label">Agent</label>
-                        <select id="selectpickerBasic" class="selectpicker w-100" data-style="btn-default">
-                            <option>John Mayers</option>
-                            <option>Kim Collins</option>
-                            <option>Ben Stones</option>
-                        </select>
-                    </div>
-                    <div class="col-lg-6">
-                        <label for="selectpickerBasic" class="form-label">Status</label>
-                        <select id="selectpickerBasic" class="selectpicker w-100" data-style="btn-default">
-                            <option>Approved</option>
-                            <option>Pending Approval</option>
-                            <option>Cancelled</option>
-                            <option>Finished</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-lg-12 mb-3">
-                    <label for="selectpickerBasic" class="form-label">Start Date</label>
-                    <input type="text" class="form-control" placeholder="mm/dd/YYYY" id="flatpickr-datetime"/>
-                </div>
-                <div class="col-lg-12 d-flex mb-3">
-                    <div class="col-lg-6">
-                        <div class="start_time">
-                            <label for="flatpickr-time" class="form-label">Start Time</label>
-                            <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time" />
+                
+                
+                    <div class="offcanvas-body mx-0 flex-grow-0">
+                        <div class="col-lg-12 mb-3">
+                            <select id="selectpickerGroups" name="service" class="selectpicker w-100" data-style="btn-default">
+                                <option value="">Select Service</option>
+                                <optgroup label="General Dentistry">
+                                    <option value="tooth_whitening">Tooth Whitening</option>
+                                    <option value="group_booking">Group Booking</option>
+                                    <option value="gum_decease">Gum Decease</option>
+                                </optgroup>
+                                <optgroup label="Cosmetic Dentistry">
+                                    <option value="invisilign_braces">Invisilign Braces</option>
+                                    <option value="root_canal">Root Canal Therapy</option>
+                                    <option value="money_heist">Money Heist</option>
+                                </optgroup>
+                                <optgroup label="Implants Dentistry">
+                                    <option value="porcelain_crown">Porcelain Crown</option>
+                                </optgroup>
+                            </select>
                         </div>
-                        
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="finish_time">
-                            <label for="flatpickr-time" class="form-label">End Time</label>
-                            <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time-finish" />
+                        <div class="col-lg-12 mb-3">
+                            <label for="selectpickerBasic" class="form-label">Service Extras</label>
+                            <div class="select2-primary">
+                                <select id="select2Primary" name="service_extra" class="select2 form-select" multiple>
+                                    <option value="teeth_whitening" selected>Teeth Whitening</option>
+                                    <option value="hair_wash" selected>Hair Wash</option>
+                                    <option value="recovery_mask">Recovery Mask</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 d-flex mb-3">
-                    <div class="col-lg-6">
-                        <div class="buffer_before">
-                            <label for="flatpickr-time" class="form-label">Buffer Before</label>
-                            <input type="text" class="form-control" placeholder="0 minutes" id="flatpickr-time" />
+                        <div class="col-lg-12 d-flex mb-3">
+                            <div class="col-lg-6">
+                                <label for="selectpickerBasic" class="form-label">Agent</label>
+                                <select id="selectpickerBasic" name="agent" class="selectpicker w-100" data-style="btn-default">
+                                    <option value="john_mayers">John Mayers</option>
+                                    <option value="kim_collins">Kim Collins</option>
+                                    <option value="ben_stones">Ben Stones</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="selectpickerBasic" class="form-label">Status</label>
+                                <select id="selectpickerBasic" name="status" class="selectpicker w-100" data-style="btn-default">
+                                    <option value="approved">Approved</option>
+                                    <option value="pending_approval">Pending Approval</option>
+                                    <option value="cancelled">Cancelled</option>
+                                    <option value="finished">Finished</option>
+                                </select>
+                            </div>
                         </div>
-                        
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="buffer_after">
-                            <label for="flatpickr-time" class="form-label">Buffer After</label>
-                            <input type="text" class="form-control" placeholder="0 minutes" id="flatpickr-time-finish" />
+                        <div class="col-lg-12 mb-3">
+                            <label for="selectpickerBasic" class="form-label">Start Date</label>
+                            <input type="text" class="form-control" name="start_date" placeholder="mm/dd/YYYY" id="flatpickr-datetime"/>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 d-flex mb-3">
-                    <div class="col-lg-12">
-                        <div class="comment_left_by_customer">
-                            <label for="flatpickr-time" class="form-label">Comment left by customer</label>
-                            <textarea placeholder="" class="form-control" rows="2"></textarea>
+                        <div class="col-lg-12 d-flex mb-3">
+                            <div class="col-lg-6">
+                                <div class="start_time">
+                                    <label for="flatpickr-time" class="form-label">Start Time</label>
+                                    <input type="text" class="form-control" name="start_time" placeholder="HH:MM" id="flatpickr-time" />
+                                </div>
+                                
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="finish_time">
+                                    <label for="flatpickr-time" class="form-label">End Time</label>
+                                    <input type="text" class="form-control" name="end_time" placeholder="HH:MM" id="flatpickr-time-finish" />
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 d-flex mb-5">
-                    <div class="col-lg-12">
-                        <div class="doc_upload">
-                            <label for="flatpickr-time" class="form-label">Doc</label>
-                            <input type="file" class="form-control" id="flatpickr-time-finish" />
+                        <div class="col-lg-12 d-flex mb-3">
+                            <div class="col-lg-6">
+                                <div class="buffer_before">
+                                    <label for="flatpickr-time" class="form-label">Buffer Before</label>
+                                    <input type="text" class="form-control" name="buffer_before" placeholder="0 minutes" id="flatpickr-time" />
+                                </div>
+                                
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="buffer_after">
+                                    <label for="flatpickr-time" class="form-label">Buffer After</label>
+                                    <input type="text" class="form-control" name="buffer_after" placeholder="0 minutes" id="flatpickr-time-finish" />
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-                <h5 id="offcanvasEndLabel" class="offcanvas-title mb-4">Customer</h5>
-            
-                <div class="col-lg-12 mb-3 d-flex">
-                    <div class="col-lg-6">
-                        <div class="start_time">
-                            <label for="flatpickr-time" class="form-label">First Name</label>
-                            <input type="text" class="form-control" placeholder="First Name" id="flatpickr-time" />
+                        <div class="col-lg-12 d-flex mb-3">
+                            <div class="col-lg-12">
+                                <div class="comment_left_by_customer">
+                                    <label for="flatpickr-time" class="form-label">Comment left by customer</label>
+                                    <textarea placeholder="" class="form-control" name="customer_comment" rows="2"></textarea>
+                                </div>
+                            </div>
                         </div>
-                        
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="finish_time">
-                            <label for="flatpickr-time" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" placeholder="Last Name" id="flatpickr-time-finish" />
+                        <div class="col-lg-12 d-flex mb-5">
+                            <div class="col-lg-12">
+                                <div class="doc_upload">
+                                    <label for="flatpickr-time" class="form-label">Doc</label>
+                                    <input type="file" class="form-control" name="doc" id="flatpickr-time-finish" />
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 d-flex mb-3">
-                    <div class="col-lg-12">
-                        <div class="customer_email">
-                            <label for="flatpickr-time" class="form-label">Email Address</label>
-                            <input type="email" class="form-control" placeholder="Email Address" id="flatpickr-time" />
+        
+                        <h5 id="offcanvasEndLabel" class="offcanvas-title mb-4">Customer</h5>
+                    
+                        <div class="col-lg-12 mb-3 d-flex">
+                            <div class="col-lg-6">
+                                <div class="start_time">
+                                    <label for="flatpickr-time" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" name="first_name" placeholder="First Name" id="flatpickr-time" />
+                                </div>
+                                
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="finish_time">
+                                    <label for="flatpickr-time" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" name="last_name" placeholder="Last Name" id="flatpickr-time-finish" />
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 d-flex mb-3">
-                    <div class="col-lg-12">
-                        <div class="telephone_number">
-                            <label for="flatpickr-time" class="form-label">Telephone Number</label>
-                            <input type="text" class="form-control" placeholder="+1-205-555-0123" id="flatpickr-time" />
+                        <div class="col-lg-12 d-flex mb-3">
+                            <div class="col-lg-12">
+                                <div class="customer_email">
+                                    <label for="flatpickr-time" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" name="email" placeholder="Email Address" id="flatpickr-time" />
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 d-flex mb-3">
-                    <div class="col-lg-12">
-                        <div class="customer_notes">
-                            <label for="flatpickr-time" class="form-label">Customer Notes</label>
-                            <textarea placeholder="" class="form-control" rows="2"></textarea>
+                        <div class="col-lg-12 d-flex mb-3">
+                            <div class="col-lg-12">
+                                <div class="telephone_number">
+                                    <label for="flatpickr-time" class="form-label">Telephone Number</label>
+                                    <input type="text" class="form-control" name="telephone_number" placeholder="+1-205-555-0123" id="flatpickr-time" />
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 d-flex mb-5">
-                    <div class="col-lg-12">
-                        <div class="customer_notes">
-                            <label for="flatpickr-time" class="form-label">Notes only visible to admins</label>
-                            <textarea placeholder="" class="form-control" rows="2"></textarea>
+                        <div class="col-lg-12 d-flex mb-3">
+                            <div class="col-lg-12">
+                                <div class="customer_notes">
+                                    <label for="flatpickr-time" class="form-label">Customer Notes</label>
+                                    <textarea placeholder="" class="form-control" name="customer_notes" rows="2"></textarea>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-                <h5 id="offcanvasEndLabel" class="offcanvas-title mb-4">Price Breakdown</h5>
-            
-                <div class="col-lg-12 mb-3 d-flex">
-                    <div class="col-lg-12 d-flex">
-                        <label class="switch">
-                            <input type="checkbox" class="switch-input" />
-                            <span class="switch-toggle-slider">
-                                <span class="switch-on"></span>
-                                <span class="switch-off"></span>
-                            </span>
-                            <span class="switch-label">Use Coupon</span>
-                        </label>
-                        <input type="text" class="form-control" placeholder="Coupon Code" id="flatpickr-coupon_code" />
-                        <button>apply</button>
-                    </div>
-                </div>
-                <div class="col-lg-12 d-flex mb-3">
-                    <div class="col-lg-12">
-                        <div class="sub_total justify-content-between">
-                            <label for="flatpickr-time" class="form-label">Sub Total $</label>
-                            <input type="text" class="form-control" placeholder="0.00" id="flatpickr-sub_total" />
+                        <div class="col-lg-12 d-flex mb-5">
+                            <div class="col-lg-12">
+                                <div class="customer_notes">
+                                    <label for="flatpickr-time" class="form-label">Notes only visible to admins</label>
+                                    <textarea placeholder="" class="form-control" rows="2" name="admin_notes"></textarea>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 d-flex mb-5">
-                    <div class="col-lg-12">
-                        <div class="total_price justify-content-between">
-                            <label for="flatpickr-time" class="form-label">Total Price $</label>
-                            <input type="text" class="form-control" placeholder="0.00" id="flatpickr-total_price" />
+        
+                        <h5 id="offcanvasEndLabel" class="offcanvas-title mb-4">Price Breakdown</h5>
+                    
+                        <div class="col-lg-12 mb-3 d-flex">
+                            <div class="col-lg-12 d-flex">
+                                <label class="switch">
+                                    <input type="checkbox" class="switch-input" />
+                                    <span class="switch-toggle-slider">
+                                        <span class="switch-on"></span>
+                                        <span class="switch-off"></span>
+                                    </span>
+                                    <span class="switch-label">Use Coupon</span>
+                                </label>
+                                <input type="text" class="form-control" name="coupon_code" placeholder="Coupon Code" id="flatpickr-coupon_code" />
+                                <button>apply</button>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-
-                <h5 id="offcanvasEndLabel" class="offcanvas-title mb-4">Balance & Payments</h5>
-            
-                <div class="col-lg-12 d-flex mb-5">
-                    <div class="col-lg-12">
-                        <div class="sub_total d-flex justify-content-between" style="border-bottom: 1px solid black;">
-                            <label for="flatpickr-time" class="form-label">$0.00</label>
-                            <strong style="color: red;">$125.00</strong>
+                        <div class="col-lg-12 d-flex mb-3">
+                            <div class="col-lg-12">
+                                <div class="sub_total justify-content-between">
+                                    <label for="flatpickr-time" class="form-label">Sub Total $</label>
+                                    <input type="text" class="form-control" name="subtotal" placeholder="0.00" id="flatpickr-sub_total" />
+                                </div>
+                            </div>
                         </div>
-                        <div class="sub_total d-flex justify-content-between">
-                            <label for="flatpickr-time" class="form-label">Total Payments</label>
-                            <label for="flatpickr-time" class="form-label">Balance Due</label>
+                        <div class="col-lg-12 d-flex mb-5">
+                            <div class="col-lg-12">
+                                <div class="total_price justify-content-between">
+                                    <label for="flatpickr-time" class="form-label">Total Price $</label>
+                                    <input type="text" class="form-control" name="price" placeholder="0.00" id="flatpickr-total_price" />
+                                </div>
+                            </div>
                         </div>
+        
+        
+                        <h5 id="offcanvasEndLabel" class="offcanvas-title mb-4">Balance & Payments</h5>
+                    
+                        <div class="col-lg-12 d-flex mb-5">
+                            <div class="col-lg-12">
+                                <div class="sub_total d-flex justify-content-between" style="border-bottom: 1px solid black;">
+                                    <label for="flatpickr-time" class="form-label">$0.00</label>
+                                    <strong style="color: red;">$125.00</strong>
+                                </div>
+                                <div class="sub_total d-flex justify-content-between">
+                                    <label for="flatpickr-time" class="form-label">Total Payments</label>
+                                    <label for="flatpickr-time" class="form-label">Balance Due</label>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <h5 id="offcanvasEndLabel" class="offcanvas-title mb-4">Transactions</h5>
+        
+                        <div id="add-coupon-box" class="add-coupon-box mb-4" data-os-action="coupons__new_form" data-os-output-target-do="append" data-os-output-target=".os-coupons-w">
+                            <div class="add-coupon-graphic-w">
+                                <div class="add-coupon-plus"><i class="latepoint-icon latepoint-icon-plus4 fa fa-plus"></i></div>
+                            </div>
+                            <div class="add-coupon-label">Add Transaction</div>
+                        </div>
+        
+                        <button type="submit" class="btn btn-primary mb-2 d-grid w-100">Create Appointment</button>
+        
                     </div>
-                </div>
-
-                <h5 id="offcanvasEndLabel" class="offcanvas-title mb-4">Transactions</h5>
-
-                <div id="add-coupon-box" class="add-coupon-box mb-4" data-os-action="coupons__new_form" data-os-output-target-do="append" data-os-output-target=".os-coupons-w">
-                    <div class="add-coupon-graphic-w">
-                        <div class="add-coupon-plus"><i class="latepoint-icon latepoint-icon-plus4 fa fa-plus"></i></div>
-                    </div>
-                    <div class="add-coupon-label">Add Transaction</div>
-                </div>
-
-                <button type="button" class="btn btn-primary mb-2 d-grid w-100">Create Appointment</button>
-
+                
+                
             </div>
         </div>
-    </div>
+    </form>
 </div>
 <!-- End the New Booking Modal -->

@@ -1433,7 +1433,7 @@
                         <h3>Custom Roles</h3>
                         @foreach ($otherroles as $role)
                         <div class="os-custom-roles-w os-form-blocks-w">
-                            <form action="{{route('settings-updateroles', $role->id)}}" data-os-action="roles__save" class="os-form-block os-user-type-form os-is-editing" method="post">
+                            <form action="{{route('settings-updateroles', $role->id)}}" data-os-action="roles__save" class="os-form-block os-user-type-form" method="post">
                                 @csrf
                                 @php
                                     $othervalue = unserialize($role->value);
@@ -1442,7 +1442,7 @@
                                 <div class="os-form-block-i">
                                     <div class="os-form-block-header">
                                         <div class="os-form-block-drag"></div>
-                                        <div class="os-form-block-name update-from-name">New Custom Role</div>
+                                        <div class="os-form-block-name update-from-name">{{$othervalue['name']}}</div>
                                         <div class="os-form-block-type">0 users</div>
                                         <div class="os-form-block-edit-btn">
                                             <i class="latepoint-icon latepoint-icon-edit-3"></i>
@@ -1457,7 +1457,7 @@
                                                 <div
                                                     class="os-form-group os-form-textfield-group os-form-group-bordered has-value no-label">
                                                     <input type="text" placeholder="" name="role[capabilities][name]"
-                                                        value="New Custom Role" theme="bordered" id="role_name"
+                                                        value="{{$othervalue['name']}}" theme="bordered" id="role_name"
                                                         class="os-form-control"></div>
                                             </div>
                                         </div>
@@ -1499,8 +1499,8 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden" name="role[capabilities][agent__view]"
-                                                                    value="off" id="role_capabilities_agent_view">
-                                                                <div class="os-toggler off size-normal"
+                                                                    value="{{$othervalue['agent__view']}}" id="role_capabilities_agent_view">
+                                                                <div class="os-toggler {{$othervalue['agent__view']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_agent_view">
                                                                     <div class="toggler-rail">
@@ -1513,8 +1513,8 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden" name="role[capabilities][agent__delete]"
-                                                                    value="off" id="role_capabilities_agent_delete">
-                                                                <div class="os-toggler off size-normal"
+                                                                    value="{{$othervalue['agent__delete']}}" id="role_capabilities_agent_delete">
+                                                                <div class="os-toggler {{$othervalue['agent__delete']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_agent_delete">
                                                                     <div class="toggler-rail">
@@ -1527,8 +1527,8 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden" name="role[capabilities][agent__create]"
-                                                                    value="off" id="role_capabilities_agent_create">
-                                                                <div class="os-toggler off size-normal"
+                                                                    value="{{$othervalue['agent__create']}}" id="role_capabilities_agent_create">
+                                                                <div class="os-toggler {{$othervalue['agent__create']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_agent_create">
                                                                     <div class="toggler-rail">
@@ -1541,8 +1541,8 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden" name="role[capabilities][agent__edit]"
-                                                                    value="off" id="role_capabilities_agent_edit">
-                                                                <div class="os-toggler off size-normal"
+                                                                    value="{{$othervalue['agent__edit']}}" id="role_capabilities_agent_edit">
+                                                                <div class="os-toggler {{$othervalue['agent__edit']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_agent_edit">
                                                                     <div class="toggler-rail">
@@ -1561,8 +1561,8 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden" name="role[capabilities][service__view]"
-                                                                    value="off" id="role_capabilities_service_view">
-                                                                <div class="os-toggler off size-normal"
+                                                                    value="{{$othervalue['service__view']}}" id="role_capabilities_service_view">
+                                                                <div class="os-toggler {{$othervalue['service__view']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_service_view">
                                                                     <div class="toggler-rail">
@@ -1575,9 +1575,9 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
-                                                                    name="role[capabilities][service__delete]" value="off"
+                                                                    name="role[capabilities][service__delete]" value="{{$othervalue['service__delete']}}"
                                                                     id="role_capabilities_service_delete">
-                                                                <div class="os-toggler off size-normal"
+                                                                <div class="os-toggler {{$othervalue['service__delete']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_service_delete">
                                                                     <div class="toggler-rail">
@@ -1590,9 +1590,9 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
-                                                                    name="role[capabilities][service__create]" value="off"
+                                                                    name="role[capabilities][service__create]" value="{{$othervalue['service__create']}}"
                                                                     id="role_capabilities_service_create">
-                                                                <div class="os-toggler off size-normal"
+                                                                <div class="os-toggler {{$othervalue['service__create']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_service_create">
                                                                     <div class="toggler-rail">
@@ -1605,8 +1605,8 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden" name="role[capabilities][service__edit]"
-                                                                    value="off" id="role_capabilities_service_edit">
-                                                                <div class="os-toggler off size-normal"
+                                                                    value="{{$othervalue['service__edit']}}" id="role_capabilities_service_edit">
+                                                                <div class="os-toggler {{$othervalue['service__edit']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_service_edit">
                                                                     <div class="toggler-rail">
@@ -1625,9 +1625,9 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
-                                                                    name="role[capabilities][location__view]" value="off"
+                                                                    name="role[capabilities][location__view]" value="{{$othervalue['location__view']}}"
                                                                     id="role_capabilities_location_view">
-                                                                <div class="os-toggler off size-normal"
+                                                                <div class="os-toggler {{$othervalue['location__view']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_location_view">
                                                                     <div class="toggler-rail">
@@ -1640,9 +1640,9 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
-                                                                    name="role[capabilities][location__delete]" value="off"
+                                                                    name="role[capabilities][location__delete]" value="{{$othervalue['location__delete']}}"
                                                                     id="role_capabilities_location_delete">
-                                                                <div class="os-toggler off size-normal"
+                                                                <div class="os-toggler {{$othervalue['location__delete']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_location_delete">
                                                                     <div class="toggler-rail">
@@ -1655,9 +1655,9 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
-                                                                    name="role[capabilities][location__create]" value="off"
+                                                                    name="role[capabilities][location__create]" value="{{$othervalue['location__create']}}"
                                                                     id="role_capabilities_location_create">
-                                                                <div class="os-toggler off size-normal"
+                                                                <div class="os-toggler {{$othervalue['location__create']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_location_create">
                                                                     <div class="toggler-rail">
@@ -1670,9 +1670,9 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
-                                                                    name="role[capabilities][location__edit]" value="off"
+                                                                    name="role[capabilities][location__edit]" value="{{$othervalue['location__edit']}}"
                                                                     id="role_capabilities_location_edit">
-                                                                <div class="os-toggler off size-normal"
+                                                                <div class="os-toggler {{$othervalue['location__edit']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_location_edit">
                                                                     <div class="toggler-rail">
@@ -1691,8 +1691,8 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden" name="role[capabilities][booking__view]"
-                                                                    value="off" id="role_capabilities_booking_view">
-                                                                <div class="os-toggler off size-normal"
+                                                                    value="{{$othervalue['booking__view']}}" id="role_capabilities_booking_view">
+                                                                <div class="os-toggler {{$othervalue['booking__view']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_booking_view">
                                                                     <div class="toggler-rail">
@@ -1705,9 +1705,9 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
-                                                                    name="role[capabilities][booking__delete]" value="off"
+                                                                    name="role[capabilities][booking__delete]" value="{{$othervalue['booking__delete']}}"
                                                                     id="role_capabilities_booking_delete">
-                                                                <div class="os-toggler off size-normal"
+                                                                <div class="os-toggler {{$othervalue['booking__delete']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_booking_delete">
                                                                     <div class="toggler-rail">
@@ -1720,9 +1720,9 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
-                                                                    name="role[capabilities][booking__create]" value="off"
+                                                                    name="role[capabilities][booking__create]" value="{{$othervalue['booking__create']}}"
                                                                     id="role_capabilities_booking_create">
-                                                                <div class="os-toggler off size-normal"
+                                                                <div class="os-toggler {{$othervalue['booking__create']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_booking_create">
                                                                     <div class="toggler-rail">
@@ -1735,8 +1735,8 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden" name="role[capabilities][booking__edit]"
-                                                                    value="off" id="role_capabilities_booking_edit">
-                                                                <div class="os-toggler off size-normal"
+                                                                    value="{{$othervalue['booking__edit']}}" id="role_capabilities_booking_edit">
+                                                                <div class="os-toggler {{$othervalue['booking__edit']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_booking_edit">
                                                                     <div class="toggler-rail">
@@ -1755,9 +1755,9 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
-                                                                    name="role[capabilities][customer__view]" value="off"
+                                                                    name="role[capabilities][customer__view]" value="{{$othervalue['customer__view']}}"
                                                                     id="role_capabilities_customer_view">
-                                                                <div class="os-toggler off size-normal"
+                                                                <div class="os-toggler {{$othervalue['customer__view']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_customer_view">
                                                                     <div class="toggler-rail">
@@ -1770,9 +1770,9 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
-                                                                    name="role[capabilities][customer__delete]" value="off"
+                                                                    name="role[capabilities][customer__delete]" value="{{$othervalue['customer__delete']}}"
                                                                     id="role_capabilities_customer_delete">
-                                                                <div class="os-toggler off size-normal"
+                                                                <div class="os-toggler {{$othervalue['customer__delete']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_customer_delete">
                                                                     <div class="toggler-rail">
@@ -1785,9 +1785,9 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
-                                                                    name="role[capabilities][customer__create]" value="off"
+                                                                    name="role[capabilities][customer__create]" value="{{$othervalue['customer__create']}}"
                                                                     id="role_capabilities_customer_create">
-                                                                <div class="os-toggler off size-normal"
+                                                                <div class="os-toggler {{$othervalue['customer__create']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_customer_create">
                                                                     <div class="toggler-rail">
@@ -1800,9 +1800,9 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
-                                                                    name="role[capabilities][customer__edit]" value="off"
+                                                                    name="role[capabilities][customer__edit]" value="{{$othervalue['customer__edit']}}"
                                                                     id="role_capabilities_customer_edit">
-                                                                <div class="os-toggler off size-normal"
+                                                                <div class="os-toggler {{$othervalue['customer__edit']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_customer_edit">
                                                                     <div class="toggler-rail">
@@ -1822,8 +1822,8 @@
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
                                                                     name="role[capabilities][transaction__view]"
-                                                                    value="off" id="role_capabilities_transaction_view">
-                                                                <div class="os-toggler off size-normal"
+                                                                    value="{{$othervalue['transaction__view']}}" id="role_capabilities_transaction_view">
+                                                                <div class="os-toggler {{$othervalue['transaction__view']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_transaction_view">
                                                                     <div class="toggler-rail">
@@ -1837,8 +1837,8 @@
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
                                                                     name="role[capabilities][transaction__delete]"
-                                                                    value="off" id="role_capabilities_transaction_delete">
-                                                                <div class="os-toggler off size-normal"
+                                                                    value="{{$othervalue['transaction__delete']}}" id="role_capabilities_transaction_delete">
+                                                                <div class="os-toggler {{$othervalue['transaction__delete']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_transaction_delete">
                                                                     <div class="toggler-rail">
@@ -1852,8 +1852,8 @@
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
                                                                     name="role[capabilities][transaction__create]"
-                                                                    value="off" id="role_capabilities_transaction_create">
-                                                                <div class="os-toggler off size-normal"
+                                                                    value="{{$othervalue['transaction__create']}}" id="role_capabilities_transaction_create">
+                                                                <div class="os-toggler {{$othervalue['transaction__create']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_transaction_create">
                                                                     <div class="toggler-rail">
@@ -1867,8 +1867,8 @@
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
                                                                     name="role[capabilities][transaction__edit]"
-                                                                    value="off" id="role_capabilities_transaction_edit">
-                                                                <div class="os-toggler off size-normal"
+                                                                    value="{{$othervalue['transaction__edit']}}" id="role_capabilities_transaction_edit">
+                                                                <div class="os-toggler {{$othervalue['transaction__edit']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_transaction_edit">
                                                                     <div class="toggler-rail">
@@ -1887,9 +1887,9 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
-                                                                    name="role[capabilities][activity__view]" value="off"
+                                                                    name="role[capabilities][activity__view]" value="{{$othervalue['activity__view']}}"
                                                                     id="role_capabilities_activity_view">
-                                                                <div class="os-toggler off size-normal"
+                                                                <div class="os-toggler {{$othervalue['activity__view']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_activity_view">
                                                                     <div class="toggler-rail">
@@ -1902,9 +1902,9 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
-                                                                    name="role[capabilities][activity__delete]" value="off"
+                                                                    name="role[capabilities][activity__delete]" value="{{$othervalue['activity__delete']}}"
                                                                     id="role_capabilities_activity_delete">
-                                                                <div class="os-toggler off size-normal"
+                                                                <div class="os-toggler {{$othervalue['activity__delete']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_activity_delete">
                                                                     <div class="toggler-rail">
@@ -1917,9 +1917,9 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
-                                                                    name="role[capabilities][activity__create]" value="off"
+                                                                    name="role[capabilities][activity__create]" value="{{$othervalue['activity__create']}}"
                                                                     id="role_capabilities_activity_create">
-                                                                <div class="os-toggler off size-normal"
+                                                                <div class="os-toggler {{$othervalue['activity__create']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_activity_create">
                                                                     <div class="toggler-rail">
@@ -1932,9 +1932,9 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
-                                                                    name="role[capabilities][activity__edit]" value="off"
+                                                                    name="role[capabilities][activity__edit]" value="{{$othervalue['activity__edit']}}"
                                                                     id="role_capabilities_activity_edit">
-                                                                <div class="os-toggler off size-normal"
+                                                                <div class="os-toggler {{$othervalue['activity__edit']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_activity_edit">
                                                                     <div class="toggler-rail">
@@ -1954,8 +1954,8 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden" name="role[capabilities][chat__edit]"
-                                                                    value="off" id="role_capabilities_chat_edit">
-                                                                <div class="os-toggler off size-normal"
+                                                                    value="{{$othervalue['chat__edit']}}" id="role_capabilities_chat_edit">
+                                                                <div class="os-toggler {{$othervalue['chat__edit']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_chat_edit">
                                                                     <div class="toggler-rail">
@@ -1976,9 +1976,9 @@
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
                                                                     name="role[capabilities][resource_schedule__edit]"
-                                                                    value="off"
+                                                                    value="{{$othervalue['resource_schedule__edit']}}"
                                                                     id="role_capabilities_resource_schedule_edit">
-                                                                <div class="os-toggler off size-normal"
+                                                                <div class="os-toggler {{$othervalue['resource_schedule__edit']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_resource_schedule_edit">
                                                                     <div class="toggler-rail">
@@ -1998,9 +1998,9 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
-                                                                    name="role[capabilities][settings__edit]" value="off"
+                                                                    name="role[capabilities][settings__edit]" value="{{$othervalue['settings__edit']}}"
                                                                     id="role_capabilities_settings_edit">
-                                                                <div class="os-toggler off size-normal"
+                                                                <div class="os-toggler {{$othervalue['settings__edit']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_settings_edit">
                                                                     <div class="toggler-rail">
@@ -2021,8 +2021,8 @@
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
                                                                     name="role[capabilities][connection__edit]"
-                                                                    value="off" id="role_capabilities_connection_edit">
-                                                                <div class="os-toggler off size-normal"
+                                                                    value="{{$othervalue['connection__edit']}}" id="role_capabilities_connection_edit">
+                                                                <div class="os-toggler {{$othervalue['connection__edit']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_connection_edit">
                                                                     <div class="toggler-rail">
@@ -2041,9 +2041,9 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
-                                                                    name="role[capabilities][coupon__view]" value="off"
+                                                                    name="role[capabilities][coupon__view]" value="{{$othervalue['coupon__view']}}"
                                                                     id="role_capabilities_coupon_view">
-                                                                <div class="os-toggler off size-normal"
+                                                                <div class="os-toggler {{$othervalue['coupon__view']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_coupon_view">
                                                                     <div class="toggler-rail">
@@ -2056,9 +2056,9 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
-                                                                    name="role[capabilities][coupon__delete]" value="off"
+                                                                    name="role[capabilities][coupon__delete]" value="{{$othervalue['coupon__delete']}}"
                                                                     id="role_capabilities_coupon_delete">
-                                                                <div class="os-toggler off size-normal"
+                                                                <div class="os-toggler {{$othervalue['coupon__delete']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_coupon_delete">
                                                                     <div class="toggler-rail">
@@ -2071,9 +2071,9 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
-                                                                    name="role[capabilities][coupon__create]" value="off"
+                                                                    name="role[capabilities][coupon__create]" value="{{$othervalue['coupon__create']}}"
                                                                     id="role_capabilities_coupon_create">
-                                                                <div class="os-toggler off size-normal"
+                                                                <div class="os-toggler {{$othervalue['coupon__create']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_coupon_create">
                                                                     <div class="toggler-rail">
@@ -2086,9 +2086,9 @@
                                                         <div class="role-toggler-wrapper">
                                                             <div class="os-form-group os-form-toggler-group  size-normal">
                                                                 <input type="hidden"
-                                                                    name="role[capabilities][coupon__edit]" value="off"
+                                                                    name="role[capabilities][coupon__edit]" value="{{$othervalue['coupon__edit']}}"
                                                                     id="role_capabilities_coupon_edit">
-                                                                <div class="os-toggler off size-normal"
+                                                                <div class="os-toggler {{$othervalue['coupon__edit']}} size-normal"
                                                                     data-is-string-value="true"
                                                                     data-for="role_capabilities_coupon_edit">
                                                                     <div class="toggler-rail">
@@ -2103,7 +2103,7 @@
                                             </div>
                                         </div>
                                         <div class="os-form-block-buttons">
-                                            <a href="javascript:;"
+                                            <a href="/settings/deleteroles/{{$role->id}}"
                                                 class="btn btn-danger pull-left os-remove-role"
                                                 data-os-prompt="Are you sure you want to delete this role?"
                                                 data-os-after-call="latepointRoleManagerAddonAdmin.role_deleted"
@@ -2115,7 +2115,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="javascript:;" data-os-prompt="Are you sure you want to delete this role?"
+                                <a href="/settings/deleteroles/{{$role->id}}" data-os-prompt="Are you sure you want to delete this role?"
                                     data-os-after-call="latepointRoleManagerAddonAdmin.role_deleted" data-os-pass-this="yes"
                                     data-os-action="roles__destroy" data-os-params="wp_role=role_AuuNwSTd"
                                     class="os-remove-form-block"><i class="latepoint-icon latepoint-icon-cross"></i></a>
@@ -2124,7 +2124,691 @@
                         @endforeach
 
                     </div>
-                    
+                    <div class="os-custom-roles-w os-form-blocks-w new-custom-form" style="display: none">
+                        <form action="{{route('settings-storeroles')}}" data-os-action="roles__save" class="os-form-block os-user-type-form os-is-editing" method="post">
+                            @csrf
+                            <div class="os-form-block-i">
+                                <div class="os-form-block-header">
+                                    <div class="os-form-block-drag"></div>
+                                    <div class="os-form-block-name update-from-name">New Custom Role</div>
+                                    <div class="os-form-block-type">0 users</div>
+                                    <div class="os-form-block-edit-btn">
+                                        <i class="latepoint-icon latepoint-icon-edit-3"></i>
+                                    </div>
+                                </div>
+                                <div class="os-form-block-params os-form-w">
+                                    <div class="sub-section-row">
+                                        <div class="sub-section-label">
+                                            <h3>Name</h3>
+                                        </div>
+                                        <div class="sub-section-content">
+                                            <div
+                                                class="os-form-group os-form-textfield-group os-form-group-bordered has-value no-label">
+                                                <input type="text" placeholder="" name="role[capabilities][name]"
+                                                    value="New Custom Role" theme="bordered" id="role_name"
+                                                    class="os-form-control"></div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="role[wp_role]" value="role_custom" id="role_wp_role">
+                                    
+                                    <div class="sub-section-row">
+                                        <div class="sub-section-label">
+                                            <h3>Users</h3>
+                                        </div>
+                                        <div class="sub-section-content">
+                                            <div class="latepoint-message latepoint-message-subtle">You have not assigned
+                                                any WordPress users to this role. Create a new WP user or edit existing user
+                                                and assign them a role called: "<span class="update-from-name">New Custom
+                                                    Role</span>"</div>
+                                        </div>
+                                    </div>
+                                    <div class="sub-section-row">
+                                        <div class="sub-section-label">
+                                            <h3>Allowed Records</h3>
+                                        </div>
+                                        <div class="sub-section-content">
+        
+                                            <div class="latepoint-message latepoint-message-subtle">Once you assign users
+                                                to this role, they will appear in "Users" section above, click on each user
+                                                to set restrictions on which records each of them can access.</div>
+                                        </div>
+                                    </div>
+                                    <div class="sub-section-row">
+                                        <div class="sub-section-label">
+                                            <h3>Permitted Actions</h3>
+                                        </div>
+                                        <div class="sub-section-content">
+                                            <div class="role-actions-grid">
+                                                <div class="role-actions-item">
+                                                    <div class="role-actions-group-name">
+                                                        <h3>Agents</h3>
+                                                        <div class="role-actions-group-description"></div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden" name="role[capabilities][agent__view]"
+                                                                value="off" id="role_capabilities_agent_view">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_agent_view">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>View</label></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden" name="role[capabilities][agent__delete]"
+                                                                value="off" id="role_capabilities_agent_delete">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_agent_delete">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Delete</label></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden" name="role[capabilities][agent__create]"
+                                                                value="off" id="role_capabilities_agent_create">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_agent_create">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Create</label></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden" name="role[capabilities][agent__edit]"
+                                                                value="off" id="role_capabilities_agent_edit">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_agent_edit">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Edit</label></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="role-actions-item">
+                                                    <div class="role-actions-group-name">
+                                                        <h3>Services</h3>
+                                                        <div class="role-actions-group-description"></div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden" name="role[capabilities][service__view]"
+                                                                value="off" id="role_capabilities_service_view">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_service_view">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>View</label></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][service__delete]" value="off"
+                                                                id="role_capabilities_service_delete">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_service_delete">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Delete</label></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][service__create]" value="off"
+                                                                id="role_capabilities_service_create">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_service_create">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Create</label></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden" name="role[capabilities][service__edit]"
+                                                                value="off" id="role_capabilities_service_edit">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_service_edit">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Edit</label></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="role-actions-item">
+                                                    <div class="role-actions-group-name">
+                                                        <h3>Locations</h3>
+                                                        <div class="role-actions-group-description"></div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][location__view]" value="off"
+                                                                id="role_capabilities_location_view">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_location_view">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>View</label></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][location__delete]" value="off"
+                                                                id="role_capabilities_location_delete">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_location_delete">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Delete</label></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][location__create]" value="off"
+                                                                id="role_capabilities_location_create">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_location_create">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Create</label></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][location__edit]" value="off"
+                                                                id="role_capabilities_location_edit">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_location_edit">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Edit</label></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="role-actions-item">
+                                                    <div class="role-actions-group-name">
+                                                        <h3>Bookings</h3>
+                                                        <div class="role-actions-group-description"></div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden" name="role[capabilities][booking__view]"
+                                                                value="off" id="role_capabilities_booking_view">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_booking_view">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>View</label></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][booking__delete]" value="off"
+                                                                id="role_capabilities_booking_delete">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_booking_delete">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Delete</label></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][booking__create]" value="off"
+                                                                id="role_capabilities_booking_create">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_booking_create">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Create</label></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden" name="role[capabilities][booking__edit]"
+                                                                value="off" id="role_capabilities_booking_edit">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_booking_edit">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Edit</label></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="role-actions-item">
+                                                    <div class="role-actions-group-name">
+                                                        <h3>Customers</h3>
+                                                        <div class="role-actions-group-description"></div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][customer__view]" value="off"
+                                                                id="role_capabilities_customer_view">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_customer_view">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>View</label></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][customer__delete]" value="off"
+                                                                id="role_capabilities_customer_delete">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_customer_delete">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Delete</label></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][customer__create]" value="off"
+                                                                id="role_capabilities_customer_create">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_customer_create">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Create</label></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][customer__edit]" value="off"
+                                                                id="role_capabilities_customer_edit">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_customer_edit">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Edit</label></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="role-actions-item">
+                                                    <div class="role-actions-group-name">
+                                                        <h3>Transactions</h3>
+                                                        <div class="role-actions-group-description"></div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][transaction__view]"
+                                                                value="off" id="role_capabilities_transaction_view">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_transaction_view">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>View</label></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][transaction__delete]"
+                                                                value="off" id="role_capabilities_transaction_delete">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_transaction_delete">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Delete</label></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][transaction__create]"
+                                                                value="off" id="role_capabilities_transaction_create">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_transaction_create">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Create</label></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][transaction__edit]"
+                                                                value="off" id="role_capabilities_transaction_edit">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_transaction_edit">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Edit</label></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="role-actions-item">
+                                                    <div class="role-actions-group-name">
+                                                        <h3>Activity Logs</h3>
+                                                        <div class="role-actions-group-description"></div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][activity__view]" value="off"
+                                                                id="role_capabilities_activity_view">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_activity_view">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>View</label></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][activity__delete]" value="off"
+                                                                id="role_capabilities_activity_delete">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_activity_delete">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Delete</label></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][activity__create]" value="off"
+                                                                id="role_capabilities_activity_create">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_activity_create">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Create</label></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][activity__edit]" value="off"
+                                                                id="role_capabilities_activity_edit">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_activity_edit">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Edit</label></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="role-actions-item">
+                                                    <div class="role-actions-group-name">
+                                                        <h3>Chat</h3>
+                                                        <div class="role-actions-group-description">Ability to send
+                                                            messages to customers (available with chat addon).</div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden" name="role[capabilities][chat__edit]"
+                                                                value="off" id="role_capabilities_chat_edit">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_chat_edit">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Edit</label></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="role-actions-item">
+                                                    <div class="role-actions-group-name">
+                                                        <h3>Resource Schedules</h3>
+                                                        <div class="role-actions-group-description">Edit custom schedule
+                                                            of individual agent, location or service.</div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][resource_schedule__edit]"
+                                                                value="off"
+                                                                id="role_capabilities_resource_schedule_edit">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_resource_schedule_edit">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Edit</label></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="role-actions-item">
+                                                    <div class="role-actions-group-name">
+                                                        <h3>Settings</h3>
+                                                        <div class="role-actions-group-description">Access to all settings
+                                                            pages, including general schedule and booking steps.</div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][settings__edit]" value="off"
+                                                                id="role_capabilities_settings_edit">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_settings_edit">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Edit</label></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="role-actions-item">
+                                                    <div class="role-actions-group-name">
+                                                        <h3>Connections</h3>
+                                                        <div class="role-actions-group-description">Ability to connect
+                                                            agents to services and locations.</div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][connection__edit]"
+                                                                value="off" id="role_capabilities_connection_edit">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_connection_edit">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Edit</label></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="role-actions-item">
+                                                    <div class="role-actions-group-name">
+                                                        <h3>Coupons</h3>
+                                                        <div class="role-actions-group-description"></div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][coupon__view]" value="off"
+                                                                id="role_capabilities_coupon_view">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_coupon_view">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>View</label></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][coupon__delete]" value="off"
+                                                                id="role_capabilities_coupon_delete">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_coupon_delete">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Delete</label></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][coupon__create]" value="off"
+                                                                id="role_capabilities_coupon_create">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_coupon_create">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Create</label></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="role-toggler-wrapper">
+                                                        <div class="os-form-group os-form-toggler-group  size-normal">
+                                                            <input type="hidden"
+                                                                name="role[capabilities][coupon__edit]" value="off"
+                                                                id="role_capabilities_coupon_edit">
+                                                            <div class="os-toggler off size-normal"
+                                                                data-is-string-value="true"
+                                                                data-for="role_capabilities_coupon_edit">
+                                                                <div class="toggler-rail">
+                                                                    <div class="toggler-pill"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="os-toggler-label-w"><label>Edit</label></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="os-form-block-buttons">
+                                        <a href="javascript:;"
+                                            class="btn btn-danger pull-left os-remove-role"
+                                            data-os-prompt="Are you sure you want to delete this role?"
+                                            data-os-after-call="latepointRoleManagerAddonAdmin.role_deleted"
+                                            data-os-pass-this="yes" data-os-action="roles__destroy"
+                                            data-os-params="wp_role=role_AuuNwSTd">Delete </a>
+                                        <button type="submit"
+                                            class="os-form-block-save-btn btn btn-primary"><span>Save
+                                                Changes</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="javascript:;" data-os-prompt="Are you sure you want to delete this role?"
+                                data-os-after-call="latepointRoleManagerAddonAdmin.role_deleted" data-os-pass-this="yes"
+                                data-os-action="roles__destroy" data-os-params="wp_role=role_AuuNwSTd"
+                                class="os-remove-form-block"><i class="latepoint-icon latepoint-icon-cross"></i></a>
+                        </form>
+                    </div>
                     <div class="os-add-box" data-os-after-call="latepointRoleManagerAddonAdmin.init_new_role_form"
                         data-os-action="roles__new_form" data-os-output-target-do="append"
                         data-os-output-target=".os-custom-roles-w">
@@ -2141,12 +2825,15 @@
     <script>
         $('.os-form-toggler-group').click(function() {
             var obj = $(this).children('.os-toggler');
+            var val = $(this).children('input');
             if (obj.hasClass('on')) {
                 obj.removeClass('on');
                 obj.addClass('off');
+                val.val('off');
             } else {
                 obj.removeClass('off');
                 obj.addClass('on');
+                val.val('on');
             }
         });
 
@@ -2167,693 +2854,7 @@
         });
 
         $('.os-add-box').click(function () {
-            $(this).before(`
-            <div class="os-custom-roles-w os-form-blocks-w">
-                <form action="{{route('settings-storeroles')}}" data-os-action="roles__save" class="os-form-block os-user-type-form os-is-editing" method="post">
-                    @csrf
-                    <div class="os-form-block-i">
-                        <div class="os-form-block-header">
-                            <div class="os-form-block-drag"></div>
-                            <div class="os-form-block-name update-from-name">New Custom Role</div>
-                            <div class="os-form-block-type">0 users</div>
-                            <div class="os-form-block-edit-btn">
-                                <i class="latepoint-icon latepoint-icon-edit-3"></i>
-                            </div>
-                        </div>
-                        <div class="os-form-block-params os-form-w">
-                            <div class="sub-section-row">
-                                <div class="sub-section-label">
-                                    <h3>Name</h3>
-                                </div>
-                                <div class="sub-section-content">
-                                    <div
-                                        class="os-form-group os-form-textfield-group os-form-group-bordered has-value no-label">
-                                        <input type="text" placeholder="" name="role[name]"
-                                            value="New Custom Role" theme="bordered" id="role_name"
-                                            class="os-form-control"></div>
-                                </div>
-                            </div>
-                            <input type="hidden" name="role[wp_role]" value="role_custom" id="role_wp_role">
-                            
-                            <div class="sub-section-row">
-                                <div class="sub-section-label">
-                                    <h3>Users</h3>
-                                </div>
-                                <div class="sub-section-content">
-                                    <div class="latepoint-message latepoint-message-subtle">You have not assigned
-                                        any WordPress users to this role. Create a new WP user or edit existing user
-                                        and assign them a role called: "<span class="update-from-name">New Custom
-                                            Role</span>"</div>
-                                </div>
-                            </div>
-                            <div class="sub-section-row">
-                                <div class="sub-section-label">
-                                    <h3>Allowed Records</h3>
-                                </div>
-                                <div class="sub-section-content">
-
-                                    <div class="latepoint-message latepoint-message-subtle">Once you assign users
-                                        to this role, they will appear in "Users" section above, click on each user
-                                        to set restrictions on which records each of them can access.</div>
-                                </div>
-                            </div>
-                            <div class="sub-section-row">
-                                <div class="sub-section-label">
-                                    <h3>Permitted Actions</h3>
-                                </div>
-                                <div class="sub-section-content">
-                                    <div class="role-actions-grid">
-                                        <div class="role-actions-item">
-                                            <div class="role-actions-group-name">
-                                                <h3>Agents</h3>
-                                                <div class="role-actions-group-description"></div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden" name="role[capabilities][agent__view]"
-                                                        value="off" id="role_capabilities_agent_view">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_agent_view">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>View</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden" name="role[capabilities][agent__delete]"
-                                                        value="off" id="role_capabilities_agent_delete">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_agent_delete">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Delete</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden" name="role[capabilities][agent__create]"
-                                                        value="off" id="role_capabilities_agent_create">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_agent_create">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Create</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden" name="role[capabilities][agent__edit]"
-                                                        value="off" id="role_capabilities_agent_edit">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_agent_edit">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Edit</label></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="role-actions-item">
-                                            <div class="role-actions-group-name">
-                                                <h3>Services</h3>
-                                                <div class="role-actions-group-description"></div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden" name="role[capabilities][service__view]"
-                                                        value="off" id="role_capabilities_service_view">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_service_view">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>View</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][service__delete]" value="off"
-                                                        id="role_capabilities_service_delete">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_service_delete">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Delete</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][service__create]" value="off"
-                                                        id="role_capabilities_service_create">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_service_create">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Create</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden" name="role[capabilities][service__edit]"
-                                                        value="off" id="role_capabilities_service_edit">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_service_edit">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Edit</label></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="role-actions-item">
-                                            <div class="role-actions-group-name">
-                                                <h3>Locations</h3>
-                                                <div class="role-actions-group-description"></div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][location__view]" value="off"
-                                                        id="role_capabilities_location_view">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_location_view">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>View</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][location__delete]" value="off"
-                                                        id="role_capabilities_location_delete">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_location_delete">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Delete</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][location__create]" value="off"
-                                                        id="role_capabilities_location_create">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_location_create">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Create</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][location__edit]" value="off"
-                                                        id="role_capabilities_location_edit">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_location_edit">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Edit</label></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="role-actions-item">
-                                            <div class="role-actions-group-name">
-                                                <h3>Bookings</h3>
-                                                <div class="role-actions-group-description"></div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden" name="role[capabilities][booking__view]"
-                                                        value="off" id="role_capabilities_booking_view">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_booking_view">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>View</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][booking__delete]" value="off"
-                                                        id="role_capabilities_booking_delete">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_booking_delete">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Delete</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][booking__create]" value="off"
-                                                        id="role_capabilities_booking_create">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_booking_create">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Create</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden" name="role[capabilities][booking__edit]"
-                                                        value="off" id="role_capabilities_booking_edit">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_booking_edit">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Edit</label></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="role-actions-item">
-                                            <div class="role-actions-group-name">
-                                                <h3>Customers</h3>
-                                                <div class="role-actions-group-description"></div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][customer__view]" value="off"
-                                                        id="role_capabilities_customer_view">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_customer_view">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>View</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][customer__delete]" value="off"
-                                                        id="role_capabilities_customer_delete">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_customer_delete">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Delete</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][customer__create]" value="off"
-                                                        id="role_capabilities_customer_create">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_customer_create">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Create</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][customer__edit]" value="off"
-                                                        id="role_capabilities_customer_edit">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_customer_edit">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Edit</label></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="role-actions-item">
-                                            <div class="role-actions-group-name">
-                                                <h3>Transactions</h3>
-                                                <div class="role-actions-group-description"></div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][transaction__view]"
-                                                        value="off" id="role_capabilities_transaction_view">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_transaction_view">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>View</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][transaction__delete]"
-                                                        value="off" id="role_capabilities_transaction_delete">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_transaction_delete">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Delete</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][transaction__create]"
-                                                        value="off" id="role_capabilities_transaction_create">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_transaction_create">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Create</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][transaction__edit]"
-                                                        value="off" id="role_capabilities_transaction_edit">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_transaction_edit">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Edit</label></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="role-actions-item">
-                                            <div class="role-actions-group-name">
-                                                <h3>Activity Logs</h3>
-                                                <div class="role-actions-group-description"></div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][activity__view]" value="off"
-                                                        id="role_capabilities_activity_view">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_activity_view">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>View</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][activity__delete]" value="off"
-                                                        id="role_capabilities_activity_delete">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_activity_delete">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Delete</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][activity__create]" value="off"
-                                                        id="role_capabilities_activity_create">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_activity_create">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Create</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][activity__edit]" value="off"
-                                                        id="role_capabilities_activity_edit">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_activity_edit">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Edit</label></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="role-actions-item">
-                                            <div class="role-actions-group-name">
-                                                <h3>Chat</h3>
-                                                <div class="role-actions-group-description">Ability to send
-                                                    messages to customers (available with chat addon).</div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden" name="role[capabilities][chat__edit]"
-                                                        value="off" id="role_capabilities_chat_edit">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_chat_edit">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Edit</label></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="role-actions-item">
-                                            <div class="role-actions-group-name">
-                                                <h3>Resource Schedules</h3>
-                                                <div class="role-actions-group-description">Edit custom schedule
-                                                    of individual agent, location or service.</div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][resource_schedule__edit]"
-                                                        value="off"
-                                                        id="role_capabilities_resource_schedule_edit">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_resource_schedule_edit">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Edit</label></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="role-actions-item">
-                                            <div class="role-actions-group-name">
-                                                <h3>Settings</h3>
-                                                <div class="role-actions-group-description">Access to all settings
-                                                    pages, including general schedule and booking steps.</div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][settings__edit]" value="off"
-                                                        id="role_capabilities_settings_edit">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_settings_edit">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Edit</label></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="role-actions-item">
-                                            <div class="role-actions-group-name">
-                                                <h3>Connections</h3>
-                                                <div class="role-actions-group-description">Ability to connect
-                                                    agents to services and locations.</div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][connection__edit]"
-                                                        value="off" id="role_capabilities_connection_edit">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_connection_edit">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Edit</label></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="role-actions-item">
-                                            <div class="role-actions-group-name">
-                                                <h3>Coupons</h3>
-                                                <div class="role-actions-group-description"></div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][coupon__view]" value="off"
-                                                        id="role_capabilities_coupon_view">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_coupon_view">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>View</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][coupon__delete]" value="off"
-                                                        id="role_capabilities_coupon_delete">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_coupon_delete">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Delete</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][coupon__create]" value="off"
-                                                        id="role_capabilities_coupon_create">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_coupon_create">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Create</label></div>
-                                                </div>
-                                            </div>
-                                            <div class="role-toggler-wrapper">
-                                                <div class="os-form-group os-form-toggler-group  size-normal">
-                                                    <input type="hidden"
-                                                        name="role[capabilities][coupon__edit]" value="off"
-                                                        id="role_capabilities_coupon_edit">
-                                                    <div class="os-toggler off size-normal"
-                                                        data-is-string-value="true"
-                                                        data-for="role_capabilities_coupon_edit">
-                                                        <div class="toggler-rail">
-                                                            <div class="toggler-pill"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="os-toggler-label-w"><label>Edit</label></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="os-form-block-buttons">
-                                <a href="javascript:;"
-                                    class="btn btn-danger pull-left os-remove-role"
-                                    data-os-prompt="Are you sure you want to delete this role?"
-                                    data-os-after-call="latepointRoleManagerAddonAdmin.role_deleted"
-                                    data-os-pass-this="yes" data-os-action="roles__destroy"
-                                    data-os-params="wp_role=role_AuuNwSTd">Delete </a>
-                                <button type="submit"
-                                    class="os-form-block-save-btn btn btn-primary"><span>Save
-                                        Changes</span></button>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="javascript:;" data-os-prompt="Are you sure you want to delete this role?"
-                        data-os-after-call="latepointRoleManagerAddonAdmin.role_deleted" data-os-pass-this="yes"
-                        data-os-action="roles__destroy" data-os-params="wp_role=role_AuuNwSTd"
-                        class="os-remove-form-block"><i class="latepoint-icon latepoint-icon-cross"></i></a>
-                </form>
-            </div>
-            `);
+            $('.new-custom-form').css('display', 'block');
         });
 
         $('.role-user-wrapper').click(function() {

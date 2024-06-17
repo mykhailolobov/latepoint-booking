@@ -41,7 +41,6 @@ $configData = Helper::appClasses();
 <link href="{{asset('/assets/css/settings.css')}}" rel="stylesheet">
 
 <div class="row">
-    {{$check}}
     @if($check==0)
     <form action="{{route('settings-storegeneral')}}" method="post">
         @csrf

@@ -238,7 +238,7 @@ $configData = Helper::appClasses();
                             <div class="col-md-12 mb-md-0 mb-2">
                                 <div class="form-check custom-option custom-option-basic">
                                     <label class="form-check-label custom-option-content" for="customCheckTemp37">
-                                        <input class="form-check-input" type="checkbox" value="" id="customCheckTemp37" checked />
+                                        <input class="form-check-input" type="checkbox" name="service[offer][john_mayers]" id="customCheckTemp37" checked />
                                         <span class="custom-option-header">
                                             <img src="{{ asset('assets/img/avatars/7.png') }}" class="w-px-30 border-50" />
                                             <span class="h6 mb-0">John Mayers</span>
@@ -249,7 +249,7 @@ $configData = Helper::appClasses();
                             <div class="col-md-12">
                                 <div class="form-check custom-option custom-option-basic">
                                     <label class="form-check-label custom-option-content" for="customCheckTemp47">
-                                        <input class="form-check-input" type="checkbox" value="" id="customCheckTemp47" checked />
+                                        <input class="form-check-input" type="checkbox" name="service[offer][invisilign_braces]" id="customCheckTemp47" checked />
                                         <span class="custom-option-header">
                                             <img src="{{ asset('assets/img/avatars/8.png') }}" class="w-px-30 border-50" />
                                             <span class="h6 mb-0">Invisilign Braces</span>
@@ -260,7 +260,7 @@ $configData = Helper::appClasses();
                             <div class="col-md-12 mb-md-0 mb-2">
                                 <div class="form-check custom-option custom-option-basic">
                                     <label class="form-check-label custom-option-content" for="customCheckTemp38">
-                                        <input class="form-check-input" type="checkbox" value="" id="customCheckTemp38" checked />
+                                        <input class="form-check-input" type="checkbox" name="service[offer][group_booking]" id="customCheckTemp38" checked />
                                         <span class="custom-option-header">
                                             <img src="{{ asset('assets/img/avatars/9.png') }}" class="w-px-30 border-50" />
                                             <span class="h6 mb-0">Group Booking</span>
@@ -271,7 +271,7 @@ $configData = Helper::appClasses();
                             <div class="col-md-12">
                                 <div class="form-check custom-option custom-option-basic">
                                     <label class="form-check-label custom-option-content" for="customCheckTemp48">
-                                        <input class="form-check-input" type="checkbox" value="" id="customCheckTemp48" checked />
+                                        <input class="form-check-input" type="checkbox" name="service[offer][porcelain_crown]" id="customCheckTemp48" checked />
                                         <span class="custom-option-header">
                                             <img src="{{ asset('assets/img/avatars/3.png') }}" class="w-px-30 border-50" />
                                             <span class="h6 mb-0">Porcelain Crown</span>
@@ -282,7 +282,7 @@ $configData = Helper::appClasses();
                             <div class="col-md-12 mb-md-0 mb-2">
                                 <div class="form-check custom-option custom-option-basic">
                                     <label class="form-check-label custom-option-content" for="customCheckTemp39">
-                                        <input class="form-check-input" type="checkbox" value="" id="customCheckTemp39" checked />
+                                        <input class="form-check-input" type="checkbox" name="service[offer][root_canal]" id="customCheckTemp39" checked />
                                         <span class="custom-option-header">
                                             <img src="{{ asset('assets/img/avatars/4.png') }}" class="w-px-30 border-50" />
                                             <span class="h6 mb-0">Root Canal Therapy</span>
@@ -293,7 +293,7 @@ $configData = Helper::appClasses();
                             <div class="col-md-12">
                                 <div class="form-check custom-option custom-option-basic">
                                     <label class="form-check-label custom-option-content" for="customCheckTemp49">
-                                        <input class="form-check-input" type="checkbox" value="" id="customCheckTemp49" checked />
+                                        <input class="form-check-input" type="checkbox" name="service[offer][gum_decease]" id="customCheckTemp49" checked />
                                         <span class="custom-option-header">
                                             <img src="{{ asset('assets/img/avatars/5.png') }}" class="w-px-30 border-50" />
                                             <span class="h6 mb-0">Gum Decease</span>
@@ -312,7 +312,7 @@ $configData = Helper::appClasses();
                         <h5 class="card-header">Service Schedule</h5>
                         <div class="py-4 px-5">
                             <label class="form-check-label custom-option-content customCheckTemp1" for="customCheckTemp1">
-                                <input class="form-check-input" type="checkbox" value="" id="customCheckTemp1" />
+                                <input class="form-check-input" type="checkbox" name="service[schedule][status]" id="customCheckTemp1" />
                                 <span class="custom-option-header">
                                     <span class="h6 mb-0">Set Custom Schedule</span>
                                 </span>
@@ -332,7 +332,7 @@ $configData = Helper::appClasses();
                                     <div class="ws-head-w">
                                         <div class="d-flex justify-content-between mb-3">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" checked />
+                                                <input type="checkbox" class="switch-input" name="service[schedule][mon][status]" />
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -344,11 +344,11 @@ $configData = Helper::appClasses();
                                         <div class="d-flex mb-3">
                                             <div class="start_time">
                                                 <label for="flatpickr-time" class="form-label">Start Time</label>
-                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time" />
+                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time" name="service[schedule][mon][start]" />
                                             </div>
                                             <div class="finish_time">
                                                 <label for="flatpickr-time" class="form-label">Finish Time</label>
-                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time-finish" />
+                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time-finish" name="service[schedule][mon][finish]"/>
                                             </div>
                                         </div>
                                     </div>
@@ -356,7 +356,7 @@ $configData = Helper::appClasses();
                                     <div class="ws-head-w">
                                         <div class="d-flex justify-content-between mb-3">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" checked />
+                                                <input type="checkbox" class="switch-input" name="service[schedule][tus][status]" />
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -368,11 +368,11 @@ $configData = Helper::appClasses();
                                         <div class="d-flex mb-3">
                                             <div class="start_time">
                                                 <label for="flatpickr-time" class="form-label">Start Time</label>
-                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time1" />
+                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time1" name="service[schedule][tus][start]" />
                                             </div>
                                             <div class="finish_time">
                                                 <label for="flatpickr-time" class="form-label">Finish Time</label>
-                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time-finish1" />
+                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time-finish1" name="service[schedule][tus][finish]"/>
                                             </div>
                                         </div>
                                     </div>
@@ -380,7 +380,7 @@ $configData = Helper::appClasses();
                                     <div class="ws-head-w">
                                         <div class="d-flex justify-content-between mb-3">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" checked />
+                                                <input type="checkbox" class="switch-input" name="service[schedule][wed][status]" />
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -392,11 +392,11 @@ $configData = Helper::appClasses();
                                         <div class="d-flex mb-3">
                                             <div class="start_time">
                                                 <label for="flatpickr-time" class="form-label">Start Time</label>
-                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time2" />
+                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time2" name="service[schedule][wed][start]"/>
                                             </div>
                                             <div class="finish_time">
                                                 <label for="flatpickr-time" class="form-label">Finish Time</label>
-                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time-finish2" />
+                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time-finish2" name="service[schedule][wed][finish]" />
                                             </div>
                                         </div>
                                     </div>
@@ -404,7 +404,7 @@ $configData = Helper::appClasses();
                                     <div class="ws-head-w">
                                         <div class="d-flex justify-content-between mb-3">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" checked />
+                                                <input type="checkbox" class="switch-input" name="service[schedule][thu][status]" />
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -416,11 +416,11 @@ $configData = Helper::appClasses();
                                         <div class="d-flex mb-3">
                                             <div class="start_time">
                                                 <label for="flatpickr-time" class="form-label">Start Time</label>
-                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time3" />
+                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time3" name="service[schedule][thu][start]"/>
                                             </div>
                                             <div class="finish_time">
                                                 <label for="flatpickr-time" class="form-label">Finish Time</label>
-                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time-finish3" />
+                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time-finish3" name="service[schedule][thu][finish]"/>
                                             </div>
                                         </div>
                                     </div>
@@ -428,7 +428,7 @@ $configData = Helper::appClasses();
                                     <div class="ws-head-w">
                                         <div class="d-flex justify-content-between mb-3">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" checked />
+                                                <input type="checkbox" class="switch-input" name="service[schedule][fri][status]" />
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -440,11 +440,11 @@ $configData = Helper::appClasses();
                                         <div class="d-flex mb-3">
                                             <div class="start_time">
                                                 <label for="flatpickr-time" class="form-label">Start Time</label>
-                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time4" />
+                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time4" name="service[schedule][fri][start]"/>
                                             </div>
                                             <div class="finish_time">
                                                 <label for="flatpickr-time" class="form-label">Finish Time</label>
-                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time-finish4" />
+                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time-finish4" name="service[schedule][fri][finish]" />
                                             </div>
                                         </div>
                                     </div>
@@ -452,7 +452,7 @@ $configData = Helper::appClasses();
                                     <div class="ws-head-w">
                                         <div class="d-flex justify-content-between mb-3">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" checked />
+                                                <input type="checkbox" class="switch-input" name="service[schedule][sat][status]" />
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -464,11 +464,11 @@ $configData = Helper::appClasses();
                                         <div class="d-flex mb-3">
                                             <div class="start_time">
                                                 <label for="flatpickr-time" class="form-label">Start Time</label>
-                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time5" />
+                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time5" name="service[schedule][sat][start]" />
                                             </div>
                                             <div class="finish_time">
                                                 <label for="flatpickr-time" class="form-label">Finish Time</label>
-                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time-finish5" />
+                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time-finish5" name="service[schedule][sat][finish]" />
                                             </div>
                                         </div>
                                     </div>
@@ -476,7 +476,7 @@ $configData = Helper::appClasses();
                                     <div class="ws-head-w">
                                         <div class="d-flex justify-content-between mb-3">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" checked />
+                                                <input type="checkbox" class="switch-input" name="service[schedule][sun][status]" />
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -488,11 +488,11 @@ $configData = Helper::appClasses();
                                         <div class="d-flex mb-3">
                                             <div class="start_time">
                                                 <label for="flatpickr-time" class="form-label">Start Time</label>
-                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time6" />
+                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time6" name="service[schedule][sun][start]" />
                                             </div>
                                             <div class="finish_time">
                                                 <label for="flatpickr-time" class="form-label">Finish Time</label>
-                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time-finish6" />
+                                                <input type="text" class="form-control" placeholder="HH:MM" id="flatpickr-time-finish6" name="service[schedule][sun][finish]" />
                                             </div>
                                         </div>
                                     </div>
@@ -528,7 +528,7 @@ $configData = Helper::appClasses();
                             <div class="col-lg-6 px-3">
                                 <div class="d-flex justify-content-between mb-3">
                                     <label class="switch">
-                                        <input type="checkbox" class="switch-input" />
+                                        <input type="checkbox" class="switch-input" name="service[booking][price_charge]" />
                                         <span class="switch-toggle-slider">
                                             <span class="switch-on"></span>
                                             <span class="switch-off"></span>
@@ -539,7 +539,7 @@ $configData = Helper::appClasses();
     
                                 <div class="d-flex justify-content-between mb-3">
                                     <label class="switch">
-                                        <input type="checkbox" class="switch-input" />
+                                        <input type="checkbox" class="switch-input" name="service[booking][price_deposit]"  />
                                         <span class="switch-toggle-slider">
                                             <span class="switch-on"></span>
                                             <span class="switch-off"></span>
@@ -557,7 +557,7 @@ $configData = Helper::appClasses();
                             <div class="col-lg-6 px-3">
                                 <div class="d-flex justify-content-between mb-3">
                                     <label class="switch">
-                                        <input type="checkbox" class="switch-input" />
+                                        <input type="checkbox" class="switch-input" name="service[booking][other_customer]"  />
                                         <span class="switch-toggle-slider">
                                             <span class="switch-on"></span>
                                             <span class="switch-off"></span>
@@ -568,7 +568,7 @@ $configData = Helper::appClasses();
     
                                 <div class="d-flex justify-content-between mb-3">
                                     <label class="switch">
-                                        <input type="checkbox" class="switch-input" />
+                                        <input type="checkbox" class="switch-input" name="service[booking][other_timeslot]"/>
                                         <span class="switch-toggle-slider">
                                             <span class="switch-on"></span>
                                             <span class="switch-off"></span>
@@ -601,7 +601,7 @@ $configData = Helper::appClasses();
                             <div class="col-md-12 mb-md-0 mb-2">
                                 <div class="form-check custom-option custom-option-basic">
                                     <label class="form-check-label custom-option-content" for="service_extra_1">
-                                        <input class="form-check-input" type="checkbox" value="" id="service_extra_1" checked />
+                                        <input class="form-check-input" type="checkbox" name="service[extra][teeth_whitening]" id="service_extra_1" />
                                         <span class="custom-option-header">
                                             <img src="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-content/plugins/latepoint/public/images/service-image.png" class="w-px-30 border-50" />
                                             <span class="h6 mb-0">Teeth Whitening</span>
@@ -612,7 +612,7 @@ $configData = Helper::appClasses();
                             <div class="col-md-12">
                                 <div class="form-check custom-option custom-option-basic">
                                     <label class="form-check-label custom-option-content" for="service_extra_2">
-                                        <input class="form-check-input" type="checkbox" value="" id="service_extra_2" checked />
+                                        <input class="form-check-input" type="checkbox" name="service[extra][hair_wash]" id="service_extra_2" />
                                         <span class="custom-option-header">
                                             <img src="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-content/plugins/latepoint/public/images/service-image.png" class="w-px-30 border-50" />
                                             <span class="h6 mb-0">Hair Wash</span>
@@ -623,7 +623,7 @@ $configData = Helper::appClasses();
                             <div class="col-md-12 mb-md-0 mb-2">
                                 <div class="form-check custom-option custom-option-basic">
                                     <label class="form-check-label custom-option-content" for="service_extra_3">
-                                        <input class="form-check-input" type="checkbox" value="" id="service_extra_3" checked />
+                                        <input class="form-check-input" type="checkbox" name="service[extra][recovery_mask]" id="service_extra_3" />
                                         <span class="custom-option-header">
                                             <img src="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-content/plugins/latepoint/public/images/service-image.png" class="w-px-30 border-50" />
                                             <span class="h6 mb-0">Recovery Mask</span>
@@ -646,7 +646,7 @@ $configData = Helper::appClasses();
                                     <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconOne">
                                         <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionIcon-1" aria-controls="accordionIcon-1">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" />
+                                                <input type="checkbox" class="switch-input" name="service[setting][extra_min]" />
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -680,7 +680,7 @@ $configData = Helper::appClasses();
                                     <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconOne">
                                         <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionIcon-2" aria-controls="accordionIcon-2">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" />
+                                                <input type="checkbox" class="switch-input" name="service[setting][extra_max]"/>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -720,8 +720,8 @@ $configData = Helper::appClasses();
                                 <div class="form-check custom-option-basic">
                                     <div class="d-flex justify-content-between mb-3">
                                         <label class="switch">
-                                            <input type="checkbox" class="switch-input" />
-                                            <span class="switch-toggle-slider">
+                                            <input type="checkbox" class="switch-input" name="service[setting][zoom]"/>
+                                            <span class="switch-toggle-slider" >
                                                 <span class="switch-on"></span>
                                                 <span class="switch-off"></span>
                                             </span>
@@ -748,6 +748,21 @@ $configData = Helper::appClasses();
 
 <script type="text/javascript" src="{{asset('/assets/jquery.js')}}"></script>
 <script type="text/javascript">
+    const servicedata = {
+        'offer': {},
+        'schedule' : {
+            'mon' : {},
+            'tus' : {},
+            'wed' : {},
+            'thu' : {},
+            'fri' : {},
+            'sat' : {},
+            'sun' : {},
+        },
+        'booking' : {},
+        'extra' : {},
+        'setting' : {}
+    }; 
     $(document).ready(function() {
         $('.custom-schedule-wrapper').hide();
 
@@ -780,7 +795,6 @@ $configData = Helper::appClasses();
         e.preventDefault();
         const csrf_token = $('meta[name="csrf-token"]').attr('content');
         const name = $('input[name="name"]').val();
-        const short_description = $('input[name="short_description"]').val();
 
         const price_min = $('input[name="price_min"]').val();
         const price_max = $('input[name="price_max"]').val();
@@ -802,7 +816,47 @@ $configData = Helper::appClasses();
         const status = $('select[name="status"]').val();
         const visibility = $('select[name="visibility"]').val();
         const override_default_booking_status = $('select[name="override_default_booking_status"]').val();
+        servicedata['short_description'] =  $('input[name="short_description"]').val();
+        servicedata['offer']['john_mayers'] = $('input[name="service[offer][john_mayers]"]').prop('checked');
+        servicedata['offer']['invisilign_braces'] = $('input[name="service[offer][invisilign_braces]"]').prop('checked');
+        servicedata['offer']['group_booking'] = $('input[name="service[offer][group_booking]"]').prop('checked');
+        servicedata['offer']['porcelain_crown'] = $('input[name="service[offer][porcelain_crown]"]').prop('checked');
+        servicedata['offer']['root_canal'] = $('input[name="service[offer][root_canal]"]').prop('checked');
+        servicedata['offer']['gum_decease'] = $('input[name="service[offer][gum_decease]"]').prop('checked');
+        servicedata['schedule']['status'] = $('input[name="service[schedule][status]"]').prop('checked');
+        servicedata['schedule']['mon']['status'] = $('input[name="service[schedule][mon][status]"]').prop('checked');
+        servicedata['schedule']['mon']['start'] = $('input[name="service[schedule][mon][start]"]').prop('checked');
+        servicedata['schedule']['mon']['finish'] = $('input[name="service[schedule][mon][finish]"]').prop('checked');
+        servicedata['schedule']['tus']['status'] = $('input[name="service[schedule][tus][status]"]').prop('checked');
+        servicedata['schedule']['tus']['start'] = $('input[name="service[schedule][tus][start]"]').prop('checked');
+        servicedata['schedule']['tus']['finish'] = $('input[name="service[schedule][tus][finish]"]').prop('checked');
+        servicedata['schedule']['wed']['status'] = $('input[name="service[schedule][wed][status]"]').prop('checked');
+        servicedata['schedule']['wed']['start'] = $('input[name="service[schedule][wed][start]"]').prop('checked');
+        servicedata['schedule']['wed']['finish'] = $('input[name="service[schedule][wed][finish]"]').prop('checked');
+        servicedata['schedule']['thu']['status'] = $('input[name="service[schedule][thu][status]"]').prop('checked');
+        servicedata['schedule']['thu']['start'] = $('input[name="service[schedule][thu][start]"]').prop('checked');
+        servicedata['schedule']['thu']['finish'] = $('input[name="service[schedule][thu][finish]"]').prop('checked');
+        servicedata['schedule']['fri']['status'] = $('input[name="service[schedule][fri][status]"]').prop('checked');
+        servicedata['schedule']['fri']['start'] = $('input[name="service[schedule][fri][start]"]').prop('checked');
+        servicedata['schedule']['fri']['finish'] = $('input[name="service[schedule][fri][finish]"]').prop('checked');
+        servicedata['schedule']['sat']['status'] = $('input[name="service[schedule][sat][status]"]').prop('checked');
+        servicedata['schedule']['sat']['start'] = $('input[name="service[schedule][sat][start]"]').prop('checked');
+        servicedata['schedule']['sat']['finish'] = $('input[name="service[schedule][sat][finish]"]').prop('checked');
+        servicedata['schedule']['sun']['status'] = $('input[name="service[schedule][sun][status]"]').prop('checked');
+        servicedata['schedule']['sun']['start'] = $('input[name="service[schedule][sun][start]"]').prop('checked');
+        servicedata['schedule']['sun']['finish'] = $('input[name="service[schedule][sun][finish]"]').prop('checked');
+        servicedata['booking']['price_charge'] = $('input[name="service[booking][price_charge]"]').prop('checked');
+        servicedata['booking']['price_deposit'] = $('input[name="service[booking][price_deposit]"]').prop('checked');
+        servicedata['booking']['other_customer'] = $('input[name="service[booking][other_customer]"]').prop('checked');
+        servicedata['booking']['other_timeslot'] = $('input[name="service[booking][other_timeslot]"]').prop('checked');
+        servicedata['extra']['teeth_whitening'] = $('input[name="service[extra][teeth_whitening]"]').prop('checked');
+        servicedata['extra']['hair_wash'] = $('input[name="service[extra][hair_wash]"]').prop('checked');
+        servicedata['extra']['recovery_mask'] = $('input[name="service[extra][recovery_mask]"]').prop('checked');
+        servicedata['setting']['extra_min'] = $('input[name="service[setting][extra_min]"]').prop('checked');
+        servicedata['setting']['extra_max'] = $('input[name="service[setting][extra_max]"]').prop('checked');
+        servicedata['setting']['zoom'] = $('input[name="service[setting][zoom]"]').prop('checked');
 
+        // console.log(servicedata);
        
 
         $.ajax({
@@ -813,7 +867,7 @@ $configData = Helper::appClasses();
             },
             data: {
                 name: name,
-                short_description: short_description ? short_description : null,
+                short_description: JSON.stringify(servicedata) ,
                 price_min: price_min ? price_min : null,
                 price_max: price_max ? price_max : null,
                 charge_amount: charge_amount ? charge_amount : null,

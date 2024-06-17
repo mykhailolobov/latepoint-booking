@@ -46,9 +46,9 @@ class RegisteredUserController extends Controller
                 'password' => 'required|min:6',
             ];
         $error_msg = [
-            'email.required' =>  __('Please fill in the field'),
+            'email.required' => __('Please fill in the field'),
             'email.email' => __('Email must be a valid email address'),
-            'password.required' =>  __('Please fill in the field'),
+            'password.required' => __('Please fill in the field'),
             'password.min' => __('Password should be minium 6 characters'),
         ];
 
@@ -59,7 +59,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'status' => '1',
-            'is_verified' => '1',
+            'is_verified' => '0',
         ]);
 
         $token = Str::random(64);
@@ -104,7 +104,7 @@ class RegisteredUserController extends Controller
     {
         return view('auth.verify-email');
     }
-    
+
     /**
      * Write code on Method
      *
@@ -118,8 +118,8 @@ class RegisteredUserController extends Controller
         if (!is_null($verifyUser)) {
             $user = $verifyUser->user;
             if (!$user->is_verified) {
-                $user->is_verified =  1;
-                $user->email_verified_at =  Carbon::now();
+                $user->is_verified = 1;
+                $user->email_verified_at = Carbon::now();
                 $user->save();
                 $message = "Your e-mail is verified. You can now login.";
             } else {

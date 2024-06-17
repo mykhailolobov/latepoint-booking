@@ -39,6 +39,8 @@ use App\Http\Controllers\Settings\Processes\Processes;
 use App\Http\Controllers\Settings\Processes\ScheduledJobs;
 
 use App\Http\Controllers\Settings\FormFields;
+// Test Controller
+use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +54,8 @@ use App\Http\Controllers\Settings\FormFields;
 */
 
 
+Route::get('emails/verify', [TestController::class, 'verify']);
+Route::get('emails/forgot', [TestController::class, 'forgot']);
 Route::get('/', function () {
     return redirect()->route('login');
 });
@@ -71,7 +75,11 @@ Route::middleware('auth')->group(function () {
     // Main Page Route
     Route::get('/dashboard', [Dashboard::class, 'index'])->name('dashboard');
     Route::get('/calendar', [Calendar::class, 'index'])->name('app-calendar');
+
     Route::get('/appointments', [Appointments::class, 'index'])->name('app-appointments');
+    Route::post('/store_appointments', [Appointments::class, 'store'])->name('app-storeappointments');
+
+
     Route::get('/payments', [Payments::class, 'index'])->name('app-payments');
     Route::get('/customers', [Customers::class, 'index'])->name('app-customers');
 
@@ -115,7 +123,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/resource/createagents', [Agents::class, 'create'])->name('resource-createagents');
     Route::get('/resource/editagents/{id}', [Agents::class, 'edit'])->name('resource-editagents');
     Route::post('/resource/storeagent', [Agents::class, 'store'])->name('resource-storeagent');
-    Route::post('/resource/updateagent/{id}', [Agents::class, 'update'])->name('resource-updateagent');
+    Route::post('/resource/updateagent', [Agents::class, 'update'])->name('resource-updateagent');
     
 
     // Resources Section->Coupons part
@@ -152,6 +160,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/settings/steps', [Steps::class, 'index'])->name('settings-steps');
     Route::post('/settings/storesteps', [Steps::class, 'store'])->name('settings-storesteps');
+    Route::post('/settings/createsteps', [Steps::class, 'create'])->name('settings-createsteps');
+
 
     Route::get('/settings/payments', [PaymentSetting::class, 'index'])->name('settings-payments');
     Route::post('/settings/storepayments', [PaymentSetting::class, 'store'])->name('settings-storepayments');
@@ -166,6 +176,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/settings/roles', [Roles::class, 'index'])->name('settings-roles');
     Route::post('/settings/storeroles', [Roles::class, 'store'])->name('settings-storeroles');
     Route::post('/settings/updateroles/{id}', [Roles::class, 'update'])->name('settings-updateroles');
+    Route::get('/settings/deleteroles/{id}', [Roles::class, 'destroy']);
+
 
     Route::get('/settings/processes', [Processes::class, 'index'])->name('settings-processes');
     Route::post('/settings/storeprocesses', [Processes::class, 'store'])->name('settings-storeprocesses');
@@ -185,13 +197,20 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/settings/form-fields', [FormFields::class, 'index'])->name('settings-form-fields');
     Route::post('/settings/storeform-fields', [FormFields::class, 'store'])->name('settings-storeform-fields');
-    Route::post('/settings/updateform-fields', [FormFields::class, 'update'])->name('settings-updateform-fields');
+    Route::post('/settings/storeform-otherfields', [FormFields::class, 'create'])->name('settings-storeform-otherfields');
+    Route::post('/settings/updateform-otherfields/{id}', [FormFields::class, 'update'])->name('settings-updateform-otherfields');
+    Route::get('/settings/deleteform-otherfields/{id}', [FormFields::class, 'destroy']);
+
+    Route::get('/settings/schedule', [Schedule::class, 'index'])->name('settings-schedule');
+    Route::post('/settings/store-schedule', [Schedule::class, 'store'])->name('settings-storeschedule');
+
+
+   
 
 
 
     
     Route::get('/settings/integrations-marketing', [Marketing::class, 'index'])->name('settings-integrations-marketing');
-    Route::get('/settings/schedule', [Schedule::class, 'index'])->name('settings-schedule');
     Route::get('/settings/add-ons', [AddOns::class, 'index'])->name('settings-add-ons');
     Route::get('/settings/system', [System::class, 'index'])->name('settings-system');
 

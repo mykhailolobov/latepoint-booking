@@ -15,10 +15,10 @@ class Calendars extends Controller
     {
         $settings = Setting::all();
         $results = Setting::query()
-        ->where('name', 'LIKE', '%settingscalendar%')
-        ->get();
+            ->where('name', 'LIKE', '%settingscalendar%')
+            ->get();
         $count = $results->count();
-        if($count>0) {
+        if ($count > 0) {
             $result = $results[0];
             $check = 1;
             return view('content.settings.integrations.calendars', compact('result', 'check'));
@@ -26,7 +26,7 @@ class Calendars extends Controller
             $check = 0;
             return view('content.settings.integrations.calendars', compact('check'));
 
-        }        
+        }
     }
 
     /**
@@ -42,15 +42,22 @@ class Calendars extends Controller
      */
     public function store(Request $request)
     {
-        $settings = Setting::all();
-        $count = $settings->count();
-        $finalId = $settings[$count-1]->id;
-        $calendar= new Setting();
-        $calendar->name = "settingscalendar".$finalId;
-        $calendar->value = serialize($request->settings);
-        // dd($tax->value);
+        $checkVal = Setting::query()
+            ->where('name', 'LIKE', "%settingscalendar%")
+            ->get();
+        $check = $checkVal->count();
+        if ($check == 0) {
+            $settings = Setting::all();
+            $count = $settings->count();
+            $finalId = $settings[$count - 1]->id;
+            $calendar = new Setting();
+            $calendar->name = "settingscalendar" . $finalId;
+            $calendar->value = serialize($request->settings);
+        } else {
+            $calendar = $checkVal[0];
+            $calendar->value = serialize($request->settings);
+        }
         $calendar->save();
-        
         return redirect('/settings/integrations-calendars')->with('success', 'Calendar created successfully.');
     }
 
@@ -75,11 +82,11 @@ class Calendars extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $calendar= Setting::findOrFail($id);
+        $calendar = Setting::findOrFail($id);
         $calendar->value = serialize($request->settings);
         // dd($tax->value);
         $calendar->save();
-        
+
         return redirect('/settings/integrations-calendars')->with('success', 'Calendar created successfully.');
     }
 

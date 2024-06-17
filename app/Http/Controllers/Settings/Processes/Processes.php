@@ -30,16 +30,18 @@ class Processes extends Controller
      */
     public function store(Request $request)
     {
-        
-        $process= new Process();
+
+        $process = new Process();
         $process->name = $request->process['name'];
         $process->status = $request->process['status'];
         $process->event_type = $request->process['event']['type'];
-        $process->actions_json = serialize($request->process['actions']);
-        
-        // dd($tax->value);
+        $allActions = [
+            "event" => $request->process['event'],
+            "actions" => $request->process['actions']
+        ];
+        $process->actions_json = serialize($allActions);
         $process->save();
-        
+
         return redirect('/settings/processes')->with('success', 'process created successfully.');
     }
 
@@ -68,11 +70,15 @@ class Processes extends Controller
         $process->name = $request->process['name'];
         $process->status = $request->process['status'];
         $process->event_type = $request->process['event']['type'];
-        $process->actions_json = serialize($request->process['actions']);
-        
+        $allActions = [
+            "event" => $request->process['event'],
+            "actions" => $request->process['actions']
+        ];
+        $process->actions_json = serialize($allActions);
+
         // dd($tax->value);
         $process->save();
-        
+
         return redirect('/settings/processes')->with('success', 'process created successfully.');
     }
 
@@ -83,5 +89,7 @@ class Processes extends Controller
     {
         $process = Process::findOrFail($id);
         $process->delete();
+
+        return redirect('/settings/processes')->with('success', 'process created successfully.');
     }
 }

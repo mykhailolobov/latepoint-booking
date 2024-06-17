@@ -20,7 +20,7 @@ class Services extends Controller
         $generalServices = $services->where('category_id', 'general');
         $cosmeticServices = $services->where('category_id', 'cosmetic');
         $implantsServices = $services->where('category_id', 'implants');
-        return view('content.resource.services',  compact('generalServices', 'cosmeticServices', 'implantsServices'));
+        return view('content.resource.services', compact('generalServices', 'cosmeticServices', 'implantsServices'));
     }
 
     /**
@@ -86,7 +86,7 @@ class Services extends Controller
         $activity->service_id = $service->id;
         $activity->code = "service_created";
         $activity->description = json_encode([
-            'service_data' =>[
+            'service_data' => [
                 'name' => $validatedData['name'],
                 'short_description' => $validatedData['short_description'],
                 'price_min' => $validatedData['price_min'],
@@ -133,10 +133,9 @@ class Services extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request)
-    {   
+    {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255', // Adjust length if needed
-            'short_description' => 'string|nullable',
             'price_min' => 'nullable|numeric|min:0.0000', // Allow decimals, non-negative
             'price_max' => 'nullable|numeric|min:0.0000', // Non-negative, greater than price_min
             'charge_amount' => 'nullable|numeric|min:0.0000',  // Allow decimals, non-negative
@@ -158,7 +157,7 @@ class Services extends Controller
         $service = Service::findOrFail($request->id);
 
         $service->name = $validatedData['name'];
-        $service->short_description = $validatedData['short_description'];
+        $service->short_description = $request->short_description;
         $service->price_min = $validatedData['price_min'];
         $service->price_max = $validatedData['price_max'];
         $service->charge_amount = $validatedData['charge_amount'];
@@ -177,10 +176,10 @@ class Services extends Controller
         $service->override_default_booking_status = $validatedData['override_default_booking_status'];
 
 
-        if($request->selection_image_id) {
+        if ($request->selection_image_id) {
             $service->selection_image_id = $request->selection_image_id;
         }
-        if($request->description_image_id) {
+        if ($request->description_image_id) {
             $service->description_image_id = $request->description_image_id;
         }
 
@@ -190,9 +189,8 @@ class Services extends Controller
         $activity->service_id = $service->id;
         $activity->code = "service_updated";
         $activity->description = json_encode([
-            'service_data' =>[
+            'service_data' => [
                 'name' => $validatedData['name'],
-                'short_description' => $validatedData['short_description'],
                 'price_min' => $validatedData['price_min'],
                 'price_max' => $validatedData['price_max'],
                 'charge_amount' => $validatedData['charge_amount'],
@@ -230,7 +228,7 @@ class Services extends Controller
         $activity->service_id = $service->id;
         $activity->code = "service_deleted";
         $activity->description = json_encode([
-            'service_data' =>[
+            'service_data' => [
                 'name' => $service->name,
                 'short_description' => $service->short_description,
                 'price_min' => $service->price_min,
@@ -252,9 +250,9 @@ class Services extends Controller
             ]
         ]);
         $activity->initiated_by = "admin";
-        $activity->initiated_by_id = $request->user()['id'];
+        // $activity->initiated_by_id = $request->user()['id'];
         $activity->save();
-        
+
         $service->delete();
 
         return redirect('/resource/services')->with('success', 'Category updated successfully.');

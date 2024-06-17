@@ -93,12 +93,6 @@
       "menuHeader": "Settings"
     },
     {
-      "url": "settings/add-ons",
-      "name": "Add-ons",
-      "icon": "menu-icon tf-icons bx bx-plus-circle",
-      "slug": "pages-addons"
-    },
-    {
       "url": "settings/general",
       "name": "Settings",
       "icon": "menu-icon tf-icons bx bx-cog",

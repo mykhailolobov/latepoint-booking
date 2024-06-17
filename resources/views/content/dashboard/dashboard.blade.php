@@ -1,5 +1,5 @@
 @php
-$configData = Helper::appClasses();
+    $configData = Helper::appClasses();
 @endphp
 
 @extends('layouts/layoutMaster')
@@ -8,27 +8,27 @@ $configData = Helper::appClasses();
 
 @section('vendor-style')
 @vite([
-'resources/assets/vendor/libs/apex-charts/apex-charts.scss',
-'resources/assets/vendor/libs/flatpickr/flatpickr.scss',
-'resources/assets/vendor/libs/select2/select2.scss',
+    'resources/assets/vendor/libs/apex-charts/apex-charts.scss',
+    'resources/assets/vendor/libs/flatpickr/flatpickr.scss',
+    'resources/assets/vendor/libs/select2/select2.scss',
 ])
 @endsection
 
 @section('vendor-script')
 @vite([
-'resources/assets/vendor/libs/apex-charts/apexcharts.js',
-'resources/assets/vendor/libs/chartjs/chartjs.js',
-'resources/assets/vendor/libs/flatpickr/flatpickr.js',
-'resources/assets/vendor/libs/select2/select2.js',
+    'resources/assets/vendor/libs/apex-charts/apexcharts.js',
+    'resources/assets/vendor/libs/chartjs/chartjs.js',
+    'resources/assets/vendor/libs/flatpickr/flatpickr.js',
+    'resources/assets/vendor/libs/select2/select2.js',
 ])
 @endsection
 
 @section('page-script')
 @vite([
-'resources/assets/js/app-logistics-dashboard.js',
-'resources/assets/js/charts-chartjs.js',
-'resources/assets/js/forms-pickers.js',
-'resources/assets/js/forms-selects.js',
+    'resources/assets/js/app-logistics-dashboard.js',
+    'resources/assets/js/charts-chartjs.js',
+    'resources/assets/js/forms-pickers.js',
+    'resources/assets/js/forms-selects.js',
 ])
 @endsection
 @section('content')
@@ -48,21 +48,18 @@ $configData = Helper::appClasses();
                 <div class="col-md-4 mb-2">
                     <select id="select2Basic1" class="select2 form-select form-select-lg" data-allow-clear="true">
                         <option>All Agents</option>
-                        <option>John Mayers</option>
-                        <option>Kim collins</option>
-                        <option>Ben Stones</option>
-                        <option>Clark Simeone</option>
+                        @foreach ($agents as $agent)
+                            <option>{{$agent->first_name." ".$agent->last_name}}</option>
+                        @endforeach
                     </select>
-                </div>
+
+                                       </div>
                 <div class="col-md-4 mb-2">
                     <select id="select2Basic2" class="select2 form-select col-md-4 form-select-lg" data-allow-clear="true">
                         <option>All Services</option>
-                        <option>Tooth Whitening</option>
-                        <option>Imvisilingn Braces</option>
-                        <option>Group Booking</option>
-                        <option>Pocelain Crown</option>
-                        <option>Root Canal Therapy</option>
-                        <option>Gum Decease</option>
+                        @foreach ($services as $service)
+                            <option>{{$service->name}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="col-md-4 mb-2">
@@ -75,7 +72,9 @@ $configData = Helper::appClasses();
             <div class="d-md-flex row vehicles-progress-labels" style="padding: 0 2% 0 2%;">
                 <div class="col-md-3 col-6 vehicles-progress-label on-the-way-text">
                     <div class="d-flex">
-                        <h2 class="m-1">0</h2>
+
+                           
+                                                   <h2 class="m-1">0</h2>
                         <span class="p-3 percent_val">0%</span>
                         <i class="fa fa-info" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Total number of appointments in selected period."></i>
                     </div>
@@ -83,7 +82,8 @@ $configData = Helper::appClasses();
                 </div>
                 <div class="col-md-3 col-6 vehicles-progress-label unloading-text">
                     <div class="d-flex">
-                        <h2 class="m-1">$0</h2>
+                        
+                           <h2 class="m-1">$0</h2>
                         <span class="p-3 percent_val">0%</span>
                         <i class="fa fa-info" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Total sales in selected period."></i>
                     </div>
@@ -91,7 +91,9 @@ $configData = Helper::appClasses();
                 </div>
                 <div class="col-md-3 col-6 vehicles-progress-label loading-text">
                     <div class="d-flex">
-                        <h2 class="m-1">0</h2>
+
+                                            
+                                  <h2 class="m-1">0</h2>
                         <span class="p-3 percent_val">0%</span>
                         <i class="fa fa-info" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Total hours worked across all selected agents in selected period."></i>
                     </div>
@@ -99,6 +101,8 @@ $configData = Helper::appClasses();
                 </div>
                 <div class="col-md-3 col-6 vehicles-progress-label waiting-text">
                     <div class="d-flex">
+                             
+                         
                         <h2 class="m-1">5</h2>
                         <span class="p-3 percent_val">0%</span>
                         <i class="fa fa-info" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Total number of new customers registered in selected period."></i>
@@ -143,7 +147,7 @@ $configData = Helper::appClasses();
                         <option>John Mayers</option>
                         <option>Kim collins</option>
                         <option>Ben Stones</option>
-                        <option>Clark Simeone</option>
+        <option>Clark Simeone</option>
                     </select>
                 </div>
                 
@@ -151,7 +155,8 @@ $configData = Helper::appClasses();
             <div class="d-fex align-items-center justify-content-center text-center">
                 <i class='bx bx-sm bxs-inbox'></i>
                 <p>No Upcoming Appointments</p>
-                <a href="#">
+
+                                       <a href="#">
                     <i class='bx bx-sm bx-plus'></i>
                     <span data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd" aria-controls="offcanvasEnd">Add Appointment</span>
                 </a>

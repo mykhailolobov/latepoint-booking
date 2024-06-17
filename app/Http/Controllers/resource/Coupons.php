@@ -33,7 +33,7 @@ class Coupons extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'coupon_name' => 'string|nullable|max:110', 
+            'coupon_name' => 'string|nullable|max:110',
             'code' => [
                 'required',
                 'string',
@@ -81,7 +81,7 @@ class Coupons extends Controller
     public function update(Request $request, string $id)
     {
         $validatedData = $request->validate([
-            'coupon_name' => 'string|nullable|max:110', 
+            'coupon_name' => 'string|nullable|max:110',
             'code' => [
                 'required',
                 'string',

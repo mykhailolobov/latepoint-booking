@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Setting;
 
 class Schedule extends Controller
 {
@@ -12,7 +13,18 @@ class Schedule extends Controller
      */
     public function index()
     {
-        return view('content.settings.schedule');
+        $checkVal = Setting::query()
+            ->where('name', 'LIKE', "%settingweekschedule%")
+            ->get();
+        $check = $checkVal->count();
+
+        if ($check == 0) {
+            return view('content.settings.schedule', compact('check'));
+        } else {
+            $weekSchedule = $checkVal[0];
+            return view('content.settings.schedule', compact('check', 'weekSchedule'));
+
+        }
     }
 
     /**
@@ -20,7 +32,8 @@ class Schedule extends Controller
      */
     public function create()
     {
-        //
+
+
     }
 
     /**
@@ -28,7 +41,33 @@ class Schedule extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $checkVal = Setting::query()
+            ->where('name', 'LIKE', "%settingweekschedule%")
+            ->get();
+        $check = $checkVal->count();
+        if ($check == 0) {
+            $settings = Setting::all();
+            $count = $settings->count();
+            if ($count > 0) {
+                $finalId = $settings[$count - 1]->id;
+            } else {
+                $finalId = 0;
+            }
+
+            $schedule = new Setting();
+            $schedule->name = "settingweekschedule" . $finalId;
+            $schedule->value = serialize($request->work_periods);
+        } else {
+            $id = $checkVal[0]->id;
+            $schedule = Setting::findOrFail($id);
+            $schedule->value = serialize($request->work_periods);
+        }
+
+        $schedule->save();
+
+        return redirect('/settings/schedule')->with('success', 'Schedule created successfully.');
+
     }
 
     /**

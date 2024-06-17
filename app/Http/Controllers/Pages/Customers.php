@@ -13,10 +13,11 @@ class Customers extends Controller
   public function index()
   {
     $customers = Customer::all();
-    return view('content.tables.tables-customers', ['customers'=>$customers]);
+    return view('content.tables.tables-customers', ['customers' => $customers]);
   }
 
-  public function list() {
+  public function list()
+  {
     $customers = Customer::all();
 
     $jsonData = json_encode(['data' => $customers]);
@@ -39,15 +40,15 @@ class Customers extends Controller
       'first_name' => 'string|nullable|max:255', // Adjust length as needed
       'last_name' => 'string|nullable|max:255',
       'email' => [
-          'required',
-          'string',
-          'email',
-          'max:255',
-          Rule::unique('customers'), // Unique email validation
+        'required',
+        'string',
+        'email',
+        'max:255',
+        Rule::unique('customers'), // Unique email validation
       ],
       'country' => 'string|nullable|max:255',
       'phone' => 'string|nullable|max:255', // Adjust for phone number format
-  ]);
+    ]);
 
 
     $customer = new Customer();
@@ -60,38 +61,39 @@ class Customers extends Controller
     $customer->status = "Active";
     $customer->notes = $request->input('notes');
     $customer->admin_notes = $request->input('admin_notes');
-    
-    $customers = Customer::all();
-    
-    
-     if( $request->customer_avatar ) {
-      $customer->avatar_image_id = $request->customer_avatar;
-    } else { 
-    };
 
-    $customer->save(); 
+    $customers = Customer::all();
+
+
+    if ($request->customer_avatar) {
+      $customer->avatar_image_id = $request->customer_avatar;
+    } else {
+    }
+    ;
+
+    $customer->save();
 
     $activity = new Activity();
     $activity->customer_id = $customer->id;
     $activity->code = "customer_created";
     $activity->description = json_encode([
-        'customer_data' =>[
-          'user_id' => $request->user()['id'],
-          'first_name' => $validatedData['first_name'],
-          'last_name' => $validatedData['last_name'],
-          'email' => $validatedData['email'],
-          'country' => $request->country,
-          'phone' => $validatedData['phone'],
-          'status' => "Active",
-          'notes' => $request->input('notes'),
-          'admin_notes' => $request->input('admin_notes'),
-        ]
+      'customer_data' => [
+        'user_id' => $request->user()['id'],
+        'first_name' => $validatedData['first_name'],
+        'last_name' => $validatedData['last_name'],
+        'email' => $validatedData['email'],
+        'country' => $request->country,
+        'phone' => $validatedData['phone'],
+        'status' => "Active",
+        'notes' => $request->input('notes'),
+        'admin_notes' => $request->input('admin_notes'),
+      ]
     ]);
     $activity->initiated_by = "admin";
     $activity->initiated_by_id = $request->user()['id'];
     $activity->save();
-    
-    
+
+
     $jsonData = json_encode(['data' => $customers]);
     $filePath = public_path('assets/json/table-datatable2.json');
     file_put_contents($filePath, $jsonData);
@@ -105,20 +107,23 @@ class Customers extends Controller
     return view('content.resource.editcustomer', compact('customer'));
   }
 
-  public function update_customer(Request $request) {
+  public function update_customer(Request $request, $customerId)
+  {
+    // Retrieve the customer model instance
+    $customer = Customer::findOrFail($customerId);
 
     $validatedData = $request->validate([
       'first_name' => 'string|nullable|max:255', // Adjust length as needed
       'last_name' => 'string|nullable|max:255',
       'email' => [
-          'required',
-          'string',
-          'email',
-          'max:255',
-          Rule::unique('customers'), // Unique email validation
+        'required',
+        'string',
+        'email',
+        'max:255',
+        Rule::unique('customers'), // Unique email validation
       ],
       'phone' => 'string|nullable|max:255', // Adjust for phone number format
-  ]);
+    ]);
 
     $customer->first_name = $validatedData['first_name'];
     $customer->last_name = $validatedData['last_name'];
@@ -131,28 +136,29 @@ class Customers extends Controller
 
     $customers = Customer::all();
 
-    if( $request->customer_avatar ) {
+    if ($request->customer_avatar) {
       $customer->avatar_image_id = $request->customer_avatar;
-    } else { 
-    };
+    } else {
+    }
+    ;
 
-    $customer->save(); 
+    $customer->save();
 
     $activity = new Activity();
     $activity->customer_id = $customer->id;
     $activity->code = "customer_updated";
     $activity->description = json_encode([
-        'customer_data' =>[
-          'user_id' => $request->user()['id'],
-          'first_name' => $validatedData['first_name'],
-          'last_name' => $validatedData['last_name'],
-          'email' => $validatedData['email'],
-          'country' => $request->country,
-          'phone' => $validatedData['phone'],
-          'status' => "Active",
-          'notes' => $request->input('notes'),
-          'admin_notes' => $request->input('admin_notes'),
-        ]
+      'customer_data' => [
+        'user_id' => $request->user()['id'],
+        'first_name' => $validatedData['first_name'],
+        'last_name' => $validatedData['last_name'],
+        'email' => $validatedData['email'],
+        'country' => $request->country,
+        'phone' => $validatedData['phone'],
+        'status' => "Active",
+        'notes' => $request->input('notes'),
+        'admin_notes' => $request->input('admin_notes'),
+      ]
     ]);
     $activity->initiated_by = "admin";
     $activity->initiated_by_id = $request->user()['id'];
@@ -172,19 +178,19 @@ class Customers extends Controller
     $activity = new Activity();
     $activity->customer_id = $customer->id;
     $activity->code = "customer_deleted";
-    $activity->description = json_encode([
-        'customer_data' =>[
-          'user_id' => $request->user()['id'],
-          'first_name' => $validatedData['first_name'],
-          'last_name' => $validatedData['last_name'],
-          'email' => $validatedData['email'],
-          'country' => $request->country,
-          'phone' => $validatedData['phone'],
-          'status' => "Active",
-          'notes' => $request->input('notes'),
-          'admin_notes' => $request->input('admin_notes'),
-        ]
-    ]);
+    // $activity->description = json_encode([
+    //     'customer_data' =>[
+    //       'user_id' => $request->user()['id'],
+    //       'first_name' => $validatedData['first_name'],
+    //       'last_name' => $validatedData['last_name'],
+    //       'email' => $validatedData['email'],
+    //       'country' => $request->country,
+    //       'phone' => $validatedData['phone'],
+    //       'status' => "Active",
+    //       'notes' => $request->input('notes'),
+    //       'admin_notes' => $request->input('admin_notes'),
+    //     ]
+    // ]);
     $activity->initiated_by = "admin";
     $activity->save();
     $customer->delete();

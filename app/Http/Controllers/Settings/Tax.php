@@ -15,8 +15,8 @@ class Tax extends Controller
     {
         $settings = Setting::all();
         $results = Setting::query()
-        ->where('name', 'LIKE', '%tax%')
-        ->get();
+            ->where('name', 'LIKE', '%tax%')
+            ->get();
         return view('content.settings.tax', compact('results'));
     }
 
@@ -35,15 +35,15 @@ class Tax extends Controller
     {
         $settings = Setting::all();
         $count = $settings->count();
-        $finalId = $settings[$count-1]->id;
-        $tax= new Setting();
-        $tax->name = "tax".$finalId;
+        $finalId = $settings[$count - 1]->id;
+        $tax = new Setting();
+        $tax->name = "tax" . $finalId;
         $tax->value = serialize([
             "name" => $request->name,
             "type" => $request->type,
             "value" => $request->value
         ]);
-        $tax->save();        
+        $tax->save();
 
         return redirect('/settings/tax')->with('success', 'Tax created successfully.');
     }
@@ -75,7 +75,7 @@ class Tax extends Controller
             "type" => $request->type,
             "value" => $request->value
         ]);
-        $tax->save();        
+        $tax->save();
 
         return redirect('/settings/tax')->with('success', 'Tas updated successfully.');
     }

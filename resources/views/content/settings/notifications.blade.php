@@ -68,11 +68,10 @@
                             <div class="mb-4">
                                 <div id="email_processors_list" class="mb-4">
                                     <div class="os-togglable-items-w">
-                                        <input type="hidden" name="settings[notifications_email_processor]" value="" id="settings_notifications_email_processor">
                                         <div class="os-togglable-item-w" id="notificationProcessorToggler_wp_mail">
                                             <div class="os-togglable-item-head">
                                                 <div class="os-toggler-w">
-                                                    <input type="radio" name="settings[notifications_email_processor]" value="wp_mail" id="settings_notifications_email_processor_wp_mail">
+                                                    <input type="hidden" name="settings[notifications_email_processor]" value="off" id="settings_notifications_email_processor">
                                                     <div data-controlled-toggle-id="toggleNotificationSettings_wp_mail"
                                                         class="os-toggler os-toggler-radio size-large off"
                                                         data-is-string-value="true"
@@ -134,13 +133,10 @@
                             <div class="mb-4">
                                 <div id="sms_processors_list" class="mb-4">
                                     <div class="os-togglable-items-w">
-                                        <input type="hidden" name="settings[notifications_sms_processor]" value=""
-                                            id="settings_notifications_sms_processor">
                                         <div class="os-togglable-item-w" id="notificationProcessorToggler_twilio">
                                             <div class="os-togglable-item-head">
                                                 <div class="os-toggler-w">
-                                                    <input type="radio" name="settings[notifications_sms_processor]"
-                                                        value="twilio" id="settings_notifications_sms_processor_twilio">
+                                                    <input type="hidden" name="settings[notifications_sms_processor]" value="off" id="settings_notifications_sms_processor">
                                                     <div data-controlled-toggle-id="toggleNotificationSettings_twilio"
                                                         class="os-toggler os-toggler-radio size-large off"
                                                         data-is-string-value="true"
@@ -321,8 +317,7 @@
                                             <label for="settings_email_notification_customer_has_new_message">
                                                 <input type="checkbox"
                                                     onchange="clickCheckForm(this)"
-                                                    name="settings[email_notification_customer_has_new_message]"
-                                                    value="on"
+                                                    name="settings[email_notification_customer_has_new_message]"                                                    
                                                     data-toggle-element="#notificationCustomerHasNewMessageContent"
                                                     id="settings_email_notification_customer_has_new_message"
                                                     class="os-form-checkbox">Notify customers about new messages</label>
@@ -344,12 +339,9 @@
                                         </div>
                                         <div class="os-form-group os-form-checkbox-group has-toggle-element"
                                             data-toggle-element="#notificationAgentHasNewMessageContent">
-                                            <label for="settings_email_notification_agent_has_new_message"><input
-                                                    type="hidden"
-                                                    name="settings[email_notification_agent_has_new_message]"
-                                                    value="off"><input type="checkbox"
-                                                    name="settings[email_notification_agent_has_new_message]"
-                                                    value="on"
+                                            <label for="settings_email_notification_agent_has_new_message">
+                                                <input type="checkbox"
+                                                    name="settings[email_notification_agent_has_new_message]"                                                    
                                                     onchange="clickCheckForm(this)"
                                                     data-toggle-element="#notificationAgentHasNewMessageContent"
                                                     id="settings_email_notification_agent_has_new_message"
@@ -405,13 +397,12 @@
                             <div class="mb-4">
                                 <div id="email_processors_list" class="mb-4">
                                     <div class="os-togglable-items-w">
-                                        <input type="hidden" name="settings[notifications_email_processor]" value="" id="settings_notifications_email_processor">
                                         <div class="os-togglable-item-w" id="notificationProcessorToggler_wp_mail">
                                             <div class="os-togglable-item-head">
                                                 <div class="os-toggler-w">
-                                                    <input type="radio" name="settings[notifications_email_processor]" value="wp_mail" id="settings_notifications_email_processor_wp_mail">
+                                                    <input type="hidden" name="settings[notifications_email_processor]" value="{{$value['notifications_email_processor']}}" id="settings_notifications_email_processor">
                                                     <div data-controlled-toggle-id="toggleNotificationSettings_wp_mail"
-                                                        class="os-toggler os-toggler-radio size-large off"
+                                                        class="os-toggler os-toggler-radio size-large {{$value['notifications_email_processor']}}"
                                                         data-is-string-value="true"
                                                         data-for="settings_notifications_email_processor_wp_mail">
                                                         <div class="toggler-rail">
@@ -421,7 +412,7 @@
                                                 </div>
                                                 <div class="os-togglable-item-name">Default WordPress Mailer</div>
                                             </div>
-                                            <div class="os-togglable-item-body" style="display:none"
+                                            <div class="os-togglable-item-body" style="<?php echo (!empty($value['notifications_email_processor']) && $value['notifications_email_processor'] =="on"? '' : 'display:none'); ?>"
                                                 id="toggleNotificationSettings_wp_mail">
                                                 <div class="sub-section-row">
                                                     <div class="sub-section-label">
@@ -471,15 +462,14 @@
                             <div class="mb-4">
                                 <div id="sms_processors_list" class="mb-4">
                                     <div class="os-togglable-items-w">
-                                        <input type="hidden" name="settings[notifications_sms_processor]" value="{{$value['notifications_sms_processor']}}"
-                                            id="settings_notifications_sms_processor">
+                                        
                                         <div class="os-togglable-item-w" id="notificationProcessorToggler_twilio">
                                             <div class="os-togglable-item-head">
                                                 <div class="os-toggler-w">
-                                                    <input type="radio" name="settings[notifications_sms_processor]"
-                                                        value="twilio" id="settings_notifications_sms_processor_twilio">
+                                                    <input type="hidden" name="settings[notifications_sms_processor]" value="{{$value['notifications_sms_processor']}}"
+                                            id="settings_notifications_sms_processor">
                                                     <div data-controlled-toggle-id="toggleNotificationSettings_twilio"
-                                                        class="os-toggler os-toggler-radio size-large off"
+                                                        class="os-toggler os-toggler-radio size-large {{$value['notifications_sms_processor']}}"
                                                         data-is-string-value="true"
                                                         data-for="settings_notifications_sms_processor_twilio">
                                                         <div class="toggler-rail">
@@ -491,7 +481,7 @@
                                                     src="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-content/plugins/latepoint-sms-twilio/public/images/twilio.svg">
                                                 <div class="os-togglable-item-name">Twilio</div>
                                             </div>
-                                            <div class="os-togglable-item-body" style="display:none"
+                                            <div class="os-togglable-item-body" style="<?php echo (!empty($value['notifications_sms_processor']) && $value['notifications_sms_processor'] =="on"? '' : 'display:none'); ?>"
                                                 id="toggleNotificationSettings_twilio">
                                                 <div class="sub-section-row">
                                                     <div class="sub-section-label">
@@ -658,14 +648,13 @@
                                             <label for="settings_email_notification_customer_has_new_message">
                                                 <input type="checkbox"
                                                     onchange="clickCheckForm(this)"
-                                                    name="settings[email_notification_customer_has_new_message]"
-                                                    value="on"
+                                                    name="settings[email_notification_customer_has_new_message]"                                                    
                                                     data-toggle-element="#notificationCustomerHasNewMessageContent"
                                                     id="settings_email_notification_customer_has_new_message"
-                                                    class="os-form-checkbox">Notify customers about new messages</label>
+                                                    class="os-form-checkbox" <?php echo (!empty($value['email_notification_customer_has_new_message']) && $value['email_notification_customer_has_new_message'] =="on"? 'checked' : ''); ?>>Notify customers about new messages</label>
                                         </div>
                                         <div class="lp-form-checkbox-contents"
-                                            id="notificationCustomerHasNewMessageContent" style="display:none">
+                                            id="notificationCustomerHasNewMessageContent" style="<?php echo (!empty($value['email_notification_customer_has_new_message']) && $value['email_notification_customer_has_new_message'] =="on"? '' : 'display:none'); ?>">
                                             <div
                                                 class="os-form-group os-form-textfield-group os-form-group-transparent has-value">
                                                 <label
@@ -682,19 +671,16 @@
                                         </div>
                                         <div class="os-form-group os-form-checkbox-group has-toggle-element"
                                             data-toggle-element="#notificationAgentHasNewMessageContent">
-                                            <label for="settings_email_notification_agent_has_new_message"><input
-                                                    type="hidden"
+                                            <label for="settings_email_notification_agent_has_new_message">
+                                                <input type="checkbox"
                                                     name="settings[email_notification_agent_has_new_message]"
-                                                    value="off"><input type="checkbox"
-                                                    name="settings[email_notification_agent_has_new_message]"
-                                                    value="{{$value['email_notification_agent_has_new_message']}}"
                                                     onchange="clickCheckForm(this)"
                                                     data-toggle-element="#notificationAgentHasNewMessageContent"
                                                     id="settings_email_notification_agent_has_new_message"
-                                                    class="os-form-checkbox">Notify agents about new messages</label>
+                                                    class="os-form-checkbox" <?php echo (!empty($value['email_notification_agent_has_new_message']) && $value['email_notification_agent_has_new_message'] =="on"? 'checked' : ''); ?>>Notify agents about new messages</label>
                                         </div>
                                         <div class="lp-form-checkbox-contents" id="notificationAgentHasNewMessageContent"
-                                            style="display:none">
+                                            style="<?php echo (!empty($value['email_notification_agent_has_new_message']) && $value['email_notification_agent_has_new_message'] =="on"? '' : 'display:none'); ?>">
                                             <div
                                                 class="os-form-group os-form-textfield-group os-form-group-transparent has-value">
                                                 <label
@@ -703,7 +689,7 @@
                                                     name="settings[email_notification_agent_has_new_message_subject]"
                                                     value="{{$value['email_notification_agent_has_new_message_subject']}}"
                                                     id="settings_email_notification_agent_has_new_message_subject"
-                                                    class="os-form-control">
+                                                    class="os-form-control" >
                                             </div>
                                             <div class="os-form-group os-form-control-wp-editor-group"><label
                                                     for="settings[email_notification_agent_has_new_message_content]">Email
@@ -737,13 +723,16 @@
     <script>
         $('.os-toggler-w').click(function() {
             var obj = $(this).children('.os-toggler');
+            var val = $(this).children('input');
             if (obj.hasClass('on')) {
                 obj.removeClass('on');
                 obj.addClass('off');
+                val.val('off');
                 obj.parents('.os-togglable-item-w').children('.os-togglable-item-body').hide();
             } else {
                 obj.removeClass('off');
                 obj.addClass('on');
+                val.val('on');
                 obj.parents('.os-togglable-item-w').children('.os-togglable-item-body').show();
             }
         });

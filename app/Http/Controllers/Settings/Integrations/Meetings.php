@@ -15,10 +15,10 @@ class Meetings extends Controller
     {
         $settings = Setting::all();
         $results = Setting::query()
-        ->where('name', 'LIKE', '%settingsmeeting%')
-        ->get();
+            ->where('name', 'LIKE', '%settingsmeeting%')
+            ->get();
         $count = $results->count();
-        if($count>0) {
+        if ($count > 0) {
             $result = $results[0];
             $check = 1;
             return view('content.settings.integrations.meetings', compact('result', 'check'));
@@ -34,16 +34,7 @@ class Meetings extends Controller
      */
     public function create()
     {
-        $settings = Setting::all();
-        $count = $settings->count();
-        $finalId = $settings[$count-1]->id;
-        $meeting= new Setting();
-        $meeting->name = "settingsmeeting".$finalId;
-        $meeting->value = serialize($request->settings);
-        // dd($tax->value);
-        $meeting->save();
-        
-        return redirect('/settings/integrations-meeting')->with('success', 'Calendar created successfully.');
+
     }
 
     /**
@@ -51,7 +42,16 @@ class Meetings extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $settings = Setting::all();
+        $count = $settings->count();
+        $finalId = $settings[$count - 1]->id;
+        $meeting = new Setting();
+        $meeting->name = "settingsmeeting" . $finalId;
+        $meeting->value = serialize($request->settings);
+        // dd($tax->value);
+        $meeting->save();
+
+        return redirect('/settings/integrations-meeting')->with('success', 'Calendar created successfully.');
     }
 
     /**
@@ -75,11 +75,12 @@ class Meetings extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $meeting= Setting::findOrFail($id);
+
+        $meeting = Setting::findOrFail($id);
         $meeting->value = serialize($request->settings);
         // dd($tax->value);
         $meeting->save();
-        
+
         return redirect('/settings/integrations-meeting')->with('success', 'Calendar created successfully.');
     }
 

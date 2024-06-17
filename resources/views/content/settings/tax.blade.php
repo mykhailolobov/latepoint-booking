@@ -58,7 +58,7 @@ $configData = Helper::appClasses();
         <div class="col-md-12">
             <div class="tax_list">
                 @foreach ($results as $item)
-                    <form action="{{route('settings-updatetax')}}" method="post" data-os-form-block-id="tax_FfgQTHyJ" data-os-action="taxes__save" class="os-form-block os-form-block-type-percentage os-is-editing">
+                    <form action="{{route('settings-updatetax')}}" method="post" data-os-form-block-id="tax_FfgQTHyJ" data-os-action="taxes__save" class="os-form-block os-form-block-type-percentage">
                         @csrf
                         @php
                             $value = unserialize($item->value);
@@ -104,13 +104,13 @@ $configData = Helper::appClasses();
                                     </div>
                                 </div>                    
                                 <div class="os-form-block-buttons">
-                                    <a href="#" class="btn btn-danger pull-left" data-os-prompt="Are you sure you want to delete this tax?" data-os-after-call="latepointTaxesAddon.latepoint_tax_removed" data-os-pass-this="yes" data-os-action="taxes__destroy" data-os-params="id=tax_FfgQTHyJ" onclick="deleteTax(this)">Delete</a>
+                                    <a href="/resource/deletetax/{{$item->id}}" class="btn btn-danger pull-left" data-os-prompt="Are you sure you want to delete this tax?" data-os-after-call="latepointTaxesAddon.latepoint_tax_removed" data-os-pass-this="yes" data-os-action="taxes__destroy" data-os-params="id=tax_FfgQTHyJ" >Delete</a>
                                     <button type="submit" class="os-form-block-save-btn btn btn-primary"><span>Save Tax</span></button>
                                 </div>
                             </div>
                         </div>
                         <input type="hidden" name="id" value="{{$item->id}}" class="os-form-block-id" id="taxes_tax_ffgqthyj_id">	
-                        <a href="#" data-os-prompt="Are you sure you want to delete this tax?" data-os-after-call="latepointTaxesAddon.latepoint_tax_removed" data-os-pass-this="yes" data-os-action="taxes__destroy" data-os-params="id=tax_FfgQTHyJ" class="os-remove-form-block"><i class="latepoint-icon latepoint-icon-cross"></i></a>
+                        <a href="/resource/deletetax/{{$item->id}}" data-os-prompt="Are you sure you want to delete this tax?" data-os-after-call="latepointTaxesAddon.latepoint_tax_removed" data-os-pass-this="yes" data-os-action="taxes__destroy" data-os-params="id=tax_FfgQTHyJ" class="os-remove-form-block"><i class="latepoint-icon latepoint-icon-cross"></i></a>
                     </form>
                 @endforeach
                 
@@ -177,5 +177,8 @@ $configData = Helper::appClasses();
             $(obj).parents('.os-form-block').remove();
         }
     }
+    $('body').on('click', '.os-form-block-header', function() {
+            $(this).parents('.os-form-block').toggleClass('os-is-editing')
+        })
 </script>
 @endsection

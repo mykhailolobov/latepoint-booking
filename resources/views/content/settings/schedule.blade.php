@@ -59,108 +59,225 @@
                 <hr>
             </div>
             <div class="col-md-12">
-                <div class="card mb-4">
-                    <h5 class="card-header">General Weekly Schedule</h5>
-                    <div class="card-body demo-only-element p-0">
-                        <div class="white-box-content">
-                            <div class="weekday-schedules-w">
-                                @foreach ($week as $day)
-                                    <div class="weekday-schedule-w">
-                                        <div class="ws-head-w">
-                                            <label class="switch">
-                                                <input type="checkbox" class="switch-input" onchange="changeCheck(this)" checked />
-                                                <span class="switch-toggle-slider">
-                                                    <span class="switch-on"></span>
-                                                    <span class="switch-off"></span>
-                                                </span>
-                                            </label>
-                                            <div class="ws-head">
-                                                <div class="ws-day-name">
-                                                    {{ $day }}
-                                                </div>
-                                                <div class="ws-day-hours">
-                                                    <span>01:05am-05:00pm</span>
-                                                </div>
-                                                <div class="wp-edit-icon">
-                                                    <i class="bx bx-edit-alt"></i>
+                @if($check == 0)
+                <form action="{{route('settings-storeschedule')}}" method="post">
+                    @csrf
+                    <div class="card mb-4">
+                        <h5 class="card-header">General Weekly Schedule</h5>
+                        <div class="card-body demo-only-element p-0">
+                            <div class="white-box-content">
+                                <div class="weekday-schedules-w">
+                                    @foreach ($week as $day)
+                                        <div class="weekday-schedule-w">
+                                            <div class="ws-head-w">
+                                                <label class="switch">
+                                                    <input type="checkbox" class="switch-input" onchange="changeCheck(this)" name="work_periods[{{$day}}][status]" checked />
+                                                    <span class="switch-toggle-slider">
+                                                        <span class="switch-on"></span>
+                                                        <span class="switch-off"></span>
+                                                    </span>
+                                                </label>
+                                                <div class="ws-head">
+                                                    <div class="ws-day-name">
+                                                        {{ $day }}
+                                                    </div>
+                                                    <div class="ws-day-hours">
+                                                        <span>01:05am-05:00pm</span>
+                                                    </div>
+                                                    <div class="wp-edit-icon">
+                                                        <i class="bx bx-edit-alt"></i>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="weekday-schedule-form">
-                                            <div class="ws-period">
-                                                <div class="os-time-group os-time-input-w as-period">
-                                                    <label for="work_periods[1][start_time][formatted_value]">Start</label>
-                                                    <div class="os-time-input-fields">
-                                                        <input type="text" placeholder="HH:MM"
-                                                            name="work_periods[1][start_time][formatted_value]"
-                                                            value="01:05" class="os-form-control os-mask-time"
-                                                            inputmode="text">
-                                                        <input type="hidden" name="work_periods[1][start_time][ampm]"
-                                                            value="am" class="ampm-value-hidden-holder">
-                                                        <div class="time-ampm-w">
-                                                            <div class="time-ampm-select time-am active"
-                                                                data-ampm-value="am">
-                                                                am
-                                                            </div>
-                                                            <div class="time-ampm-select time-pm " data-ampm-value="pm">
-                                                                pm
+                                            <div class="weekday-schedule-form">
+                                                <div class="ws-period">
+                                                    <div class="os-time-group os-time-input-w as-period">
+                                                        <label for="work_periods[{{$day}}][time][time][order][start_time][formatted_value]">Start</label>
+                                                        <div class="os-time-input-fields">
+                                                            <input type="text" placeholder="HH:MM"
+                                                                name="work_periods[{{$day}}][time][order][start_time][formatted_value]"
+                                                                value="01:05" class="os-form-control os-mask-time"
+                                                                inputmode="text">
+                                                            
+                                                            <div class="time-ampm-w">
+                                                                <input type="hidden" name="work_periods[{{$day}}][time][order][start_time][ampm]"
+                                                                value="am" class="ampm-value-hidden-holder">
+                                                                <div class="time-ampm-select time-am active"
+                                                                    data-ampm-value="am" >
+                                                                    am
+                                                                </div>
+                                                                <div class="time-ampm-select time-pm " data-ampm-value="pm">
+                                                                    pm
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="os-time-group os-time-input-w as-period">
-                                                    <label for="work_periods[1][end_time][formatted_value]">Finish</label>
-                                                    <div class="os-time-input-fields">
-                                                        <input type="text" placeholder="HH:MM"
-                                                            name="work_periods[1][end_time][formatted_value]" value="05:00"
-                                                            class="os-form-control os-mask-time" inputmode="text">
-                                                        <input type="hidden" name="work_periods[1][end_time][ampm]"
-                                                            value="pm" class="ampm-value-hidden-holder">
-                                                        <div class="time-ampm-w">
-                                                            <div class="time-ampm-select time-am " data-ampm-value="am">
-                                                                am
-                                                            </div>
-                                                            <div class="time-ampm-select time-pm active"
-                                                                data-ampm-value="pm">
-                                                                pm
+                                                    <div class="os-time-group os-time-input-w as-period">
+                                                        <label for="work_periods[{{$day}}][time][order][end_time][formatted_value]">Finish</label>
+                                                        <div class="os-time-input-fields">
+                                                            <input type="text" placeholder="HH:MM"
+                                                                name="work_periods[{{$day}}][time][order][end_time][formatted_value]" value="05:00"
+                                                                class="os-form-control os-mask-time" inputmode="text">
+                                                            
+                                                            <div class="time-ampm-w">
+                                                                <input type="hidden" name="work_periods[{{$day}}][time][order][end_time][ampm]"
+                                                                    value="pm" class="ampm-value-hidden-holder">
+                                                                <div class="time-ampm-select time-am " data-ampm-value="am">
+                                                                    am
+                                                                </div>
+                                                                <div class="time-ampm-select time-pm active"
+                                                                    data-ampm-value="pm">
+                                                                    pm
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div><input type="hidden" name="work_periods[1][week_day]" value="1"
-                                                    id="work_periods_1_week_day">
-                                                <input type="hidden" name="work_periods[1][is_active]" value="1"
-                                                    class="is-active" id="work_periods_1_is_active">
-                                                <input type="hidden" name="work_periods[1][agent_id]" value="0"
-                                                    id="work_periods_1_agent_id">
-                                                <input type="hidden" name="work_periods[1][location_id]" value="0"
-                                                    id="work_periods_1_location_id">
-                                                <input type="hidden" name="work_periods[1][service_id]" value="0"
-                                                    id="work_periods_1_service_id">
-                                            </div>
-                                            <div class="ws-period-add" data-="" data-os-params="week_day=1"
-                                                data-os-before-after="before"
-                                                data-os-after-call="latepoint_init_work_period_form"
-                                                data-os-action="settings__load_work_period_form">
-                                                <div class="add-period-graphic-w">
-                                                    <div class="add-period-plus">
-                                                        <i class="bx bxs-plus-square"></i></div>
+                                                    <input type="hidden" name="work_periods[{{$day}}][time][order][week_day]" value="1"
+                                                        id="work_periods_1_week_day">
+                                                    <input type="hidden" name="work_periods[{{$day}}][time][order][is_active]" value="1"
+                                                        class="is-active" id="work_periods_1_is_active">
+                                                    <input type="hidden" name="work_periods[{{$day}}][time][order][agent_id]" value="0"
+                                                        id="work_periods_1_agent_id">
+                                                    <input type="hidden" name="work_periods[{{$day}}][time][order][location_id]" value="0"
+                                                        id="work_periods_1_location_id">
+                                                    <input type="hidden" name="work_periods[{{$day}}][time][order][service_id]" value="0"
+                                                        id="work_periods_1_service_id">
                                                 </div>
-                                                <div class="add-period-label">Add another work period for Monday</div>
+                                                <div class="ws-period-add" data-="" data-os-params="week_day=1"
+                                                    data-os-before-after="before"
+                                                    data-os-after-call="latepoint_init_work_period_form"
+                                                    data-os-action="settings__load_work_period_form">
+                                                    <div class="add-period-graphic-w">
+                                                        <div class="add-period-plus">
+                                                            <i class="bx bxs-plus-square"></i></div>
+                                                    </div>
+                                                    <div class="add-period-label">Add another work period for Monday
+                                                        <input type="hidden" name="currentDay" value="{{$day}}" class="currentDay" />
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+                                    @endforeach
+                                </div>
+                                <div class="os-form-buttons">
+                                    <div class="os-form-group">
+                                        <button class="btn btn-primary add-agent" type="submit">
+                                            Save Weekly Schedule
+                                        </button>
                                     </div>
-                                @endforeach
-                            </div>
-                            <div class="os-form-buttons">
-                                <div class="os-form-group">
-                                    <button class="btn btn-primary add-agent" type="button">
-                                        Save Weekly Schedule
-                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
+                @else
+                <form action="{{route('settings-storeschedule')}}" method="post">
+                    @csrf
+                    @php
+                        $value = unserialize($weekSchedule->value);
+                    @endphp
+                    <div class="card mb-4">
+                        <h5 class="card-header">General Weekly Schedule</h5>
+                        <div class="card-body demo-only-element p-0">
+                            <div class="white-box-content">
+                                <div class="weekday-schedules-w">
+                                    @foreach ($week as $day)
+                                        <div class="weekday-schedule-w <?php echo !empty($value[$day]['status']) && $value[$day]['status'] == 'on' ? '' : 'day-off'; ?>">
+                                            <div class="ws-head-w">
+                                                <label class="switch">
+                                                    <input type="checkbox" class="switch-input" onchange="changeCheck(this)" name="work_periods[{{$day}}][status]" <?php echo !empty($value[$day]['status']) && $value[$day]['status'] == 'on' ? 'checked' : ''; ?> />
+                                                    <span class="switch-toggle-slider">
+                                                        <span class="switch-on"></span>
+                                                        <span class="switch-off"></span>
+                                                    </span>
+                                                </label>
+                                                <div class="ws-head">
+                                                    <div class="ws-day-name">
+                                                        {{ $day }}
+                                                    </div>
+                                                    <div class="ws-day-hours">
+                                                        <span>{{$value[$day]['time']['order']['start_time']['formatted_value']}}{{$value[$day]['time']['order']['start_time']['ampm']}}-{{$value[$day]['time']['order']['end_time']['formatted_value']}}{{$value[$day]['time']['order']['end_time']['ampm']}}</span>
+                                                    </div>
+                                                    <div class="wp-edit-icon">
+                                                        <i class="bx bx-edit-alt"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="weekday-schedule-form">
+                                                @foreach ($value[$day]['time'] as $key => $order)
+                                                <div class="ws-period">
+                                                    <div class="os-time-group os-time-input-w as-period">
+                                                        <label for="work_periods[{{$day}}][time][{{$key}}][start_time][formatted_value]">Start</label>
+                                                        <div class="os-time-input-fields">
+                                                            <input type="text" placeholder="HH:MM"
+                                                                name="work_periods[{{$day}}][time][{{$key}}][start_time][formatted_value]"
+                                                                value="{{$value[$day]['time'][$key]['start_time']['formatted_value']}}" class="os-form-control os-mask-time"
+                                                                inputmode="text">
+                                                            
+                                                            <div class="time-ampm-w">
+                                                                <input type="hidden" name="work_periods[{{$day}}][time][{{$key}}][start_time][ampm]"
+                                                                value="am" class="ampm-value-hidden-holder">
+                                                                <div class="time-ampm-select time-am <?php echo !empty($value[$day]['time'][$key]['start_time']['ampm']) && $value[$day]['time'][$key]['start_time']['ampm'] == 'am' ? 'active' : ''; ?>" data-ampm-value="am" >am</div>
+                                                                <div class="time-ampm-select time-pm <?php echo !empty($value[$day]['time'][$key]['start_time']['ampm']) && $value[$day]['time'][$key]['start_time']['ampm'] == 'pm' ? 'active' : ''; ?>" data-ampm-value="pm" >pm</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="os-time-group os-time-input-w as-period">
+                                                        <label for="work_periods[{{$day}}][time][{{$key}}][end_time][formatted_value]">Finish</label>
+                                                        <div class="os-time-input-fields">
+                                                            <input type="text" placeholder="HH:MM"
+                                                                name="work_periods[{{$day}}][time][{{$key}}][end_time][formatted_value]" value="{{$value[$day]['time'][$key]['end_time']['formatted_value']}}"
+                                                                class="os-form-control os-mask-time" inputmode="text">
+                                                            
+                                                            <div class="time-ampm-w">
+                                                                <input type="hidden" name="work_periods[{{$day}}][time][{{$key}}][end_time][ampm]"
+                                                                    value="pm" class="ampm-value-hidden-holder">
+                                                                <div class="time-ampm-select time-am <?php echo !empty($value[$day]['time'][$key]['start_time']['ampm']) && $value[$day]['time'][$key]['end_time']['ampm'] == 'am' ? 'active' : ''; ?>" data-ampm-value="am">am</div>
+                                                                <div class="time-ampm-select time-pm <?php echo !empty($value[$day]['time'][$key]['start_time']['ampm']) && $value[$day]['time'][$key]['end_time']['ampm'] == 'pm' ? 'active' : ''; ?>" data-ampm-value="pm">pm</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <input type="hidden" name="work_periods[{{$day}}][time][{{$key}}][week_day]" value="{{$value[$day]['time'][$key]['week_day']}}"
+                                                        id="work_periods_1_week_day">
+                                                    <input type="hidden" name="work_periods[{{$day}}][time][{{$key}}][is_active]" value="{{$value[$day]['time'][$key]['is_active']}}"
+                                                        class="is-active" id="work_periods_1_is_active">
+                                                    <input type="hidden" name="work_periods[{{$day}}][time][{{$key}}][agent_id]" value="{{$value[$day]['time'][$key]['agent_id']}}"
+                                                        id="work_periods_1_agent_id">
+                                                    <input type="hidden" name="work_periods[{{$day}}][time][{{$key}}][location_id]" value="{{$value[$day]['time'][$key]['location_id']}}"
+                                                        id="work_periods_1_location_id">
+                                                    <input type="hidden" name="work_periods[{{$day}}][time][{{$key}}][service_id]" value="{{$value[$day]['time'][$key]['service_id']}}"
+                                                        id="work_periods_1_service_id">
+                                                </div>                                     
+                                                @endforeach                                                
+                                                <div class="ws-period-add" data-="" data-os-params="week_day=1"
+                                                    data-os-before-after="before"
+                                                    data-os-after-call="latepoint_init_work_period_form"
+                                                    data-os-action="settings__load_work_period_form">
+                                                    <div class="add-period-graphic-w">
+                                                        <div class="add-period-plus">
+                                                            <i class="bx bxs-plus-square"></i></div>
+                                                    </div>
+                                                    <div class="add-period-label">Add another work period for Monday
+                                                        <input type="hidden" name="currentDay" value="{{$day}}" class="currentDay" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <div class="os-form-buttons">
+                                    <div class="os-form-group">
+                                        <button class="btn btn-primary add-agent" type="submit">
+                                            Save Weekly Schedule
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                @endif
+                
 
                 <div class="card mb-4">
                     <h5 class="card-header">Days With Custom Schedules</h5>
@@ -254,6 +371,7 @@
     </div>
     <script type="text/javascript" src="{{asset('/assets/jquery.js')}}"></script>
     <script>
+        let order = 1;
         $('.ws-head').click(function() {
             $(this).parents('.weekday-schedule-w').toggleClass('is-editing');
         });
@@ -265,6 +383,8 @@
         $('body').on('click', '.time-ampm-select', function() {
             $(this).toggleClass('active');
             $(this).siblings('.time-ampm-select').toggleClass('active');
+            var ampmValue = $(this).parent().find('input');
+            ampmValue.val($(this).text());
         });
         
         $('body').on('click', '.ws-period-remove', function() {
@@ -321,17 +441,42 @@
         });
 
         $('.ws-period-add').click(function() {
+            order++;
+            var dayVal = $(this).find('input').val();            
+            
             $(this).before(`
                 <div class="ws-period">
                     <div class="os-time-group os-time-input-w as-period">
-                        <label for="work_periods[new_1_973392][start_time][formatted_value]">Start</label>
+                        <label for="work_periods[${dayVal}][time][order${order}][start_time][formatted_value]">Start</label>
                         <div class="os-time-input-fields">
-                            <input type="text" placeholder="HH:MM" name="work_periods[new_1_973392][start_time][formatted_value]" value="08:00" class="os-form-control os-mask-time" inputmode="text">
-                            <input type="hidden" name="work_periods[new_1_973392][start_time][ampm]" value="am" class="ampm-value-hidden-holder">
+                            <input type="text" placeholder="HH:MM" name="work_periods[${dayVal}][time][order${order}][start_time][formatted_value]" value="08:00" class="os-form-control os-mask-time" inputmode="text">
+                            <input type="hidden" name="work_periods[${dayVal}][time][order${order}][start_time][ampm]" value="am" class="ampm-value-hidden-holder">
                             <div class="time-ampm-w">
                                 <div class="time-ampm-select time-am active" data-ampm-value="am">am</div>
                                 <div class="time-ampm-select time-pm " data-ampm-value="pm">pm</div>
-                            </div></div></div><div class="os-time-group os-time-input-w as-period"><label for="work_periods[new_1_973392][end_time][formatted_value]">Finish</label><div class="os-time-input-fields"><input type="text" placeholder="HH:MM" name="work_periods[new_1_973392][end_time][formatted_value]" value="06:00" class="os-form-control os-mask-time" inputmode="text"><input type="hidden" name="work_periods[new_1_973392][end_time][ampm]" value="pm" class="ampm-value-hidden-holder"><div class="time-ampm-w"><div class="time-ampm-select time-am " data-ampm-value="am">am</div><div class="time-ampm-select time-pm active" data-ampm-value="pm">pm</div></div></div></div><input type="hidden" name="work_periods[new_1_973392][week_day]" value="1" id="work_periods_new_1_973392_week_day"><input type="hidden" name="work_periods[new_1_973392][is_active]" value="1" class="is-active" id="work_periods_new_1_973392_is_active"><input type="hidden" name="work_periods[new_1_973392][agent_id]" value="0" id="work_periods_new_1_973392_agent_id"><input type="hidden" name="work_periods[new_1_973392][location_id]" value="0" id="work_periods_new_1_973392_location_id"><input type="hidden" name="work_periods[new_1_973392][service_id]" value="0" id="work_periods_new_1_973392_service_id"><button class="ws-period-remove"><i class="latepoint-icon latepoint-icon-x"></i></button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="os-time-group os-time-input-w as-period">
+                        <label for="work_periods[${dayVal}][time][order${order}][end_time][formatted_value]">Finish</label>
+                        <div class="os-time-input-fields">
+                            <input type="text" placeholder="HH:MM" name="work_periods[${dayVal}][time][order${order}][end_time][formatted_value]" value="06:00" class="os-form-control os-mask-time" inputmode="text">
+                            <div class="time-ampm-w">
+                                <input type="hidden" name="work_periods[${dayVal}][time][order${order}][end_time][ampm]" value="pm" class="ampm-value-hidden-holder">
+                                <div class="time-ampm-select time-am " data-ampm-value="am">am</div>
+                                <div class="time-ampm-select time-pm active" data-ampm-value="pm">pm</div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="work_periods[${dayVal}][time][order${order}][week_day]" value="1" id="work_periods_${dayVal}_order${order}week_day">
+                    <input type="hidden" name="work_periods[${dayVal}][time][order${order}][is_active]" value="1" class="is-active" id="work_periods_${dayVal}_order${order}is_active">
+                    <input type="hidden" name="work_periods[${dayVal}][time][order${order}][agent_id]" value="0" id="work_periods_${dayVal}_order${order}agent_id">
+                    <input type="hidden" name="work_periods[${dayVal}][time][order${order}][location_id]" value="0" id="work_periods_${dayVal}_order${order}location_id">
+                    <input type="hidden" name="work_periods[${dayVal}][time][order${order}][service_id]" value="0" id="work_periods_${dayVal}_order${order}service_id">
+                    <button class="ws-period-remove">
+                        <i class="latepoint-icon latepoint-icon-x"></i>
+                    </button>
+                </div>
             `)
         });
 

@@ -15,7 +15,9 @@ use App\Models\UserVerificationToken;
 class AuthenticatedSessionController extends Controller
 {
     protected $providers = [
-        'google', 'facebook', 'linkedin'
+        'google',
+        'facebook',
+        'linkedin'
     ];
     /**
      * Display the login view.
@@ -30,7 +32,7 @@ class AuthenticatedSessionController extends Controller
         }
         return view('auth.login');
     }
-    
+
     /**
      * Handle an incoming authentication request.
      *
@@ -47,25 +49,25 @@ class AuthenticatedSessionController extends Controller
         $user = User::where('email', $request->email)->where('is_deleted', 0)->first();
         $credentials = $request->only('email', 'password');
         if ($user) {
-            if($user->status){
+            if ($user->status) {
                 if (Auth::attempt($credentials)) {
                     if ($user->is_verified) {
                         return redirect()->route('dashboard');
                     } else if (!$user->is_verified) {
-                        return back()->with('error',  "Your account is not verified !");
+                        return back()->with('error', "Your account is not verified !");
                     }
                 } else {
-                    return back()->with('error',  "Credentials do not match !");
+                    return back()->with('error', "Credentials do not match !");
                 }
-            }else{
-                return back()->with('error',  "Your account is inactive !");
+            } else {
+                return back()->with('error', "Your account is inactive !");
             }
-        }else{
-            return back()->with('error',  "Credentials do not match !");
+        } else {
+            return back()->with('error', "Credentials do not match !");
         }
 
         if (!Auth::attempt($credentials)) {
-            return back()->with('error',  __('frontend.Credentials_donot_match'));
+            return back()->with('error', __('frontend.Credentials_donot_match'));
         }
 
         return redirect()->route('login');
@@ -99,7 +101,7 @@ class AuthenticatedSessionController extends Controller
             ? $this->sendFailedResponse("No email id returned from {$driver} provider.")
             : $this->loginOrCreateAccount($user, $driver);
     }
-    
+
     protected function sendSuccessResponse()
     {
         return redirect()->intended('dashboard');

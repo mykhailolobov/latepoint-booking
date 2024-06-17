@@ -156,10 +156,10 @@
                             <div class="os-togglable-item-w">
                                 <div class="os-togglable-item-head">
                                     <div class="os-toggler-w">
-                                        <input type="hidden" name="settings[enable_google_meet]" value="off"
+                                        <input type="hidden" name="settings[enable_google_meet]" value="{{$value['enable_google_meet']}}"
                                             id="settings_enable_google_meet">
                                         <div data-controlled-toggle-id="toggleMeetingSystemSettings_google_meet"
-                                            class="os-toggler size-large off" data-is-string-value="true"
+                                            class="os-toggler size-large {{$value['enable_google_meet']}}" data-is-string-value="true"
                                             data-for="settings_enable_google_meet">
                                             <div class="toggler-rail">
                                                 <div class="toggler-pill"></div>
@@ -168,7 +168,7 @@
                                     </div>
                                     <div class="os-togglable-item-name">Google Meet</div>
                                 </div>
-                                <div class="os-togglable-item-body" style="display: none;"
+                                <div class="os-togglable-item-body" style="<?php echo (!empty($value['enable_google_meet']) && $value['enable_google_meet'] =="on"? '' : 'display:none'); ?>"
                                     id="toggleMeetingSystemSettings_google_meet">
                                     <div class="sub-section-row">
                                         <div class="sub-section-label">
@@ -196,7 +196,7 @@
                                     </div>
                                     <div class="os-togglable-item-name">Zoom</div>
                                 </div>
-                                <div class="os-togglable-item-body" style="display: none;"
+                                <div class="os-togglable-item-body" style="<?php echo (!empty($value['enable_zoom']) && $value['enable_zoom'] =="on"? '' : 'display:none'); ?>"
                                     id="toggleMeetingSystemSettings_zoom">
                                     <div class="sub-section-row">
                                         <div class="sub-section-label">
@@ -267,25 +267,31 @@
     <script>
         $('.os-form-toggler-group').click(function() {
             var obj = $(this).children('.os-toggler');
+            var val = $(this).children('input');
             if (obj.hasClass('on')) {
                 obj.removeClass('on');
                 obj.addClass('off');
+                val.val("off");
             } else {
                 obj.removeClass('off');
                 obj.addClass('on');
+                val.val("on");
             }
         });
 
         $('.os-toggler-w').click(function() {
             var obj = $(this).children('.os-toggler');
+            var val = $(this).children('input');
             if (obj.hasClass('on')) {
                 obj.removeClass('on');
                 obj.addClass('off');
                 obj.parents('.os-togglable-item-w').children('.os-togglable-item-body').hide();
+                val.val("off");
             } else {
                 obj.removeClass('off');
                 obj.addClass('on');
                 obj.parents('.os-togglable-item-w').children('.os-togglable-item-body').show();
+                val.val("on");
             }
         });
     </script>

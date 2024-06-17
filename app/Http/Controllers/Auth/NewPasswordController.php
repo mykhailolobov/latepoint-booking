@@ -25,11 +25,12 @@ class NewPasswordController extends Controller
     public function create(Request $request)
     {
         $token = $request->token;
-        
-        $user = DB::table('password_resets')->where('token','=',$token)->first();
-        if($user){
+
+        $user = DB::table('password_resets')->where('token', '=', $token)->first();
+        if ($user) {
             return view('auth.reset-password', compact('user'));
-        }else         return redirect()->route('login'); 
+        } else
+            return redirect()->route('login');
     }
 
     /**
