@@ -54,7 +54,7 @@ $configData = Helper::appClasses();
 </style>
 
 <div class="row">
-    <form action="{{route('resource-storeagent')}}" class="add-agent" method="POST">
+    <form action="{{route('admin.resource-storeagent')}}" class="add-agent" method="POST">
         @csrf
         <div class="col-lg-12 col-xxl-12 mb-4 order-3 order-xxl-1">
             <div class="card-header mb-0">
@@ -563,7 +563,7 @@ $configData = Helper::appClasses();
             },
             success: function() {
                 console.log('success');
-                window.location.href = "{{ route('resource-agents') }}";
+                window.location.href = "{{ route('admin.resource-agents') }}";
             },
             error: function(err) {
                 console.log(err);

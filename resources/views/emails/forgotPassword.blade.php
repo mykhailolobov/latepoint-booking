@@ -37,7 +37,8 @@
         </tr>
         <tr>
             <td>
-                <a href="{{ route('password.reset', $token)}}" class="btn">{{ __('Click here to reset password') }}
+                <a href="{{ route('admin.password.reset', $token)}}"
+                    class="btn">{{ __('Click here to reset password') }}
                 </a>
             </td>
         </tr>

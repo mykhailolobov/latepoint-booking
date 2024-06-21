@@ -39,17 +39,17 @@ $configData = Helper::appClasses();
 <div class="row">
     <div class="col-lg-12 col-xxl-12 mb-4 order-3 order-xxl-1">
         <div class="card-header mb-4 d-flex">
-            <a href="{{ url('/resource/locations') }}" class="agent-status-active service_title text-center mx-2">
+            <a href="{{ url('/admin/resource/locations') }}" class="agent-status-active service_title text-center mx-2">
                 <h4 class="m-0 me-2">All Locations</h4>
             </a>
-            <a href="{{ url('/resource/locationcategories') }}" class="agent-status-active text-center mx-2">
+            <a href="{{ url('/admin/resource/locationcategories') }}" class="agent-status-active text-center mx-2">
                 <h4 class="m-0 me-2">Categories</h4>
             </a>
             <hr>
         </div>
         <div class="index-agent-boxes">
             @foreach ($locations as $location)
-                <a href="{{ route('resource-editlocations', $location->id) }}" class="agent-box-w agent-status-active">
+                <a href="{{ route('admin.resource-editlocations', $location->id) }}" class="agent-box-w agent-status-active">
                     <div id="googleMap" style="width:100%; height:400px;"></div>
                     <div class="agent-info-w">
                         <div class="agent-info">
@@ -70,7 +70,7 @@ $configData = Helper::appClasses();
             @endforeach
             
 
-            <a href="{{url('/resource/createlocations')}}" class="create-agent-link-w">
+            <a href="{{url('/admin/resource/createlocations')}}" class="create-agent-link-w">
                 <div class="create-agent-link-i">
                   <div class="add-agent-graphic-w">
                     <div class="add-agent-plus"><i class="latepoint-icon latepoint-icon-plus4 fa fa-plus"></i></div>

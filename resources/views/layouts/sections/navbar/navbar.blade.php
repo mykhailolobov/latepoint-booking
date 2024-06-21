@@ -1,71 +1,71 @@
 @php
-$containerNav = (isset($configData['contentLayout']) && $configData['contentLayout'] === 'compact') ? 'container-xxl' :
-  'container-fluid';
-$navbarDetached = ($navbarDetached ?? '');
+    $containerNav = (isset($configData['contentLayout']) && $configData['contentLayout'] === 'compact') ? 'container-xxl' :
+        'container-fluid';
+    $navbarDetached = ($navbarDetached ?? '');
 
 @endphp
 
 <!-- Navbar -->
 @if(isset($navbarDetached) && $navbarDetached == 'navbar-detached')
-<nav class="layout-navbar {{$containerNav}} navbar navbar-expand-xl {{$navbarDetached}} align-items-center bg-navbar-theme"
-    id="layout-navbar">
-    @endif
+    <nav class="layout-navbar {{$containerNav}} navbar navbar-expand-xl {{$navbarDetached}} align-items-center bg-navbar-theme"
+        id="layout-navbar">
+@endif
     @if(isset($navbarDetached) && $navbarDetached == '')
-    <nav class="layout-navbar navbar navbar-expand-xl align-items-center bg-navbar-theme" id="layout-navbar">
-        <div class="{{$containerNav}}">
-            @endif
+        <nav class="layout-navbar navbar navbar-expand-xl align-items-center bg-navbar-theme" id="layout-navbar">
+            <div class="{{$containerNav}}">
+    @endif
 
             <!--  Brand demo (display only for navbar-full and hide on below xl) -->
             @if(isset($navbarFull))
-            <div class="navbar-brand app-brand demo d-none d-xl-flex py-0 me-4">
-                <a href="{{url('/')}}" class="app-brand-link gap-2">
-                    <span
-                        class="app-brand-logo demo">@include('_partials.macros',["width"=>25,"withbg"=>'var(--bs-primary)'])</span>
-                    <span class="app-brand-text demo menu-text fw-bold">{{config('variables.templateName')}}</span>
-                </a>
+                <div class="navbar-brand app-brand demo d-none d-xl-flex py-0 me-4">
+                    <a href="{{url('/')}}" class="app-brand-link gap-2">
+                        <span
+                            class="app-brand-logo demo">@include('_partials.macros', ["width" => 25, "withbg" => 'var(--bs-primary)'])</span>
+                        <span class="app-brand-text demo menu-text fw-bold">{{config('variables.templateName')}}</span>
+                    </a>
 
-                @if(isset($menuHorizontal))
-                <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-xl-none">
-                    <i class="bx bx-chevron-left bx-sm align-middle"></i>
-                </a>
-                @endif
-            </div>
+                    @if(isset($menuHorizontal))
+                        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-xl-none">
+                            <i class="bx bx-chevron-left bx-sm align-middle"></i>
+                        </a>
+                    @endif
+                </div>
             @endif
 
             <!-- ! Not required for layout-without-menu -->
             @if(!isset($navbarHideToggle))
-            <div
-                class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0{{ isset($menuHorizontal) ? ' d-xl-none ' : '' }} {{ isset($contentNavbar) ? ' d-xl-none ' : '' }}">
-                <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-                    <i class="bx bx-menu bx-sm"></i>
-                </a>
-            </div>
+                <div
+                    class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0{{ isset($menuHorizontal) ? ' d-xl-none ' : '' }} {{ isset($contentNavbar) ? ' d-xl-none ' : '' }}">
+                    <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                        <i class="bx bx-menu bx-sm"></i>
+                    </a>
+                </div>
             @endif
 
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
 
                 @if(!isset($menuHorizontal))
-                <!-- Search -->
-                <div class="navbar-nav align-items-center">
-                    <div class="nav-item navbar-search-wrapper mb-0">
-                        <a class="nav-item nav-link search-toggler px-0" href="javascript:void(0);">
-                            <i class="bx bx-search bx-sm"></i>
-                            <span class="d-none d-md-inline-block text-muted">Search (Ctrl+/)</span>
-                        </a>
+                    <!-- Search -->
+                    <div class="navbar-nav align-items-center">
+                        <div class="nav-item navbar-search-wrapper mb-0">
+                            <a class="nav-item nav-link search-toggler px-0" href="javascript:void(0);">
+                                <i class="bx bx-search bx-sm"></i>
+                                <span class="d-none d-md-inline-block text-muted">Search (Ctrl+/)</span>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <!-- /Search -->
+                    <!-- /Search -->
                 @endif
 
                 <ul class="navbar-nav flex-row align-items-center ms-auto">
                     @if(isset($menuHorizontal))
-                    <!-- Search -->
-                    <li class="nav-item navbar-search-wrapper me-2 me-xl-0">
-                        <a class="nav-link search-toggler" href="javascript:void(0);">
-                            <i class="bx bx-search bx-sm"></i>
-                        </a>
-                    </li>
-                    <!-- /Search -->
+                        <!-- Search -->
+                        <li class="nav-item navbar-search-wrapper me-2 me-xl-0">
+                            <a class="nav-link search-toggler" href="javascript:void(0);">
+                                <i class="bx bx-search bx-sm"></i>
+                            </a>
+                        </li>
+                        <!-- /Search -->
                     @endif
 
                     <!-- Language -->
@@ -214,7 +214,8 @@ $navbarDetached = ($navbarDetached ?? '');
                     <!--/ Style Switcher -->
 
                     <!-- Notification -->
-                    <button class="btn btn-primary d-flex send-msg-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd" aria-controls="offcanvasEnd">
+                    <button class="btn btn-primary d-flex send-msg-btn" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasEnd" aria-controls="offcanvasEnd">
                         <i class="bx bx-plus me-md-1 me-0"></i>
                         <span class="align-middle d-md-inline-block d-none">New Booking</span>
                     </button>
@@ -225,18 +226,17 @@ $navbarDetached = ($navbarDetached ?? '');
                         <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
                             data-bs-toggle="dropdown">
                             <div class="avatar avatar-online">
-                                <img src="{{ Auth::user()->profile_photo_url? Auth::user()->profile_photo_url : asset('assets/img/avatar.png') }}"
+                                <img src="{{ Auth::user()->profile_photo_url ? Auth::user()->profile_photo_url : asset('assets/img/avatar.png') }}"
                                     alt class="w-px-40 h-auto rounded-circle">
                             </div>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a class="dropdown-item"
-                                    href="{{ route('user-profile')}}">
+                                <a class="dropdown-item" href="{{ route('admin.user-profile')}}">
                                     <div class="d-flex">
                                         <div class="flex-shrink-0 me-3">
                                             <div class="avatar avatar-online">
-                                            <img src="{{ Auth::user()->profile_photo_url? Auth::user()->profile_photo_url : asset('assets/img/avatar.png') }}"
+                                                <img src="{{ Auth::user()->profile_photo_url ? Auth::user()->profile_photo_url : asset('assets/img/avatar.png') }}"
                                                     alt class="w-px-40 h-auto rounded-circle">
                                             </div>
                                         </div>
@@ -256,20 +256,13 @@ $navbarDetached = ($navbarDetached ?? '');
                             <li>
                                 <div class="dropdown-divider"></div>
                             </li>
-                            <!-- <li>
-                                <a class="dropdown-item"
-                                    href="{{ Route::has('profile.show') ? route('profile.show') : url('pages/profile-user') }}">
-                                    <i class="bx bx-user me-2"></i>
-                                    <span class="align-middle">My Profile</span>
-                                </a>
-                            </li> -->
                             @if (Auth::check() && Laravel\Jetstream\Jetstream::hasApiFeatures())
-                            <li>
-                                <a class="dropdown-item" href="{{ route('api-tokens.index') }}">
-                                    <i class='bx bx-key me-2'></i>
-                                    <span class="align-middle">API Tokens</span>
-                                </a>
-                            </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('admin.api-tokens.index') }}">
+                                        <i class='bx bx-key me-2'></i>
+                                        <span class="align-middle">API Tokens</span>
+                                    </a>
+                                </li>
                             @endif
                             <li>
                                 <a class="dropdown-item" href="{{url('settings/general')}}">
@@ -282,71 +275,72 @@ $navbarDetached = ($navbarDetached ?? '');
                                 </a>
                             </li>
                             @if (Auth::User() && Laravel\Jetstream\Jetstream::hasTeamFeatures())
-                            <li>
-                                <div class="dropdown-divider"></div>
-                            </li>
-                            <li>
-                                <h6 class="dropdown-header">Manage Team</h6>
-                            </li>
-                            <li>
-                                <div class="dropdown-divider"></div>
-                            </li>
-                            <li>
-                                <a class="dropdown-item"
-                                    href="{{ Auth::user() ? route('teams.show', Auth::user()->currentTeam->id) : 'javascript:void(0)' }}">
-                                    <i class='bx bx-cog me-2'></i>
-                                    <span class="align-middle">Team Settings</span>
-                                </a>
-                            </li>
-                            @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
-                            <li>
-                                <a class="dropdown-item" href="{{ route('teams.create') }}">
-                                    <i class='bx bx-user me-2'></i>
-                                    <span class="align-middle">Create New Team</span>
-                                </a>
-                            </li>
-                            @endcan
-                            @if (Auth::user()->allTeams()->count() > 1)
-                            <li>
-                                <div class="dropdown-divider"></div>
-                            </li>
-                            <li>
-                                <h6 class="dropdown-header">Switch Teams</h6>
-                            </li>
-                            <li>
-                                <div class="dropdown-divider"></div>
-                            </li>
-                            @endif
-                            @if (Auth::user())
-                            @foreach (Auth::user()->allTeams() as $team)
-                            {{-- Below commented code read by artisan command while installing jetstream. !! Do not remove if you want to use jetstream. --}}
+                                <li>
+                                    <div class="dropdown-divider"></div>
+                                </li>
+                                <li>
+                                    <h6 class="dropdown-header">Manage Team</h6>
+                                </li>
+                                <li>
+                                    <div class="dropdown-divider"></div>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item"
+                                        href="{{ Auth::user() ? route('admin.teams.show', Auth::user()->currentTeam->id) : 'javascript:void(0)' }}">
+                                        <i class='bx bx-cog me-2'></i>
+                                        <span class="align-middle">Team Settings</span>
+                                    </a>
+                                </li>
+                                @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('admin.teams.create') }}">
+                                            <i class='bx bx-user me-2'></i>
+                                            <span class="align-middle">Create New Team</span>
+                                        </a>
+                                    </li>
+                                @endcan
+                                @if (Auth::user()->allTeams()->count() > 1)
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                    </li>
+                                    <li>
+                                        <h6 class="dropdown-header">Switch Teams</h6>
+                                    </li>
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                    </li>
+                                @endif
+                                @if (Auth::user())
+                                    @foreach (Auth::user()->allTeams() as $team)
+                                        {{-- Below commented code read by artisan command while installing jetstream. !! Do not
+                                        remove if you want to use jetstream. --}}
 
-                            {{-- <x-switchable-team :team="$team" /> --}}
-                            @endforeach
-                            @endif
+                                        {{-- <x-switchable-team :team="$team" /> --}}
+                                    @endforeach
+                                @endif
                             @endif
                             <li>
                                 <div class="dropdown-divider"></div>
                             </li>
                             @if (Auth::check())
-                            <li>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <i class='bx bx-power-off me-2'></i>
-                                    <span class="align-middle">Logout</span>
-                                </a>
-                            </li>
-                            <form method="POST" id="logout-form" action="{{ route('logout') }}">
-                                @csrf
-                            </form>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('admin.logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class='bx bx-power-off me-2'></i>
+                                        <span class="align-middle">Logout</span>
+                                    </a>
+                                </li>
+                                <form method="POST" id="logout-form" action="{{ route('admin.logout') }}">
+                                    @csrf
+                                </form>
                             @else
-                            <li>
-                                <a class="dropdown-item"
-                                    href="{{ Route::has('login') ? route('login') : url('auth/login-basic') }}">
-                                    <i class='bx bx-log-in me-2'></i>
-                                    <span class="align-middle">Login</span>
-                                </a>
-                            </li>
+                                <li>
+                                    <a class="dropdown-item"
+                                        href="{{ Route::has('login') ? route('admin.login') : url('auth/login-basic') }}">
+                                        <i class='bx bx-log-in me-2'></i>
+                                        <span class="align-middle">Login</span>
+                                    </a>
+                                </li>
                             @endif
                         </ul>
                     </li>
@@ -364,92 +358,103 @@ $navbarDetached = ($navbarDetached ?? '');
             </div>
 
             @if(isset($navbarDetached) && $navbarDetached == '')
-        </div>
-        @endif
+                </div>
+            @endif
     </nav>
     <!-- / Navbar -->
 
-<!-- Start the New Booking Modal -->
-<style type="text/css">
-    .offcanvas-title {
-        border-bottom: 2px solid blue;
-    }
-    .sub_total {
-        border-bottom: 2px solid black;
-    }
-    .add-coupon-box:hover {
-        border-color: #2652E4;
-        border-style: solid;
-    }
-    .add-coupon-box {
-        border: 3px dotted rgba(0, 0, 0, 0.1);
-        padding: 13px;
-        border-radius: 6px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        margin-top: 20px;
-    }
-    .add-coupon-box .add-coupon-graphic-w {
-        width: 40px;
-        height: 40px;
-        position: relative;
-    }
-    .add-coupon-box .add-coupon-graphic-w .add-coupon-plus {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        border-radius: 50%;
-        height: 18px;
-        width: 18px;
-        background-color: #2652E4;
-        box-shadow: 0px 0px 0px 10px rgba(189, 214, 252, 0.3);
-        color: #fff;
-        transform: translate(-50%, -50%);
-        transition: all 0.2s cubic-bezier(0.25, 1.4, 0.5, 1.35);
-    }
-    .add-coupon-box .add-coupon-graphic-w .add-coupon-plus i {
-        position: absolute;
-        display: block;
-        top: 50%;
-        left: 50%;
-        font-size: 10px;
-        transform: translate(-45%, -47%);
-        transition: all 0.2s ease;
-    }
-    .latepoint-icon {
-        font-family: "latepointadmin" !important;
-        speak: never;
-        font-style: normal;
-        font-weight: 400;
-        font-variant: normal;
-        text-transform: none;
-        line-height: 1;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-    .add-coupon-box .add-coupon-label {
-        color: #2652E4;
-        font-weight: 500;
-        font-size: 19.2px;
-        transition: all 0.2s cubic-bezier(0.25, 1.4, 0.5, 1.35);
-        margin-left: 15px;
-    }
-</style>
-<div class="col-lg-3 col-md-6">
-    <form action="{{route('app-storeappointments')}}" method="post">
-        @csrf
-        <div class="mt-3">
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEnd" aria-labelledby="offcanvasEndLabel">
-                <div class="offcanvas-header">
-                    <h5 id="offcanvasEndLabel" class="offcanvas-title">New Appointment</h5>
-                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                
-                
+    <!-- Start the New Booking Modal -->
+    <style type="text/css">
+        .offcanvas-title {
+            border-bottom: 2px solid blue;
+        }
+
+        .sub_total {
+            border-bottom: 2px solid black;
+        }
+
+        .add-coupon-box:hover {
+            border-color: #2652E4;
+            border-style: solid;
+        }
+
+        .add-coupon-box {
+            border: 3px dotted rgba(0, 0, 0, 0.1);
+            padding: 13px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .add-coupon-box .add-coupon-graphic-w {
+            width: 40px;
+            height: 40px;
+            position: relative;
+        }
+
+        .add-coupon-box .add-coupon-graphic-w .add-coupon-plus {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            height: 18px;
+            width: 18px;
+            background-color: #2652E4;
+            box-shadow: 0px 0px 0px 10px rgba(189, 214, 252, 0.3);
+            color: #fff;
+            transform: translate(-50%, -50%);
+            transition: all 0.2s cubic-bezier(0.25, 1.4, 0.5, 1.35);
+        }
+
+        .add-coupon-box .add-coupon-graphic-w .add-coupon-plus i {
+            position: absolute;
+            display: block;
+            top: 50%;
+            left: 50%;
+            font-size: 10px;
+            transform: translate(-45%, -47%);
+            transition: all 0.2s ease;
+        }
+
+        .latepoint-icon {
+            font-family: "latepointadmin" !important;
+            speak: never;
+            font-style: normal;
+            font-weight: 400;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .add-coupon-box .add-coupon-label {
+            color: #2652E4;
+            font-weight: 500;
+            font-size: 19.2px;
+            transition: all 0.2s cubic-bezier(0.25, 1.4, 0.5, 1.35);
+            margin-left: 15px;
+        }
+    </style>
+    <div class="col-lg-3 col-md-6">
+        <form action="{{route('admin.app-storeappointments')}}" method="post">
+            @csrf
+            <div class="mt-3">
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEnd"
+                    aria-labelledby="offcanvasEndLabel">
+                    <div class="offcanvas-header">
+                        <h5 id="offcanvasEndLabel" class="offcanvas-title">New Appointment</h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+
+
                     <div class="offcanvas-body mx-0 flex-grow-0">
                         <div class="col-lg-12 mb-3">
-                            <select id="selectpickerGroups" name="service" class="selectpicker w-100" data-style="btn-default">
+                            <select id="selectpickerGroups" name="service" class="selectpicker w-100"
+                                data-style="btn-default">
                                 <option value="">Select Service</option>
                                 <optgroup label="General Dentistry">
                                     <option value="tooth_whitening">Tooth Whitening</option>
@@ -479,7 +484,8 @@ $navbarDetached = ($navbarDetached ?? '');
                         <div class="col-lg-12 d-flex mb-3">
                             <div class="col-lg-6">
                                 <label for="selectpickerBasic" class="form-label">Agent</label>
-                                <select id="selectpickerBasic" name="agent" class="selectpicker w-100" data-style="btn-default">
+                                <select id="selectpickerBasic" name="agent" class="selectpicker w-100"
+                                    data-style="btn-default">
                                     <option value="john_mayers">John Mayers</option>
                                     <option value="kim_collins">Kim Collins</option>
                                     <option value="ben_stones">Ben Stones</option>
@@ -487,7 +493,8 @@ $navbarDetached = ($navbarDetached ?? '');
                             </div>
                             <div class="col-lg-6">
                                 <label for="selectpickerBasic" class="form-label">Status</label>
-                                <select id="selectpickerBasic" name="status" class="selectpicker w-100" data-style="btn-default">
+                                <select id="selectpickerBasic" name="status" class="selectpicker w-100"
+                                    data-style="btn-default">
                                     <option value="approved">Approved</option>
                                     <option value="pending_approval">Pending Approval</option>
                                     <option value="cancelled">Cancelled</option>
@@ -497,20 +504,23 @@ $navbarDetached = ($navbarDetached ?? '');
                         </div>
                         <div class="col-lg-12 mb-3">
                             <label for="selectpickerBasic" class="form-label">Start Date</label>
-                            <input type="text" class="form-control" name="start_date" placeholder="mm/dd/YYYY" id="flatpickr-datetime"/>
+                            <input type="text" class="form-control" name="start_date" placeholder="mm/dd/YYYY"
+                                id="flatpickr-datetime" />
                         </div>
                         <div class="col-lg-12 d-flex mb-3">
                             <div class="col-lg-6">
                                 <div class="start_time">
                                     <label for="flatpickr-time" class="form-label">Start Time</label>
-                                    <input type="text" class="form-control" name="start_time" placeholder="HH:MM" id="flatpickr-time" />
+                                    <input type="text" class="form-control" name="start_time" placeholder="HH:MM"
+                                        id="flatpickr-time" />
                                 </div>
-                                
+
                             </div>
                             <div class="col-lg-6">
                                 <div class="finish_time">
                                     <label for="flatpickr-time" class="form-label">End Time</label>
-                                    <input type="text" class="form-control" name="end_time" placeholder="HH:MM" id="flatpickr-time-finish" />
+                                    <input type="text" class="form-control" name="end_time" placeholder="HH:MM"
+                                        id="flatpickr-time-finish" />
                                 </div>
                             </div>
                         </div>
@@ -518,14 +528,16 @@ $navbarDetached = ($navbarDetached ?? '');
                             <div class="col-lg-6">
                                 <div class="buffer_before">
                                     <label for="flatpickr-time" class="form-label">Buffer Before</label>
-                                    <input type="text" class="form-control" name="buffer_before" placeholder="0 minutes" id="flatpickr-time" />
+                                    <input type="text" class="form-control" name="buffer_before" placeholder="0 minutes"
+                                        id="flatpickr-time" />
                                 </div>
-                                
+
                             </div>
                             <div class="col-lg-6">
                                 <div class="buffer_after">
                                     <label for="flatpickr-time" class="form-label">Buffer After</label>
-                                    <input type="text" class="form-control" name="buffer_after" placeholder="0 minutes" id="flatpickr-time-finish" />
+                                    <input type="text" class="form-control" name="buffer_after" placeholder="0 minutes"
+                                        id="flatpickr-time-finish" />
                                 </div>
                             </div>
                         </div>
@@ -533,7 +545,8 @@ $navbarDetached = ($navbarDetached ?? '');
                             <div class="col-lg-12">
                                 <div class="comment_left_by_customer">
                                     <label for="flatpickr-time" class="form-label">Comment left by customer</label>
-                                    <textarea placeholder="" class="form-control" name="customer_comment" rows="2"></textarea>
+                                    <textarea placeholder="" class="form-control" name="customer_comment"
+                                        rows="2"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -545,21 +558,23 @@ $navbarDetached = ($navbarDetached ?? '');
                                 </div>
                             </div>
                         </div>
-        
+
                         <h5 id="offcanvasEndLabel" class="offcanvas-title mb-4">Customer</h5>
-                    
+
                         <div class="col-lg-12 mb-3 d-flex">
                             <div class="col-lg-6">
                                 <div class="start_time">
                                     <label for="flatpickr-time" class="form-label">First Name</label>
-                                    <input type="text" class="form-control" name="first_name" placeholder="First Name" id="flatpickr-time" />
+                                    <input type="text" class="form-control" name="first_name" placeholder="First Name"
+                                        id="flatpickr-time" />
                                 </div>
-                                
+
                             </div>
                             <div class="col-lg-6">
                                 <div class="finish_time">
                                     <label for="flatpickr-time" class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" name="last_name" placeholder="Last Name" id="flatpickr-time-finish" />
+                                    <input type="text" class="form-control" name="last_name" placeholder="Last Name"
+                                        id="flatpickr-time-finish" />
                                 </div>
                             </div>
                         </div>
@@ -567,7 +582,8 @@ $navbarDetached = ($navbarDetached ?? '');
                             <div class="col-lg-12">
                                 <div class="customer_email">
                                     <label for="flatpickr-time" class="form-label">Email Address</label>
-                                    <input type="email" class="form-control" name="email" placeholder="Email Address" id="flatpickr-time" />
+                                    <input type="email" class="form-control" name="email" placeholder="Email Address"
+                                        id="flatpickr-time" />
                                 </div>
                             </div>
                         </div>
@@ -575,7 +591,8 @@ $navbarDetached = ($navbarDetached ?? '');
                             <div class="col-lg-12">
                                 <div class="telephone_number">
                                     <label for="flatpickr-time" class="form-label">Telephone Number</label>
-                                    <input type="text" class="form-control" name="telephone_number" placeholder="+1-205-555-0123" id="flatpickr-time" />
+                                    <input type="text" class="form-control" name="telephone_number"
+                                        placeholder="+1-205-555-0123" id="flatpickr-time" />
                                 </div>
                             </div>
                         </div>
@@ -583,7 +600,8 @@ $navbarDetached = ($navbarDetached ?? '');
                             <div class="col-lg-12">
                                 <div class="customer_notes">
                                     <label for="flatpickr-time" class="form-label">Customer Notes</label>
-                                    <textarea placeholder="" class="form-control" name="customer_notes" rows="2"></textarea>
+                                    <textarea placeholder="" class="form-control" name="customer_notes"
+                                        rows="2"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -591,13 +609,14 @@ $navbarDetached = ($navbarDetached ?? '');
                             <div class="col-lg-12">
                                 <div class="customer_notes">
                                     <label for="flatpickr-time" class="form-label">Notes only visible to admins</label>
-                                    <textarea placeholder="" class="form-control" rows="2" name="admin_notes"></textarea>
+                                    <textarea placeholder="" class="form-control" rows="2"
+                                        name="admin_notes"></textarea>
                                 </div>
                             </div>
                         </div>
-        
+
                         <h5 id="offcanvasEndLabel" class="offcanvas-title mb-4">Price Breakdown</h5>
-                    
+
                         <div class="col-lg-12 mb-3 d-flex">
                             <div class="col-lg-12 d-flex">
                                 <label class="switch">
@@ -608,7 +627,8 @@ $navbarDetached = ($navbarDetached ?? '');
                                     </span>
                                     <span class="switch-label">Use Coupon</span>
                                 </label>
-                                <input type="text" class="form-control" name="coupon_code" placeholder="Coupon Code" id="flatpickr-coupon_code" />
+                                <input type="text" class="form-control" name="coupon_code" placeholder="Coupon Code"
+                                    id="flatpickr-coupon_code" />
                                 <button>apply</button>
                             </div>
                         </div>
@@ -616,7 +636,8 @@ $navbarDetached = ($navbarDetached ?? '');
                             <div class="col-lg-12">
                                 <div class="sub_total justify-content-between">
                                     <label for="flatpickr-time" class="form-label">Sub Total $</label>
-                                    <input type="text" class="form-control" name="subtotal" placeholder="0.00" id="flatpickr-sub_total" />
+                                    <input type="text" class="form-control" name="subtotal" placeholder="0.00"
+                                        id="flatpickr-sub_total" />
                                 </div>
                             </div>
                         </div>
@@ -624,17 +645,19 @@ $navbarDetached = ($navbarDetached ?? '');
                             <div class="col-lg-12">
                                 <div class="total_price justify-content-between">
                                     <label for="flatpickr-time" class="form-label">Total Price $</label>
-                                    <input type="text" class="form-control" name="price" placeholder="0.00" id="flatpickr-total_price" />
+                                    <input type="text" class="form-control" name="price" placeholder="0.00"
+                                        id="flatpickr-total_price" />
                                 </div>
                             </div>
                         </div>
-        
-        
+
+
                         <h5 id="offcanvasEndLabel" class="offcanvas-title mb-4">Balance & Payments</h5>
-                    
+
                         <div class="col-lg-12 d-flex mb-5">
                             <div class="col-lg-12">
-                                <div class="sub_total d-flex justify-content-between" style="border-bottom: 1px solid black;">
+                                <div class="sub_total d-flex justify-content-between"
+                                    style="border-bottom: 1px solid black;">
                                     <label for="flatpickr-time" class="form-label">$0.00</label>
                                     <strong style="color: red;">$125.00</strong>
                                 </div>
@@ -644,23 +667,25 @@ $navbarDetached = ($navbarDetached ?? '');
                                 </div>
                             </div>
                         </div>
-        
+
                         <h5 id="offcanvasEndLabel" class="offcanvas-title mb-4">Transactions</h5>
-        
-                        <div id="add-coupon-box" class="add-coupon-box mb-4" data-os-action="coupons__new_form" data-os-output-target-do="append" data-os-output-target=".os-coupons-w">
+
+                        <div id="add-coupon-box" class="add-coupon-box mb-4" data-os-action="coupons__new_form"
+                            data-os-output-target-do="append" data-os-output-target=".os-coupons-w">
                             <div class="add-coupon-graphic-w">
-                                <div class="add-coupon-plus"><i class="latepoint-icon latepoint-icon-plus4 fa fa-plus"></i></div>
+                                <div class="add-coupon-plus"><i
+                                        class="latepoint-icon latepoint-icon-plus4 fa fa-plus"></i></div>
                             </div>
                             <div class="add-coupon-label">Add Transaction</div>
                         </div>
-        
+
                         <button type="submit" class="btn btn-primary mb-2 d-grid w-100">Create Appointment</button>
-        
+
                     </div>
-                
-                
+
+
+                </div>
             </div>
-        </div>
-    </form>
-</div>
-<!-- End the New Booking Modal -->
+        </form>
+    </div>
+    <!-- End the New Booking Modal -->

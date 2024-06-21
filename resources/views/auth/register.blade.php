@@ -1,6 +1,6 @@
 @php
-$configData = Helper::appClasses();
-$customizerHidden = 'customizer-hide';
+  $configData = Helper::appClasses();
+  $customizerHidden = 'customizer-hide';
 @endphp
 
 @extends('layouts/blankLayout')
@@ -40,7 +40,7 @@ $customizerHidden = 'customizer-hide';
     <!-- /Left Text -->
     <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center p-5">
       <div class="w-100 d-flex justify-content-center">
-        <img src="{{asset('assets/img/illustrations/girl-with-laptop-'.$configData['style'].'.png')}}" class="img-fluid" alt="Login image" width="700" data-app-dark-img="illustrations/girl-with-laptop-dark.png" data-app-light-img="illustrations/girl-with-laptop-light.png">
+        <img src="{{asset('assets/img/illustrations/girl-with-laptop-' . $configData['style'] . '.png')}}" class="img-fluid" alt="Login image" width="700" data-app-dark-img="illustrations/girl-with-laptop-dark.png" data-app-light-img="illustrations/girl-with-laptop-light.png">
 
       </div>
     </div>
@@ -61,28 +61,28 @@ $customizerHidden = 'customizer-hide';
         <h4 class="mb-2">Adventure starts here 🚀</h4>
         <p class="mb-4">Make your app management easy and fun!</p>
 
-        <form id="formAuthentication" class="mb-3 row" method="POST" action="{{ route('register') }}">
+        <form id="formAuthentication" class="mb-3 row" method="POST" action="{{ route('admin.register') }}">
             @csrf
           <div class="mb-3 col-6">
             <label for="username" class="form-label">First Name</label>
             <input type="text" class="form-control " id="username" name="firstname" placeholder="First Name" autofocus>
             @error('firstname')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
+        <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
           </div>
           <div class="mb-3 col-6">
             <label for="username" class="form-label">Last Name</label>
             <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name" autofocus>
             @error('lastname')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
+        <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email">
             @error('email')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
+        <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
           </div>
           <div class="mb-3 form-password-toggle">
             <label class="form-label" for="password">Password</label>
@@ -91,8 +91,8 @@ $customizerHidden = 'customizer-hide';
               <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
             </div>
             @error('password')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
+        <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
           </div>
 
           <div class="mb-3">
@@ -105,15 +105,15 @@ $customizerHidden = 'customizer-hide';
             </div>
           </div>
           @if (session('success'))
-              <div class="link-wrap" style="color: green; font-size: 12px;">
-                  {{ session('success') }}
-              </div>
-          @endif
+        <div class="link-wrap" style="color: green; font-size: 12px;">
+          {{ session('success') }}
+        </div>
+      @endif
           @if (session('error'))
-              <div class="link-wrap" style="color: red; font-size: 12px;">
-                  {{ session('error') }}
-              </div>
-          @endif
+        <div class="link-wrap" style="color: red; font-size: 12px;">
+          {{ session('error') }}
+        </div>
+      @endif
           <button class="btn btn-primary d-grid w-100">
             Sign up
           </button>
@@ -121,7 +121,7 @@ $customizerHidden = 'customizer-hide';
 
         <p class="text-center">
           <span>Already have an account?</span>
-          <a href="{{route('login') }}">
+          <a href="{{route('admin.login') }}">
             <span>Sign in instead</span>
           </a>
         </p>
@@ -131,15 +131,15 @@ $customizerHidden = 'customizer-hide';
         </div>
 
         <div class="d-flex justify-content-center">
-          <a href="{{ route('social.oauth', 'facebook') }}" class="btn btn-icon btn-label-facebook me-3">
+          <a href="{{ route('admin.social.oauth', 'facebook') }}" class="btn btn-icon btn-label-facebook me-3">
             <i class="tf-icons bx bxl-facebook"></i>
           </a>
 
-          <a href="{{ route('social.oauth', 'google') }}" class="btn btn-icon btn-label-google-plus me-3">
+          <a href="{{ route('admin.social.oauth', 'google') }}" class="btn btn-icon btn-label-google-plus me-3">
             <i class="tf-icons bx bxl-google-plus"></i>
           </a>
 
-          <a href="{{ route('social.oauth', 'linkedin') }}" class="btn btn-icon btn-label-linkedin">
+          <a href="{{ route('admin.social.oauth', 'linkedin') }}" class="btn btn-icon btn-label-linkedin">
             <i class="tf-icons bx bxl-linkedin"></i>
           </a>
         </div>

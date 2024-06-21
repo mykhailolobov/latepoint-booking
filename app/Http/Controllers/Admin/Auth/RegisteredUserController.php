@@ -80,7 +80,7 @@ class RegisteredUserController extends Controller
         //     'email' => $request->email,
         //     'password' => $request->password
         // ]);
-        return redirect()->route('verify.email');
+        return redirect()->route('admin.verify.email');
     }
     /**
      * Destroy an authenticated session.
@@ -96,7 +96,7 @@ class RegisteredUserController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect()->route('admin.login');
     }
 
 
@@ -127,7 +127,7 @@ class RegisteredUserController extends Controller
             }
             Auth::login($user);
         }
-        return redirect()->route('login')->with('error', $message);
+        return redirect()->route('admin.login')->with('error', $message);
     }
 
 }

@@ -50,7 +50,7 @@ $configData = Helper::appClasses();
 <link href="{{asset('/assets/css/createservices_custom.css')}}" rel="stylesheet">
 
 <div class="row">
-    <form action="{{route('resource-storeservices')}}" method="post" class="add-service">
+    <form action="{{route('admin.resource-storeservices')}}" method="post" class="add-service">
         @csrf
         <div class="col-lg-12 col-xxl-12 mb-4 order-3 order-xxl-1">
             <div class="card-header mb-0">
@@ -861,7 +861,7 @@ $configData = Helper::appClasses();
 
         $.ajax({
             type: 'POST',
-            url: "{{ route('resource-storeservices') }}",
+            url: "{{ route('admin.resource-storeservices') }}",
             headers: {
                 'X-CSRF-TOKEN': csrf_token
             },
@@ -890,7 +890,7 @@ $configData = Helper::appClasses();
             },
             success: function() {
                 console.log('success');
-                window.location.href = "{{ route('resource-services') }}";
+                window.location.href = "{{ route('admin.resource-services') }}";
             },
             error: function(err) {
                 console.log(err);

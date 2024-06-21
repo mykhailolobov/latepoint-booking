@@ -1,6 +1,6 @@
 @php
-$configData = Helper::appClasses();
-$customizerHidden = 'customizer-hide';
+  $configData = Helper::appClasses();
+  $customizerHidden = 'customizer-hide';
 @endphp
 
 @extends('layouts/blankLayout')
@@ -19,7 +19,9 @@ $customizerHidden = 'customizer-hide';
     <!-- /Left Text -->
     <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center p-5">
       <div class="w-100 d-flex justify-content-center">
-        <img src="{{asset('assets/img/illustrations/boy-verify-email-'.$configData['style'].'.png')}}" class="img-fluid" alt="Login image" width="600" data-app-dark-img="illustrations/boy-verify-email-dark.png" data-app-light-img="illustrations/boy-verify-email-light.png">
+        <img src="{{asset('assets/img/illustrations/boy-verify-email-' . $configData['style'] . '.png')}}" class="img-fluid"
+          alt="Login image" width="600" data-app-dark-img="illustrations/boy-verify-email-dark.png"
+          data-app-light-img="illustrations/boy-verify-email-light.png">
 
       </div>
     </div>
@@ -37,10 +39,10 @@ $customizerHidden = 'customizer-hide';
         </div>
         <h3 class="mb-2">Password Changed.</h3>
         <p class="text-start">
-          Your password was changed successfuly.<br/>
+          Your password was changed successfuly.<br />
           You can login now.
         </p>
-        <a class="btn btn-primary w-100 my-3" href="{{route('login')}}">
+        <a class="btn btn-primary w-100 my-3" href="{{route('admin.login')}}">
           Login
         </a>
       </div>

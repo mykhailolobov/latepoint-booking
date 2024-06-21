@@ -47,13 +47,13 @@ $configData = Helper::appClasses();
 <div class="row">
     <div class="col-lg-12 col-xxl-12 mb-4 order-3 order-xxl-1">
         <div class="card-header mb-4 d-flex">
-            <a href="{{ url('/resource/services') }}" class="agent-status-active text-center mx-2">
+            <a href="{{ url('/admin/resource/services') }}" class="agent-status-active text-center mx-2">
                 <h4 class="m-0 me-2">Services</h4>
             </a>
-            <a href="{{ url('/resource/categories') }}" class="agent-status-active text-center service_title mx-2">
+            <a href="{{ url('/admin/resource/categories') }}" class="agent-status-active text-center service_title mx-2">
                 <h4 class="m-0 me-2">Categories</h4>
             </a>
-            <a href="{{ url('/resource/serviceextras') }}" class="agent-status-active text-center mx-2">
+            <a href="{{ url('/admin/resource/serviceextras') }}" class="agent-status-active text-center mx-2">
                 <h4 class="m-0 me-2">Service Extras</h4>
             </a>
             <hr>
@@ -63,7 +63,7 @@ $configData = Helper::appClasses();
                 <div class="col-md-12 col-12 mb-md-0 mb-4">
                     <ul class="location-categories list-group list-group-flush" id="handle-list-1">
                         @foreach ($categories as $category)
-                       <form action="{{route('resource-updatecategories', $category->id)}}" method="post" class="update-categories">
+                       <form action="{{route('admin.resource-updatecategories', $category->id)}}" method="post" class="update-categories">
                             @csrf
                             <li class="list-group-item lh-1 justify-content-between align-items-center mb-3">
                                 <div class="row">
@@ -173,7 +173,7 @@ $configData = Helper::appClasses();
         <div class="col-md-12 create_new_category mt-2">
             <div class="card mb-4">
                 <h5 class="card-header">Create New Service Category</h5>
-                <form action="{{route('resource-storecategories')}}" method="post" class="add-categories">
+                <form action="{{route('admin.resource-storecategories')}}" method="post" class="add-categories">
                     <div class="card-body demo-vertical-spacing demo-only-element">
                         <div class="d-flex mb-3">
                             <div class="col-lg-6 px-3">
@@ -245,7 +245,7 @@ $configData = Helper::appClasses();
 
         $.ajax({
             type: 'POST',
-            url: "{{ route('resource-storecategories') }}",
+            url: "{{ route('admin.resource-storecategories') }}",
             headers: {
                 'X-CSRF-TOKEN': csrf_token
             },
@@ -256,7 +256,7 @@ $configData = Helper::appClasses();
             },
             success: function() {
                 console.log('success');
-                window.location.href = "{{ route('resource-categories') }}";
+                window.location.href = "{{ route('admin.resource-categories') }}";
             },
             error: function(err) {
                 console.log(err);

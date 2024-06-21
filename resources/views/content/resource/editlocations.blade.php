@@ -50,7 +50,7 @@ $configData = Helper::appClasses();
 <link href="{{asset('/assets/css/editlocation_custom.css')}}" rel="stylesheet">
 
 <div class="row">
-    <form action="{{route('resource-updatelocations')}}" method="post" class="update-location">
+    <form action="{{route('admin.resource-updatelocations')}}" method="post" class="update-location">
         @csrf
         <div class="col-lg-12 col-xxl-12 mb-4 order-3 order-xxl-1">
             <div class="card-header mb-0">
@@ -408,7 +408,7 @@ $configData = Helper::appClasses();
 
         $.ajax({
             type: 'POST',
-            url: "{{ route('resource-updatelocations') }}",
+            url: "{{ route('admin.resource-updatelocations') }}",
             headers: {
                 'X-CSRF-TOKEN': csrf_token
             },
@@ -422,7 +422,7 @@ $configData = Helper::appClasses();
             },
             success: function() {
                 console.log('success');
-                window.location.href = "{{ route('resource-locations') }}";
+                window.location.href = "{{ route('admin.resource-locations') }}";
             },
             error: function(err) {
                 console.log(err);

@@ -38,7 +38,7 @@
         </tr>
         <tr>
             <td>
-                <a href="{{ route('verify', $details['token'])}}"
+                <a href="{{ route('admin.verify', $details['token'])}}"
                     class="btn">{{ __('Click here to continue registration') }}
                 </a>
             </td>

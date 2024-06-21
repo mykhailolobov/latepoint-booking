@@ -50,7 +50,7 @@ $configData = Helper::appClasses();
 <link href="{{asset('/assets/css/editagent_custom.css')}}" rel="stylesheet">
 
 <div class="row">
-    <form action="{{route('resource-updateagent', $agent->id)}}" class="add-agent" method="POST">
+    <form action="{{route('admin.resource-updateagent', $agent->id)}}" class="add-agent" method="POST">
         @csrf
         @php
            $agentvalues = json_decode($agent->features, true);
@@ -564,7 +564,7 @@ $configData = Helper::appClasses();
             },
             success: function() {
                 console.log('success');
-                window.location.href = "{{ route('resource-agents') }}";
+                window.location.href = "{{ route('admin.resource-agents') }}";
             },
             error: function(err) {
                 console.log(err);

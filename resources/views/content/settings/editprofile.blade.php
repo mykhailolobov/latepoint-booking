@@ -58,7 +58,7 @@ $configData = Helper::appClasses();
         </div>
     </div>
     <div class="col-md-12">
-        <form  method="POST" class="update-user" action="{{ route('user-updateprofile')}}" enctype="multipart/form-data">
+        <form  method="POST" class="update-user" action="{{ route('admin.user-updateprofile')}}" enctype="multipart/form-data">
             <div class="card mb-4">
                 <h5 class="card-header">General Information</h5>
                 <div class="card-body demo-vertical-spacing demo-only-element">
@@ -137,7 +137,7 @@ $configData = Helper::appClasses();
 
         $.ajax({
             type: 'POST',
-            url: "{{ route('user-updateprofile')}}",
+            url: "{{ route('admin.user-updateprofile')}}",
             headers: {
                 'X-CSRF-TOKEN': csrf_token
             },
@@ -154,7 +154,7 @@ $configData = Helper::appClasses();
             },
             success: function() {
                 console.log('success');
-                window.location.href = "{{ route('user-profile') }}";
+                window.location.href = "{{ route('admin.user-profile') }}";
             },
             error: function(err) {
                 console.log(err);

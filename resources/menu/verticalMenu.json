@@ -1,31 +1,31 @@
 {
   "menu": [
     {
-      "url": "/",
+      "url": "admin/dashboard",
       "name": "Dashboard",
       "icon": "menu-icon tf-icons bx bx-pie-chart-alt-2",
       "slug": "dashboard"
     },
     {
-      "url": "calendar",
+      "url": "admin/calendar",
       "name": "Calendar",
       "icon": "menu-icon tf-icons bx bx-calendar",
       "slug": "pages-calendar"
     },
     {
-      "url": "appointments",
+      "url": "admin/appointments",
       "name": "Appointment",
       "icon": "menu-icon tf-icons bx bx-box",
       "slug": "pages-appointment"
     },
     {
-      "url": "payments",
+      "url": "admin/payments",
       "name": "Payments",
       "icon": "menu-icon tf-icons bx bx-credit-card",
       "slug": "pages-payments"
     },
     {
-      "url": "customers",
+      "url": "admin/customers",
       "name": "Customers",
       "icon": "menu-icon tf-icons bx bx-user",
       "slug": "pages-customers"
@@ -39,19 +39,19 @@
       "slug": "pages-services",
       "submenu": [
         {
-          "url": "resource/services",
+          "url": "admin/resource/services",
           "name": "Services",
           "icon": "menu-icon tf-icons bx bx-package",
           "slug": "pages-services"
         },
         {
-          "url": "resource/categories",
+          "url": "admin/resource/categories",
           "name": "Categories",
           "icon": "menu-icon tf-icons bx bx-package",
           "slug": "pages-categories"
         },
         {
-          "url": "resource/serviceextras",
+          "url": "admin/resource/serviceextras",
           "name": "Servieces extras",
           "icon": "menu-icon tf-icons bx bx-package",
           "slug": "pages-service_extras"
@@ -59,13 +59,13 @@
       ]
     },
     {
-      "url": "resource/agents",
+      "url": "admin/resource/agents",
       "name": "Agents",
       "icon": "menu-icon tf-icons bx bx-briefcase",
       "slug": "pages-agents"
     },
     {
-      "url": "resource/coupons",
+      "url": "admin/resource/coupons",
       "name": "Coupons",
       "icon": "menu-icon tf-icons bx bx-tag",
       "slug": "pages-coupons"
@@ -76,13 +76,13 @@
       "slug": "pages-locations",
       "submenu": [
         {
-          "url": "resource/locations",
+          "url": "admin/resource/locations",
           "name": "All Locations",
           "icon": "menu-icon tf-icons bx bx-map-pin",
           "slug": "pages-locations"
         },
         {
-          "url": "resource/locationcategories",
+          "url": "admin/resource/locationcategories",
           "name": "Categories",
           "icon": "menu-icon tf-icons bx bx-package",
           "slug": "pages-categories"
@@ -93,55 +93,55 @@
       "menuHeader": "Settings"
     },
     {
-      "url": "settings/general",
+      "url": "admin/settings/general",
       "name": "Settings",
       "icon": "menu-icon tf-icons bx bx-cog",
       "slug": "pages-settings",
       "submenu": [
         {
-          "url": "settings/general",
+          "url": "admin/settings/general",
           "name": "General",
           "icon": "menu-icon tf-icons bx bx-cog",
           "slug": "pages-general"
         },
         {
-          "url": "settings/schedule",
+          "url": "admin/settings/schedule",
           "name": "Schedule",
           "icon": "menu-icon tf-icons bx bx-cog",
           "slug": "pages-locations"
         },
         {
-          "url": "settings/tax",
+          "url": "admin/settings/tax",
           "name": "Tax",
           "icon": "menu-icon tf-icons bx bx-cog",
           "slug": "pages-locations"
         },
         {
-          "url": "settings/steps",
+          "url": "admin/settings/steps",
           "name": "Steps",
           "icon": "menu-icon tf-icons bx bx-cog",
           "slug": "pages-locations"
         },
         {
-          "url": "settings/payments",
+          "url": "admin/settings/payments",
           "name": "Payments",
           "icon": "menu-icon tf-icons bx bx-cog",
           "slug": "pages-locations"
         },
         {
-          "url": "settings/notifications",
+          "url": "admin/settings/notifications",
           "name": "Notifications",
           "icon": "menu-icon tf-icons bx bx-cog",
           "slug": "pages-locations"
         },
         {
-          "url": "settings/roles",
+          "url": "admin/settings/roles",
           "name": "Roles",
           "icon": "menu-icon tf-icons bx bx-cog",
           "slug": "pages-locations"
         },
         {
-          "url": "settings/system",
+          "url": "admin/settings/system",
           "name": "System",
           "icon": "menu-icon tf-icons bx bx-cog",
           "slug": "pages-locations"
@@ -149,25 +149,25 @@
       ]
     },
     {
-      "url": "settings/processes",
+      "url": "admin/settings/processes",
       "name": "Processes",
       "icon": "menu-icon tf-icons bx bx-server",
       "slug": "pages-processes",
       "submenu": [
         {
-          "url": "settings/processes",
+          "url": "admin/settings/processes",
           "name": "Processes",
           "icon": "menu-icon tf-icons bx bx-server",
           "slug": "pages-locations"
         },
         {
-          "url": "settings/process_jobs",
+          "url": "admin/settings/process_jobs",
           "name": "Scheduled Jobs",
           "icon": "menu-icon tf-icons bx bx-server",
           "slug": "pages-categories"
         },
         {
-          "url": "settings/activities",
+          "url": "admin/settings/activities",
           "name": "Activity Log",
           "icon": "menu-icon tf-icons bx bx-server",
           "slug": "pages-categories"
@@ -175,25 +175,25 @@
       ]
     },
     {
-      "url": "settings/integrations-calendars",
+      "url": "admin/settings/integrations-calendars",
       "name": "Integrations",
       "icon": "menu-icon tf-icons bx bx-link",
       "slug": "pages-integrations",
       "submenu": [
         {
-          "url": "settings/integrations-calendars",
+          "url": "admin/settings/integrations-calendars",
           "name": "Calendars",
           "icon": "menu-icon tf-icons bx bx-link",
           "slug": "pages-calendars"
         },
         {
-          "url": "settings/integrations-meeting",
+          "url": "admin/settings/integrations-meeting",
           "name": "Meetings",
           "icon": "menu-icon tf-icons bx bx-link",
           "slug": "pages-meeting"
         },
         {
-          "url": "settings/integrations-marketing",
+          "url": "admin/settings/integrations-marketing",
           "name": "Marketing",
           "icon": "menu-icon tf-icons bx bx-link",
           "slug": "pages-marketing"
@@ -201,7 +201,7 @@
       ]
     },
     {
-      "url": "settings/form-fields",
+      "url": "admin/settings/form-fields",
       "name": "Form-fields",
       "icon": "menu-icon tf-icons bx bx-layer",
       "slug": "pages-formfields"

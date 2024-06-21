@@ -30,7 +30,7 @@ class NewPasswordController extends Controller
         if ($user) {
             return view('auth.reset-password', compact('user'));
         } else
-            return redirect()->route('login');
+            return redirect()->route('admin.login');
     }
 
     /**

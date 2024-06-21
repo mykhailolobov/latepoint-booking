@@ -27,8 +27,7 @@ class AuthenticatedSessionController extends Controller
     public function create()
     {
         if (Auth::check()) {
-            dd("sdfa");
-            return redirect()->route('dashboard');
+            return redirect()->route('admin.dashboard');
         }
         return view('auth.login');
     }
@@ -50,14 +49,14 @@ class AuthenticatedSessionController extends Controller
         $credentials = $request->only('email', 'password');
         if ($user) {
             if ($user->status) {
-                if (Auth::attempt($credentials)) {
-                    if ($user->is_verified) {
-                        return redirect()->route('dashboard');
-                    } else if (!$user->is_verified) {
-                        return back()->with('error', "Your account is not verified !");
+                if ($user->is_verified) {
+                    if (Auth::attempt($credentials)) {
+                        return redirect()->route('admin.dashboard');
+                    } else {
+                        return back()->with('error', "Credentials do not match !");
                     }
-                } else {
-                    return back()->with('error', "Credentials do not match !");
+                } else if (!$user->is_verified) {
+                    return back()->with('error', "Your account is not verified !");
                 }
             } else {
                 return back()->with('error', "Your account is inactive !");
@@ -70,7 +69,7 @@ class AuthenticatedSessionController extends Controller
             return back()->with('error', __('frontend.Credentials_donot_match'));
         }
 
-        return redirect()->route('login');
+        return redirect()->route('admin.login');
     }
 
     public function redirectToProvider($driver)
@@ -104,12 +103,12 @@ class AuthenticatedSessionController extends Controller
 
     protected function sendSuccessResponse()
     {
-        return redirect()->intended('dashboard');
+        return redirect()->intended('admin.dashboard');
     }
 
     protected function sendFailedResponse($msg = null)
     {
-        return redirect()->route('login')
+        return redirect()->route('admin.login')
             ->withErrors(['msg' => $msg ?: 'Unable to login, try with another provider to login.']);
     }
 
@@ -131,9 +130,9 @@ class AuthenticatedSessionController extends Controller
             Auth::login($user, true);
 
             // return $this->sendSuccessResponse();
-            return redirect()->route('dashboard');
+            return redirect()->route('admin.dashboard');
         } else {
-            return redirect()->route('register');
+            return redirect()->route('admin.register');
         }
     }
 

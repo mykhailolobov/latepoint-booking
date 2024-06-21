@@ -81,7 +81,7 @@ $configData = Helper::appClasses();
             
 
             
-            <a href="{{url('/resource/createagents')}}" class="create-agent-link-w">
+            <a href="{{url('/admin/resource/createagents')}}" class="create-agent-link-w">
                 <div class="create-agent-link-i">
                   <div class="add-agent-graphic-w">
                     <div class="add-agent-plus"><i class="latepoint-icon latepoint-icon-plus4 fa fa-plus"></i></div>

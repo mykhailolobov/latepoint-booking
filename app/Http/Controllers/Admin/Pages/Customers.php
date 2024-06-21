@@ -168,7 +168,7 @@ class Customers extends Controller
     $filePath = public_path('assets/json/table-datatable2.json');
     file_put_contents($filePath, $jsonData);
 
-    return redirect()->route('app-customers')->with('success', 'Customer updated successfully.');
+    return redirect()->route('admin.app-customers')->with('success', 'Customer updated successfully.');
   }
 
   public function delete_customer($id)
@@ -200,7 +200,7 @@ class Customers extends Controller
     $jsonData = json_encode(['data' => $customers]);
     $filePath = public_path('assets/json/table-datatable2.json');
     file_put_contents($filePath, $jsonData);
-    return redirect()->route('app-customers')->with('success', 'Customer deleted successfully.');
+    return redirect()->route('admin.app-customers')->with('success', 'Customer deleted successfully.');
 
   }
 

@@ -54,7 +54,7 @@ $configData = Helper::appClasses();
                     </button>
                 </h2>
                 <div id="accordionIcon{{$coupon->id}}" class="accordion-collapse collapse" data-bs-parent="#accordionIcon">
-                    <form action="{{route('resource-updatecoupons', $coupon->id)}}" method="post" class="update-coupon">
+                    <form action="{{route('admin.resource-updatecoupons', $coupon->id)}}" method="post" class="update-coupon">
                         @csrf
                         @php                        
                             $value = unserialize($coupon->description);
@@ -146,7 +146,7 @@ $configData = Helper::appClasses();
                     </button>
                 </h2>
                 <div class="" data-bs-parent="">
-                    <form action="{{route('resource-storecoupons')}}" method="post" class="add-coupon">
+                    <form action="{{route('admin.resource-storecoupons')}}" method="post" class="add-coupon">
                         @csrf
                         <div class="accordion-body">
                             <div class="card-body">

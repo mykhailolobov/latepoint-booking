@@ -47,10 +47,10 @@ $configData = Helper::appClasses();
 <div class="row">
     <div class="col-lg-12 col-xxl-12 mb-4 order-3 order-xxl-1">
         <div class="card-header mb-4 d-flex">
-            <a href="{{ url('/resource/locations') }}" class="agent-status-active text-center mx-2">
+            <a href="{{ url('/admin/resource/locations') }}" class="agent-status-active text-center mx-2">
                 <h4 class="m-0 me-2">All Locations</h4>
             </a>
-            <a href="{{ url('/resource/locationcategories') }}" class="agent-status-active text-center mx-2 service_title">
+            <a href="{{ url('/admin/resource/locationcategories') }}" class="agent-status-active text-center mx-2 service_title">
                 <h4 class="m-0 me-2">Categories</h4>
             </a>
             <hr>
@@ -76,7 +76,7 @@ $configData = Helper::appClasses();
         </div>
 
         <div class="col-md-12 create_new_location_category">
-            <form action="{{route('resource-storelocationcategories')}}" method="post" class="add-locationCategory">
+            <form action="{{route('admin.resource-storelocationcategories')}}" method="post" class="add-locationCategory">
                 @csrf
                 <div class="card mb-4">
                     <h5 class="card-header">Create New Location Category</h5>
@@ -140,7 +140,7 @@ $configData = Helper::appClasses();
 
         $.ajax({
             type: 'POST',
-            url: "{{ route('resource-storelocationcategories') }}",
+            url: "{{ route('admin.resource-storelocationcategories') }}",
             headers: {
                 'X-CSRF-TOKEN': csrf_token
             },
@@ -151,7 +151,7 @@ $configData = Helper::appClasses();
             },
             success: function() {
                 console.log('success');
-                window.location.href = "{{ route('resource-locationcategories') }}";
+                window.location.href = "{{ route('admin.resource-locationcategories') }}";
             },
             error: function(err) {
                 console.log(err);

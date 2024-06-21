@@ -1,6 +1,6 @@
 @php
-$configData = Helper::appClasses();
-$customizerHidden = 'customizer-hide';
+  $configData = Helper::appClasses();
+  $customizerHidden = 'customizer-hide';
 @endphp
 
 @extends('layouts/blankLayout')
@@ -39,7 +39,7 @@ $customizerHidden = 'customizer-hide';
     <!-- /Left Text -->
     <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center p-5">
       <div class="w-100 d-flex justify-content-center">
-        <img src="{{asset('assets/img/illustrations/boy-with-rocket-'.$configData['style'].'.png')}}" class="img-fluid" alt="Login image" width="700" data-app-dark-img="illustrations/boy-with-rocket-dark.png" data-app-light-img="illustrations/boy-with-rocket-light.png">
+        <img src="{{asset('assets/img/illustrations/boy-with-rocket-' . $configData['style'] . '.png')}}" class="img-fluid" alt="Login image" width="700" data-app-dark-img="illustrations/boy-with-rocket-dark.png" data-app-light-img="illustrations/boy-with-rocket-light.png">
       </div>
     </div>
     <!-- /Left Text -->
@@ -59,7 +59,7 @@ $customizerHidden = 'customizer-hide';
         <h4 class="mb-2">Welcome to {{config('variables.templateName')}}! 👋</h4>
         <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
-        <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('login') }}">
+        <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('admin.login') }}">
             @csrf
           <div class="mb-3">
             <label for="email" class="form-label">Email or Username</label>
@@ -69,7 +69,7 @@ $customizerHidden = 'customizer-hide';
           <div class="mb-3 form-password-toggle">
             <div class="d-flex justify-content-between">
               <label class="form-label" for="password">Password</label>
-              <a href="{{route('password.request')}}">
+              <a href="{{route('admin.password.request')}}">
                 <small>Forgot Password?</small>
               </a>
             </div>
@@ -90,20 +90,20 @@ $customizerHidden = 'customizer-hide';
             Sign in
           </button>
             @if (session('success'))
-                <div class="link-wrap" style="color: green; font-size: 12px;">
-                    {{ session('success') }}
-                </div>
-            @endif
+        <div class="link-wrap" style="color: green; font-size: 12px;">
+          {{ session('success') }}
+        </div>
+      @endif
             @if (session('error'))
-                <div class="link-wrap" style="color: red; font-size: 12px;">
-                    {{ session('error') }}
-                </div>
-            @endif
+        <div class="link-wrap" style="color: red; font-size: 12px;">
+          {{ session('error') }}
+        </div>
+      @endif
         </form>
 
         <p class="text-center">
           <span>New on our platform?</span>
-          <a href="{{ route('register') }}">
+          <a href="{{ route('admin.register') }}">
             <span>Create an account</span>
           </a>
         </p>
@@ -113,15 +113,15 @@ $customizerHidden = 'customizer-hide';
         </div>
 
         <div class="d-flex justify-content-center">
-          <a href="{{ route('social.oauth', 'facebook') }}" class="btn btn-icon btn-label-facebook me-3">
+          <a href="{{ route('admin.social.oauth', 'facebook') }}" class="btn btn-icon btn-label-facebook me-3">
             <i class="tf-icons bx bxl-facebook"></i>
           </a>
 
-          <a href="{{ route('social.oauth', 'google') }}" class="btn btn-icon btn-label-google-plus me-3">
+          <a href="{{ route('admin.social.oauth', 'google') }}" class="btn btn-icon btn-label-google-plus me-3">
             <i class="tf-icons bx bxl-google-plus"></i>
           </a>
 
-          <a href="{{ route('social.oauth', 'linkedin') }}" class="btn btn-icon btn-label-linkedin">
+          <a href="{{ route('admin.social.oauth', 'linkedin') }}" class="btn btn-icon btn-label-linkedin">
             <i class="tf-icons bx bxl-linkedin"></i>
           </a>
         </div>

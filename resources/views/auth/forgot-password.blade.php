@@ -1,6 +1,6 @@
 @php
-$configData = Helper::appClasses();
-$customizerHidden = 'customizer-hide';
+  $configData = Helper::appClasses();
+  $customizerHidden = 'customizer-hide';
 @endphp
 
 @extends('layouts/blankLayout')
@@ -40,7 +40,7 @@ $customizerHidden = 'customizer-hide';
     <!-- /Left Text -->
     <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center p-5">
       <div class="w-100 d-flex justify-content-center">
-        <img src="{{asset('assets/img/illustrations/girl-unlock-password-'.$configData['style'].'.png')}}" class="img-fluid" alt="Login image" width="600" data-app-dark-img="illustrations/girl-unlock-password-dark.png" data-app-light-img="illustrations/girl-unlock-password-light.png">
+        <img src="{{asset('assets/img/illustrations/girl-unlock-password-' . $configData['style'] . '.png')}}" class="img-fluid" alt="Login image" width="600" data-app-dark-img="illustrations/girl-unlock-password-dark.png" data-app-light-img="illustrations/girl-unlock-password-light.png">
       </div>
     </div>
     <!-- /Left Text -->
@@ -59,25 +59,25 @@ $customizerHidden = 'customizer-hide';
         <!-- /Logo -->
         <h4 class="mb-2">Forgot Password? 🔒</h4>
         <p class="mb-4">Enter your email and we'll send you instructions to reset your password</p>
-        <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('password.email') }}">
+        <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('admin.password.email') }}">
           @csrf
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" autofocus>
             @error('email')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
+        <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
           </div>
           @if (session('success') || session('error'))
-              <div class="link-wrap"
-                  style="color:  @if (session('success')) green @else  red @endif ;">
-                  {{ session('success') }}
-              </div>
-          @endif
+        <div class="link-wrap"
+          style="color:  @if (session('success')) green @else  red @endif ;">
+          {{ session('success') }}
+        </div>
+      @endif
           <button type="submit" class="btn btn-primary d-grid w-100">Send Reset Link</button>
         </form>
         <div class="text-center">
-          <a href="{{route('login')}}" class="d-flex align-items-center justify-content-center">
+          <a href="{{route('admin.login')}}" class="d-flex align-items-center justify-content-center">
             <i class="bx bx-chevron-left scaleX-n1-rtl bx-sm"></i>
             Back to login
           </a>
