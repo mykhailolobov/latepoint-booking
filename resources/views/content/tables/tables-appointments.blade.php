@@ -44,7 +44,7 @@
 
 <!-- Basic Bootstrap Table -->
 <div class="card">
-    <div class="card-header flex-column flex-md-row">
+    <div class="card-header flex-column flex-md-row header-line">
         <h5 class="card-header">Appointments</h5>
         <div class="text-end">
             <button type="button" class="btn btn-primary">Download CSV</button>
@@ -55,25 +55,12 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Service</th>
                     <th>Date/Time</th>
                     <th>Time Left</th>
-                    <th>Aganet</th>
                     <th>Customer</th>
                     <th>Status</th>
                     <th>Payment Status</th>
-                    <th>Crated On</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Code</th>
-                    <th>Duration</th>
-                    <th>Source ID</th>
-                    <th>Payment Method</th>
-                    <th>Payment Portion</th>
-                    <th>Price</th>
-                    <th>Coupon Code</th>
-                    <th>Coupon Discount</th>
-                    <th>Total Attendees</th>
+                    <th>Crated On</th>                
                 </tr>
             </thead>
         </table>

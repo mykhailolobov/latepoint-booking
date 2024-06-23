@@ -133,45 +133,92 @@ $(function () {
       ajax: assetsPath + 'json/table-datatable.json',
       columns: [
         { data: 'id' },
-        { data: 'service_id' },
-        { data: 'start_datetime_utc' },
-        { data: 'end_datetime_utc' },
-        { data: 'agent_id' },
-        { data: 'customer_id' },
+        {
+          data: null, // No data source needed for "0"
+          render: function (data, type, row) {
+            return data.start_date + ', ' + data.start_time;
+          }
+        },
+        {
+          data: null, // No data source needed for "0"
+          render: function (data, type, row) {
+            // Create Date objects for the start and end times
+            const start = new Date();
+            const end = new Date(data.start_date.trim() + 'T' + data.start_time) 
+
+            // Calculate the difference in milliseconds
+            const difference = end - start;
+
+            // Convert the difference to a readable format (hours, minutes, seconds)
+            const hours = Math.floor(difference / 1000 / 60 / 60);
+            const days = Math.floor(hours/24);
+            if(days > 0) {
+              return `${days} days`
+            } else {
+              if(hours >= 1) {
+                return `${hours} hours`
+              } else if(hours > 0 && hours < 1) {
+                return `Now`
+              } else if(hours <= 0) {
+                return 'Past'
+              }
+            }
+
+          }
+        },
+        {
+          data: null, // No data source needed for "0"
+          render: function (data, type, row) {
+            return data.first_name + ' ' + data.last_name;
+          }
+        },
         { data: 'status' },
         { data: 'payment_status' },
-        { data: 'start_datetime_utc' },
         {
           data: null, // No data source needed for "0"
           render: function (data, type, row) {
-            return "example@gmail.com"; 
-          }//email
-        },
-        {
-          data: null, // No data source needed for "0"
-          render: function (data, type, row) {
-            return "+81 xxx"; //phone
+            return formatDate(data.created_at);
           }
         },
-        {
-          data: null, // No data source needed for "0"
-          render: function (data, type, row) {
-            return "xxxxx"; //code
-          }
-        },
-        { data: 'duration' },
-        { data: 'source_id' },
-        { data: 'payment_method' },
-        { data: 'payment_portion' },
-        { data: 'price' },
-        { data: 'coupon_code' },
-        { data: 'coupon_discount' },
-        { data: 'total_attendies' }
+
       ],
       orderCellsTop: true,
       dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end"f>><"table-responsive"t><"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>'
     });
   }
+
+  //date format
+  function formatDate(dateString) {
+    // Create a new Date object from the input string
+    const date = new Date(dateString);
+
+    // Array of month names
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+    // Extract components
+    const month = monthNames[date.getMonth()];
+    const day = date.getDate();
+    const year = date.getFullYear();
+
+    // Get hours and minutes
+    let hours = date.getHours();
+    const minutes = date.getMinutes();
+    
+    // Determine AM or PM
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+
+    // Convert hours from 24-hour time to 12-hour time
+    hours = hours % 12;
+    hours = hours ? hours : 12; // If hours is 0, set it to 12
+
+    // Format minutes to ensure two digits
+    const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+
+    // Format the final date string
+    const formattedDate = `${month} ${day}, ${year} ${hours}:${formattedMinutes} ${ampm}`;
+    
+    return formattedDate;
+}
 
   // Payment table
   if (dt_filter_table1.length) {
@@ -208,12 +255,13 @@ $(function () {
         { data: 'amount' },
         { data: 'status' },
         { data: 'funds_status' },
-        { data: 'created_at',
+        {
+          data: 'created_at',
           render: function (data, type, row) {
             // Replace 'YYYY-MM-DD' with your desired format (e.g., 'MM-DD-YYYY' for '05-16-2024')
             var formattedDate = new Date(data).toLocaleDateString('en-US'); // 'YYYY-MM-DD' format
             return formattedDate;
-          } 
+          }
         }
       ],
       orderCellsTop: true,
@@ -251,39 +299,41 @@ $(function () {
         {
           data: null, // No data source needed
           render: function (data, type, row) {
-            return row.first_name + " " + row.last_name;
+            return row.first_name + ' ' + row.last_name;
           }
         },
         {
           data: null, // No data source needed
           render: function (data, type, row) {
-            if(row.phone) {
-            return row.country.slice(2) + " " + row.phone;
+            if (row.phone) {
+              return row.country.slice(2) + ' ' + row.phone;
+            } else {
+              return null;
             }
-            else{return null}
           }
         },
         { data: 'email' },
         {
           data: null, // No data source needed for "0"
           render: function (data, type, row) {
-            return "0"; // Replace "0" with your desired text ("n/a" or "Past")
+            return '0'; // Replace "0" with your desired text ("n/a" or "Past")
           }
         }, //'total_apps'
         {
           data: null, // No data source needed for "0"
           render: function (data, type, row) {
-            return "n/a"; 
+            return 'n/a';
           }
         }, //'next_app'
         {
           data: null, // No data source needed for "0"
           render: function (data, type, row) {
-            return "Past"; // Replace "0" with your desired text ("n/a" or "Past")
+            return 'Past'; // Replace "0" with your desired text ("n/a" or "Past")
           }
         }, //'time_to_next'
-        { data:  'user_id'}, //'laravel_user_id'
-        { data: 'created_at',
+        { data: 'user_id' }, //'laravel_user_id'
+        {
+          data: 'created_at',
           render: function (data, type, row) {
             // Replace 'YYYY-MM-DD' with your desired format (e.g., 'MM-DD-YYYY' for '05-16-2024')
             var formattedDate = new Date(data).toLocaleDateString('en-US'); // 'YYYY-MM-DD' format
@@ -294,7 +344,7 @@ $(function () {
           data: null, // No data source needed for the action link
           render: function (data, type, row) {
             // Replace 'edit' with the actual property name or value for the action link
-            var editLink = '/edit_customer/' + row.id;// Assuming 'id' is used for the link
+            var editLink = '/edit_customer/' + row.id; // Assuming 'id' is used for the link
             return '<a href="' + editLink + '">Edit</a>';
           }
         } //'actions'
