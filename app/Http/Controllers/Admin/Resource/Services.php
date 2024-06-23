@@ -23,6 +23,29 @@ class Services extends Controller
         return view('content.resource.services', compact('generalServices', 'cosmeticServices', 'implantsServices'));
     }
 
+    public function get() {
+        $services = Service::all();
+
+        // Group services by category_id
+        $groupedServices = $services->groupBy('category_id');
+
+        // Format the response
+        $response = [];
+        foreach ($groupedServices as $category => $services) {
+            $response[] = [
+                'category' => $category,
+                'services' => $services->map(function($service) {
+                    return [
+                        'id' => $service->id,
+                        'name' => $service->name,
+                    ];
+                })
+            ];
+        }
+
+        return response()->json($response);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

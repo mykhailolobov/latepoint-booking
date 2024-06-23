@@ -124,6 +124,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // Resources Section
         Route::get('/resource/services', [Services::class, 'index'])->name('resource-services');
+        Route::get('/resource/getservices', [Services::class, 'get'])->name('resource-getservices');
         Route::get('/resource/createservices', [Services::class, 'create'])->name('resource-createservices');
         Route::get('/resource/editservices/{id}', [Services::class, 'edit'])->name('resource-editservices');
         Route::post('/resource/storeservice', [Services::class, 'store'])->name('resource-storeservices');
