@@ -674,7 +674,7 @@
                                 <div class="sub_total d-flex justify-content-between"
                                     style="border-bottom: 1px solid black;">
                                     <label for="flatpickr-time" class="form-label">$0.00</label>
-                                    <strong style="color: red;">$125.00</strong>
+                                    <strong style="color: red;" id="dynamic-price">$0.00</strong>
                                 </div>
                                 <div class="sub_total d-flex justify-content-between">
                                     <label for="flatpickr-time" class="form-label">Total Payments</label>
@@ -709,6 +709,14 @@
             flatpickr("#flatpickr-datetime", {
                 dateFormat: "m/d/Y", // Set the date format
                 enableTime: false    // Disable time picker
+            });
+            // Update price display on input change
+            const priceInput = document.getElementById('flatpickr-total_price');
+            const dynamicPriceLabel = document.getElementById('dynamic-price');
+
+            priceInput.addEventListener('input', function () {
+                const priceValue = priceInput.value.trim() || '0.00';
+                dynamicPriceLabel.textContent = `$${parseFloat(priceValue).toFixed(2)}`;
             });
 
             // Select the form element
