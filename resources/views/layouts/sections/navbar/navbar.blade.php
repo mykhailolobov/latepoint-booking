@@ -437,9 +437,15 @@
             transition: all 0.2s cubic-bezier(0.25, 1.4, 0.5, 1.35);
             margin-left: 15px;
         }
+
+        .toast {
+            position: absolute;
+            top: 2px;
+            right: 5px;
+        }
     </style>
     <div class="col-lg-3 col-md-6">
-        <form action="{{route('admin.app-storeappointments')}}" method="post">
+        <form id="create-form" action="{{route('admin.app-storeappointments')}}" method="post">
             @csrf
             <div class="mt-3">
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEnd"
@@ -449,7 +455,16 @@
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                             aria-label="Close"></button>
                     </div>
-
+                    <div id="toast" class="toast align-items-center text-white bg-primary" role="alert"
+                        aria-live="assertive" aria-atomic="true">
+                        <div class="d-flex">
+                            <div class="toast-body">
+                                Toast message placeholder
+                            </div>
+                            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"
+                                aria-label="Close"></button>
+                        </div>
+                    </div>
 
                     <div class="offcanvas-body mx-0 flex-grow-0">
                         <div class="col-lg-12 mb-3">
@@ -688,4 +703,131 @@
             </div>
         </form>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize flatpickr for date and time fields
+            flatpickr("#flatpickr-datetime", {
+                dateFormat: "m/d/Y", // Set the date format
+                enableTime: false    // Disable time picker
+            });
+
+            // Select the form element
+            const form = document.getElementById('create-form');
+
+            // Add event listener for form submission
+            form.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent form submission
+
+                // Perform validation here
+                if (validateForm()) {
+                    // If validation passes, proceed with AJAX submission
+                    submitFormAjax();
+                }
+            });
+
+            // Function to validate form fields
+            function validateForm() {
+                // Example validation (you can add more as needed)
+                const service = form.elements['service'].value;
+                const startDateTime = form.elements['start_date'].value;
+                const startTime = form.elements['start_time'].value;
+                const endTime = form.elements['end_time'].value;
+
+                const first_name = form.elements['first_name'].value;
+                const last_name = form.elements['last_name'].value;
+                const telephone_number = form.elements['telephone_number'].value;
+                const customer_notes = form.elements['customer_notes'].value;
+                const email = form.elements['email'].value;
+
+                // Simple validation example
+                if (!service) {
+                    showToast('Service can not be blank');
+                    return false;
+                }
+
+                if (!startDateTime) {
+                    showToast('Start Date can not be blank');
+                    return false;
+                }
+
+                if (!startTime) {
+                    showToast('Start Time can not be blank');
+                    return false;
+                }
+                if (!endTime) {
+                    showToast('End Time can not be blank');
+                    return false;
+                }
+
+                if (!first_name) {
+                    showToast('First Name can not be blank');
+                    return false;
+                }
+                if (!last_name) {
+                    showToast('Last Name can not be blank');
+                    return false;
+                }
+                if (!telephone_number) {
+                    showToast('Telephone Number can not be blank');
+                    return false;
+                }
+                if (!email) {
+                    showToast('Email Adress can not be blank');
+                    return false;
+                }
+                if (!isValidEmail(email)) {
+                    showToast('Please enter a valid email address');
+                    return false;
+                }
+                if (!customer_notes) {
+                    showToast('Customer Notes can not be blank');
+                    return false;
+                }
+
+
+
+                return true; // Return true if all validations pass
+            }
+
+            // Function to check if email is valid (simple example)
+            function isValidEmail(email) {
+                // Regular expression for basic email validation
+                const emailRegex = /\S+@\S+\.\S+/;
+                return emailRegex.test(email);
+            }
+
+            // Function to show Bootstrap Toast message
+            function showToast(message) {
+                // Select the toast element
+                const toastElement = document.getElementById('toast');
+
+                // Update toast message
+                toastElement.querySelector('.toast-body').textContent = message;
+
+                // Show the toast
+                const toast = new bootstrap.Toast(toastElement);
+                toast.show();
+            }
+
+            // Function to submit form via AJAX
+            function submitFormAjax() {
+                $.ajax({
+                    url: form.action,
+                    type: 'POST',
+                    data: new FormData(form),
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        // Handle response if needed
+                        showToast('Appointment created successfully');
+                        window.location.href = '/admin/appointments'
+                    },
+                    error: function (error) {
+                        console.error('Error:', error);
+                        showToast('Failed to create appointment');
+                    }
+                });
+            }
+        });
+    </script>
     <!-- End the New Booking Modal -->
