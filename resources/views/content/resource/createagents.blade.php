@@ -70,7 +70,6 @@ $configData = Helper::appClasses();
                                 <div class="dz-message needsclick">
                                     Set Avatar
                                 </div>
-                                
                             </div>
                         </div>
                         <div class="d-flex mb-3">
@@ -498,6 +497,7 @@ $configData = Helper::appClasses();
         const avatar_image = $('.set-avatar>.dropzone>.dz-preview>.dz-details>.dz-thumbnail>img').attr('src');
         const bio_image = $('.set-bio>.dropzone>.dz-preview>.dz-details>.dz-thumbnail>img').attr('src');
         const first_name = $('input[name="first_name"]').val();
+        console.log($('input[name="first_name"]').val(), "first name")
         const last_name = $('input[name="last_name"]').val();
         const display_name = $('input[name="display_name"]').val();
         const title = $('input[name="title"]').val();
@@ -542,7 +542,7 @@ $configData = Helper::appClasses();
 
         $.ajax({
             type: 'POST',
-            url: "/resource/storeagent",
+            url: "/admin/resource/storeagent",
             headers: {
                 'X-CSRF-TOKEN': csrf_token
             },

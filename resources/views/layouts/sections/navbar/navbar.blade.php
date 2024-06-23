@@ -467,26 +467,14 @@
                     </div>
 
                     <div class="offcanvas-body mx-0 flex-grow-0">
+                        <!-- Service Selector -->
                         <div class="col-lg-12 mb-3">
-                            <select id="selectpickerGroups" name="service" class="selectpicker w-100"
-                                data-style="btn-default">
+                            <select id="selectpickerGroups" name="service" class="selectpicker w-100" data-style="btn-default">
                                 <option value="">Select Service</option>
-                                <optgroup label="General Dentistry">
-                                    <option value="tooth_whitening">Tooth Whitening</option>
-                                    <option value="group_booking">Group Booking</option>
-                                    <option value="gum_decease">Gum Decease</option>
-                                </optgroup>
-                                <optgroup label="Cosmetic Dentistry">
-                                    <option value="invisilign_braces">Invisilign Braces</option>
-                                    <option value="root_canal">Root Canal Therapy</option>
-                                    <option value="money_heist">Money Heist</option>
-                                </optgroup>
-                                <optgroup label="Implants Dentistry">
-                                    <option value="porcelain_crown">Porcelain Crown</option>
-                                </optgroup>
+                                <!-- Options will be populated by AJAX -->
                             </select>
                         </div>
-                        <div class="col-lg-12 mb-3">
+                        <!-- <div class="col-lg-12 mb-3">
                             <label for="selectpickerBasic" class="form-label">Service Extras</label>
                             <div class="select2-primary">
                                 <select id="select2Primary" name="service_extra" class="select2 form-select" multiple>
@@ -495,7 +483,7 @@
                                     <option value="recovery_mask">Recovery Mask</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-lg-12 d-flex mb-3">
                             <div class="col-lg-6">
                                 <label for="selectpickerBasic" class="form-label">Agent</label>
@@ -703,6 +691,7 @@
             </div>
         </form>
     </div>
+   
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Initialize flatpickr for date and time fields
@@ -710,6 +699,9 @@
                 dateFormat: "m/d/Y", // Set the date format
                 enableTime: false    // Disable time picker
             });
+
+             // Fetch services data when the page loads
+             fetchServices();
             // Update price display on input change
             const priceInput = document.getElementById('flatpickr-total_price');
             const dynamicPriceLabel = document.getElementById('dynamic-price');
@@ -835,6 +827,52 @@
                         showToast('Failed to create appointment');
                     }
                 });
+            }
+
+            function fetchServices() {
+                console.log("Fetch")
+                $.ajax({
+                    url: "{{ route('admin.resource-getservices') }}",
+                    type: 'GET',
+                    success: function (response) {
+
+                        populateServices(response);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error fetching services:', error);
+                        showToast('Failed to fetch services');
+                    }
+                });
+            }
+
+            // Function to populate services dropdown
+            function populateServices(services) {
+                const selectpickerGroups = document.getElementById('selectpickerGroups');
+                selectpickerGroups.innerHTML = ''; // Clear existing options
+
+                if (services.length) {
+                    services.forEach(service => {
+                        const optgroup = document.createElement('optgroup');
+                        optgroup.label = service.category;
+
+                        service.services.forEach(item => {
+                            const option = document.createElement('option');
+                            option.value = item.id;
+                            option.textContent = item.name;
+                            optgroup.appendChild(option);
+                        });
+
+                        selectpickerGroups.appendChild(optgroup);
+                    });
+                } else {
+                    const option = document.createElement('option');
+                    option.value = '';
+                    option.textContent = 'No services available';
+                    selectpickerGroups.appendChild(option);
+                }
+
+                // Refresh selectpicker to show new options (if using Bootstrap selectpicker)
+                $('.selectpicker').selectpicker('refresh');
             }
         });
     </script>
