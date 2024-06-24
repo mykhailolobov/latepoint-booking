@@ -35,7 +35,15 @@
 @section('content')
 
 <link href="{{asset('/assets/css/services_custom.css')}}" rel="stylesheet">
-
+<style type="text/css">
+    .service-disabled {
+        box-shadow: inset 0px 3px 0px 0px #ca1616;
+        color: #ca1616
+    }
+    .service-disabled-card {
+        opacity: 0.5;
+    }
+</style>
 <div class="row">
     <div class="col-lg-12 col-xxl-12 mb-4 order-3 order-xxl-1">
         <div class="card-header mb-4 d-flex">
@@ -57,9 +65,10 @@
             <div class="index-agent-boxes">
                 @foreach ($services as $serv)
                 @if($serv->category_id == '0')               
-                    <a href="{{route('admin.resource-editservices', $serv->id) }}" class="agent-box-w agent-status-active text-center os-service">
-                        <div class="agent-info-w">
-                            <div class="agent-info">
+                    <a href="{{route('admin.resource-editservices', $serv->id) }}" class="agent-box-w agent-status-active text-center os-service {{ $serv->status === 'disabled' ? 'service-disabled-card' : '' }}">
+                    
+                        <div class="agent-info-w {{ $serv->status === 'disabled' ? 'service-disabled' : '' }}">
+                            <div class="agent-info mt-2">
                                 <div class="agent-name">{{$serv->name}}</div>
                             </div>
                         </div>
@@ -146,9 +155,9 @@
             <div class="index-agent-boxes">
                 @foreach ($services as $serv)     
                  @if($serv->category_id == $cat->id)          
-                    <a href="{{route('admin.resource-editservices', $serv->id) }}" class="agent-box-w agent-status-active text-center os-service">
-                        <div class="agent-info-w">
-                            <div class="agent-info">
+                    <a href="{{route('admin.resource-editservices', $serv->id) }}" class="agent-box-w agent-status-active text-center os-service {{ $serv->status === 'disabled' ? 'service-disabled-card' : '' }}">
+                        <div class="agent-info-w {{ $serv->status === 'disabled' ? 'service-disabled' : '' }}">
+                            <div class="agent-info mt-2">
                                 <div class="agent-name">{{$serv->name}}</div>
                             </div>
                         </div>
