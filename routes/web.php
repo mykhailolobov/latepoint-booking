@@ -143,6 +143,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // Service Extra Section
         Route::get('/resource/serviceextras', [Serviceextras::class, 'index'])->name('resource-serviceextras');
+        Route::get('/resource/getserviceextras', [Serviceextras::class, 'get'])->name('resource-getserviceextras');
         Route::get('/resource/createserviceextras', [Serviceextras::class, 'create'])->name('resource-createserviceextras');
         Route::get('/resource/editserviceextras/{id}', [Serviceextras::class, 'edit'])->name('resource-editserviceextras');
         Route::post('/resource/storeserviceextras', [Serviceextras::class, 'store'])->name('resource-storeserviceextras');

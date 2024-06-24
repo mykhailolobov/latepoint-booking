@@ -17,6 +17,12 @@ class Serviceextras extends Controller
         return view('content.resource.serviceextras', compact('extras'));
     }
 
+    public function get()
+    {
+        $extras = ServiceExtra::all();
+        return response()->json($extras);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
