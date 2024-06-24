@@ -48,15 +48,67 @@ $configData = Helper::appClasses();
 @section('content')
 
 <link href="{{asset('/assets/css/createservices_custom.css')}}" rel="stylesheet">
+<style type="text/css">
+ .os-form-message-w {
+    padding: 15px 15px 17px 50px;
+    background-color: #f0f1f5;
+    color: #6e7084;
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #d3d4de;
+    position: relative;
+ }
+
+ .os-form-message-w.status-error {
+    background-color: #fff1f1;
+    border: 1px solid #f2c3c3;
+    border-bottom-color: #ea9898;
+    color: #7f0d0d;
+    box-shadow: 0px 1px 2px rgba(255, 61, 61, 0.16);
+}
+.os-form-message-w.status-error:before {
+    background-color: #ff5839;
+    box-shadow: 0px 1px 0px 0px rgba(255, 138, 138, 0.5), 0px 0px 0px 6px rgba(255, 138, 138, 0.15), 0px 0px 0px 10px rgba(255, 138, 138, 0.1), inset 0px 2px 0px 0px rgba(255, 255, 255, 0.2);
+    border: 1px solid #ee1b1b;
+    border-bottom-color: #ce0a0a;
+}
+.os-form-message-w.status-error:before {
+    animation: 1s ease 0s pulseErrorPill infinite;
+}
+.os-form-message-w:before {
+    color: #fff;
+    position: absolute;
+    top: 20px;
+    left: 19px;
+    width: 10px;
+    height: 10px;
+    text-align: center;
+    border-radius: 50%;
+    z-index: 3;
+    content: "";
+}
+.os-form-message-w ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+.os-form-message-w ul li:last-child {
+    margin-bottom: 0px;
+}
+</style>
 
 <div class="row">
     <form action="{{route('admin.resource-storeservices')}}" method="post" class="add-service">
         @csrf
-        <div class="col-lg-12 col-xxl-12 mb-4 order-3 order-xxl-1">
-            <div class="card-header mb-0">
+        <div class="col-lg-12 col-xxl-12 mb-4 order-3 order-xxl-1" id="error_scroll">
+            <div class="card-header mb-0"  >
                 <h4 class="m-0 me-2">Create New Service</h4>
                 <hr>
             </div>
+            <div class="os-form-message-w status-error" id="error-message" style="display: none;"><ul><li></li></ul></div>
+
             <div class="col-md-12">
                 <div class="card mb-4">
                     <h5 class="card-header">General Information</h5>
@@ -83,7 +135,7 @@ $configData = Helper::appClasses();
                             </div>
                             <div class="col-lg-6 px-3">
                                 <label for="selectpickerBasic" class="form-label">Status</label>
-                                <select id="selectpickerBasic" class="selectpicker w-100" name="status" data-style="btn-default">
+                                <select id="selectpickerBasic" class="selectpicker w-100" name="service_status" data-style="btn-default">
                                     <option value="active">Active</option>
                                     <option value="disabled">Disabled</option>
                                 </select>
@@ -161,14 +213,14 @@ $configData = Helper::appClasses();
                             </div>
                         </div>    
     
-                        <div class="mx-3 os-add-box add-duration-box" data-os-action="service_durations__duration_fields" data-os-output-target-do="append" data-os-output-target=".os-service-durations-w">
+                        <!-- <div class="mx-3 os-add-box add-duration-box" data-os-action="service_durations__duration_fields" data-os-output-target-do="append" data-os-output-target=".os-service-durations-w">
                             <div class="add-box-graphic-w">
                                 <div class="add-box-plus">
                                     <i class="latepoint-icon latepoint-icon-plus4 fa fa-plus"></i>
                                 </div>
                             </div>
                             <div class="add-box-label">Create Another Service Duration</div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -203,11 +255,11 @@ $configData = Helper::appClasses();
                         <div class="d-flex">
                             <div class="col-lg-3 px-3">
                                 <label for="selectpickerBasic" class="form-label">Buffer Before</label>
-                                <input type="text" class="form-control" name="buffer_before" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp" placeholder="0 (min)" />
+                                <input type="text" class="form-control" name="buffer_before_service" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp" placeholder="0 (min)" />
                             </div>
                             <div class="col-lg-3 px-3">
                                 <label for="selectpickerBasic" class="form-label">Buffer After</label>
-                                <input type="text" class="form-control" name="buffer_after" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp" placeholder="0 (min)" />
+                                <input type="text" class="form-control" name="buffer_after_service" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp" placeholder="0 (min)" />
                             </div>
                             <div class="col-lg-3 px-3">
                                 <label for="selectpickerBasic" class="form-label">Override Time Intervals</label>
@@ -735,7 +787,7 @@ $configData = Helper::appClasses();
                     </div>
                 </div>
             </div>
-    
+            
             <div>
                 <button class="btn btn-primary add-location" type="submit">Add Service</button>
                 <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -852,8 +904,8 @@ $configData = Helper::appClasses();
 
         const duration_name = $('input[name="duration_name"]').val();
         const duration = $('input[name="duration"]').val();
-        const buffer_before = $('input[name="buffer_before"]').val();
-        const buffer_after = $('input[name="buffer_after"]').val();
+        const buffer_before = $('input[name="buffer_before_service"]').val();
+        const buffer_after = $('input[name="buffer_after_service"]').val();
         const category_id = $('select[name="category_id"]').val();
         // const order_number = $('input[name="order_number"]').val();
         const selection_image_id = $('.selection_image>.dz-preview>.dz-details>.dz-thumbnail>img').attr('src');
@@ -862,7 +914,7 @@ $configData = Helper::appClasses();
         const timeblock_interval = $('input[name="timeblock_interval"]').val();
         const capacity_min = $('input[name="capacity_min"]').val();
         const capacity_max = $('input[name="capacity_max"]').val();
-        const status = $('select[name="status"]').val();
+        const status = $('select[name="service_status"]').val();
         const visibility = $('select[name="visibility"]').val();
         const override_default_booking_status = $('select[name="override_default_booking_status"]').val();
         servicedata['short_description'] =  $('input[name="short_description"]').val();
@@ -917,14 +969,14 @@ $configData = Helper::appClasses();
             data: {
                 name: name,
                 short_description: JSON.stringify(servicedata) ,
-                price_min: price_min ? price_min : null,
-                price_max: price_max ? price_max : null,
+                price_min: price_min ? price_min : 0,
+                price_max: price_max ? price_max : 0,
                 charge_amount: charge_amount ? charge_amount : null,
                 deposit_amount: deposit_amount ? deposit_amount : null,
                 duration_name: duration_name ? duration_name : null,
-                duration: duration,
-                buffer_before: buffer_before ? buffer_before : null,
-                buffer_after: buffer_after ? buffer_after : null,
+                duration: duration ? duration : 60,
+                buffer_before: buffer_before ? buffer_before : 0,
+                buffer_after: buffer_after ? buffer_after : 0,
                 category_id: category_id ? category_id : null,
                 // order_number: order_number,
                 selection_image_id: selection_image_id ? selection_image_id : null,
@@ -943,6 +995,15 @@ $configData = Helper::appClasses();
             },
             error: function(err) {
                 console.log(err);
+                var errorMessage = 'An error occurred. Please try again.';
+                if (err.responseJSON && err.responseJSON.message) {
+                    errorMessage = err.responseJSON.message;
+                }
+                $('#error-message').text(errorMessage).show();
+                // Scroll to the error message
+              $('html, body').animate({
+                  scrollTop: $("#error_scroll").offset().top
+              }, 500);
             }
         });
     });
