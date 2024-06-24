@@ -75,10 +75,8 @@ $configData = Helper::appClasses();
                             <div class="col-lg-6 px-3">
                                 <label for="selectpickerBasic" class="form-label">Category</label>
                                 <div class="d-flex">
-                                    <select id="selectpickerBasic" class="selectpicker w-100" name="category_id" data-style="btn-default">                                        
-                                        <option value="general">General Dentistry</option>
-                                        <option value="cosmetic">Cosmetic Dentistry</option>
-                                        <option value="implants">Implants Dentistry</option>
+                                    <select id="selectpickerGroups-cat" class="selectpicker-cat selectpicker w-100" name="category_id" data-style="btn-default">
+                                       <!-- <option value="0" >Uncategorized</option>                     -->
                                     </select>
                                     <button class="btn btn-primary h-px-40" type="button" style="width:200px;"><i class="fa fa-plus"></i>Add Category</button>
                                 </div>
@@ -764,6 +762,57 @@ $configData = Helper::appClasses();
         'setting' : {}
     }; 
     $(document).ready(function() {
+        var currentUrl = window.location.href;
+
+            // Create a new URL object
+        var url = new URL(currentUrl);
+
+            // Use URLSearchParams to parse the query string
+        var params = new URLSearchParams(url.search);
+
+            // Get the value of the 'category_id' parameter
+        var categoryId = params.get('category_id');
+
+        fetchCatigories();
+        function fetchCatigories() {
+           $.ajax({
+           url: "{{ route('admin.resource-getcategories') }}",
+           type: 'GET',
+           success: function(response) {
+            populateCategories(response);
+           },
+           error: function(xhr, status, error) {
+            console.error('Error fetching services:', error);
+            showToast('Failed to fetch services');
+           }
+         });
+        }
+
+// Function to populate services dropdown
+      function populateCategories(categories) {
+        const selectpickerCatGroups = document.getElementById('selectpickerGroups-cat');
+        selectpickerCatGroups.innerHTML = ''; // Clear existing options
+        categories.unshift({
+            id: 0,
+            name: 'Uncategorized'
+        })
+
+        if (categories.length) {
+          categories.forEach((category, index) => {
+            const option = document.createElement('option');
+            option.value = category.id;
+            option.textContent = category.name;
+            if (categoryId && categoryId == category.id) {
+            option.selected = true;
+        }
+            selectpickerCatGroups.appendChild(option);
+          });
+       }
+
+     // Refresh selectpicker to show new options (if using Bootstrap selectpicker)
+      $('.selectpicker-cat').selectpicker('refresh');
+    }
+
         $('.custom-schedule-wrapper').hide();
 
         $('.customCheckTemp1').click(function() {

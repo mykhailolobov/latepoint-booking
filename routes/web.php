@@ -135,6 +135,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // Category Section
         Route::get('/resource/categories', [Categories::class, 'index'])->name('resource-categories');
+        Route::get('/resource/getcategories', [Categories::class, 'get'])->name('resource-getcategories');
         Route::post('/resource/storecategories', [Categories::class, 'store'])->name('resource-storecategories');
         Route::get('/resource/deletecategories/{id}', [Categories::class, 'destroy']);
         Route::post('/resource/updatecategories/{id}', [Categories::class, 'update'])->name('resource-updatecategories');
