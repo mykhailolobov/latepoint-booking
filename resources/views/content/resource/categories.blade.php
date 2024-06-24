@@ -69,7 +69,7 @@ $configData = Helper::appClasses();
                                 <div class="row">
                                     <span class="d-flex align-items-center">
                                         <i class="drag-handle cursor-move bx bx-menu align-text-bottom me-2"></i>
-                                        <span>{{$category->name}} Dentistry</span>
+                                        <span>{{$category->name}} </span>
                                     </span>
                                 </div>
                                 <div class="card-body edit_category_section">
