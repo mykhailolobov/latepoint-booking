@@ -17,6 +17,13 @@ class Categories extends Controller
         return view('content.resource.categories', compact('categories'));
     }
 
+    public function get()
+    {
+        $categories = ServiceCategory::all();
+        return response()->json($categories);
+
+    }
+
     /**
      * Show the form for creating a new resource.
      */
