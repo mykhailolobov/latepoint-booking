@@ -826,7 +826,7 @@
                     },
                     error: function (error) {
                         console.error('Error:', error);
-                        showToast('Failed to create appointment');
+                        showToast(error.responseJSON.message);
                     }
                 });
             }
