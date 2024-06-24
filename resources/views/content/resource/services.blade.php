@@ -64,18 +64,36 @@
                             </div>
                         </div>
                         <div class="os-service-body">
-                            <div class="os-service-agents">
-                                <div class="label">Agents:</div>
-                                <div class="agents-avatars">
-                                    <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/7.png") ?>)">
+                        @php
+                           $short_description = json_decode($serv->short_description, true);
+                           $offer = $short_description['offer'] ?? [];
+                           $displayedAgents = [];
+                           $extraAgentsCount = 0;
 
-                                    </div>
-                                    <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/8.png") ?>)">
-
-                                    </div>
-                                    <div class="agents-more">+2 more</div>      
-                                </div>
-                            </div>
+                          foreach ($offer as $agentId => $isOffered) {
+                             if ($isOffered) {
+                                 $displayedAgents[] = $agentId;
+                             }
+                           }
+                         $extraAgentsCount = count($displayedAgents) - 2;
+                        @endphp
+                        <div class="os-service-agents">
+                           <div class="label">Agents:</div>
+    
+                           <div class="agents-avatars">
+                            @foreach(array_slice($displayedAgents, 0, 2) as $agentId)
+                             @php
+                               $agent = App\Models\Agent::find($agentId);
+                             @endphp
+                            @if($agent)
+                               <div class="agent-avatar" style="background-image: url('{{ $agent->avatar ? asset($agent->avatar) : asset("assets/img/avatar.png") }}')"></div>
+                            @endif
+                           @endforeach
+                           @if($extraAgentsCount > 0)
+                            <div class="agents-more">+{{ $extraAgentsCount }} more</div>
+                           @endif
+                          </div>
+                        </div>
                             <div class="os-service-info">
                                 <div class="service-info-row">
                                     <div class="label">Duration:</div>
@@ -135,18 +153,37 @@
                             </div>
                         </div>
                         <div class="os-service-body">
-                            <div class="os-service-agents">
-                                <div class="label">Agents:</div>
-                                <div class="agents-avatars">
-                                    <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/7.png") ?>)">
+                            
+                        @php
+                           $short_description = json_decode($serv->short_description, true);
+                           $offer = $short_description['offer'] ?? [];
+                           $displayedAgents = [];
+                           $extraAgentsCount = 0;
 
-                                    </div>
-                                    <div class="agent-avatar" style="background-image: url(<?= asset("assets/img/avatars/8.png") ?>)">
-
-                                    </div>
-                                    <div class="agents-more">+2 more</div>      
-                                </div>
-                            </div>
+                          foreach ($offer as $agentId => $isOffered) {
+                             if ($isOffered) {
+                                 $displayedAgents[] = $agentId;
+                             }
+                           }
+                         $extraAgentsCount = count($displayedAgents) - 2;
+                        @endphp
+                        <div class="os-service-agents">
+                           <div class="label">Agents:</div>
+    
+                           <div class="agents-avatars">
+                            @foreach(array_slice($displayedAgents, 0, 2) as $agentId)
+                             @php
+                               $agent = App\Models\Agent::find($agentId);
+                             @endphp
+                            @if($agent)
+                               <div class="agent-avatar" style="background-image: url('{{ $agent->avatar ? asset($agent->avatar) : asset("assets/img/avatar.png") }}')"></div>
+                            @endif
+                           @endforeach
+                           @if($extraAgentsCount > 0)
+                            <div class="agents-more">+{{ $extraAgentsCount }} more</div>
+                           @endif
+                          </div>
+                        </div>
                             <div class="os-service-info">
                                 <div class="service-info-row">
                                     <div class="label">Duration:</div>

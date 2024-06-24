@@ -720,6 +720,7 @@ $configData = Helper::appClasses();
         'extra' : {},
         'setting' : {}
     }; 
+    var agents_data;
     $(document).on('change', '#selectAll', function() {
        var isChecked = $(this).is(':checked');
        $('.form-check-input').prop('checked', isChecked);
@@ -787,6 +788,7 @@ function populateExtraServ(extras) {
                     url: "{{ route('admin.resource-getagents') }}",
                     type: 'GET', 
                     success: function (response) {
+                        agents_data = response
                         populateAg(response);
                     },
                     error: function (xhr, status, error) {
@@ -917,12 +919,10 @@ function populateExtraServ(extras) {
         const visibility = $('select[name="visibility"]').val();
         const override_default_booking_status = $('select[name="override_default_booking_status"]').val();
         servicedata['short_description'] =  $('input[name="short_description"]').val();
-        servicedata['offer']['john_mayers'] = $('input[name="service[offer][john_mayers]"]').prop('checked');
-        servicedata['offer']['invisilign_braces'] = $('input[name="service[offer][invisilign_braces]"]').prop('checked');
-        servicedata['offer']['group_booking'] = $('input[name="service[offer][group_booking]"]').prop('checked');
-        servicedata['offer']['porcelain_crown'] = $('input[name="service[offer][porcelain_crown]"]').prop('checked');
-        servicedata['offer']['root_canal'] = $('input[name="service[offer][root_canal]"]').prop('checked');
-        servicedata['offer']['gum_decease'] = $('input[name="service[offer][gum_decease]"]').prop('checked');
+        agents_data.forEach(element => {
+            servicedata['offer'][element.id] = $(`input[name="service[offer][${element.id}]"]`).prop('checked');
+        });
+       
         servicedata['schedule']['status'] = $('input[name="service[schedule][status]"]').prop('checked');
         servicedata['schedule']['mon']['status'] = $('input[name="service[schedule][mon][status]"]').prop('checked');
         servicedata['schedule']['mon']['start'] = $('input[name="service[schedule][mon][start]"]').prop('checked');
@@ -956,7 +956,7 @@ function populateExtraServ(extras) {
         servicedata['setting']['extra_max'] = $('input[name="service[setting][extra_max]"]').prop('checked');
         servicedata['setting']['zoom'] = $('input[name="service[setting][zoom]"]').prop('checked');
 
-        // console.log(servicedata);
+        console.log(servicedata, "service data");
        
 
         $.ajax({
