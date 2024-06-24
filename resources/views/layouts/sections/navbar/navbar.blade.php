@@ -469,12 +469,12 @@
                     <div class="offcanvas-body mx-0 flex-grow-0">
                         <!-- Service Selector -->
                         <div class="col-lg-12 mb-3">
-                            <select id="selectpickerGroups" name="service" class="selectpicker w-100" data-style="btn-default">
-                                <option value="">Select Service</option>
+                            <select id="selectpickerGroups-service" name="service" class="selectpicker-service selectpicker w-100" data-style="btn-default">
+                                <option value="" disabled>Select Service</option>
                                 <!-- Options will be populated by AJAX -->
                             </select>
                         </div>
-                        <!-- <div class="col-lg-12 mb-3">
+                        <div class="col-lg-12 mb-3">
                             <label for="selectpickerBasic" class="form-label">Service Extras</label>
                             <div class="select2-primary">
                                 <select id="select2Primary" name="service_extra" class="select2 form-select" multiple>
@@ -483,7 +483,7 @@
                                     <option value="recovery_mask">Recovery Mask</option>
                                 </select>
                             </div>
-                        </div> -->
+                        </div>
                         <div class="col-lg-12 d-flex mb-3">
                             <div class="col-lg-6">
                                 <label for="selectpickerBasic" class="form-label">Agent</label>
@@ -847,8 +847,9 @@
 
             // Function to populate services dropdown
             function populateServices(services) {
-                const selectpickerGroups = document.getElementById('selectpickerGroups');
-                selectpickerGroups.innerHTML = ''; // Clear existing options
+                const selectpickerServGroups = document.getElementById('selectpickerGroups-service');
+                selectpickerServGroups.innerHTML = ''; // Clear existing options
+                console.log(services, "Sss")
 
                 if (services.length) {
                     services.forEach(service => {
@@ -862,17 +863,15 @@
                             optgroup.appendChild(option);
                         });
 
-                        selectpickerGroups.appendChild(optgroup);
+                        selectpickerServGroups.appendChild(optgroup);
                     });
                 } else {
-                    const option = document.createElement('option');
-                    option.value = '';
-                    option.textContent = 'No services available';
-                    selectpickerGroups.appendChild(option);
+                    
+                    showToast('Warnning: Please create service first.');
                 }
 
                 // Refresh selectpicker to show new options (if using Bootstrap selectpicker)
-                $('.selectpicker').selectpicker('refresh');
+                $('.selectpicker-service').selectpicker('refresh');
             }
         });
     </script>

@@ -33,21 +33,39 @@ class Services extends Controller
         // Format the response
         $response = [];
         foreach ($groupedServices as $categoryId => $services) {
-            $categoryName = ServiceCategory::find($categoryId)->name; // Assuming you have a Category model
-            $response[] = [
-                'category' => $categoryName,
-                'services' => $services->map(function($service) {
-                    return [
-                        'id' => $service->id,
-                        'name' => $service->name,
-                        'duration' => $service->duration,
-                        'buffer_before' => $service->buffer_before,
-                        'buffer_after' => $service->buffer_after,
-                        'capacity_min' => $service->capacity_min,
-                        'capacity_max' => $service->capacity_max,
-                    ];
-                })
-            ];
+            if($categoryId == 0) {
+                $response[] = [
+                    'category' => 'Uncategorized',
+                    'services' => $services->map(function($service) {
+                        return [
+                            'id' => $service->id,
+                            'name' => $service->name,
+                            'duration' => $service->duration,
+                            'buffer_before' => $service->buffer_before,
+                            'buffer_after' => $service->buffer_after,
+                            'capacity_min' => $service->capacity_min,
+                            'capacity_max' => $service->capacity_max,
+                        ];
+                    })
+                ];
+            } else {
+                $categoryName = ServiceCategory::find($categoryId)->name; // Assuming you have a Category model
+                $response[] = [
+                    'category' => $categoryName,
+                    'services' => $services->map(function($service) {
+                        return [
+                            'id' => $service->id,
+                            'name' => $service->name,
+                            'duration' => $service->duration,
+                            'buffer_before' => $service->buffer_before,
+                            'buffer_after' => $service->buffer_after,
+                            'capacity_min' => $service->capacity_min,
+                            'capacity_max' => $service->capacity_max,
+                        ];
+                    })
+                ];
+            }
+            
         }
 
         return response()->json($response);
