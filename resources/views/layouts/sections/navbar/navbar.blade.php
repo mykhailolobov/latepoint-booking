@@ -487,11 +487,11 @@
                         <div class="col-lg-12 d-flex mb-3">
                             <div class="col-lg-6">
                                 <label for="selectpickerBasic" class="form-label">Agent</label>
-                                <select id="selectpickerBasic" name="agent" class="selectpicker w-100"
+                                <select id="selectpickerBasic-agent" name="agent" class="selectpicker-agent selectpicker w-100"
                                     data-style="btn-default">
-                                    <option value="john_mayers">John Mayers</option>
+                                    <!-- <option value="john_mayers">John Mayers</option>
                                     <option value="kim_collins">Kim Collins</option>
-                                    <option value="ben_stones">Ben Stones</option>
+                                    <option value="ben_stones">Ben Stones</option> -->
                                 </select>
                             </div>
                             <div class="col-lg-6">
@@ -703,6 +703,7 @@
              // Fetch services data when the page loads
              fetchServices();
              fetchExtraServices();
+             fetchAgents();
             // Update price display on input change
             const priceInput = document.getElementById('flatpickr-total_price');
             const dynamicPriceLabel = document.getElementById('dynamic-price');
@@ -894,14 +895,13 @@
             function populateExtraServices(services) {
                 const select2Primary = document.getElementById('select2Primary');
                 select2Primary.innerHTML = ''; // Clear existing options
-                console.log(services, "Sss")
 
                 if (services.length) {
                     services.forEach(service => {
                         const option = document.createElement('option');
-                            option.value = service.id;
-                            option.textContent = service.name;
-                            select2Primary.appendChild(option);
+                        option.value = service.id;
+                        option.textContent = service.name;
+                        select2Primary.appendChild(option);
                     });
                 } else {
                     
@@ -910,6 +910,44 @@
 
                 // Refresh selectpicker to show new options (if using Bootstrap selectpicker)
                 $('.select2').selectpicker('refresh');
+            }
+
+            //get agents
+            function fetchAgents() {
+                console.log("Fetch")
+                $.ajax({
+                    url: "{{ route('admin.resource-getagents') }}",
+                    type: 'GET',
+                    success: function (response) {
+
+                        populateAgents(response);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error fetching services:', error);
+                        showToast('Failed to fetch services');
+                    }
+                });
+            }
+
+            // Function to populate services dropdown
+            function populateAgents(agents) {
+                const selectpickerBasic = document.getElementById('selectpickerBasic-agent');
+                selectpickerBasic.innerHTML = ''; // Clear existing options
+
+                if (agents.length) {
+                    agents.forEach(agent => {
+                        const option = document.createElement('option');
+                        option.value = agent.id;
+                        option.textContent = agent.first_name + agent.last_name;
+                        selectpickerBasic.appendChild(option);
+                    });
+                } else {
+                    
+                    // showToast('Warnning: Please create extra service first.');
+                }
+
+                // Refresh selectpicker to show new options (if using Bootstrap selectpicker)
+                $('.selectpicker-agent').selectpicker('refresh');
             }
         });
     </script>
