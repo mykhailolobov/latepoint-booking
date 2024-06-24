@@ -73,7 +73,7 @@
 </div>
 <script type="text/javascript" src="{{asset('/assets/jquery.js')}}"></script>
 <script>    
-    $.get("/customers/list", function(data) {
+    $.get("/admin/customers/list", function(data) {
         console.log(data);
     });
 </script>

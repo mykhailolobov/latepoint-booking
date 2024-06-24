@@ -938,7 +938,7 @@
                     agents.forEach(agent => {
                         const option = document.createElement('option');
                         option.value = agent.id;
-                        option.textContent = agent.first_name + agent.last_name;
+                        option.textContent = agent.first_name + ' ' + agent.last_name;
                         selectpickerBasic.appendChild(option);
                     });
                 } else {

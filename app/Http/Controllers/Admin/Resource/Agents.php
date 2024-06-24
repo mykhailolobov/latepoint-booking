@@ -76,7 +76,7 @@ class Agents extends Controller
 
         
         $agent = new Agent();
-        $agent->user_id = $request->user()['id'];
+        $agent->user_id = $user->id;
         $agent->avatar_image_id = $request->avatar_image;
         $agent->bio_image_id = $request->bio_image;
         $agent->first_name = $validatedData['first_name'];
@@ -107,8 +107,6 @@ class Agents extends Controller
         $activity->initiated_by = "admin";
         $activity->initiated_by_id = $request->user()['id'];
         $activity->save();
-        var_dump($agent->user_id);
-
         // return redirect('/customers')->with('success', 'Customer created successfully.');
     }
 
