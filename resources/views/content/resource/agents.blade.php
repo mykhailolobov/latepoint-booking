@@ -47,7 +47,7 @@ $configData = Helper::appClasses();
             <a href="/resource/editagents/{{$agent->id}}" class="agent-box-w agent-status-active">
                 <div class="agent-edit-icon"><i class="latepoint-icon latepoint-icon-edit-3"></i></div>
                 <div class="agent-info-w">
-                    <div class="agent-avatar" style="background-image: url({{$agent->avatar_image_id}})"></div>
+                <div class="agent-avatar" style="background-image: url('{{ $agent->avatar_image_id ? asset('images/avatars/' . $agent->avatar_image_id) : asset('assets/img/avatar.png') }}')"></div>
                     <div class="agent-info">
                         <div class="agent-name">{{$agent->first_name}} {{$agent->last_name}}</div>
                         <div class="agent-phone">{{$agent->phone}}</div>
