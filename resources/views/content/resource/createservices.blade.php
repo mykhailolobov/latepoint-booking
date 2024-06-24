@@ -97,6 +97,10 @@ $configData = Helper::appClasses();
 .os-form-message-w ul li:last-child {
     margin-bottom: 0px;
 }
+.agent-name {
+    margin-left: 10px;
+    color: #183fbf;
+}
 </style>
 
 <div class="row">
@@ -284,74 +288,9 @@ $configData = Helper::appClasses();
                 <div class="card">
                     <h5 class="card-header">Agents Who Offer This Service</h5>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-12 mb-md-0 mb-2">
-                                <div class="form-check custom-option custom-option-basic">
-                                    <label class="form-check-label custom-option-content" for="customCheckTemp37">
-                                        <input class="form-check-input" type="checkbox" name="service[offer][john_mayers]" id="customCheckTemp37" checked />
-                                        <span class="custom-option-header">
-                                            <img src="{{ asset('assets/img/avatars/7.png') }}" class="w-px-30 border-50" />
-                                            <span class="h6 mb-0">John Mayers</span>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-check custom-option custom-option-basic">
-                                    <label class="form-check-label custom-option-content" for="customCheckTemp47">
-                                        <input class="form-check-input" type="checkbox" name="service[offer][invisilign_braces]" id="customCheckTemp47" checked />
-                                        <span class="custom-option-header">
-                                            <img src="{{ asset('assets/img/avatars/8.png') }}" class="w-px-30 border-50" />
-                                            <span class="h6 mb-0">Invisilign Braces</span>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-12 mb-md-0 mb-2">
-                                <div class="form-check custom-option custom-option-basic">
-                                    <label class="form-check-label custom-option-content" for="customCheckTemp38">
-                                        <input class="form-check-input" type="checkbox" name="service[offer][group_booking]" id="customCheckTemp38" checked />
-                                        <span class="custom-option-header">
-                                            <img src="{{ asset('assets/img/avatars/9.png') }}" class="w-px-30 border-50" />
-                                            <span class="h6 mb-0">Group Booking</span>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-check custom-option custom-option-basic">
-                                    <label class="form-check-label custom-option-content" for="customCheckTemp48">
-                                        <input class="form-check-input" type="checkbox" name="service[offer][porcelain_crown]" id="customCheckTemp48" checked />
-                                        <span class="custom-option-header">
-                                            <img src="{{ asset('assets/img/avatars/3.png') }}" class="w-px-30 border-50" />
-                                            <span class="h6 mb-0">Porcelain Crown</span>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-12 mb-md-0 mb-2">
-                                <div class="form-check custom-option custom-option-basic">
-                                    <label class="form-check-label custom-option-content" for="customCheckTemp39">
-                                        <input class="form-check-input" type="checkbox" name="service[offer][root_canal]" id="customCheckTemp39" checked />
-                                        <span class="custom-option-header">
-                                            <img src="{{ asset('assets/img/avatars/4.png') }}" class="w-px-30 border-50" />
-                                            <span class="h6 mb-0">Root Canal Therapy</span>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-check custom-option custom-option-basic">
-                                    <label class="form-check-label custom-option-content" for="customCheckTemp49">
-                                        <input class="form-check-input" type="checkbox" name="service[offer][gum_decease]" id="customCheckTemp49" checked />
-                                        <span class="custom-option-header">
-                                            <img src="{{ asset('assets/img/avatars/5.png') }}" class="w-px-30 border-50" />
-                                            <span class="h6 mb-0">Gum Decease</span>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+                       <div class="row" id="agent-list">
+                         <!-- Agent list will be populated here -->
+                       </div>
                     </div>
                 </div>
             </div>
@@ -826,6 +765,51 @@ $configData = Helper::appClasses();
         var categoryId = params.get('category_id');
 
         fetchCatigories();
+        fetchAg(); 
+
+        function fetchAg() {
+                console.log("Fetch")
+                $.ajax({
+                    url: "{{ route('admin.resource-getagents') }}",
+                    type: 'GET', 
+                    success: function (response) {
+                        populateAg(response);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error fetching services:', error);
+                        showToast('Failed to fetch services');
+                    }
+                });
+            }
+
+            // Function to populate services dropdown
+            function populateAg(agents) {
+                var agentList = $('#agent-list');
+               agentList.empty(); // Clear any existing agents
+
+              if (agents.length === 0) {
+                 agentList.append('<div class="col-md-12">No agents found.</div>');
+                return;
+               }
+
+             agents.forEach(function(agent) {
+             var agentHtml = `
+             <div class="col-md-12 mb-md-0 mb-2">
+                <div class="form-check custom-option custom-option-basic">
+                    <label class="form-check-label custom-option-content" for="customCheck_${agent.id}">
+                        <input class="form-check-input" type="checkbox" name="service[offer][${agent.id}]" id="customCheck_${agent.id}" checked />
+                        <span class="custom-option-header">
+                            <img src="${agent.avatar ? agent.avatar : '{{ asset('assets/img/avatar.png') }}'}" class="w-px-30 border-50 mr-2" />
+                            <span class="h6 mb-0 agent-name">${agent.first_name + ' ' + agent.last_name }</span>
+                        </span>
+                    </label>
+                </div>
+             </div>
+          `;
+           agentList.append(agentHtml);
+         });
+        }
+        
         function fetchCatigories() {
            $.ajax({
            url: "{{ route('admin.resource-getcategories') }}",
@@ -840,7 +824,7 @@ $configData = Helper::appClasses();
          });
         }
 
-// Function to populate services dropdown
+      // Function to populate services dropdown
       function populateCategories(categories) {
         const selectpickerCatGroups = document.getElementById('selectpickerGroups-cat');
         selectpickerCatGroups.innerHTML = ''; // Clear existing options
@@ -865,6 +849,7 @@ $configData = Helper::appClasses();
       $('.selectpicker-cat').selectpicker('refresh');
     }
 
+           
         $('.custom-schedule-wrapper').hide();
 
         $('.customCheckTemp1').click(function() {
