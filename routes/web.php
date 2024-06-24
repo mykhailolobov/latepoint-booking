@@ -153,6 +153,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // Resources Section->Agents part
         Route::get('/resource/agents', [Agents::class, 'index'])->name('resource-agents');
+        Route::get('/resource/getagents', [Agents::class, 'get'])->name('resource-getagents');
         Route::get('/resource/createagents', [Agents::class, 'create'])->name('resource-createagents');
         Route::get('/resource/editagents/{id}', [Agents::class, 'edit'])->name('resource-editagents');
         Route::post('/resource/storeagent', [Agents::class, 'store'])->name('resource-storeagent');

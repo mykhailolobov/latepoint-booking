@@ -20,6 +20,13 @@ class Agents extends Controller
         return view('content.resource.agents', ['agents' => $agents]);
     }
 
+    public function get()
+    {
+        $agents = Agent::all();
+        return response()->json($agents);
+
+    }
+
     /**
      * Show the form for creating a new resource.
      */
