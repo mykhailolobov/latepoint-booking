@@ -75,10 +75,10 @@ $configData = Helper::appClasses();
                         <div class="d-flex mb-3">
                             
                             <div class="col-lg-4 px-3">
-                                <input type="text" class="form-control" id="defaultFormControlInput" placeholder="First Name" aria-describedby="defaultFormControlHelp" name="first_name"/>
+                                <input type="text" class="form-control" id="defaultFormControlInput first_name_agent" placeholder="First Name" aria-describedby="defaultFormControlHelp" name="first_name_agent" required/>
                             </div>
                             <div class="col-lg-4 px-3">
-                                <input type="text" class="form-control" id="defaultFormControlInput" placeholder="Last Name" aria-describedby="defaultFormControlHelp" name="last_name"/>
+                                <input type="text" class="form-control" id="defaultFormControlInput" placeholder="Last Name" aria-describedby="defaultFormControlHelp" name="last_name_agent"/>
                             </div>
                             <div class="col-lg-4 px-3">
                                 <input type="text" class="form-control" id="defaultFormControlInput" placeholder="Display Name" aria-describedby="defaultFormControlHelp" name="display_name"/>
@@ -86,7 +86,7 @@ $configData = Helper::appClasses();
                         </div>
                         <div class="d-flex mb-3">
                             <div class="col-lg-4 px-3">
-                                <input type="email" class="form-control" id="defaultFormControlInput" placeholder="Email Address" aria-describedby="defaultFormControlHelp" name="email"/>
+                                <input type="email" class="form-control" id="defaultFormControlInput" placeholder="Email Address" aria-describedby="defaultFormControlHelp" name="email_agent" required/>
                             </div>
                             <div class="col-lg-4 px-3">
                                 <input type="text" class="form-control" id="defaultFormControlInput" placeholder="Phone Number" aria-describedby="defaultFormControlHelp" name="phone"/>
@@ -496,14 +496,14 @@ $configData = Helper::appClasses();
         const csrf_token = $('meta[name="csrf-token"]').attr('content');
         const avatar_image = $('.set-avatar>.dropzone>.dz-preview>.dz-details>.dz-thumbnail>img').attr('src');
         const bio_image = $('.set-bio>.dropzone>.dz-preview>.dz-details>.dz-thumbnail>img').attr('src');
-        const first_name = $('input[name="first_name"]').val();
-        console.log($('input[name="first_name"]').val(), "first name")
-        const last_name = $('input[name="last_name"]').val();
+        const first_name = $('input[name="first_name_agent"]').val();
+
+        const last_name = $('input[name="last_name_agent"]').val();
         const display_name = $('input[name="display_name"]').val();
         const title = $('input[name="title"]').val();
         const bio = $('textarea[name="bio"]').val();
         // const features = $('textarea[name="features"]').val();
-        const email = $('input[name="email"]').val();
+        const email = $('input[name="email_agent"]').val();
         const phone = $('input[name="phone"]').val();
         // const custom_hours = $('input[name="custom_hours"]').val();
         const status = $('select[name="status"]').val();
