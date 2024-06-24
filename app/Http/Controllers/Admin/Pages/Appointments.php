@@ -33,8 +33,8 @@ class Appointments extends Controller
     $appointment->customer_id = $request->user()['id'];
     $appointment->first_name = $request->first_name;
     $appointment->last_name = $request->last_name; 
-    $appointment->service_id = "1";
-    $appointment->agent_id = "1";
+    $appointment->service_id = $request->service;
+    $appointment->agent_id = $request->agent;
     $appointment->location_id = "1";
     $appointment->booking_code = "1";
     $appointment->start_date = new DateTime($request->start_date);
