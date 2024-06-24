@@ -586,41 +586,9 @@ $configData = Helper::appClasses();
                     </div>
                         
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-12 mb-md-0 mb-2">
-                                <div class="form-check custom-option custom-option-basic">
-                                    <label class="form-check-label custom-option-content" for="service_extra_1">
-                                        <input class="form-check-input" type="checkbox" name="service[extra][teeth_whitening]" id="service_extra_1" />
-                                        <span class="custom-option-header">
-                                            <img src="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-content/plugins/latepoint/public/images/service-image.png" class="w-px-30 border-50" />
-                                            <span class="h6 mb-0">Teeth Whitening</span>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-check custom-option custom-option-basic">
-                                    <label class="form-check-label custom-option-content" for="service_extra_2">
-                                        <input class="form-check-input" type="checkbox" name="service[extra][hair_wash]" id="service_extra_2" />
-                                        <span class="custom-option-header">
-                                            <img src="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-content/plugins/latepoint/public/images/service-image.png" class="w-px-30 border-50" />
-                                            <span class="h6 mb-0">Hair Wash</span>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-12 mb-md-0 mb-2">
-                                <div class="form-check custom-option custom-option-basic">
-                                    <label class="form-check-label custom-option-content" for="service_extra_3">
-                                        <input class="form-check-input" type="checkbox" name="service[extra][recovery_mask]" id="service_extra_3" />
-                                        <span class="custom-option-header">
-                                            <img src="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-content/plugins/latepoint/public/images/service-image.png" class="w-px-30 border-50" />
-                                            <span class="h6 mb-0">Recovery Mask</span>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+                      <div class="row" id="extra-services-list">
+                      <!-- Service extras will be populated here -->
+                      </div>
                     </div>
                 </div>
             </div>
@@ -752,6 +720,10 @@ $configData = Helper::appClasses();
         'extra' : {},
         'setting' : {}
     }; 
+    $(document).on('change', '#selectAll', function() {
+       var isChecked = $(this).is(':checked');
+       $('.form-check-input').prop('checked', isChecked);
+    });
     $(document).ready(function() {
         var currentUrl = window.location.href;
 
@@ -766,6 +738,48 @@ $configData = Helper::appClasses();
 
         fetchCatigories();
         fetchAg(); 
+        fetchExtraServices();
+
+        function fetchExtraServices() {
+         $.ajax({
+          url: "{{ route('admin.resource-getserviceextras') }}",
+          type: 'GET',
+          success: function(response) {
+            populateExtraServices(response);
+          },
+          error: function(xhr, status, error) {
+            console.error('Error fetching services:', error);
+            showToast('Failed to fetch services');
+          }
+        });
+    }
+
+function populateExtraServices(extras) {
+    var extraServicesList = $('#extra-services-list');
+    extraServicesList.empty(); // Clear any existing service extras
+
+    if (extras.length === 0) {
+        extraServicesList.append('<div class="col-md-12">No service extras found.</div>');
+        return;
+    }
+
+    extras.forEach(function(extra, index) {
+        var extraHtml = `
+            <div class="col-md-12 mb-md-0 mb-2">
+                <div class="form-check custom-option custom-option-basic">
+                    <label class="form-check-label custom-option-content" for="service_extra_${index}">
+                        <input class="form-check-input" type="checkbox" name="service[extra][${extra.id}]" id="service_extra_${index}" />
+                        <span class="custom-option-header">
+                            <img src="${extra.image ? extra.image : 'https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-content/plugins/latepoint/public/images/service-image.png'}" class="w-px-30 border-50" />
+                            <span class="h6 mb-0">${extra.name}</span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+        `;
+        extraServicesList.append(extraHtml);
+    });
+}
 
         function fetchAg() {
                 console.log("Fetch")
