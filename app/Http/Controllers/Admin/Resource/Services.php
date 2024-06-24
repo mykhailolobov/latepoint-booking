@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Service;
 use App\Models\Activity;
+use App\Models\ServiceCategory;
 
 class Services extends Controller
 {
@@ -14,16 +15,16 @@ class Services extends Controller
      */
     public function index()
     {
-        // $all = Service::all();
         $services = Service::all();
-
-        $generalServices = $services->where('category_id', 'general');
-        $cosmeticServices = $services->where('category_id', 'cosmetic');
-        $implantsServices = $services->where('category_id', 'implants');
-        return view('content.resource.services', compact('generalServices', 'cosmeticServices', 'implantsServices'));
+    
+        $categories = ServiceCategory::all();
+    
+        return view('content.resource.services', compact('services', 'categories'));
     }
+    
 
-    public function get() {
+    public function get()
+    {
         $services = Service::all();
 
         // Group services by category_id
@@ -31,13 +32,19 @@ class Services extends Controller
 
         // Format the response
         $response = [];
-        foreach ($groupedServices as $category => $services) {
+        foreach ($groupedServices as $categoryId => $services) {
+            $categoryName = ServiceCategory::find($categoryId)->name; // Assuming you have a Category model
             $response[] = [
-                'category' => $category,
+                'category' => $categoryName,
                 'services' => $services->map(function($service) {
                     return [
                         'id' => $service->id,
                         'name' => $service->name,
+                        'duration' => $service->duration,
+                        'buffer_before' => $service->buffer_before,
+                        'buffer_after' => $service->buffer_after,
+                        'capacity_min' => $service->capacity_min,
+                        'capacity_max' => $service->capacity_max,
                     ];
                 })
             ];
