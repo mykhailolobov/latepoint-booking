@@ -16,60 +16,50 @@ class Services extends Controller
     public function index()
     {
         $services = Service::all();
-    
+
         $categories = ServiceCategory::all();
-    
+
         return view('content.resource.services', compact('services', 'categories'));
     }
-    
 
-    public function get()
-    {
-        $services = Service::all();
 
-        // Group services by category_id
-        $groupedServices = $services->groupBy('category_id');
+   public function get()
+{
+    $services = Service::all();
 
-        // Format the response
-        $response = [];
-        foreach ($groupedServices as $categoryId => $services) {
-            if($categoryId == 0) {
-                $response[] = [
-                    'category' => 'Uncategorized',
-                    'services' => $services->map(function($service) {
-                        return [
-                            'id' => $service->id,
-                            'name' => $service->name,
-                            'duration' => $service->duration,
-                            'buffer_before' => $service->buffer_before,
-                            'buffer_after' => $service->buffer_after,
-                            'capacity_min' => $service->capacity_min,
-                            'capacity_max' => $service->capacity_max,
-                        ];
-                    })
-                ];
-            } else {
-                $categoryName = ServiceCategory::find($categoryId)->name; // Assuming you have a Category model
-                $response[] = [
-                    'category' => $categoryName,
-                    'services' => $services->map(function($service) {
-                        return [
-                            'id' => $service->id,
-                            'name' => $service->name,
-                            'duration' => $service->duration,
-                            'buffer_before' => $service->buffer_before,
-                            'buffer_after' => $service->buffer_after,
-                            'capacity_min' => $service->capacity_min,
-                            'capacity_max' => $service->capacity_max,
-                        ];
-                    })
-                ];
-            }
-            
-        }
+    // Fetch all categories to minimize database queries
+    $categories = ServiceCategory::pluck('name', 'id');
 
-        return response()->json($response);
-    }
+    // Group services by category_id
+    $groupedServices = $services->groupBy('category_id');
+
+    // Format the response
+    $response = $groupedServices->map(function ($services, $categoryId) use ($categories) {
+        // Determine the category name
+        $categoryName = $categoryId == 0 ? 'Uncategorized' : ($categories[$categoryId] ?? 'Unknown Category');
+
+        // Map services data
+        $servicesData = $services->map(function ($service) {
+            return [
+                'id' => $service->id,
+                'name' => $service->name,
+                'duration' => $service->duration,
+                'buffer_before' => $service->buffer_before,
+                'buffer_after' => $service->buffer_after,
+                'capacity_min' => $service->capacity_min,
+                'capacity_max' => $service->capacity_max,
+            ];
+        });
+
+        return [
+            'category' => $categoryName,
+            'services' => $servicesData
+        ];
+    })->values();
+
+    return response()->json($response);
+}
+
 
     /**
      * Show the form for creating a new resource.

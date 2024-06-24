@@ -586,7 +586,7 @@ $configData = Helper::appClasses();
                     </div>
                         
                     <div class="card-body">
-                      <div class="row" id="extra-services-list">
+                      <div class="row" id="extra-services-list-create">
                       <!-- Service extras will be populated here -->
                       </div>
                     </div>
@@ -738,14 +738,14 @@ $configData = Helper::appClasses();
 
         fetchCatigories();
         fetchAg(); 
-        fetchExtraServices();
+        fetchExtraServ();
 
-        function fetchExtraServices() {
+        function fetchExtraServ() {
          $.ajax({
           url: "{{ route('admin.resource-getserviceextras') }}",
           type: 'GET',
           success: function(response) {
-            populateExtraServices(response);
+            populateExtraServ(response);
           },
           error: function(xhr, status, error) {
             console.error('Error fetching services:', error);
@@ -754,8 +754,8 @@ $configData = Helper::appClasses();
         });
     }
 
-function populateExtraServices(extras) {
-    var extraServicesList = $('#extra-services-list');
+function populateExtraServ(extras) {
+    var extraServicesList = $('#extra-services-list-create');
     extraServicesList.empty(); // Clear any existing service extras
 
     if (extras.length === 0) {

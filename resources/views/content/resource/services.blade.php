@@ -60,7 +60,7 @@
                     <a href="{{route('admin.resource-editservices', $serv->id) }}" class="agent-box-w agent-status-active text-center os-service">
                         <div class="agent-info-w">
                             <div class="agent-info">
-                                <div class="agent-name">Group Booking</div>
+                                <div class="agent-name">{{$serv->name}}</div>
                             </div>
                         </div>
                         <div class="os-service-body">
@@ -86,7 +86,7 @@
                                 <div class="service-info-row">
                                     <div class="label">Price:</div>
                                     <div class="value">
-                                        <strong>$20</strong>
+                                      <strong>${{ number_format($serv->price_max, 2) }}</strong>
                                     </div>
                                 </div>
                                 <div class="service-info-row">
@@ -131,7 +131,7 @@
                     <a href="{{route('admin.resource-editservices', $serv->id) }}" class="agent-box-w agent-status-active text-center os-service">
                         <div class="agent-info-w">
                             <div class="agent-info">
-                                <div class="agent-name">Group Booking</div>
+                                <div class="agent-name">{{$serv->name}}</div>
                             </div>
                         </div>
                         <div class="os-service-body">
@@ -157,7 +157,7 @@
                                 <div class="service-info-row">
                                     <div class="label">Price:</div>
                                     <div class="value">
-                                        <strong>$20</strong>
+                                        <strong>${{ number_format($serv->price_max, 2) }}</strong>
                                     </div>
                                 </div>
                                 <div class="service-info-row">
