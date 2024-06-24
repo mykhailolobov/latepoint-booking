@@ -478,9 +478,9 @@
                             <label for="selectpickerBasic" class="form-label">Service Extras</label>
                             <div class="select2-primary">
                                 <select id="select2Primary" name="service_extra" class="select2 form-select" multiple>
-                                    <option value="teeth_whitening" selected>Teeth Whitening</option>
+                                    <!-- <option value="teeth_whitening" selected>Teeth Whitening</option>
                                     <option value="hair_wash" selected>Hair Wash</option>
-                                    <option value="recovery_mask">Recovery Mask</option>
+                                    <option value="recovery_mask">Recovery Mask</option> -->
                                 </select>
                             </div>
                         </div>
@@ -702,6 +702,7 @@
 
              // Fetch services data when the page loads
              fetchServices();
+             fetchExtraServices();
             // Update price display on input change
             const priceInput = document.getElementById('flatpickr-total_price');
             const dynamicPriceLabel = document.getElementById('dynamic-price');
@@ -872,6 +873,43 @@
 
                 // Refresh selectpicker to show new options (if using Bootstrap selectpicker)
                 $('.selectpicker-service').selectpicker('refresh');
+            }
+            function fetchExtraServices() {
+                console.log("Fetch")
+                $.ajax({
+                    url: "{{ route('admin.resource-getserviceextras') }}",
+                    type: 'GET',
+                    success: function (response) {
+
+                        populateExtraServices(response);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error fetching services:', error);
+                        showToast('Failed to fetch services');
+                    }
+                });
+            }
+
+            // Function to populate services dropdown
+            function populateExtraServices(services) {
+                const select2Primary = document.getElementById('select2Primary');
+                select2Primary.innerHTML = ''; // Clear existing options
+                console.log(services, "Sss")
+
+                if (services.length) {
+                    services.forEach(service => {
+                        const option = document.createElement('option');
+                            option.value = service.id;
+                            option.textContent = service.name;
+                            select2Primary.appendChild(option);
+                    });
+                } else {
+                    
+                    // showToast('Warnning: Please create extra service first.');
+                }
+
+                // Refresh selectpicker to show new options (if using Bootstrap selectpicker)
+                $('.select2').selectpicker('refresh');
             }
         });
     </script>
