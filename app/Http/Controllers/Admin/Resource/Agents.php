@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Agent;
 use Illuminate\Validation\Rule;
 use App\Models\Activity;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
 
 
 class Agents extends Controller
@@ -58,6 +61,20 @@ class Agents extends Controller
 
         ]);
 
+       
+        $user = User::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'password' => Hash::make('123'),
+
+            'status' => '1',
+            'is_verified' => '1',
+            'avatar' => $request->avatar_image,
+            'account_type' => '1'
+        ]);
+
+        
         $agent = new Agent();
         $agent->user_id = $request->user()['id'];
         $agent->avatar_image_id = $request->avatar_image;
@@ -90,6 +107,7 @@ class Agents extends Controller
         $activity->initiated_by = "admin";
         $activity->initiated_by_id = $request->user()['id'];
         $activity->save();
+        var_dump($agent->user_id);
 
         // return redirect('/customers')->with('success', 'Customer created successfully.');
     }
