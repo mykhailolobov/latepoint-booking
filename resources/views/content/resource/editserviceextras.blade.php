@@ -230,7 +230,8 @@ $configData = Helper::appClasses();
             <div>
                 <button class="btn btn-primary add-location" type="submit">Update Service Extra</button>
                 <meta name="csrf-token" content="{{ csrf_token() }}">
-                <a href="/resource/deleteserviceextras/{{$serviceExtra->id}}" class="btn btn-danger add-customer">Delete Service Extra</a>
+                <button class="btn btn-danger add-location" id="deleteExtraServiceButton" data-extra-id="{{$serviceExtra->id}}">Delete Service Extra</button>
+
             </div>
         </div>
     </form>
@@ -242,6 +243,26 @@ $configData = Helper::appClasses();
     var services = @json($services);
 
     $(document).ready(function() {
+        $('#deleteExtraServiceButton').click(function() {
+        var extraId = $(this).data('extra-id');
+        
+        if(confirm('Are you sure you want to delete this service?')) {
+            $.ajax({
+                url: '/admin/resource/deleteserviceextras/' + extraId,
+                type: 'GET',
+                data: {
+                    _token: '{{ csrf_token() }}' // Include CSRF token for Laravel
+                },
+                success: function(response) {
+                    window.location.href = "{{ route('admin.resource-serviceextras') }}";
+                },
+                error: function(xhr, status, error) {
+                    // alert('An error occurred while deleting the service.');
+                    console.log(xhr.responseText);
+                }
+            });
+        }
+    });
         $('#selectAll').click(function() {
         var isChecked = $(this).prop('checked');
         $('.service-checkbox').prop('checked', isChecked);
