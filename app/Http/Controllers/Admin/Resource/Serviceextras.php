@@ -75,7 +75,8 @@ class Serviceextras extends Controller
     public function edit(string $id)
     {
         $serviceExtra = ServiceExtra::findOrFail($id);
-        return view('content.resource.editserviceextras', compact('serviceExtra'));
+        $services = Service::all();
+        return view('content.resource.editserviceextras', compact('serviceExtra', 'services'));
     }
 
     /**
