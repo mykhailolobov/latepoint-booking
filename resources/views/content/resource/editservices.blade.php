@@ -72,17 +72,17 @@ $configData = Helper::appClasses();
                             </div>
                             <div class="col-lg-6 px-3">
                                 <label for="selectpickerBasic" class="form-label">Short Description</label>
-                                <input type="text" value="{{$servicevalues['short_description']}}" class="form-control" name="short_description" id="defaultFormControlInput" placeholder="Short Description" aria-describedby="defaultFormControlHelp" />
+                             <input type="text" value="{{$servicevalues['short_description']}}" class="form-control" name="short_description" id="defaultFormControlInput" placeholder="Short Description" aria-describedby="defaultFormControlHelp" />
                             </div>
                         </div>
                         <div class="d-flex mb-3">
                             <div class="col-lg-6 px-3">
                                 <label for="selectpickerBasic" class="form-label">Category</label>
                                 <div class="d-flex">
-                                    <select id="selectpickerBasic" class="selectpicker w-100" name="category_id" data-style="btn-default">                                        
-                                        <option value="general" <?php echo($service->category_id == 'general' ? 'selected':'' )?>>General Dentistry</option>
-                                        <option value="cosmetic" <?php echo($service->category_id == 'cosmetic' ? 'selected':'' )?>>Cosmetic Dentistry</option>
-                                        <option value="implants" <?php echo($service->category_id == 'implants' ? 'selected':'' )?>>Implants Dentistry</option>
+                                    <select id="selectpickerBasic" class="selectpicker w-100" name="category_id" data-style="btn-default">  
+                                        @foreach ($categories as $category )
+                                           <option value="{{$category->id}}" {{ $category->id == $service->category_id ? 'selected' : '' }}>{{$category->name}}</option>
+                                        @endforeach                                                     
                                     </select>
                                     <button class="btn btn-primary h-px-40" type="button" style="width:200px;"><i class="fa fa-plus"></i>Add Category</button>
                                 </div>
@@ -239,72 +239,21 @@ $configData = Helper::appClasses();
                     <h5 class="card-header">Agents Who Offer This Service</h5>
                     <div class="card-body">
                         <div class="row">
+                            @foreach ($agents as $agent)
                             <div class="col-md-12 mb-md-0 mb-2">
                                 <div class="form-check custom-option custom-option-basic">
                                     <label class="form-check-label custom-option-content" for="customCheckTemp37">
-                                        <input class="form-check-input" type="checkbox" name="service[offer][john_mayers]" id="customCheckTemp37" <?php echo($servicevalues['offer']['john_mayers']=='true'? 'checked':'')?> />
+                                    <input class="form-check-input" type="checkbox" name="service[offer][{{$agent->id}}]" id="customCheckTemp37" {{ isset($servicevalues['offer'][$agent->id]) && $servicevalues['offer'][$agent->id] == 'true' ? 'checked' : '' }} />
                                         <span class="custom-option-header">
-                                            <img src="{{ asset('assets/img/avatars/7.png') }}" class="w-px-30 border-50" />
-                                            <span class="h6 mb-0">John Mayers</span>
+                                            <img src="{{ $agent->avatar ? $agent->avatar : asset('assets/img/avatar.png') }}" class="w-px-30 border-50" />
+                                            <span class="h6 mb-0">{{$agent->first_name }} {{$agent->last_name}}</span>
                                         </span>
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <div class="form-check custom-option custom-option-basic">
-                                    <label class="form-check-label custom-option-content" for="customCheckTemp47">
-                                        <input class="form-check-input" type="checkbox" name="service[offer][invisilign_braces]" id="customCheckTemp47" <?php echo($servicevalues['offer']['invisilign_braces']=='true'? 'checked':'')?> />
-                                        <span class="custom-option-header">
-                                            <img src="{{ asset('assets/img/avatars/8.png') }}" class="w-px-30 border-50" />
-                                            <span class="h6 mb-0">Invisilign Braces</span>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-12 mb-md-0 mb-2">
-                                <div class="form-check custom-option custom-option-basic">
-                                    <label class="form-check-label custom-option-content" for="customCheckTemp38">
-                                        <input class="form-check-input" type="checkbox" name="service[offer][group_booking]" id="customCheckTemp38" <?php echo($servicevalues['offer']['group_booking']=='true'? 'checked':'')?> />
-                                        <span class="custom-option-header">
-                                            <img src="{{ asset('assets/img/avatars/9.png') }}" class="w-px-30 border-50" />
-                                            <span class="h6 mb-0">Group Booking</span>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-check custom-option custom-option-basic">
-                                    <label class="form-check-label custom-option-content" for="customCheckTemp48">
-                                        <input class="form-check-input" type="checkbox" name="service[offer][porcelain_crown]" id="customCheckTemp48" <?php echo($servicevalues['offer']['porcelain_crown']=='true'? 'checked':'')?> />
-                                        <span class="custom-option-header">
-                                            <img src="{{ asset('assets/img/avatars/3.png') }}" class="w-px-30 border-50" />
-                                            <span class="h6 mb-0">Porcelain Crown</span>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-12 mb-md-0 mb-2">
-                                <div class="form-check custom-option custom-option-basic">
-                                    <label class="form-check-label custom-option-content" for="customCheckTemp39">
-                                        <input class="form-check-input" type="checkbox" name="service[offer][root_canal]" id="customCheckTemp39" <?php echo($servicevalues['offer']['root_canal']=='true'? 'checked':'')?> />
-                                        <span class="custom-option-header">
-                                            <img src="{{ asset('assets/img/avatars/4.png') }}" class="w-px-30 border-50" />
-                                            <span class="h6 mb-0">Root Canal Therapy</span>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-check custom-option custom-option-basic">
-                                    <label class="form-check-label custom-option-content" for="customCheckTemp49">
-                                        <input class="form-check-input" type="checkbox" name="service[offer][gum_decease]" id="customCheckTemp49" <?php echo($servicevalues['offer']['gum_decease']=='true'? 'checked':'')?> />
-                                        <span class="custom-option-header">
-                                            <img src="{{ asset('assets/img/avatars/5.png') }}" class="w-px-30 border-50" />
-                                            <span class="h6 mb-0">Gum Decease</span>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
+                            @endforeach
+                            
+                           
                         </div>
                     </div>
                 </div>
@@ -602,39 +551,19 @@ $configData = Helper::appClasses();
                         
                     <div class="card-body">
                         <div class="row">
+                            @foreach ($extras as $extra)
                             <div class="col-md-12 mb-md-0 mb-2">
                                 <div class="form-check custom-option custom-option-basic">
                                     <label class="form-check-label custom-option-content" for="service_extra_1">
-                                        <input class="form-check-input" type="checkbox" name="service[extra][teeth_whitening]" <?php echo($servicevalues['extra']['teeth_whitening']=='true'?'checked':'') ?>  id="service_extra_1" />
+                                        <input class="form-check-input" type="checkbox" name="service[extra][{{$extra->id}}]"  id="service_extra_{{$extra->id}}"  {{ isset($servicevalues['extra'][$extra->id]) && $servicevalues['extra'][$extra->id] == 'true' ? 'checked' : '' }} />
                                         <span class="custom-option-header">
                                             <img src="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-content/plugins/latepoint/public/images/service-image.png" class="w-px-30 border-50" />
-                                            <span class="h6 mb-0">Teeth Whitening</span>
+                                            <span class="h6 mb-0">{{$extra->name}}</span>
                                         </span>
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <div class="form-check custom-option custom-option-basic">
-                                    <label class="form-check-label custom-option-content" for="service_extra_2">
-                                        <input class="form-check-input" type="checkbox" name="service[extra][hair_wash]" id="service_extra_2" <?php echo($servicevalues['extra']['hair_wash']=='true'?'checked':'') ?> />
-                                        <span class="custom-option-header">
-                                            <img src="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-content/plugins/latepoint/public/images/service-image.png" class="w-px-30 border-50" />
-                                            <span class="h6 mb-0">Hair Wash</span>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-12 mb-md-0 mb-2">
-                                <div class="form-check custom-option custom-option-basic">
-                                    <label class="form-check-label custom-option-content" for="service_extra_3">
-                                        <input class="form-check-input" type="checkbox" name="service[extra][recovery_mask]" id="service_extra_3" <?php echo($servicevalues['extra']['recovery_mask']=='true'?'checked':'') ?> />
-                                        <span class="custom-option-header">
-                                            <img src="https://latepoint-demo.com/demo_4217c15f9eb342a2/wp-content/plugins/latepoint/public/images/service-image.png" class="w-px-30 border-50" />
-                                            <span class="h6 mb-0">Recovery Mask</span>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
+                            @endforeach                                                    
                         </div>
                     </div>
                 </div>

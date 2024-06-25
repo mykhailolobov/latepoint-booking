@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin\Resource;
 
 use App\Http\Controllers\Controller;
+use App\Models\Agent;
 use Illuminate\Http\Request;
 use App\Models\Service;
 use App\Models\Activity;
 use App\Models\ServiceCategory;
+use App\Models\ServiceExtra;
 
 class Services extends Controller
 {
@@ -23,42 +25,42 @@ class Services extends Controller
     }
 
 
-   public function get()
-{
-    $services = Service::all();
+    public function get()
+    {
+        $services = Service::all();
 
-    // Fetch all categories to minimize database queries
-    $categories = ServiceCategory::pluck('name', 'id');
+        // Fetch all categories to minimize database queries
+        $categories = ServiceCategory::pluck('name', 'id');
 
-    // Group services by category_id
-    $groupedServices = $services->groupBy('category_id');
+        // Group services by category_id
+        $groupedServices = $services->groupBy('category_id');
 
-    // Format the response
-    $response = $groupedServices->map(function ($services, $categoryId) use ($categories) {
-        // Determine the category name
-        $categoryName = $categoryId == 0 ? 'Uncategorized' : ($categories[$categoryId] ?? 'Unknown Category');
+        // Format the response
+        $response = $groupedServices->map(function ($services, $categoryId) use ($categories) {
+            // Determine the category name
+            $categoryName = $categoryId == 0 ? 'Uncategorized' : ($categories[$categoryId] ?? 'Unknown Category');
 
-        // Map services data
-        $servicesData = $services->map(function ($service) {
+            // Map services data
+            $servicesData = $services->map(function ($service) {
+                return [
+                    'id' => $service->id,
+                    'name' => $service->name,
+                    'duration' => $service->duration,
+                    'buffer_before' => $service->buffer_before,
+                    'buffer_after' => $service->buffer_after,
+                    'capacity_min' => $service->capacity_min,
+                    'capacity_max' => $service->capacity_max,
+                ];
+            });
+
             return [
-                'id' => $service->id,
-                'name' => $service->name,
-                'duration' => $service->duration,
-                'buffer_before' => $service->buffer_before,
-                'buffer_after' => $service->buffer_after,
-                'capacity_min' => $service->capacity_min,
-                'capacity_max' => $service->capacity_max,
+                'category' => $categoryName,
+                'services' => $servicesData
             ];
-        });
+        })->values();
 
-        return [
-            'category' => $categoryName,
-            'services' => $servicesData
-        ];
-    })->values();
-
-    return response()->json($response);
-}
+        return response()->json($response);
+    }
 
 
     /**
@@ -164,7 +166,11 @@ class Services extends Controller
     public function edit(string $id)
     {
         $service = Service::findOrFail($id);
-        return view('content.resource.editservices', compact('service'));
+        $categories = ServiceCategory::all();
+        $agents = Agent::all();
+        $extras = ServiceExtra::all();
+
+        return view('content.resource.editservices', compact('service', 'categories', 'agents', 'extras'));
     }
 
     /**
