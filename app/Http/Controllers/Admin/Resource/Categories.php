@@ -37,10 +37,15 @@ class Categories extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255', // Adjust length if needed
+            'short_description' => 'nullable|string', // Allow decimals, non-negative
+            'selection_image_id' => 'nullable|string', // Non-negative, greater than price_min
+        ]);
         $category = new ServiceCategory();
-        $category->name = $request->input('name');
-        $category->short_description = $request->input('short_description');
-        $category->selection_image_id = $request->selection_image_id;
+        $category->name =  $validatedData['name'];
+        $category->short_description =  $validatedData['short_description'];
+        $category->selection_image_id = $validatedData['selection_image_id'];
         // $category->parent_id = 1;
 
         $category->save();
