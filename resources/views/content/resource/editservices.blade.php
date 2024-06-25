@@ -58,7 +58,7 @@ $configData = Helper::appClasses();
         
         <div class="col-lg-12 col-xxl-12 mb-4 order-3 order-xxl-1">
             <div class="card-header mb-0">
-                <h4 class="m-0 me-2">Create New Service</h4>
+               <h4 class="m-0 me-2">Edit Service (Service ID:{{$service->id}})</h4>
                 <hr>
             </div>
             <div class="col-md-12">
@@ -80,6 +80,7 @@ $configData = Helper::appClasses();
                                 <label for="selectpickerBasic" class="form-label">Category</label>
                                 <div class="d-flex">
                                     <select id="selectpickerBasic" class="selectpicker w-100" name="category_id" data-style="btn-default">  
+                                           <option value="0" {{$service->category_id == 0 ? 'selected' : '' }}>Uncategorized</option>
                                         @foreach ($categories as $category )
                                            <option value="{{$category->id}}" {{ $category->id == $service->category_id ? 'selected' : '' }}>{{$category->name}}</option>
                                         @endforeach                                                     
@@ -89,7 +90,7 @@ $configData = Helper::appClasses();
                             </div>
                             <div class="col-lg-6 px-3">
                                 <label for="selectpickerBasic" class="form-label">Status</label>
-                                <select id="selectpickerBasic" class="selectpicker w-100" name="status" data-style="btn-default">
+                                <select id="selectpickerBasic" class="selectpicker w-100" name="status_edit" data-style="btn-default">
                                     <option value="active" <?php echo($service->status == "active" ? 'selected' : '') ?>>Active</option>
                                     <option value="disabled" <?php echo($service->status == "disabled" ? 'selected' : '') ?>>Disabled</option>
                                 </select>
@@ -167,14 +168,14 @@ $configData = Helper::appClasses();
                             </div>
                         </div>    
     
-                        <div class="mx-3 os-add-box add-duration-box" data-os-action="service_durations__duration_fields" data-os-output-target-do="append" data-os-output-target=".os-service-durations-w">
+                        <!-- <div class="mx-3 os-add-box add-duration-box" data-os-action="service_durations__duration_fields" data-os-output-target-do="append" data-os-output-target=".os-service-durations-w">
                             <div class="add-box-graphic-w">
                                 <div class="add-box-plus">
                                     <i class="latepoint-icon latepoint-icon-plus4 fa fa-plus"></i>
                                 </div>
                             </div>
                             <div class="add-box-label">Create Another Service Duration</div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -673,9 +674,10 @@ $configData = Helper::appClasses();
             </div>
     
             <div>
-                <button class="btn btn-primary add-location" type="submit">Add Service</button>
+                <button class="btn btn-primary add-location" type="submit">Save Changes</button>
                 <meta name="csrf-token" content="{{ csrf_token() }}">
             </div>
+            
         </div>
     </form>
 </div>
@@ -697,8 +699,11 @@ $configData = Helper::appClasses();
         'extra' : {},
         'setting' : {}
     }; 
+    var agents = @json($agents);
+    var extras = @json($extras);
     $(document).ready(function() {
         // $('.custom-schedule-wrapper').hide();
+        
 
         $('.customCheckTemp1').click(function() {
             var set_custom_schedule_status = $('#customCheckTemp1')[0].checked;
@@ -747,17 +752,15 @@ $configData = Helper::appClasses();
         const timeblock_interval = $('input[name="timeblock_interval"]').val();
         const capacity_min = $('input[name="capacity_min"]').val();
         const capacity_max = $('input[name="capacity_max"]').val();
-        const status = $('select[name="status"]').val();
+        const status = $('select[name="status_edit"]').val();
         const visibility = $('select[name="visibility"]').val();
         const override_default_booking_status = $('select[name="override_default_booking_status"]').val();
         servicedata['short_description'] =  $('input[name="short_description"]').val();
-        servicedata['offer']['john_mayers'] = $('input[name="service[offer][john_mayers]"]').prop('checked');
-        servicedata['offer']['invisilign_braces'] = $('input[name="service[offer][invisilign_braces]"]').prop('checked');
-        servicedata['offer']['group_booking'] = $('input[name="service[offer][group_booking]"]').prop('checked');
-        servicedata['offer']['porcelain_crown'] = $('input[name="service[offer][porcelain_crown]"]').prop('checked');
-        servicedata['offer']['root_canal'] = $('input[name="service[offer][root_canal]"]').prop('checked');
-        servicedata['offer']['gum_decease'] = $('input[name="service[offer][gum_decease]"]').prop('checked');
+        agents.forEach(element => {
+            servicedata['offer'][element.id] = $(`input[name="service[offer][${element.id}]"]`).prop('checked');
+        });
         servicedata['schedule']['status'] = $('input[name="service[schedule][status]"]').prop('checked');
+
         servicedata['schedule']['mon']['status'] = $('input[name="service[schedule][mon][status]"]').prop('checked');
         servicedata['schedule']['mon']['start'] = $('input[name="service[schedule][mon][start]"]').prop('checked');
         servicedata['schedule']['mon']['finish'] = $('input[name="service[schedule][mon][finish]"]').prop('checked');
@@ -783,9 +786,9 @@ $configData = Helper::appClasses();
         servicedata['booking']['price_deposit'] = $('input[name="service[booking][price_deposit]"]').prop('checked');
         servicedata['booking']['other_customer'] = $('input[name="service[booking][other_customer]"]').prop('checked');
         servicedata['booking']['other_timeslot'] = $('input[name="service[booking][other_timeslot]"]').prop('checked');
-        servicedata['extra']['teeth_whitening'] = $('input[name="service[extra][teeth_whitening]"]').prop('checked');
-        servicedata['extra']['hair_wash'] = $('input[name="service[extra][hair_wash]"]').prop('checked');
-        servicedata['extra']['recovery_mask'] = $('input[name="service[extra][recovery_mask]"]').prop('checked');
+        extras.forEach(element => {
+            servicedata['extra'][element.id] = $(`input[name="service[extra][${element.id}]"]`).prop('checked');
+        });
         servicedata['setting']['extra_min'] = $('input[name="service[setting][extra_min]"]').prop('checked');
         servicedata['setting']['extra_max'] = $('input[name="service[setting][extra_max]"]').prop('checked');
         servicedata['setting']['zoom'] = $('input[name="service[setting][zoom]"]').prop('checked');

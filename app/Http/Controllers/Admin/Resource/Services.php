@@ -257,7 +257,7 @@ class Services extends Controller
         $activity->initiated_by_id = $request->user()['id'];
         $activity->save();
 
-        return redirect('/resource/services')->with('success', 'Category updated successfully.');
+        return redirect('/admin/resource/services')->with('success', 'Category updated successfully.');
 
     }
 
