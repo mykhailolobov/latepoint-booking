@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Resource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ServiceCategory;
+use App\Models\Service;
 
 class Categories extends Controller
 {
@@ -88,6 +89,7 @@ class Categories extends Controller
     public function destroy(string $id)
     {
         $category = ServiceCategory::findOrFail($id);
+        Service::where('category_id', $id)->update(['category_id' => 0]);
         $category->delete();
 
         return redirect('/admin/resource/categories')->with('success', 'Category updated successfully.');
