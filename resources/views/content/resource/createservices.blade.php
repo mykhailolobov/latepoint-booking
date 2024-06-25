@@ -721,6 +721,7 @@ $configData = Helper::appClasses();
         'setting' : {}
     }; 
     var agents_data;
+    var extras_data;
     $(document).on('change', '#selectAll', function() {
        var isChecked = $(this).is(':checked');
        $('.form-check-input').prop('checked', isChecked);
@@ -746,6 +747,7 @@ $configData = Helper::appClasses();
           url: "{{ route('admin.resource-getserviceextras') }}",
           type: 'GET',
           success: function(response) {
+            extras_data = response
             populateExtraServ(response);
           },
           error: function(xhr, status, error) {
@@ -949,6 +951,9 @@ function populateExtraServ(extras) {
         servicedata['booking']['price_deposit'] = $('input[name="service[booking][price_deposit]"]').prop('checked');
         servicedata['booking']['other_customer'] = $('input[name="service[booking][other_customer]"]').prop('checked');
         servicedata['booking']['other_timeslot'] = $('input[name="service[booking][other_timeslot]"]').prop('checked');
+        extras_data.forEach(element => {
+            servicedata['extra'][element.id] = $(`input[name="service[extra][${element.id}]"]`).prop('checked');
+        });
         servicedata['extra']['teeth_whitening'] = $('input[name="service[extra][teeth_whitening]"]').prop('checked');
         servicedata['extra']['hair_wash'] = $('input[name="service[extra][hair_wash]"]').prop('checked');
         servicedata['extra']['recovery_mask'] = $('input[name="service[extra][recovery_mask]"]').prop('checked');
