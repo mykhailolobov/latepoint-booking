@@ -673,13 +673,15 @@ $configData = Helper::appClasses();
                 </div>
             </div>
     
-            <div>
+            <div class="d-flex justify-content-between">
                 <button class="btn btn-primary add-location" type="submit">Save Changes</button>
                 <meta name="csrf-token" content="{{ csrf_token() }}">
+                <button class="btn btn-danger add-location" id="deleteServiceButton" data-service-id="{{$service->id}}">Delete Service</button>
             </div>
             
         </div>
     </form>
+    
 </div>
 
 <script type="text/javascript" src="{{asset('/assets/jquery.js')}}"></script>
@@ -701,8 +703,32 @@ $configData = Helper::appClasses();
     }; 
     var agents = @json($agents);
     var extras = @json($extras);
+
+
     $(document).ready(function() {
         // $('.custom-schedule-wrapper').hide();
+
+        $('#deleteServiceButton').click(function() {
+        var serviceId = $(this).data('service-id');
+        
+        if(confirm('Are you sure you want to delete this service?')) {
+            $.ajax({
+                url: '/admin/resource/deleteservice/' + serviceId,
+                type: 'GET',
+                data: {
+                    _token: '{{ csrf_token() }}' // Include CSRF token for Laravel
+                },
+                success: function(response) {
+                    window.location.href = "{{ route('admin.resource-services') }}";
+                    
+                },
+                error: function(xhr, status, error) {
+                    // alert('An error occurred while deleting the service.');
+                    console.log(xhr.responseText);
+                }
+            });
+        }
+    });
         
 
         $('.customCheckTemp1').click(function() {
