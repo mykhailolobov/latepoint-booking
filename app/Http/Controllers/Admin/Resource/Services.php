@@ -299,6 +299,6 @@ class Services extends Controller
 
         $service->delete();
 
-        return redirect('/resource/services')->with('success', 'Category updated successfully.');
+        return redirect('/admin/resource/services')->with('success', 'Category updated successfully.');
     }
 }
