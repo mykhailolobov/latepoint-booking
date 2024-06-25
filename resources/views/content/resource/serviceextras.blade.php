@@ -59,12 +59,22 @@
                         </div>
                     </div>
                     <div class="os-service-body">
-                        <div class="os-service-agents">
-                            <div class="label">Services:</div>
-                            <div class="selected-count selected-count-all">
-                                All Selected
-                            </div>
+                    @php
+                        $multipliedByAttendies = json_decode($serviceExtra->multiplied_by_attendies, true);
+                        $totalServices = count($multipliedByAttendies);
+                        $trueCount = count(array_filter($multipliedByAttendies));
+                    @endphp
+                    <div class="os-service-agents">
+                        <div class="label">Services:</div>
+                        <div class="selected-count selected-count-all">
+                         @if ($trueCount === $totalServices)
+                             All Selected
+                         @else
+                            {{ $trueCount }} of {{ $totalServices }}
+                         @endif
                         </div>
+                    </div>
+
                         <div class="os-service-info">
                             <div class="service-info-row">
                                 <div class="label">Duration:</div>
