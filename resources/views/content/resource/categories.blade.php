@@ -43,60 +43,7 @@ $configData = Helper::appClasses();
 @section('content')
 
 <link href="{{asset('/assets/css/category_custom.css')}}" rel="stylesheet">
-<style type="text/css">
- .os-form-message-w {
-    padding: 15px 15px 17px 50px;
-    background-color: #f0f1f5;
-    color: #6e7084;
-    margin-bottom: 20px;
-    font-weight: 500;
-    font-size: 16px;
-    border-radius: 6px;
-    border: 1px solid #d3d4de;
-    position: relative;
- }
 
- .os-form-message-w.status-error {
-    background-color: #fff1f1;
-    border: 1px solid #f2c3c3;
-    border-bottom-color: #ea9898;
-    color: #7f0d0d;
-    box-shadow: 0px 1px 2px rgba(255, 61, 61, 0.16);
-}
-.os-form-message-w.status-error:before {
-    background-color: #ff5839;
-    box-shadow: 0px 1px 0px 0px rgba(255, 138, 138, 0.5), 0px 0px 0px 6px rgba(255, 138, 138, 0.15), 0px 0px 0px 10px rgba(255, 138, 138, 0.1), inset 0px 2px 0px 0px rgba(255, 255, 255, 0.2);
-    border: 1px solid #ee1b1b;
-    border-bottom-color: #ce0a0a;
-}
-.os-form-message-w.status-error:before {
-    animation: 1s ease 0s pulseErrorPill infinite;
-}
-.os-form-message-w:before {
-    color: #fff;
-    position: absolute;
-    top: 20px;
-    left: 19px;
-    width: 10px;
-    height: 10px;
-    text-align: center;
-    border-radius: 50%;
-    z-index: 3;
-    content: "";
-}
-.os-form-message-w ul {
-    list-style: none;
-    margin: 0px;
-    padding: 0px;
-}
-.os-form-message-w ul li:last-child {
-    margin-bottom: 0px;
-}
-.agent-name {
-    margin-left: 10px;
-    color: #183fbf;
-}
-</style>
 <div class="row">
     <div class="col-lg-12 col-xxl-12 mb-4 order-3 order-xxl-1">
         <div class="card-header mb-4 d-flex">
@@ -111,20 +58,18 @@ $configData = Helper::appClasses();
             </a>
             <hr>
         </div>
-        <div class="card card-body" id="update-error-scroll>
+        <div class="card card-body">
             <div class="row">
                 <div class="col-md-12 col-12 mb-md-0 mb-4">
                     <ul class="location-categories list-group list-group-flush" id="handle-list-1">
                         @foreach ($categories as $category)
                        <form action="{{route('admin.resource-updatecategories', $category->id)}}" method="post" class="update-categories">
                             @csrf
-                            <div class="os-form-message-w status-error ml-2 mr-2" id="error-message-cateogry-edit" style="display: none;"><ul><li></li></ul></div>
                             <li class="list-group-item lh-1 justify-content-between align-items-center mb-3">
-
                                 <div class="row">
                                     <span class="d-flex align-items-center">
                                         <i class="drag-handle cursor-move bx bx-menu align-text-bottom me-2"></i>
-                                        <span>{{$category->name}} </span>
+                                        <span>{{$category->name}}</span>
                                     </span>
                                 </div>
                                 <div class="card-body edit_category_section">
@@ -141,7 +86,7 @@ $configData = Helper::appClasses();
                                     <div class="col-lg-12 mb-3">
                                         <div action="/upload" class="dropzone needsclick" id="dropzone-basic">
                                             <div class="dz-message needsclick">
-                                                Cateogry Image
+                                                Remove Image
                                             </div>                                            
                                         </div>
                                     </div>
@@ -230,12 +175,10 @@ $configData = Helper::appClasses();
                 <h5 class="card-header">Create New Service Category</h5>
                 <form action="{{route('admin.resource-storecategories')}}" method="post" class="add-categories">
                     <div class="card-body demo-vertical-spacing demo-only-element">
-                        <div class="os-form-message-w status-error ml-2 mr-2" id="error-message-cateogry" style="display: none;"><ul><li></li></ul></div>
-
                         <div class="d-flex mb-3">
                             <div class="col-lg-6 px-3">
                                 <label for="selectpickerBasic" class="form-label">Category Name</label>
-                                <input type="text" class="form-control" name="cate_name_create" id="defaultFormControlInput" placeholder="Category Name" aria-describedby="defaultFormControlHelp" />
+                                <input type="text" class="form-control" name="cate_name_create" id="defaultFormControlInput" placeholder="Category Name" aria-describedby="defaultFormControlHelp" required/>
                             </div>
                             <div class="col-lg-6 px-3">
                                 <label for="selectpickerBasic" class="form-label">Short Description</label>
