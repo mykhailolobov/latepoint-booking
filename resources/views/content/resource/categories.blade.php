@@ -111,14 +111,16 @@ $configData = Helper::appClasses();
             </a>
             <hr>
         </div>
-        <div class="card card-body">
+        <div class="card card-body" id="update-error-scroll>
             <div class="row">
                 <div class="col-md-12 col-12 mb-md-0 mb-4">
                     <ul class="location-categories list-group list-group-flush" id="handle-list-1">
                         @foreach ($categories as $category)
                        <form action="{{route('admin.resource-updatecategories', $category->id)}}" method="post" class="update-categories">
                             @csrf
+                            <div class="os-form-message-w status-error ml-2 mr-2" id="error-message-cateogry-edit" style="display: none;"><ul><li></li></ul></div>
                             <li class="list-group-item lh-1 justify-content-between align-items-center mb-3">
+
                                 <div class="row">
                                     <span class="d-flex align-items-center">
                                         <i class="drag-handle cursor-move bx bx-menu align-text-bottom me-2"></i>
@@ -144,7 +146,7 @@ $configData = Helper::appClasses();
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Save Category</button>
-                                    <a href="/resource/deletecategories/{{$category->id}}" class="btn btn-danger add-customer">Delete Category</a>
+                                    <a href="#" class="btn btn-danger delete-category" data-category-id="{{ $category->id }}">Delete Category</a>
                                 </div>
                             </li>
                        </form>
@@ -268,6 +270,34 @@ $configData = Helper::appClasses();
 <script type="text/javascript" src="{{asset('/assets/jquery.js')}}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
+        $('.delete-category').click(function(event) {
+        event.preventDefault(); // Prevent the default link action
+
+        var categoryId = $(this).data('category-id');
+
+        if (confirm('Are you sure you want to delete this category?')) {
+            $.ajax({
+                url: '/admin/resource/deletecategories/' + categoryId,
+                type: 'GET',
+                data: {
+                    _token: '{{ csrf_token() }}' // Include CSRF token for Laravel
+                },
+                success: function(response) {
+                    console.log('Category deleted successfully.');
+                    window.location.href = "{{ route('admin.resource-categories') }}";
+
+                },
+                error: function(xhr, status, error) {
+                    var errorMessage = 'An error occurred. Please try again.';
+              
+                    $('#error-message-cateogry-edit').text(errorMessage).show();
+                    $('html, body').animate({
+                  scrollTop: $(".update-categories").offset().top
+                  }, 500);
+                }
+            });
+        }
+    });
         $('.create_new_category').hide();
         $('.edit_category_section').hide();
 

@@ -79,7 +79,7 @@ class Categories extends Controller
 
         $category->save();
 
-        return redirect('/resource/categories')->with('success', 'Category updated successfully.');
+        return redirect('/admin/resource/categories')->with('success', 'Category updated successfully.');
     }
 
     /**
@@ -90,7 +90,7 @@ class Categories extends Controller
         $category = ServiceCategory::findOrFail($id);
         $category->delete();
 
-        return redirect('/resource/categories')->with('success', 'Category updated successfully.');
+        return redirect('/admin/resource/categories')->with('success', 'Category updated successfully.');
 
     }
 }
