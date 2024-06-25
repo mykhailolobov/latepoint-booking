@@ -742,18 +742,7 @@ $configData = Helper::appClasses();
             }
         });
 
-        $('.selectAll').click(function() {
-            var selectAll_status = $('#selectAll')[0].checked;
-            if (selectAll_status == true) {
-                $('#service_extra_1').attr('checked', true);
-                $('#service_extra_2').attr('checked', true);
-                $('#service_extra_3').attr('checked', true);
-            }else{
-                $('#service_extra_1').attr('checked', false);
-                $('#service_extra_2').attr('checked', false);
-                $('#service_extra_3').attr('checked', false);
-            }
-        });
+    
     });
 
     $('form.add-service').on('submit', function(e) {

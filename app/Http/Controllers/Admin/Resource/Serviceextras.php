@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Resource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ServiceExtra;
+use App\Models\Service;
 
 class Serviceextras extends Controller
 {
@@ -28,7 +29,8 @@ class Serviceextras extends Controller
      */
     public function create()
     {
-        return view('content.resource.createserviceextras');
+        $services = Service::all();
+        return view('content.resource.createserviceextras', compact('services'));
     }
 
     /**

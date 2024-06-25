@@ -75,7 +75,8 @@
                             <div class="service-info-row">
                                 <div class="label">Price:</div>
                                 <div class="value">
-                                    <strong>$20</strong>
+                                <strong>${{ number_format($serviceExtra->charge_amount ?? 0, 2, '.', '') }}</strong>
+
                                 </div>
                             </div>
                             <div class="service-info-row">
