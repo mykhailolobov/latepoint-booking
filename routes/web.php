@@ -47,6 +47,7 @@ use App\Http\Controllers\Admin\Settings\Processes\Processes;
 use App\Http\Controllers\Admin\Settings\Processes\ScheduledJobs;
 use App\Http\Controllers\Admin\Settings\FormFields;
 
+use App\Http\Controllers\Agent\agent_Dashboard;
 
 use App\Http\Controllers\Customer\Login as CustomerLogin;
 
@@ -245,9 +246,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 });
 
-
-
-
+Route::prefix('agent')->name('agent.')->group(function () {
+  Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [agent_Dashboard::class, 'index'])->name('dashboard');
+  });
+});
 
 // --------------------------- FOR TEST ----------------------------- //
 Route::get('/run-artisan', function () {
