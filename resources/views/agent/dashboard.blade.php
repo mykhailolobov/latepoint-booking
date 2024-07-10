@@ -1,8 +1,8 @@
 @php
-    $configData = Helper::appClasses();
+    $configData = agent_Helper::appClasses();
 @endphp
 
-@extends('layouts/layoutMaster')
+@extends('layouts/agent_layoutMaster')
 
 @section('title', 'Appointment Studio')
 
