@@ -250,15 +250,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
 Route::prefix('agent')->name('agent.')->group(function () {
   Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [agent_Dashboard::class, 'index'])->name('dashboard');
-<<<<<<< HEAD
-=======
     Route::get('/calendar', [agent_Calendar::class, 'index'])->name('app-calendar');
 //    Route::get('/appointments', [Appointments::class, 'index'])->name('app-appointments');
 //    Route::post('/store_appointments', [Appointments::class, 'store'])->name('app-storeappointments');
 
 //    Route::get('/payments', [Payments::class, 'index'])->name('app-payments');
 //    Route::get('/customers', [Customers::class, 'index'])->name('app-customers');
->>>>>>> main
+
   });
 });
 
