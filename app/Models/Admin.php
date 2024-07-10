@@ -16,5 +16,5 @@ class Admin extends Model
         'email',
         'phone',
         'status',
-    ];
+  ];
 }

@@ -50,7 +50,7 @@
                         <div class="nav-item navbar-search-wrapper mb-0">
                             <a class="nav-item nav-link search-toggler px-0" href="javascript:void(0);">
                                 <i class="bx bx-search bx-sm"></i>
-                                <span class="d-none d-md-inline-block text-muted">Search (Ctrl+/)</span>
+                                <span class="d-none d-md-inline-block text-muted">Start typing to find bookings, customers, agents or services...</span>
                             </a>
                         </div>
                     </div>
@@ -691,7 +691,7 @@
             </div>
         </form>
     </div>
-   
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Initialize flatpickr for date and time fields
@@ -868,7 +868,7 @@
                         selectpickerServGroups.appendChild(optgroup);
                     });
                 } else {
-                    
+
                     showToast('Warnning: Please create service first.');
                 }
 
@@ -904,7 +904,7 @@
                         select2Primary.appendChild(option);
                     });
                 } else {
-                    
+
                     // showToast('Warnning: Please create extra service first.');
                 }
 
@@ -942,7 +942,7 @@
                         selectpickerBasic.appendChild(option);
                     });
                 } else {
-                    
+
                     // showToast('Warnning: Please create extra service first.');
                 }
 

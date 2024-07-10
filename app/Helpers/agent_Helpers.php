@@ -5,17 +5,17 @@ namespace App\Helpers;
 use Config;
 use Illuminate\Support\Str;
 
-class Helpers
+class agent_Helpers
 {
   public static function appClasses()
   {
 
-    $data = config('custom.custom');
+    $data = config('agent_custom.custom');
 
 
     // default data array
     $DefaultData = [
-      'myLayout' => 'vertical',
+      'agent_layout' => 'agent_vertical',
       'myTheme' => 'theme-default',
       'myStyle' => 'light',
       'myRTLSupport' => true,
@@ -49,7 +49,7 @@ class Helpers
 
     // All options available in the template
     $allOptions = [
-      'myLayout' => ['vertical', 'horizontal', 'blank', 'front'],
+      'agent_myLayout' => ['agent_vertical', 'agent_horizontal', 'blank', 'front'],
       'menuCollapsed' => [true, false],
       'hasCustomizer' => [true, false],
       'showDropdownOnHover' => [true, false],
@@ -109,7 +109,7 @@ class Helpers
     isset($_COOKIE['theme']) ? $themeVal = $_COOKIE['theme'] : $themeVal = $data['myTheme'];
     //layout classes
     $layoutClasses = [
-      'layout' => $data['myLayout'],
+      'layout' => $data['agent_myLayout'],
       'theme' => $themeVal,
       'themeOpt' => $data['myTheme'],
       'style' => $styleVal,
@@ -206,7 +206,7 @@ class Helpers
     if (isset($pageConfigs)) {
       if (count($pageConfigs) > 0) {
         foreach ($pageConfigs as $config => $val) {
-          Config::set('custom.' . $demo . '.' . $config, $val);
+          Config::set('agent_custom.' . $demo . '.' . $config, $val);
         }
       }
     }
