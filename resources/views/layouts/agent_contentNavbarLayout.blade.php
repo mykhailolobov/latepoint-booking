@@ -48,7 +48,7 @@ $container = (isset($configData['contentLayout']) && $configData['contentLayout'
 
       <!-- BEGIN: Navbar-->
       @if ($isNavbar)
-      @include('layouts/sections/navbar/navbar')
+      @include('layouts/sections/navbar/agent_navbar')
       @endif
       <!-- END: Navbar-->
 

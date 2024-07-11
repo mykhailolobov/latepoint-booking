@@ -8,12 +8,12 @@ use App\Models\Customer;
 use App\Models\Activity;
 use Illuminate\Validation\Rule;
 
-class Customers extends Controller
+class agent_Customers extends Controller
 {
   public function index()
   {
     $customers = Customer::all();
-    return view('content.tables.tables-customers', ['customers' => $customers]);
+    return view('agent.tables.tables-customers', ['customers' => $customers]);
   }
 
   public function list()
@@ -30,7 +30,7 @@ class Customers extends Controller
   // Add Customer
   public function add()
   {
-    return view('content.resource.addcustomer');
+    return view('agent.resource.addcustomer');
   }
 
   public function add_customer(Request $request)
@@ -104,7 +104,7 @@ class Customers extends Controller
   public function edit_customer($id)
   {
     $customer = Customer::findOrFail($id);
-    return view('content.resource.editcustomer', compact('customer'));
+    return view('agent.resource.editcustomer', compact('customer'));
   }
 
   public function update_customer(Request $request, $customerId)

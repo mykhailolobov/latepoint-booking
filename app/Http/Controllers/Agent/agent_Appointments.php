@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Customer;
 
 
-class Appointments extends Controller
+class agent_Appointments extends Controller
 {
   public function index()
   {
@@ -22,7 +22,7 @@ class Appointments extends Controller
     $filePath = public_path('assets/json/table-datatable.json');
     file_put_contents($filePath, $jsonData);
 
-    return view('content.tables.tables-appointments');
+    return view('agent.tables.tables-appointments');
   }
 
   public function store(Request $request)

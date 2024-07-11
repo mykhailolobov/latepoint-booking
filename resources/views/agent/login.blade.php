@@ -59,7 +59,7 @@
         <h4 class="mb-2">Welcome to {{config('variables.templateName')}}! 👋</h4>
         <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
-        <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('admin.login') }}">
+        <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('agent.login') }}">
             @csrf
           <div class="mb-3">
             <label for="email" class="form-label">Email or Username</label>
@@ -103,7 +103,7 @@
 
         <p class="text-center">
           <span>New on our platform?</span>
-          <a href="{{ route('admin.register') }}">
+          <a href="{{ route('agent.register') }}">
             <span>Create an account</span>
           </a>
         </p>
