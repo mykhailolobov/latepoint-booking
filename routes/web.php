@@ -48,6 +48,18 @@ use App\Http\Controllers\Admin\Settings\Processes\ScheduledJobs;
 use App\Http\Controllers\Admin\Settings\FormFields;
 
 
+use App\Http\Controllers\Agent\Auth\agent_AuthenticatedSessionController;
+use App\Http\Controllers\Agent\Auth\agent_NewPasswordController;
+use App\Http\Controllers\Agent\Auth\agent_PasswordResetLinkController;
+use App\Http\Controllers\Agent\Auth\agent_RegisteredUserController;
+
+use App\Http\Controllers\Agent\agent_Dashboard;
+use App\Http\Controllers\Agent\agent_Calendar;
+use App\Http\Controllers\Agent\agent_Customers;
+use App\Http\Controllers\Agent\agent_Appointments;
+use App\Http\Controllers\Agent\agent_Payments;
+use App\Http\Controllers\Agent\agent_Login;
+
 use App\Http\Controllers\Customer\Login as CustomerLogin;
 
 /*
@@ -64,6 +76,7 @@ use App\Http\Controllers\Customer\Login as CustomerLogin;
 Route::get('/', [Home::class, 'index'])->name('landing');
 
 Route::get('login', [CustomerLogin::class, 'login'])->name('login');
+Route::get('agentLogin', [agent_Login::class, 'login'])->name('agentLogin');
 
 // locale
 Route::get('lang/{locale}', [LanguageController::class, 'swap']);
@@ -245,9 +258,47 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 });
 
+Route::prefix('agent')->name('agent.')->group(function () {
+  Route::middleware('guest')->group(function () {
+    Route::get('register', [agent_RegisteredUserController::class, 'create'])->name('register');
+    Route::post('register', [agent_RegisteredUserController::class, 'store']);
+    Route::get('verify-email', [agent_RegisteredUserController::class, 'verify_email'])->name('verify.email');
+
+    Route::get('login', [agent_AuthenticatedSessionController::class, 'create'])->name('login');
+    Route::post('login', [agent_AuthenticatedSessionController::class, 'login_act']);
+
+    Route::get('oauth/{driver}', [agent_AuthenticatedSessionController::class, 'redirectToProvider'], )->name('social.oauth');
+    Route::get('oauth/{driver}/callback', [agent_AuthenticatedSessionController::class, 'handleProviderCallback'])->name('social.callback');
+
+    Route::get('forgot-password', [agent_PasswordResetLinkController::class, 'create'])->name('password.request');
+    Route::post('forgot-password', [agent_PasswordResetLinkController::class, 'store'])->name('password.email');
+
+    Route::get('reset-password/{token}', [agent_NewPasswordController::class, 'create'])->name('password.reset');
+
+    Route::post('reset-password', [agent_NewPasswordController::class, 'store'])->name('password.update');
 
 
+    Route::get('verify/{token}', [agent_RegisteredUserController::class, 'verifyAccount'])->name('verify');
+  });
 
+  Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [agent_Dashboard::class, 'index'])->name('dashboard');
+    Route::get('/calendar', [agent_Calendar::class, 'index'])->name('app-calendar');
+    Route::get('/appointments', [agent_Appointments::class, 'index'])->name('app-appointments');
+    Route::post('/store_appointments', [agent_Appointments::class, 'store'])->name('app-storeappointments');
+
+    Route::get('/payments', [agent_Payments::class, 'index'])->name('app-payments');
+    Route::get('/customers', [agent_Customers::class, 'index'])->name('app-customers');
+
+    Route::get('/customers/new', [agent_Customers::class, 'add']);
+    Route::get('/customers/new', [agent_Customers::class, 'add']);
+    Route::get('/customers/list', [agent_Customers::class, 'list']);
+    Route::post('/add_customer', [agent_Customers::class, 'add_customer'])->name('add_customer');
+    Route::get('/edit_customer/{id}', [agent_Customers::class, 'edit_customer'])->name('edit_customer');
+    Route::post('/update_customers', [agent_Customers::class, 'update_customer'])->name('update_customer');
+    Route::get('/delete_customer/{id}', [agent_Customers::class, 'delete_customer']);
+  });
+});
 
 // --------------------------- FOR TEST ----------------------------- //
 Route::get('/run-artisan', function () {

@@ -248,7 +248,7 @@
                                                     UserName
                                                 @endif
                                             </span>
-                                            <small class="text-muted">Admin</small>
+                                            <small class="text-muted">Agent</small>
                                         </div>
                                     </div>
                                 </a>
