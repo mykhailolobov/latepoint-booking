@@ -3,18 +3,19 @@
 namespace App\Http\Controllers\Agent;
 
 use App\Http\Controllers\Controller;
-use App\Models\Agent;
-use App\Models\Customer;
-use App\Models\Service;
 use Illuminate\Http\Request;
+use App\Models\Transaction;
 
-class agent_Dashboard extends Controller
+class agent_Payments extends Controller
 {
   public function index()
   {
-    $customerCnt = Customer::count();
-    $agents = Agent::all();
-    $services = Service::all();
-    return view('agent.dashboard', compact("agents", "services"));
+    $payments = Transaction::all();
+
+    $jsonData = json_encode(['data' => $payments]);
+    $filePath = public_path('assets/json/table-datatable1.json');
+    file_put_contents($filePath, $jsonData);
+
+    return view('agent.tables.tables-payments');
   }
 }

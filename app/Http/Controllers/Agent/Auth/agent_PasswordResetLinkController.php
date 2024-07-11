@@ -20,7 +20,7 @@ class agent_PasswordResetLinkController extends Controller
      */
     public function create()
     {
-        return view('auth.forgot-password');
+        return view('agent.auth.forgot-password');
     }
 
     /**

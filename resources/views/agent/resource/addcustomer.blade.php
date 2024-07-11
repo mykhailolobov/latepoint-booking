@@ -58,7 +58,7 @@ $configData = agent_Helper::appClasses();
         </div>
     </div>
     <div class="col-md-12">
-        <form method="POST" class="add-customer" action="{{ route('admin.add_customer') }}" enctype="multipart/form-data">
+        <form method="POST" class="add-customer" action="{{ route('agent.add_customer') }}" enctype="multipart/form-data">
             @csrf
             <div class="card mb-4">
                 <h5 class="card-header">General Information</h5>
@@ -142,7 +142,7 @@ $configData = agent_Helper::appClasses();
 
         $.ajax({
             type: 'POST',
-            url: "{{ route('admin.add_customer') }}",
+            url: "{{ route('agent.add_customer') }}",
             headers: {
                 'X-CSRF-TOKEN': csrf_token
             },
@@ -159,7 +159,7 @@ $configData = agent_Helper::appClasses();
             },
             success: function() {
                 console.log('success');
-                window.location.href = "{{ route('admin.app-customers') }}";
+                window.location.href = "{{ route('agent.app-customers') }}";
             },
             error: function(err) {
                 console.log(err);

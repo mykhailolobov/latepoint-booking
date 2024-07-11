@@ -29,7 +29,7 @@ class agent_AuthenticatedSessionController extends Controller
         if (Auth::check()) {
             return redirect()->route('agent.dashboard');
         }
-        return view('auth.login');
+        return view('agent.auth.login');
     }
 
     /**

@@ -26,7 +26,7 @@ class agent_RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        return view('agent.auth.register');
     }
     /**
      * Handle an incoming registration request.
@@ -102,7 +102,7 @@ class agent_RegisteredUserController extends Controller
 
     public function verify_email()
     {
-        return view('auth.verify-email');
+        return view('agent.auth.verify-email');
     }
 
     /**

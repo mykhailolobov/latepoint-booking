@@ -28,7 +28,7 @@ class agent_NewPasswordController extends Controller
 
         $user = DB::table('password_resets')->where('token', '=', $token)->first();
         if ($user) {
-            return view('auth.reset-password', compact('user'));
+            return view('agent.auth.reset-password', compact('user'));
         } else
             return redirect()->route('admin.login');
     }
@@ -59,6 +59,6 @@ class agent_NewPasswordController extends Controller
         //     $message->to($userbytoken->email);
         //     $message->subject(__('frontend.password_changed'));
         // });
-        return view('auth.confirm-password');
+        return view('agent.auth.confirm-password');
     }
 }
