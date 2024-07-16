@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
         Family: 'warning',
         ETC: 'info'
       },
-      offcanvasTitle = document.querySelector('.offcanvas-title'),
+      offcanvasTitle = document.querySelector('#eventForm .offcanvas-title'),
       btnToggleSidebar = document.querySelector('.btn-toggle-sidebar'),
       btnSubmit = document.querySelector('#eventForm button[type="submit"]'),
       btnDeleteEvent = document.querySelector('.btn-delete-event'),
