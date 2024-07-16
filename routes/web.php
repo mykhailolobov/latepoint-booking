@@ -61,6 +61,8 @@ use App\Http\Controllers\Agent\agent_Payments;
 use App\Http\Controllers\Agent\agent_Login;
 
 use App\Http\Controllers\Customer\Login as CustomerLogin;
+use App\Http\Controllers\EventController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,6 +82,7 @@ Route::get('agentLogin', [agent_Login::class, 'login'])->name('agentLogin');
 
 // locale
 Route::get('lang/{locale}', [LanguageController::class, 'swap']);
+
 
 Route::prefix('admin')->name('admin.')->group(function () {
 
@@ -121,7 +124,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::get('/appointments', [Appointments::class, 'index'])->name('app-appointments');
         Route::post('/store_appointments', [Appointments::class, 'store'])->name('app-storeappointments');
-
+        
+        Route::get('/get-events', [EventController::class, 'index'])->name('app-events');
+        Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('event.destroy');
+        Route::post('/store_events', [EventController::class, 'store'])->name('app-storeevents');
 
         Route::get('/payments', [Payments::class, 'index'])->name('app-payments');
         Route::get('/customers', [Customers::class, 'index'])->name('app-customers');
@@ -297,6 +303,8 @@ Route::prefix('agent')->name('agent.')->group(function () {
     Route::get('/edit_customer/{id}', [agent_Customers::class, 'edit_customer'])->name('edit_customer');
     Route::post('/update_customers', [agent_Customers::class, 'update_customer'])->name('update_customer');
     Route::get('/delete_customer/{id}', [agent_Customers::class, 'delete_customer']);
+    Route::post('/store_events', [EventController::class, 'store'])->name('app-storeevents');
+
   });
 });
 

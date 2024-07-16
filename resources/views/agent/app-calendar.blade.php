@@ -29,6 +29,10 @@
 @endsection
 
 @section('page-script')
+
+<script>
+window.events =  @json($events);
+</script>
   @vite([
     'resources/assets/js/app-calendar-events.js',
     'resources/assets/js/app-calendar.js',
@@ -108,14 +112,15 @@
           <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-          <form class="event-form pt-0" id="eventForm" onsubmit="return false">
+          <form class="event-form pt-0" id="eventForm" action="{{route('agent.app-storeevents')}}">
+            @csrf
             <div class="mb-3">
               <label class="form-label" for="eventTitle">Title</label>
-              <input type="text" class="form-control" id="eventTitle" name="eventTitle" placeholder="Event Title" />
+              <input type="text" class="form-control" id="eventTitle" name="title" placeholder="Event Title" />
             </div>
             <div class="mb-3">
               <label class="form-label" for="eventLabel">Label</label>
-              <select class="select2 select-event-label form-select" id="eventLabel" name="eventLabel">
+              <select class="select2 select-event-label form-select" id="eventLabel" name="calendar">
                 <option data-label="primary" value="Business" selected>Business</option>
                 <option data-label="danger" value="Personal">Personal</option>
                 <option data-label="warning" value="Family">Family</option>
@@ -125,15 +130,15 @@
             </div>
             <div class="mb-3">
               <label class="form-label" for="eventStartDate">Start Date</label>
-              <input type="text" class="form-control" id="eventStartDate" name="eventStartDate" placeholder="Start Date" />
+              <input type="text" class="form-control" id="eventStartDate" name="start" placeholder="Start Date" />
             </div>
             <div class="mb-3">
               <label class="form-label" for="eventEndDate">End Date</label>
-              <input type="text" class="form-control" id="eventEndDate" name="eventEndDate" placeholder="End Date" />
+              <input type="text" class="form-control" id="eventEndDate" name="end" placeholder="End Date" />
             </div>
             <div class="mb-3">
               <label class="switch">
-                <input type="checkbox" class="switch-input allDay-switch" />
+                <input type="checkbox" name="allDay" class="switch-input allDay-switch" />
                 <span class="switch-toggle-slider">
                   <span class="switch-on"></span>
                   <span class="switch-off"></span>
@@ -143,11 +148,11 @@
             </div>
             <div class="mb-3">
               <label class="form-label" for="eventURL">Event URL</label>
-              <input type="url" class="form-control" id="eventURL" name="eventURL" placeholder="https://www.google.com" />
+              <input type="url" class="form-control" id="eventURL" name="url" placeholder="https://www.google.com" />
             </div>
             <div class="mb-3 select2-primary">
-              <label class="form-label" for="eventGuests">Add Guests</label>
-              <select class="select2 select-event-guests form-select" id="eventGuests" name="eventGuests" multiple>
+              <label class="form-label" for="guests">Add Guests</label>
+              <select class="select2 select-event-guests form-select" id="eventGuests" name="guests[]" multiple>
                 <option data-avatar="1.png" value="Jane Foster">Jane Foster</option>
                 <option data-avatar="3.png" value="Donna Frank">Donna Frank</option>
                 <option data-avatar="5.png" value="Gabrielle Robertson">Gabrielle Robertson</option>
@@ -158,11 +163,11 @@
             </div>
             <div class="mb-3">
               <label class="form-label" for="eventLocation">Location</label>
-              <input type="text" class="form-control" id="eventLocation" name="eventLocation" placeholder="Enter Location" />
+              <input type="text" class="form-control" id="eventLocation" name="location" placeholder="Enter Location" />
             </div>
             <div class="mb-3">
               <label class="form-label" for="eventDescription">Description</label>
-              <textarea class="form-control" name="eventDescription" id="eventDescription"></textarea>
+              <textarea class="form-control" name="description" id="eventDescription"></textarea>
             </div>
             <div class="mb-3 d-flex justify-content-sm-between justify-content-start my-4">
               <div>
