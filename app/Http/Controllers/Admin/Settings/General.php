@@ -38,8 +38,9 @@ class General extends Controller
     public function store(Request $request)
     {
         $checkVal = Setting::query()
-            ->where('name', 'LIKE', "%settingsgeneral%")
-            ->get();
+        ->where('name', 'LIKE', "%settingsgeneral%")
+        ->get();
+
         $check = $checkVal->count();
         if ($check == 0) {
             $settings = Setting::all();
@@ -59,7 +60,7 @@ class General extends Controller
             $general->value = serialize($request->settings);
         }
         $general->save();
-        return redirect('/settings/general')->with('success', 'Customer created successfully.');
+        return redirect()->back()->with('success', 'Customer created successfully.');
     }
 
     /**

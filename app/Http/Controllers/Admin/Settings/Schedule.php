@@ -66,7 +66,7 @@ class Schedule extends Controller
 
         $schedule->save();
 
-        return redirect('/settings/schedule')->with('success', 'Schedule created successfully.');
+        return redirect()->back()->with('success', 'Schedule created successfully.');
 
     }
 
