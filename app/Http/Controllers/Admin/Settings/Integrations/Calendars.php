@@ -58,7 +58,7 @@ class Calendars extends Controller
             $calendar->value = serialize($request->settings);
         }
         $calendar->save();
-        return redirect('/settings/integrations-calendars')->with('success', 'Calendar created successfully.');
+        return redirect()->back()->with('success', 'Calendar created successfully.');
     }
 
     /**
@@ -87,7 +87,7 @@ class Calendars extends Controller
         // dd($tax->value);
         $calendar->save();
 
-        return redirect('/settings/integrations-calendars')->with('success', 'Calendar created successfully.');
+        return redirect()->back()->with('success', 'Calendar created successfully.');
     }
 
     /**

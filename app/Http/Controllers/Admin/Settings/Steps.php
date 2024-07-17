@@ -163,7 +163,7 @@ class Steps extends Controller
             $step->value = serialize($request->settings);
         }
         $step->save();
-        return redirect('/settings/steps')->with('success', 'Step created successfully.');
+        return redirect()->back()->with('success', 'Step created successfully.');
     }
 
     /**
@@ -191,7 +191,7 @@ class Steps extends Controller
 
         $step->save();
 
-        return redirect('/settings/steps')->with('success', 'Step created successfully.');
+        return redirect()->back()->with('success', 'Step created successfully.');
     }
 
     /**

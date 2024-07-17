@@ -55,7 +55,7 @@ class Roles extends Controller
         // dd($tax->value);
         $role->save();
 
-        return redirect('/settings/roles')->with('success', 'Tax created successfully.');
+        return redirect()->back()->with('success', 'Tax created successfully.');
     }
 
     /**
@@ -84,7 +84,7 @@ class Roles extends Controller
         // dd($tax->value);
         $role->save();
 
-        return redirect('/settings/roles')->with('success', 'role updated successfully.');
+        return redirect()->back()->with('success', 'role updated successfully.');
     }
 
     /**
@@ -95,6 +95,6 @@ class Roles extends Controller
         $role = Setting::findOrFail($id);
         $role->delete();
 
-        return redirect('/settings/roles')->with('success', 'Tax deleted successfully.');
+        return redirect()->back()->with('success', 'Tax deleted successfully.');
     }
 }

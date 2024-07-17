@@ -53,7 +53,7 @@ class Notifications extends Controller
         // dd($tax->value);
         $tax->save();
 
-        return redirect('/settings/notifications')->with('success', 'Tax created successfully.');
+        return redirect()->back()->with('success', 'Tax created successfully.');
 
     }
 
@@ -83,7 +83,7 @@ class Notifications extends Controller
         // dd($tax->value);
         $tax->save();
 
-        return redirect('/settings/notifications')->with('success', 'Tax created successfully.');
+        return redirect()->back()->with('success', 'Tax created successfully.');
     }
 
     /**

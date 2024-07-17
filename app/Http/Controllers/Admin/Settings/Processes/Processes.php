@@ -42,7 +42,7 @@ class Processes extends Controller
         $process->actions_json = serialize($allActions);
         $process->save();
 
-        return redirect('/settings/processes')->with('success', 'process created successfully.');
+        return redirect()->back()->with('success', 'process created successfully.');
     }
 
     /**
@@ -79,7 +79,7 @@ class Processes extends Controller
         // dd($tax->value);
         $process->save();
 
-        return redirect('/settings/processes')->with('success', 'process created successfully.');
+        return redirect()->back()->with('success', 'process created successfully.');
     }
 
     /**
@@ -90,6 +90,6 @@ class Processes extends Controller
         $process = Process::findOrFail($id);
         $process->delete();
 
-        return redirect('/settings/processes')->with('success', 'process created successfully.');
+        return redirect()->back()->with('success', 'process created successfully.');
     }
 }

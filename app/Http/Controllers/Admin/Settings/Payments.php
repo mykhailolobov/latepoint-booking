@@ -61,7 +61,7 @@ class Payments extends Controller
         }
         $payment->save();
 
-        return redirect('/settings/payments')->with('success', 'Payment created successfully.');
+        return redirect()->back()->with('success', 'Payment created successfully.');
     }
 
     /**

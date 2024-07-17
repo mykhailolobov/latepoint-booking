@@ -45,7 +45,7 @@ class Tax extends Controller
         ]);
         $tax->save();
 
-        return redirect('/settings/tax')->with('success', 'Tax created successfully.');
+        return redirect()->back()->with('success', 'Tax created successfully.');
     }
 
     /**
@@ -77,7 +77,7 @@ class Tax extends Controller
         ]);
         $tax->save();
 
-        return redirect('/settings/tax')->with('success', 'Tas updated successfully.');
+        return redirect()->back()->with('success', 'Tas updated successfully.');
     }
 
     /**
@@ -88,6 +88,6 @@ class Tax extends Controller
         $tax = Setting::findOrFail($id);
         $tax->delete();
 
-        return redirect('/settings/tax')->with('success', 'Tax deleted successfully.');
+        return redirect()->back()->with('success', 'Tax deleted successfully.');
     }
 }

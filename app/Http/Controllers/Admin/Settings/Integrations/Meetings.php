@@ -51,7 +51,7 @@ class Meetings extends Controller
         // dd($tax->value);
         $meeting->save();
 
-        return redirect('/settings/integrations-meeting')->with('success', 'Calendar created successfully.');
+        return redirect()->back()->with('success', 'Calendar created successfully.');
     }
 
     /**
@@ -81,7 +81,7 @@ class Meetings extends Controller
         // dd($tax->value);
         $meeting->save();
 
-        return redirect('/settings/integrations-meeting')->with('success', 'Calendar created successfully.');
+        return redirect()->back()->with('success', 'Calendar created successfully.');
     }
 
     /**
